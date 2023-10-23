@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="12306" started-at="2023-10-05T16:46:05 PKT" finished-at="2023-10-05T16:46:17 PKT">
+    <groups>
+    </groups>
+    <test name="test" duration-ms="12306" started-at="2023-10-05T16:46:05 PKT" finished-at="2023-10-05T16:46:17 PKT">
+      <class name="com.marina.tests.VerifySearchFilePage">
+        <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.marina.tests.VerifySearchFilePage@77ec78b9]" name="loadConfig" is-config="true" duration-ms="229" started-at="2023-10-05T16:46:05 PKT" finished-at="2023-10-05T16:46:05 PKT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loadConfig -->
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.marina.tests.VerifySearchFilePage@77ec78b9]" name="beforeTest" is-config="true" duration-ms="11366" started-at="2023-10-05T16:46:05 PKT" finished-at="2023-10-05T16:46:16 PKT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="verifySearchFilePage_Test1()[pri:0, instance:com.marina.tests.VerifySearchFilePage@77ec78b9]" name="verifySearchFilePage_Test1" duration-ms="33" started-at="2023-10-05T16:46:16 PKT" finished-at="2023-10-05T16:46:16 PKT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySearchFilePage_Test1 -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.marina.tests.VerifySearchFilePage@77ec78b9]" name="afterTest" is-config="true" duration-ms="883" started-at="2023-10-05T16:46:16 PKT" finished-at="2023-10-05T16:46:17 PKT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.marina.tests.VerifySearchFilePage@77ec78b9]" name="afterSuite" is-config="true" duration-ms="205" started-at="2023-10-05T16:46:17 PKT" finished-at="2023-10-05T16:46:17 PKT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- com.marina.tests.VerifySearchFilePage -->
+    </test> <!-- test -->
+  </suite> <!-- Suite -->
+</testng-results>
