@@ -58,6 +58,9 @@ public class VerifySuccessfulLogin extends TestBase {
 		driver.get("https://khi.medicallienmgt.com/logout.aspx");
 		BrowserFactory.getInstance().removeDriver();
 		
+		System.out.println("testing 1");
+		
+		
 	}
 	
 	
