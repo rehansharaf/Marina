@@ -1,257 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="2" failed="2" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-24T11:05:35 PKT" name="Default suite" finished-at="2023-10-24T11:07:40 PKT" duration-ms="125397">
+  <suite started-at="2023-10-25T04:05:04 PDT" name="Default suite" finished-at="2023-10-25T04:06:09 PDT" duration-ms="64849">
     <groups>
     </groups>
-    <test started-at="2023-10-24T11:05:35 PKT" name="Default test" finished-at="2023-10-24T11:07:40 PKT" duration-ms="125397">
-      <class name="com.marina.tests.VerifySuccessfulLogin">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:05:34 PKT" name="loadConfig" finished-at="2023-10-24T11:05:35 PKT" duration-ms="779" status="PASS">
+    <test started-at="2023-10-25T04:05:04 PDT" name="Default test" finished-at="2023-10-25T04:06:09 PDT" duration-ms="64849">
+      <class name="com.marina.tests.Mod_2_SpaceTypes">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@4d465b11]" started-at="2023-10-25T04:05:04 PDT" name="loadConfig" finished-at="2023-10-25T04:05:04 PDT" duration-ms="543" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:05:37 PKT" name="beforeTest" finished-at="2023-10-24T11:06:13 PKT" duration-ms="36334" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@4d465b11]" started-at="2023-10-25T04:05:04 PDT" name="beforeTest" finished-at="2023-10-25T04:06:04 PDT" duration-ms="59468" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="verifyLogin(java.lang.String, java.lang.String)[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:06:13 PKT" name="verifyLogin" data-provider="credentials" finished-at="2023-10-24T11:06:35 PKT" duration-ms="21730" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[upload.docs]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[rehan123]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //td[@class='dft_page_header']' (tried for 10 second(s) with 500 milliseconds interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //td[@class='dft_page_header']' (tried for 10 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
-at com.marina.actiondriver.Action.explicitWait(Action.java:765)
-at com.marina.pages.HomePage.verifyHomePageHeading(HomePage.java:40)
-at com.marina.tests.VerifySuccessfulLogin.verifyLogin(VerifySuccessfulLogin.java:49)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:766)
-at org.testng.TestRunner.run(TestRunner.java:587)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
-at org.testng.TestNG.runSuites(TestNG.java:1039)
-at org.testng.TestNG.run(TestNG.java:1007)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//td[@class='dft_page_header']"}
-  (Session info: chrome=118.0.5993.89)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bce76494e6b5b4fae4ec3de9c70a2b9d, findElement {using=xpath, value=//td[@class='dft_page_header']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.89, chrome: {chromedriverVersion: 118.0.5993.70 (e52f33f30b91..., userDataDir: C:\Users\TALHAT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59242}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59242/devtoo..., se:cdpVersion: 118.0.5993.89, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bce76494e6b5b4fae4ec3de9c70a2b9d
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy22.isDisplayed(Unknown Source)
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
-at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:37)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
-... 31 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+        <test-method signature="ST1_001()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@4d465b11]" started-at="2023-10-25T04:06:04 PDT" name="ST1_001" finished-at="2023-10-25T04:06:04 PDT" duration-ms="192" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:06:35 PKT" name="afterTest" finished-at="2023-10-24T11:06:35 PKT" duration-ms="821" status="PASS">
+        </test-method> <!-- ST1_001 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@4d465b11]" started-at="2023-10-25T04:06:04 PDT" name="afterTest" finished-at="2023-10-25T04:06:09 PDT" duration-ms="5148" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:06:35 PKT" name="beforeTest" finished-at="2023-10-24T11:06:48 PKT" duration-ms="12810" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method signature="verifyLogin(java.lang.String, java.lang.String)[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:06:48 PKT" name="verifyLogin" data-provider="credentials" finished-at="2023-10-24T11:07:09 PKT" duration-ms="20999" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[upload1.docs]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[redhatredhat123!@#]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //td[@class='dft_page_header']' (tried for 10 second(s) with 500 milliseconds interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //td[@class='dft_page_header']' (tried for 10 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:230)
-at com.marina.actiondriver.Action.explicitWait(Action.java:765)
-at com.marina.pages.HomePage.verifyHomePageHeading(HomePage.java:40)
-at com.marina.tests.VerifySuccessfulLogin.verifyLogin(VerifySuccessfulLogin.java:49)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:766)
-at org.testng.TestRunner.run(TestRunner.java:587)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
-at org.testng.TestNG.runSuites(TestNG.java:1039)
-at org.testng.TestNG.run(TestNG.java:1007)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//td[@class='dft_page_header']"}
-  (Session info: chrome=118.0.5993.89)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [584c18363ae712268e15e78107832ee3, findElement {using=xpath, value=//td[@class='dft_page_header']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.89, chrome: {chromedriverVersion: 118.0.5993.70 (e52f33f30b91..., userDataDir: C:\Users\TALHAT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59280}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59280/devtoo..., se:cdpVersion: 118.0.5993.89, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 584c18363ae712268e15e78107832ee3
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy22.isDisplayed(Unknown Source)
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
-at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:37)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
-... 31 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:09 PKT" name="afterTest" finished-at="2023-10-24T11:07:11 PKT" duration-ms="1874" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:11 PKT" name="beforeTest" finished-at="2023-10-24T11:07:23 PKT" duration-ms="12133" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method signature="verifyLogin(java.lang.String, java.lang.String)[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:23 PKT" name="verifyLogin" data-provider="credentials" finished-at="2023-10-24T11:07:25 PKT" duration-ms="2032" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[upload1.docs]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[REDHATredhat1!@#]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:25 PKT" name="afterTest" finished-at="2023-10-24T11:07:26 PKT" duration-ms="563" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:26 PKT" name="beforeTest" finished-at="2023-10-24T11:07:38 PKT" duration-ms="12069" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method signature="verifySuccessLogin()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:38 PKT" name="verifySuccessLogin" finished-at="2023-10-24T11:07:40 PKT" duration-ms="1616" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySuccessLogin -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:40 PKT" name="afterTest" finished-at="2023-10-24T11:07:40 PKT" duration-ms="762" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.marina.tests.VerifySuccessfulLogin@53fdffa1]" started-at="2023-10-24T11:07:40 PKT" name="afterSuite" finished-at="2023-10-24T11:07:41 PKT" duration-ms="419" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@4d465b11]" started-at="2023-10-25T04:06:09 PDT" name="afterSuite" finished-at="2023-10-25T04:06:10 PDT" duration-ms="752" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.marina.tests.VerifySuccessfulLogin -->
+      </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

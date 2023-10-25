@@ -13,14 +13,28 @@ public class LoginPage {
 	
 	WebDriver driver;
 	
-	@FindBy(how = How.ID, using = "txtLogin")
-	WebElement username;
+	@FindBy(how = How.XPATH, using = "//input[@id='email']")
+	WebElement Email;
 	
-	@FindBy(how = How.ID, using = "txtPassword")
+	@FindBy(how = How.XPATH, using = "//input[@id='password']")
 	WebElement password;
+	
+	@FindBy(how = How.XPATH, using = "//small[text()='Forgot your password?']")
+	WebElement forgotpass;
+	
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='remember_me']")
+	WebElement rememberpass;
+	
+	
+	@FindBy(how = How.XPATH, using = "//a[text()='Self Registration']")
+	WebElement selfregistration;
+	
 
-	@FindBy(how = How.ID, using = "btnLogin")
+	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
 	WebElement btnLogin;
+	
+	
 	
 	
 	
@@ -32,9 +46,9 @@ public class LoginPage {
 	}
 	
 	
-	public HomePage login(String user, String pass) {
+	public HomePage login(String email, String pass) {
 		
-		username.sendKeys(user);
+		Email.sendKeys(email);
 		password.sendKeys(pass);
 		btnLogin.click();
 		return new HomePage(driver);
