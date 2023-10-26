@@ -41,8 +41,8 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	
 	
-	@Test(groups = "regression,sanity,smoke")
-	public void ST1_001_verifySpacePage() {
+	@Test(groups = "regression,sanity,smoke", priority = 1 )
+	public void verifySpacePage_Tc_201() {
 
 		Log.startTestCase("Verify  space type page Page");
 		Assert.assertEquals(stp.space_type_page_verify(), "Space Types");
@@ -52,8 +52,8 @@ public class Mod_2_SpaceTypes extends TestBase {
 	
 
 	
-	@Test (groups ="regression")
-	public void ST1_002_verifyPopupAddSpac() {
+	@Test (groups ="regression", priority = 2)
+	public void verifyPopupAddSpace_TC_202() {
 		
 		
 		statp = stp.add_space_type();

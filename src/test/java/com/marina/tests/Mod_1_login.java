@@ -25,8 +25,8 @@ public class Mod_1_login extends TestBase {
 
 	}
 
-	@Test(groups = "regression,sanity,smoke")
-	public void lg_001_verifyLogin() {
+	@Test(groups = "regression,sanity,smoke", priority = 1)
+	public void verifyLogin_Tc_001() {
 
 		Log.startTestCase("Verify Successful Login Only");
 		lp = new LoginPage(driver);
