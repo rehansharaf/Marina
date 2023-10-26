@@ -52,7 +52,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 	
 
 	
-	@Test (groups ="regression", priority = 2)
+	@Test (groups ="regression,smoke", priority = 2)
 	public void verifyPopupAddSpace_TC_202() {
 		
 		
@@ -60,10 +60,33 @@ public class Mod_2_SpaceTypes extends TestBase {
 		Log.startTestCase(" add new space type window should appear");
 		Assert.assertEquals(statp.add_space_type(), "FIXED $ OR $/UNIT/PERIOD");
 		Log.endTestCase(" add new space type window should appear");
+	
+		
+	}
+	
+	
+	
+	@Test(groups="regression,smoke", priority=3)
+	public void createNewSpace_TC_203() {
+		
+	}
+	
+	
+	@Test(groups ="regression,smoke", priority=4)
+	public void skippingFileds_TC_204() {
 		
 		
 		
 	}
+	
+	@Test(groups="regression,smoke", priority=5)
+	public void checkNewSpaceShowing_TC_205() {
+		
+	}
+	
+	
+	
+	
 	
 	
 	

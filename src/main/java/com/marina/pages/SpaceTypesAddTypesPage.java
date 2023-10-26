@@ -67,7 +67,7 @@ public class SpaceTypesAddTypesPage {
 	WebElement check_Yearly;
 	
 	@FindBy(how = How.XPATH, using = "//select[@name='price_group']")
-	WebElement add_to_rate_group;
+	WebElement add_to_rate_group_selection;
 	
 	
 	@FindBy(how = How.XPATH, using = "//option[@value='new']")
@@ -80,10 +80,10 @@ public class SpaceTypesAddTypesPage {
 	WebElement group_Dry_Storage;
 	
 	@FindBy(how = How.XPATH, using = "//input[@value='no']")
-	WebElement include_in_occ_yes;
+	WebElement include_in_OCCUPANCY_yes;
 	
 	@FindBy(how = How.XPATH, using = "//input[@value='yes']")
-	WebElement include_in_occ_no;
+	WebElement include_in_OCCUPANCY_no;
 	
 	
 	@FindBy(how = How.XPATH, using = "//*[@id='modalAddSpaceType']/div/form/div/div[3]/button[1]")
