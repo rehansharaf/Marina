@@ -50,39 +50,50 @@ public class HomePage {
 		return dashboardText.getText();
 	}
 
-	public SpaceTypesPage spaces_dropdown(int a) {
+	public SpaceTypesPage spaces_dropdown_SpaceTypes() {
 
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
 		action.click(driver, spacesdropdown);
-
-		if (a == 2) {
-			action.click(driver, Spacetypes);
-
-		}
-
-		if (a == 3) {
-			action.click(driver, allspaces);
-
-		}
-
-		if (a == 4) {
-			action.click(driver, calendar);
-
-		}
-
-		if (a == 5) {
-			action.click(driver, spacegroups);
-
-		}
-
-		if (a == 6) {
-			action.click(driver, boatgroups);
-
-		}
-
-		a = 0;
+		action.click(driver, Spacetypes);
 		return new SpaceTypesPage(driver);
 
+	}
+	
+	
+	public AllSpacesPage spaces_dropdown_AllSpaces() {
+
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.click(driver, spacesdropdown);
+		action.click(driver, allspaces);
+		return new AllSpacesPage(driver);
+			
+	}
+	
+	public CalendarPage spaces_dropdown_Calendar() {
+
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.click(driver, spacesdropdown);
+		action.click(driver, calendar);
+		return new CalendarPage(driver);
+			
+	}
+	
+	public SpaceGroupsPage spaces_dropdown_SpaceGroups() {
+
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.click(driver, spacesdropdown);
+		action.click(driver, spacegroups);
+		return new SpaceGroupsPage(driver);
+			
+	}
+	
+	public BoatGroupsPage spaces_dropdown_BoatGroups() {
+
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.click(driver, spacesdropdown);
+		action.click(driver, boatgroups);
+		return new BoatGroupsPage(driver);
+			
 	}
 
 }
