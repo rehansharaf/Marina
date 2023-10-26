@@ -27,7 +27,6 @@ public class Mod_2_SpaceTypes extends TestBase {
 	HomePage hp;
 	SpaceTypesPage stp;
 	SpaceTypesAddTypesPage statp;
-	int a = 2;
 
 	@BeforeMethod
 	public void beforeTest() {
@@ -35,7 +34,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 		browserIntialization();
 		lp = new LoginPage(driver);
 		hp = lp.login(prop.getProperty("email"), prop.getProperty("password"));
-		stp = hp.spaces_dropdown(a);
+		stp = hp.spaces_dropdown_SpaceTypes();
 
 	}
 
