@@ -5,11 +5,11 @@
     <classes>
       <class name="com.marina.tests.Mod_2_SpaceTypes">
         <methods>
-          <include name="ST1_001"/>
           <include name="loadConfig"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
+          <include name="ST1_002_add_space"/>
         </methods>
       </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
     </classes>

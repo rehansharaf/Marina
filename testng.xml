@@ -8,7 +8,14 @@
 	  <parameter name="browser" value="chrome" />
     <classes>
 	  <!-- <class name="com.marina.tests.VerifySuccessfulLogin"/> -->
-      <class name="com.marina.tests.VerifySearchFilePage"/>
+      <class name="com.marina.tests.Mod_1_login"/>
+   		<class name="com.marina.tests.Mod_2_SpaceTypes"/>
+   	
+   
+   
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
+
+
+

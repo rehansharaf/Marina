@@ -10,6 +10,7 @@ import com.marina.base.BrowserFactory;
 import com.marina.base.TestBase;
 import com.marina.pages.HomePage;
 import com.marina.pages.LoginPage;
+import com.marina.pages.SpaceTypesAddTypesPage;
 import com.marina.pages.SpaceTypesPage;
 import com.marina.utils.Log;
 
@@ -25,6 +26,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 	LoginPage lp;
 	HomePage hp;
 	SpaceTypesPage stp;
+	SpaceTypesAddTypesPage statp;
 	int a = 2;
 
 	@BeforeMethod
@@ -37,8 +39,10 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
+	
+	
 	@Test(groups = "regression,sanity,smoke")
-	public void ST1_001_Space_Type() {
+	public void ST1_001_verifySpacePage() {
 
 		Log.startTestCase("Verify  space type page Page");
 		Assert.assertEquals(stp.space_type_page_verify(), "Space Types");
@@ -46,11 +50,15 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 	
-	@Test 
-	public void ST1_002_add_space() {
+
+	
+	@Test (groups ="regression")
+	public void ST1_002_verifyPopupAddSpac() {
 		
+		
+		statp = stp.add_space_type();
 		Log.startTestCase(" add new space type window should appear");
-		Assert.assertEquals(stp.add_space_type(), "Add New Space Type");
+		Assert.assertEquals(statp.add_space_type(), "FIXED $ OR $/UNIT/PERIOD");
 		Log.endTestCase(" add new space type window should appear");
 		
 		

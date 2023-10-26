@@ -26,7 +26,7 @@ public class Mod_1_login extends TestBase {
 	}
 
 	@Test(groups = "regression,sanity,smoke")
-	public void lg_001() {
+	public void lg_001_verifyLogin() {
 
 		Log.startTestCase("Verify Successful Login Only");
 		lp = new LoginPage(driver);
@@ -36,6 +36,10 @@ public class Mod_1_login extends TestBase {
 		Log.endTestCase("Verify Successful Login Only");
 
 	}
+	
+	
+	
+	
 //	(dataProvider = "credentials", dataProviderClass = DataProviders.class)
 
 	@AfterMethod

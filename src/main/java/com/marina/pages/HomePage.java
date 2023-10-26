@@ -12,60 +12,47 @@ import com.marina.actiondriver.Action;
 import com.marina.base.TestBase;
 
 public class HomePage {
-	
+
 	WebDriver driver;
 	Action action = new Action();
-	
+
 	@FindBy(how = How.XPATH, using = "//span[text()='Denham Bay Marina']")
 	WebElement dashboardText;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[text()='Spaces']")
 	WebElement spacesdropdown;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[text()='Space Types']")
 	WebElement Spacetypes;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[text()='All Spaces']")
 	WebElement allspaces;
-	
-	
+
 	@FindBy(how = How.XPATH, using = "")
 	WebElement calendar;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[text()='Space Groups']")
 	WebElement spacegroups;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[text()='Boat Groups']")
 	WebElement boatgroups;
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
 	public HomePage(WebDriver driver) {
-		
+
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	
-	
 	public String verifyHomePageHeading() {
 
 		action.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
 		// utils.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
 		return dashboardText.getText();
 	}
-	
-	
-	
+
 	public SpaceTypesPage spaces_dropdown(int a) {
-		
+
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
 		action.click(driver, spacesdropdown);
 
 		if (a == 2) {
@@ -95,21 +82,7 @@ public class HomePage {
 
 		a = 0;
 		return new SpaceTypesPage(driver);
-				
+
 	}
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
 }

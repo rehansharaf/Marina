@@ -31,12 +31,11 @@ public class SpaceTypesPage {
 	@FindBy(how = How.XPATH, using = "//div[@class='dataTables_info']")
 	WebElement showing_entries;
 
-	@FindBy(how = How.XPATH, using = "//div[@class='dataTables_info']")
+	@FindBy(how = How.XPATH, using = "//button[text()='Add Space Type']")
 	WebElement btn_addspacetype;
 	
 	
-	@FindBy(how = How.XPATH, using = "//h5[text()='Add New Space Type']")
-	WebElement popup_text;
+	
 	
 	
 
@@ -54,13 +53,17 @@ public class SpaceTypesPage {
 	}
 	
 	
-	public String add_space_type() {
+public SpaceTypesAddTypesPage add_space_type() {
 		
+
 		btn_addspacetype.click();
-		action.explicitWait(driver, popup_text, Duration.ofSeconds(10));
-		return popup_text.getText();
+		return new SpaceTypesAddTypesPage(driver);
 		
 	}
+	
+	
+	
+
 	
 
 //	public String verifySearchFilePage() {
