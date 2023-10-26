@@ -27,7 +27,16 @@ public class Mod_2_SpaceTypes extends TestBase {
 	HomePage hp;
 	SpaceTypesPage stp;
 	SpaceTypesAddTypesPage statp;
-
+	String added_space;
+	String formDetails[];
+	SpaceTypesPage stp2;
+	
+//	String userFName= prop.getProperty("space_name");
+	String parking;
+	
+	
+	
+	
 	@BeforeMethod
 	public void beforeTest() {
 
@@ -40,49 +49,121 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 1 )
-	public void verifySpacePage_Tc_201() {
-
-		Log.startTestCase("Verify  space type page Page");
-		Assert.assertEquals(stp.space_type_page_verify(), "Space Types");
-		Log.endTestCase("Verify  space type page");
-
-	}
+	
+	
+	
+//	@Test(groups = "regression,sanity,smoke", priority = 1 )
+//	public void verifySpacePage_Tc_201() {
+//
+//		Log.startTestCase("Verify  space type page Page");
+//		Assert.assertEquals(stp.space_type_page_verify(), "Space Types");
+//		Log.endTestCase("Verify  space type page");
+//
+//	}
+//	
+//
+//	
+//	@Test (groups ="regression,smoke", priority = 2)
+//	public void verifyPopupAddSpace_TC_202() {
+//		
+//		
+//		statp = stp.add_space_type();
+//		Log.startTestCase(" add new space type window should appear");
+//		Assert.assertEquals(statp.click_add_space_type(), "FIXED $ OR $/UNIT/PERIOD");
+//		Log.endTestCase(" add new space type window should appear");
+//	
+//		
+//	}
+	
+	
+	
+	
+	
+	
+	
+//	@Test(groups="regression,smoke", priority=3)
+//	public void verifySpaceAfterAdd_TC_203() throws InterruptedException {
+//		
+//		statp = stp.add_space_type();
+//		added_space = statp.addingNewSpace(prop.getProperty("space_name"));
+//		
+//		System.out.println("test");
+//		
+//		
+//		
+//	}
+	
 	
 
-	
-	@Test (groups ="regression,smoke", priority = 2)
-	public void verifyPopupAddSpace_TC_202() {
+	public String[] formArray(String user, String parking, String capacity, String pricingType, String pricePlane, String rate_group, String occupancy) {
 		
 		
-		statp = stp.add_space_type();
-		Log.startTestCase(" add new space type window should appear");
-		Assert.assertEquals(statp.add_space_type(), "FIXED $ OR $/UNIT/PERIOD");
-		Log.endTestCase(" add new space type window should appear");
+		formDetails = new String[] {user,parking,capacity,pricingType,pricePlane,rate_group,occupancy} ;
+		return formDetails;
+		
+//		user="";
+//		parking="";
+//		capacity="";
+//		pricingType="";
+//		pricePlane="";
+//		rate_group="";
+//		occupancy="";
+		
 	
+		
 		
 	}
 	
 	
 	
 	@Test(groups="regression,smoke", priority=3)
-	public void createNewSpace_TC_203() {
+	public void verifySpaceAfterAdd_TC_203() throws InterruptedException {
+		
+		System.out.println("testing");
+		
+		formArray(
+				prop.getProperty("space_name"),
+				prop.getProperty("parking_fixed"),
+				prop.getProperty("capacity_single_boat"),
+				prop.getProperty("pricing_t1"),
+				prop.getProperty("p_plane_nightly"),
+				prop.getProperty("rate_group_New_rate_group"),
+				prop.getProperty("Include_in_occupancy_no")
+				);
+		
+		
+//				String[] alpha = formDetails;
+				statp = stp.add_space_type();
+				added_space = statp.addingNewSpace(formDetails);
+				stp.search_space_data(formDetails[0]);
+				
+				
+				
+				
+				System.out.println("test");
+		
 		
 	}
 	
 	
-	@Test(groups ="regression,smoke", priority=4)
-	public void skippingFileds_TC_204() {
-		
-		
-		
-	}
 	
-	@Test(groups="regression,smoke", priority=5)
-	public void checkNewSpaceShowing_TC_205() {
-		
-	}
 	
+	
+	
+	
+	
+//	@Test(groups ="regression,smoke", priority=4)
+//	public void skippingFileds_TC_204() {
+//		
+//		
+//		
+//	}
+//	
+//	@Test(groups="regression,smoke", priority=5)
+//	public void checkNewSpaceShowing_TC_205() {
+//		
+//	}
+//	
 	
 	
 	

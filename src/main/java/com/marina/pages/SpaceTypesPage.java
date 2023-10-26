@@ -34,7 +34,8 @@ public class SpaceTypesPage {
 	@FindBy(how = How.XPATH, using = "//button[text()='Add Space Type']")
 	WebElement btn_addspacetype;
 	
-	
+	@FindBy(how = How.XPATH, using = "//*[@id='space_type_table']/tbody/tr/td[1]")
+	WebElement space_name_detail_fetch;
 	
 	
 	
@@ -60,6 +61,23 @@ public SpaceTypesAddTypesPage add_space_type() {
 		return new SpaceTypesAddTypesPage(driver);
 		
 	}
+
+
+
+public String search_space_data(String name) {
+	
+	
+	search_name.sendKeys(name);
+	
+	//*[@id="space_type_table"]/tbody/tr/td[1]
+	//*[@id="space_type_table"]/tbody/tr/td[2]
+	
+	
+	
+	return name;
+	
+	
+}
 	
 	
 	

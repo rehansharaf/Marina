@@ -46,7 +46,6 @@ public class HomePage {
 	public String verifyHomePageHeading() {
 
 		action.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
-		// utils.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
 		return dashboardText.getText();
 	}
 
@@ -70,7 +69,7 @@ public class HomePage {
 	}
 	
 	public CalendarPage spaces_dropdown_Calendar() {
-
+//////// its out side the dropedown
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
 		action.click(driver, spacesdropdown);
 		action.click(driver, calendar);
