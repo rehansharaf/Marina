@@ -63,17 +63,18 @@ public class HomePage {
 	public AllSpacesPage spaces_dropdown_AllSpaces() {
 
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-		action.click(driver, spacesdropdown);
-		action.click(driver, allspaces);
+		//action.click(driver, spacesdropdown);
+		action.click1(spacesdropdown, "Spaces DropDown");
+		action.click1(allspaces, "All Space Link");
+		//action.click(driver, allspaces);
 		return new AllSpacesPage(driver);
 			
 	}
 	
-	public CalendarPage spaces_dropdown_Calendar() {
+	public CalendarPage calendarLink() {
 
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-		action.click(driver, spacesdropdown);
-		action.click(driver, calendar);
+		action.click1(calendar, "Calendar link");
 		return new CalendarPage(driver);
 			
 	}

@@ -1,66 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="2" total="5" passed="3" failed="0" skipped="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-25T07:11:51 PDT" name="Suite" finished-at="2023-10-25T07:12:59 PDT" duration-ms="68478">
+  <suite name="Default suite" duration-ms="39086" started-at="2023-10-30T14:12:39 PKT" finished-at="2023-10-30T14:13:18 PKT">
     <groups>
-      <group name="regression">
-        <method signature="Mod_2_SpaceTypes.ST1_002_verifyPopupAddSpac()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" name="ST1_002_verifyPopupAddSpac" class="com.marina.tests.Mod_2_SpaceTypes"/>
-      </group> <!-- regression -->
-      <group name="regression,sanity,smoke">
-        <method signature="Mod_1_login.lg_001_verifyLogin()[pri:0, instance:com.marina.tests.Mod_1_login@3b6ddd1d]" name="lg_001_verifyLogin" class="com.marina.tests.Mod_1_login"/>
-        <method signature="Mod_2_SpaceTypes.ST1_001_verifySpacePage()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" name="ST1_001_verifySpacePage" class="com.marina.tests.Mod_2_SpaceTypes"/>
-      </group> <!-- regression,sanity,smoke -->
     </groups>
-    <test started-at="2023-10-25T07:11:51 PDT" name="test" finished-at="2023-10-25T07:12:59 PDT" duration-ms="68478">
-      <class name="com.marina.tests.Mod_1_login">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_1_login@3b6ddd1d]" started-at="2023-10-25T07:11:50 PDT" name="loadConfig" finished-at="2023-10-25T07:11:51 PDT" duration-ms="472" status="PASS">
+    <test name="Default test" duration-ms="39086" started-at="2023-10-30T14:12:39 PKT" finished-at="2023-10-30T14:13:18 PKT">
+      <class name="com.marina.tests.Mod_3_AllSpaces">
+        <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_3_AllSpaces@12cdcf4]" name="loadConfig" is-config="true" duration-ms="244" started-at="2023-10-30T14:12:39 PKT" finished-at="2023-10-30T14:12:39 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_1_login@3b6ddd1d]" started-at="2023-10-25T07:11:51 PDT" name="beforeTest" finished-at="2023-10-25T07:12:09 PDT" duration-ms="18522" status="PASS">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_3_AllSpaces@12cdcf4]" name="beforeTest" is-config="true" duration-ms="24235" started-at="2023-10-30T14:12:39 PKT" finished-at="2023-10-30T14:13:03 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="lg_001_verifyLogin()[pri:0, instance:com.marina.tests.Mod_1_login@3b6ddd1d]" started-at="2023-10-25T07:12:09 PDT" name="lg_001_verifyLogin" finished-at="2023-10-25T07:12:24 PDT" duration-ms="14951" status="PASS">
+        <test-method status="PASS" signature="deleteNoteFromEditSpace_TC_412()[pri:0, instance:com.marina.tests.Mod_3_AllSpaces@12cdcf4]" name="deleteNoteFromEditSpace_TC_412" duration-ms="12762" started-at="2023-10-30T14:13:03 PKT" finished-at="2023-10-30T14:13:16 PKT">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- lg_001_verifyLogin -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_1_login@3b6ddd1d]" started-at="2023-10-25T07:12:24 PDT" name="afterTest" finished-at="2023-10-25T07:12:32 PDT" duration-ms="8045" status="PASS">
+        </test-method> <!-- deleteNoteFromEditSpace_TC_412 -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_3_AllSpaces@12cdcf4]" name="afterTest" is-config="true" duration-ms="2068" started-at="2023-10-30T14:13:16 PKT" finished-at="2023-10-30T14:13:18 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_1_login@3b6ddd1d]" started-at="2023-10-25T07:12:59 PDT" name="afterSuite" finished-at="2023-10-25T07:13:00 PDT" duration-ms="436" status="PASS">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_3_AllSpaces@12cdcf4]" name="afterSuite" is-config="true" duration-ms="361" started-at="2023-10-30T14:13:18 PKT" finished-at="2023-10-30T14:13:19 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.marina.tests.Mod_1_login -->
-      <class name="com.marina.tests.Mod_2_SpaceTypes">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" started-at="2023-10-25T07:11:51 PDT" name="beforeTest" finished-at="2023-10-25T07:12:25 PDT" duration-ms="33787" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method signature="ST1_001_verifySpacePage()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" started-at="2023-10-25T07:12:25 PDT" name="ST1_001_verifySpacePage" finished-at="2023-10-25T07:12:25 PDT" duration-ms="164" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ST1_001_verifySpacePage -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" started-at="2023-10-25T07:12:25 PDT" name="afterTest" finished-at="2023-10-25T07:12:32 PDT" duration-ms="7636" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" started-at="2023-10-25T07:12:32 PDT" name="beforeTest" finished-at="2023-10-25T07:12:55 PDT" duration-ms="22909" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method signature="ST1_002_verifyPopupAddSpac()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" started-at="2023-10-25T07:12:55 PDT" name="ST1_002_verifyPopupAddSpac" finished-at="2023-10-25T07:12:56 PDT" duration-ms="1078" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ST1_002_verifyPopupAddSpac -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@3f6b0be5]" started-at="2023-10-25T07:12:56 PDT" name="afterTest" finished-at="2023-10-25T07:12:59 PDT" duration-ms="2865" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-      </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
-    </test> <!-- test -->
-  </suite> <!-- Suite -->
+      </class> <!-- com.marina.tests.Mod_3_AllSpaces -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

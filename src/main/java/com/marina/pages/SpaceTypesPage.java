@@ -53,16 +53,13 @@ public class SpaceTypesPage {
 	}
 	
 	
-public SpaceTypesAddTypesPage add_space_type() {
+	public SpaceTypesAddTypesPage add_space_type() {
 		
 
 		btn_addspacetype.click();
 		return new SpaceTypesAddTypesPage(driver);
 		
 	}
-	
-	
-	
 
 	
 

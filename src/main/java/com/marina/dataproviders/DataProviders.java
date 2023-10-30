@@ -15,16 +15,16 @@ public class DataProviders {
 
 /*  VerifySuccessfulLogin.java -> verifyLogin
  */
-	@DataProvider(name = "credentials")
-	public Object[][] getCredentials() {
+	@DataProvider(name = "addspaces")
+	public Object[][] getSpacesData() {
 		
-		String path = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\TestData.xlsx";
+		String path = System.getProperty("user.dir") + "\\src\\test\\resources\\testdata\\SpacesDataMandatory.xlsx";
 		ExcelLibrary obj = new ExcelLibrary(path);
 		
 		// Totals rows count
-		int rows = obj.getRowCount("loginData");
+		int rows = obj.getRowCount("SpaceMandatory");
 		// Total Columns
-		int column = obj.getColumnCount("loginData");
+		int column = obj.getColumnCount("SpaceMandatory");
 		int actRows = rows - 1;
 
 		Object[][] data = new Object[actRows][column];

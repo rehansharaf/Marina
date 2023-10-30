@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 public interface ActionInterface {
 	
 	//Added all user actions abstract methods to achieve Abstraction  
-	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele);
+	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele) throws InterruptedException;
 	public void click(WebDriver ldriver, WebElement ele);
 	public boolean isDisplayed(WebDriver ldriver, WebElement ele);
 	public boolean type(WebElement ele, String text);
@@ -49,5 +49,6 @@ public interface ActionInterface {
 	public void pageLoadTimeOut(WebDriver driver, int timeOut);
 	public String screenShot(WebDriver driver, String filename);
 	public String getCurrentTime();
+	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat);
 
 }

@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -41,10 +45,10 @@ import com.marina.base.TestBase;
 public class Action extends TestBase implements ActionInterface {
 
 	@Override
-	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele) {
+	public void scrollByVisibilityOfElement(WebDriver driver, WebElement ele) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", ele);
-
+		Thread.sleep(1000);
 	}
 
 	@Override
@@ -726,17 +730,19 @@ public class Action extends TestBase implements ActionInterface {
 	@Override
 	public boolean click1(WebElement locator, String locatorName) {
 		boolean flag = false;
+		String errorMessage = null;
 		try {
 			locator.click();
 			flag = true;
 			return true;
 		} catch (Exception e) {
+			errorMessage = e.getMessage();
 			return false;
 		} finally {
 			if (flag) {
 				System.out.println("Able to click on \""+locatorName+"\"");
 			} else {
-				System.out.println("Click Unable to click on \""+locatorName+"\"");
+				System.out.println("Click Unable to click on \""+locatorName+"\""+" Error: "+errorMessage);
 			}
 		}
 
@@ -806,6 +812,29 @@ public class Action extends TestBase implements ActionInterface {
 	public String getCurrentTime() {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
+	}
+
+	@Override
+	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat) {
+	
+	      if(todayDate == 1) {
+	    	
+	    	  LocalDate dateObj = LocalDate.now();
+		  	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
+		  	  return dateObj.format(formatter);
+		  	  
+	      }else {
+	
+	    	  Date dt = new Date();
+			  Calendar c = Calendar.getInstance(); 
+			  c.setTime(dt); 
+			  c.add(Calendar.DATE, daysToSkip);
+			  dt = c.getTime();
+			  return new SimpleDateFormat(dateFormat).format(dt);
+
+	      }
+	  	  
+        	
 	}
 
 }
