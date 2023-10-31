@@ -5,8 +5,8 @@
     <classes>
       <class name="com.marina.tests.Mod_2_SpaceTypes">
         <methods>
-          <include name="verifySpaceAfterAdd_TC_203"/>
           <include name="loadConfig"/>
+          <include name="multipleUsersWithMutlipleSelections_TC_203"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>

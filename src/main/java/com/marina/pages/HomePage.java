@@ -51,9 +51,21 @@ public class HomePage {
 
 	public SpaceTypesPage spaces_dropdown_SpaceTypes() {
 
+		try {
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
 		action.click(driver, spacesdropdown);
+		action.explicitWait(driver, Spacetypes, Duration.ofSeconds(10));
+		}
+		catch (Exception e) {
+			
+			action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+			action.click(driver, spacesdropdown);
+			
+		}
+		
+		
 		action.click(driver, Spacetypes);
+	
 		return new SpaceTypesPage(driver);
 
 	}

@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\talhatahir\AppData\Local\Temp\testng-eclipse--1918462510\testng-customsuite.xml</span>
+                    <span>C:\Users\talhatahir\AppData\Local\Temp\testng-eclipse-783133630\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.marina.tests.Mod_2_SpaceTypes" class="method navigator-link" hash-for-method="verifySpaceAfterAdd_TC_203">verifySpaceAfterAdd_TC_203</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.marina.tests.Mod_2_SpaceTypes" class="method navigator-link" hash-for-method="multipleUsersWithMutlipleSelections_TC_203">multipleUsersWithMutlipleSelections_TC_203</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -125,13 +125,39 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifySpaceAfterAdd_TC_203">
-                  </a> <!-- verifySpaceAfterAdd_TC_203 -->
-                  <span class="method-name">verifySpaceAfterAdd_TC_203</span>
-                  <div class="stack-trace">java.lang.IllegalMonitorStateException: current thread is not owner
-	at java.base/java.lang.Object.wait(Native Method)
-	at com.marina.pages.SpaceTypesAddTypesPage.addingNewSpace(SpaceTypesAddTypesPage.java:141)
-	at com.marina.tests.Mod_2_SpaceTypes.verifySpaceAfterAdd_TC_203(Mod_2_SpaceTypes.java:80)
+                  <a name="multipleUsersWithMutlipleSelections_TC_203">
+                  </a> <!-- multipleUsersWithMutlipleSelections_TC_203 -->
+                  <span class="method-name">multipleUsersWithMutlipleSelections_TC_203</span>
+                  <div class="stack-trace">org.openqa.selenium.ElementNotInteractableException: element not interactable
+  (Session info: chrome=118.0.5993.118)
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.8&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f4ff60db9e4806bb455a120e8ae7180d, clickElement {id=34C86D9392D5F0BD1F59BE2EC6C37A25_element_320}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.118, chrome: {chromedriverVersion: 118.0.5993.70 (e52f33f30b91..., userDataDir: C:\Users\TALHAT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59596}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59596/devtoo..., se:cdpVersion: 118.0.5993.118, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (f4ff60db9e4806bb455a120e8ae7180d)] -&gt; xpath: //select[@name=&apos;boats&apos;]]
+Session ID: f4ff60db9e4806bb455a120e8ae7180d
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:224)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at jdk.internal.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy21.click(Unknown Source)
+	at com.marina.pages.SpaceTypesAddTypesPage.addingNewSpace(SpaceTypesAddTypesPage.java:163)
+	at com.marina.tests.Mod_2_SpaceTypes.multipleUsersWithMutlipleSelections_TC_203(Mod_2_SpaceTypes.java:96)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -169,7 +195,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\talhatahir\AppData\Local\Temp\testng-eclipse--1918462510\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\talhatahir\AppData\Local\Temp\testng-eclipse-783133630\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -203,10 +229,10 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">regression,smoke</span>
+              <span class="test-group-name">regression</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">verifySpaceAfterAdd_TC_203</span>
+                <span class="method-in-group-name">multipleUsersWithMutlipleSelections_TC_203</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -228,14 +254,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifySpaceAfterAdd_TC_203')
+data.setCell(0, 1, 'multipleUsersWithMutlipleSelections_TC_203')
 data.setCell(0, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(0, 3, 889);
+data.setCell(0, 3, 517301);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 889 ms</span>
+              <span class="suite-total-time">Total running time: 8 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -268,21 +294,21 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="configuration-method before">
                 <span class="method-name">beforeTest</span>
-                <span class="method-start">497 ms</span>
+                <span class="method-start">570 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">verifySpaceAfterAdd_TC_203</span>
-                <span class="method-start">22598 ms</span>
+                <span class="method-name">multipleUsersWithMutlipleSelections_TC_203</span>
+                <span class="method-start">54381 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">23513 ms</span>
+                <span class="method-start">571689 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">26209 ms</span>
+                <span class="method-start">580742 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
