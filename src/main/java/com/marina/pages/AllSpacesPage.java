@@ -1,9 +1,13 @@
 package com.marina.pages;
 
+import java.io.File;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +15,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.utils.ExcelLibrary;
 
 public class AllSpacesPage {
 	
@@ -47,11 +52,31 @@ public class AllSpacesPage {
 	@FindBy(how = How.XPATH, using = "//i[@title='Must view note']")
 	WebElement mustViewIndicator;
 	
+	@FindBy(how = How.XPATH, using = "//a[@href='https://staging.appedology.pk/marina/spaces/bulk']")
+	WebElement import_space;
+	
+	@FindBy(how = How.XPATH, using = "//button[@class='btn btn-success export']")
+	WebElement exportBtn;
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='Excel Sheet']")
+	WebElement excelSheetBtn;
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='Google Sheet']")
+	WebElement googleSheetBtn;
+	
+	By noSearchRecords = By.xpath("//td[text()='No matching records found']");
 	By firstDataTableElement = By.xpath("//*[@id='slip']/tbody/tr");
 	By viewSpaceSection = By.xpath("//tr[@class='responsive']/th[text()='Name']");
 	By singleNoteDeleteButton = By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[10]/td[1]/div[1]/div[1]/div/a");
 	By listOfNotes = By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[10]/td[1]/div/div");
 	By noteTextLocator = By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[10]/td[1]/div/div/div");
+	By totalRecordCount = By.id("slip_info");
+	By openGoogleSheetLink = By.xpath("//a[text()='Open Google Sheet']");
+	By googleSheetTitle = By.xpath("//span[@id='docs-title-input-label-inner']");
+	By googleSheetFileMenu = By.id("docs-file-menu");
+	By googleDownloadMenuItem = By.xpath("//span[@aria-label='Download d']/parent::div");
+	By googleDownloadExcelOption = By.xpath("//span[@aria-label='Microsoft Excel (.xlsx) x']/parent::div");
+	
 	
 	public AllSpacesPage(WebDriver driver) {
 
@@ -59,6 +84,93 @@ public class AllSpacesPage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public boolean searchSpace(String spaceName) {
+		
+		boolean spaceNotAvailable;
+		
+		action.explicitWait(driver, searchField, Duration.ofSeconds(10));
+		action.type(searchField,spaceName);
+		try {
+			action.explicitWait(driver, driver.findElement(firstDataTableElement), Duration.ofSeconds(4));
+			spaceNotAvailable = true;
+			return spaceNotAvailable;
+		}catch(NoSuchElementException nse) {
+			
+			spaceNotAvailable = false;
+			return spaceNotAvailable;
+		}
+		
+	}
+	
+	public boolean exportDataToGoogleSheet() throws GeneralSecurityException, IOException, InterruptedException {
+		
+		action.click1(exportBtn, "Export Space Btn");
+		action.explicitWait(driver, googleSheetBtn, Duration.ofSeconds(10));
+		action.click1(googleSheetBtn, "Google Sheet Btn");
+		action.explicitWait(driver, driver.findElement(openGoogleSheetLink), Duration.ofSeconds(30));
+		Thread.sleep(1000);
+	
+		action.click1(driver.findElement(openGoogleSheetLink), "Open Google Sheet Link");
+		action.switchToNewWindow(driver);
+		action.explicitWait(driver, driver.findElement(googleSheetTitle), Duration.ofSeconds(30));
+		action.click1(driver.findElement(googleSheetFileMenu), "Google Sheet File Menu");
+		action.click1(driver.findElement(googleDownloadMenuItem), "Google Download Menu Item");
+		action.click1(driver.findElement(googleDownloadExcelOption), "Google Download Excel Sheet Option");
+		String currentDate = action.getCurrentDate(1, 0, 0, "dd_MM_yyyy");
+		String filename = "Spaces"+"_"+currentDate;
+		String filepath = action.isFileDownloaded(filename, ".xlsx", 30);
+		
+		driver.close();
+		action.switchToOldWindow(driver);
+		action.click1(successOK, "Success Ok Btn");
+		
+		ExcelLibrary excel = new ExcelLibrary(filepath);
+		int excelRows = excel.getRowCount("Sheet1");
+		String dataTableRowsS = driver.findElement(totalRecordCount).getText().trim();
+		String[] splitData = dataTableRowsS.split("of");
+		dataTableRowsS = splitData[1];
+		dataTableRowsS = dataTableRowsS.replace("entries", "");
+		dataTableRowsS = dataTableRowsS.trim();
+		int dataTableRows = Integer.parseInt(dataTableRowsS);
+		
+		if(excelRows-1 == dataTableRows) {
+			File spaceExcelFile = new File(filepath);
+			spaceExcelFile.delete();
+			return true;
+		}else 
+			return false;
+
+	}
+	
+	public boolean exportDataToExcel() {
+		
+		action.click1(exportBtn, "Export Space Btn");
+		action.explicitWait(driver, excelSheetBtn, Duration.ofSeconds(10));
+		action.click1(excelSheetBtn, "Excel Sheet Btn");
+		String filepath = action.isFileDownloaded("Spaces Report", ".xlsx", 30);
+
+		ExcelLibrary excel = new ExcelLibrary(filepath);
+		int excelRows = excel.getRowCount("Worksheet");
+		String dataTableRowsS = driver.findElement(totalRecordCount).getText().trim();
+		String[] splitData = dataTableRowsS.split("of");
+		dataTableRowsS = splitData[1];
+		dataTableRowsS = dataTableRowsS.replace("entries", "");
+		dataTableRowsS = dataTableRowsS.trim();
+		int dataTableRows = Integer.parseInt(dataTableRowsS);
+		
+		if(excelRows-1 == dataTableRows) {
+			File spaceExcelFile = new File(filepath);
+			spaceExcelFile.delete();
+			return true;
+		}else 
+			return false;
+	}
+	
+	public ImportSpacesPage openImportSpace() {
+		
+		action.click1(import_space, "import space btn");
+		return new ImportSpacesPage(driver);
+	}
 	
 	public boolean deleteNoteFromViewSection(int impNote) throws InterruptedException {
 		
@@ -230,12 +342,16 @@ public class AllSpacesPage {
 		//action.click(driver, driver.findElement(firstDataTableElement));
 		action.click1(driver.findElement(firstDataTableElement), "First DataTableElement");
 		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		//Space Name
 		Data[0] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr/td[1]")).getText();
+		//Availability
 		Data[1] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr/td[2]")).getText();
 		
 		if(Data[1].equalsIgnoreCase("No")) {
 			
+			//Reason of Unavailability
 			Data[2] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[2]/td")).getText();
+			//Unavailability Date
 			Data[3] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[3]/td")).getText();
 		
 		}else {
@@ -243,15 +359,25 @@ public class AllSpacesPage {
 			Data[3] = "";
 		}
 		
+		//SpaceType
 		Data[4] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[4]/td[1]")).getText();
+		//DocBuffer
 		Data[5] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[4]/td[2]")).getText().trim();
+		//Max LOA
 		Data[6] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[5]/td[1]")).getText();
+		//Max Beam
 		Data[7] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[5]/td[2]")).getText();
+		//Max Draft
 		Data[8] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[6]/td[1]")).getText();
+		//Nearest Slip
 		Data[9] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[6]/td[2]")).getText();
+		//Water
 		Data[10] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[7]/td[1]")).getText();
+		//Rafting
 		Data[11] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[7]/td[2]")).getText();
+		//Power
 		Data[12] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[8]/td[1]")).getText();
+		//HydroMeter
 		Data[13] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[8]/td[2]")).getText();
 		
 		if(type.equals("all"))

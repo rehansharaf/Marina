@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -139,6 +140,7 @@ public class Action extends TestBase implements ActionInterface {
 	 */
 	@Override
 	public boolean type(WebElement ele, String text) {
+		String errorMessage = null;
 		boolean flag = false;
 		try {
 			flag = ele.isDisplayed();
@@ -148,12 +150,13 @@ public class Action extends TestBase implements ActionInterface {
 			flag = true;
 		} catch (Exception e) {
 			System.out.println("Location Not found");
+			errorMessage = e.getMessage();
 			flag = false;
 		} finally {
 			if (flag) {
 				System.out.println("Successfully entered value");
 			} else {
-				System.out.println("Unable to enter value");
+				System.out.println("Unable to enter value :"+errorMessage);
 			}
 
 		}
@@ -770,6 +773,13 @@ public class Action extends TestBase implements ActionInterface {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
+	
+	@Override
+	public void explicitWaitElementClickable(WebDriver driver, WebElement element, Duration timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
 	@Override
 	public void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
@@ -835,6 +845,37 @@ public class Action extends TestBase implements ActionInterface {
 	      }
 	  	  
         	
+	}
+	
+	
+	@Override
+	 public String isFileDownloaded(String fileText, String fileExtension, int timeOut) {
+	        String folderName = System.getProperty("user.dir")+"\\src\\test\\resources\\downloadeddata\\";
+	        File[] listOfFiles;
+	        int waitTillSeconds = timeOut;
+	        boolean fileDownloaded = false;
+	        String filePath = null; 
+
+	        long waitTillTime = Instant.now().getEpochSecond() + waitTillSeconds;
+	        while (Instant.now().getEpochSecond() < waitTillTime) {
+	            listOfFiles = new File(folderName).listFiles();
+	            for (File file : listOfFiles) {
+	                String fileName = file.getName().toLowerCase();
+	                if (!fileName.contains(".tmp")) {
+	                	if(!fileName.contains(".part")) {
+	                		if(!fileName.contains(".crdownload")) {
+	                			fileDownloaded = true;
+	                			filePath = file.getAbsolutePath();
+	                			break;
+	                		}
+	                	}
+	                }
+	            }
+	            if (fileDownloaded) {
+	                break;
+	            }
+	        }
+	        return filePath;
 	}
 
 }

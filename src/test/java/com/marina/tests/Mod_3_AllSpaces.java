@@ -1,5 +1,7 @@
 package com.marina.tests;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
 
 import org.testng.Assert;
@@ -11,6 +13,7 @@ import com.marina.base.TestBase;
 import com.marina.pages.AddNewSpaceItemPage;
 import com.marina.pages.AllSpacesPage;
 import com.marina.pages.HomePage;
+import com.marina.pages.ImportSpacesPage;
 import com.marina.pages.LoginPage;
 import com.marina.pages.SpaceTypesPage;
 import com.marina.pages.UpdateSpaceItemPage;
@@ -27,11 +30,12 @@ public class Mod_3_AllSpaces extends TestBase {
 	AllSpacesPage allspace;
 	AddNewSpaceItemPage add_new_space;
 	UpdateSpaceItemPage updateSpaceItem;
+	ImportSpacesPage importSpaces;
 
 	
 	
 	@BeforeMethod
-	public void beforeTest() {
+	public void beforeTest() throws InterruptedException {
 		
 		browserIntialization();
 		lp = new LoginPage(driver);
@@ -243,23 +247,111 @@ public class Mod_3_AllSpaces extends TestBase {
 		boolean flag = updateSpaceItem.deleteNote("This is second test note");
 		
 		Assert.assertTrue(flag);
-		Log.startTestCase("Verify Note Is Getting Deleted From Edit Space Page");
+		Log.endTestCase("Verify Note Is Getting Deleted From Edit Space Page");
 		
 	}
 	
-	@Test
-	public void spaceDeleteAutoDeleteSpaceType_TC_413() {
+	
+	
+	@Test(groups = "regression,sanity,smoke", priority = 13)
+	public void importSpacesBulk_TC_413() {
+
+		//========================== Need to Add the Space Type here =====================================================
+		Log.startTestCase("Import Spaces In Bulk");
+		importSpaces = allspace.openImportSpace();
+		allspace = importSpaces.importSpacesData();
 		
-		//TestSpaceType_01
-		spacetype = hp.spaces_dropdown_SpaceTypes();
+		
+		  //Space Name, Status, Unavailability Reason, Unavailability Date, SpaceType, LinearBuffer, MaxLOA, MaxBeam, MaxDraft, 
+		  //NearestSlip,Water,Rafting, Power,Hydrometer,Note 
+		 
+		
+		boolean firstRecord, secondRecord;
+		String[] actualData1 = allspace.readFirstRecordDataTable("TestSpace3");
+		String[] expectedData1 = {"TestSpace3","TestSpaceType_01","Yes","M-027","M-027: -"};
+		boolean verifyDataTable = Arrays.equals(actualData1, expectedData1);
+		String[] actualDataView1 = allspace.verifySpaceDataViewSection("all");
+		String[] expectedDataView1 = {"TestSpace3","Yes","","","TestSpaceType_01","ft","11","31","21",
+				"","No","Yes","5 Amps","M-027","This is first bulk space"};
+		
+		boolean verifyViewSection = Arrays.equals(actualDataView1, expectedDataView1);
+
+		if(verifyDataTable == true && verifyViewSection == true)
+			firstRecord = true;
+		else
+			firstRecord = false;
 		
 		
+		driver.navigate().refresh();
+		
+		String[] actualData2 = allspace.readFirstRecordDataTable("TestSpace4");
+		String[] expectedData2 = {"TestSpace4","TestSpaceType_01","Yes","M-049","M-049: -"};
+		verifyDataTable = Arrays.equals(actualData2, expectedData2);
+	
+		String[] actualDataView2 = allspace.verifySpaceDataViewSection("all");
+		String[] expectedDataView2 = {"TestSpace4","Yes","","","TestSpaceType_01","ft","12","32","22",
+				"","Yes","No","10 Amps","M-049","This is second bulk space"};
+		
+		
+		verifyViewSection = Arrays.equals(actualDataView2, expectedDataView2);
+
+		if(verifyDataTable == true && verifyViewSection == true)
+			secondRecord = true;
+		else
+			secondRecord = false;
+		
+		
+		if(firstRecord == true && secondRecord == true)
+			Assert.assertTrue(true);
+		else
+			Assert.assertTrue(false);
+		
+		Log.endTestCase("Import Spaces In Bulk");
+
+	} 
+	
+	@Test(groups = "regression,sanity,smoke", priority = 14)
+	public void exportSpaceExcel_TC_414() {
+		
+		Log.startTestCase("Export Space Data To Excel Sheet");
+		boolean flag = allspace.exportDataToExcel();
+		Assert.assertTrue(flag);
+		Log.endTestCase("Export Space Data To Excel Sheet");
+	}
+	
+	@Test(groups = "regression,sanity,smoke", priority = 15)
+	public void exportSpaceGoogleSheet_TC_415() throws GeneralSecurityException, IOException, InterruptedException {
+		
+		Log.startTestCase("Export Space Data To Google Sheet");
+		boolean flag = allspace.exportDataToGoogleSheet();
+		Assert.assertTrue(flag);
+		Log.endTestCase("Export Space Data To Google Sheet");
+
+	}
+	
+	@Test(groups = "regression,sanity,smoke", priority = 16, dependsOnMethods = "importSpacesBulk_TC_413")
+	public void deleteSpaceTypeSpacesDeleted_TC_416() {
+		
+		Log.startTestCase("Deleting Space Type, Related Spaces Should Also Be Deleted");
+		
+		// ================ Delete SpaceType =========================
+		
+		boolean flag1 = allspace.searchSpace("TestSpace 3");
+		boolean flag2 = allspace.searchSpace("TestSpace 4");
+		
+		if(flag1 == true && flag2 == true)
+			Assert.assertTrue(true);
+		else 
+			Assert.assertTrue(false);
+		
+		Log.endTestCase("Deleting Space Type, Related Spaces Should Also Be Deleted");
+
 	}
 	
 	@AfterMethod
 	public void afterTest() {
 		
-		driver.get("https://staging.appedology.pk/marina/logout");
+		driver.get(prop.getProperty("logout_url"));
 		BrowserFactory.getInstance().removeDriver();
 	}
 

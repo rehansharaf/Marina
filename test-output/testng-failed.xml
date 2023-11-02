@@ -3,15 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.marina.tests.Mod_3_AllSpaces">
+      <class name="com.marina.tests.Mod_4_Calendar">
         <methods>
           <include name="loadConfig"/>
-          <include name="afterTest"/>
           <include name="beforeTest"/>
+          <include name="verifyDetailsSlipDetailPage_TC_603"/>
           <include name="afterSuite"/>
-          <include name="deleteNoteFromEditSpace_TC_412"/>
+          <include name="afterTest"/>
         </methods>
-      </class> <!-- com.marina.tests.Mod_3_AllSpaces -->
+      </class> <!-- com.marina.tests.Mod_4_Calendar -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

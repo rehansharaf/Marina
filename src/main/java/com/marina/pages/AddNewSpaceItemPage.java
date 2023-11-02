@@ -133,9 +133,9 @@ public class AddNewSpaceItemPage {
 			if(isAvailable)
 				action.selectByVisibleText(selectHydroMeter, hydro_meter);
 			
-			
+			action.explicitWaitElementClickable(driver, btnSave, Duration.ofSeconds(10));
 			action.JSClick(driver, btnSave);
-			action.explicitWait(driver, btnNoTaskReq, Duration.ofSeconds(10));
+			action.explicitWait(driver, btnNoTaskReq, Duration.ofSeconds(40));
 			action.click1(btnNoTaskReq, "btn no task req");
 			return new AllSpacesPage(driver);
 		

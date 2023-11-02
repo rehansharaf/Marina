@@ -46,9 +46,11 @@ public interface ActionInterface {
 	public void fluentWait(WebDriver driver,WebElement element, int timeOut);
 	public void implicitWait(WebDriver driver, int timeOut);
 	public void explicitWait(WebDriver driver, WebElement element, Duration timeOut);
+	public void explicitWaitElementClickable(WebDriver driver, WebElement element, Duration timeOut);
 	public void pageLoadTimeOut(WebDriver driver, int timeOut);
 	public String screenShot(WebDriver driver, String filename);
 	public String getCurrentTime();
 	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat);
+	public String isFileDownloaded(String fileText, String fileExtension, int timeOut);
 
 }

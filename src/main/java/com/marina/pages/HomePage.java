@@ -25,10 +25,10 @@ public class HomePage {
 	@FindBy(how = How.XPATH, using = "//div[text()='Space Types']")
 	WebElement Spacetypes;
 
-	@FindBy(how = How.XPATH, using = "//div[text()='All Spaces']")
+	@FindBy(how = How.XPATH, using = "//div[text()='All Spaces']/parent::a")
 	WebElement allspaces;
 
-	@FindBy(how = How.XPATH, using = "")
+	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-calendar']/parent::a")
 	WebElement calendar;
 
 	@FindBy(how = How.XPATH, using = "//div[text()='Space Groups']")
@@ -60,8 +60,9 @@ public class HomePage {
 	}
 	
 	
-	public AllSpacesPage spaces_dropdown_AllSpaces() {
+	public AllSpacesPage spaces_dropdown_AllSpaces() throws InterruptedException {
 
+		action.scrollByVisibilityOfElement(driver, spacesdropdown);
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
 		//action.click(driver, spacesdropdown);
 		action.click1(spacesdropdown, "Spaces DropDown");
