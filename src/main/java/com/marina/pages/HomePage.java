@@ -30,11 +30,14 @@ public class HomePage {
 
 	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-calendar']/parent::a")
 	WebElement calendar;
+	
+	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-reservations']/parent::a")
+	WebElement reservation;
 
 	@FindBy(how = How.XPATH, using = "//div[text()='Space Groups']")
 	WebElement spacegroups;
 
-	@FindBy(how = How.XPATH, using = "//div[text()='Boat Groups']")
+	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-boat-groups']/parent::a")
 	WebElement boatgroups;
 
 	public HomePage(WebDriver driver) {
@@ -64,11 +67,31 @@ public class HomePage {
 
 		action.scrollByVisibilityOfElement(driver, spacesdropdown);
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-		//action.click(driver, spacesdropdown);
 		action.click1(spacesdropdown, "Spaces DropDown");
 		action.click1(allspaces, "All Space Link");
-		//action.click(driver, allspaces);
 		return new AllSpacesPage(driver);
+			
+	}
+	
+	
+	public SpaceGroupsPage spaces_dropdown_SpaceGroups() throws InterruptedException {
+
+		action.scrollByVisibilityOfElement(driver, spacesdropdown);
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.click1(spacesdropdown, "Spaces DropDown");
+		action.click1(spacegroups, "Space Groups Link");
+		return new SpaceGroupsPage(driver);
+		
+			
+	}
+	
+	public BoatGroupsPage spaces_dropdown_BoatGroups() throws InterruptedException {
+
+		action.scrollByVisibilityOfElement(driver, spacesdropdown);
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.click1(spacesdropdown, "Spaces DropDown");
+		action.click1(boatgroups, "Boat Group Link");
+		return new BoatGroupsPage(driver);
 			
 	}
 	
@@ -80,22 +103,13 @@ public class HomePage {
 			
 	}
 	
-	public SpaceGroupsPage spaces_dropdown_SpaceGroups() {
-
+	public ReservationsPage reservationLink() throws InterruptedException {
+		
+		action.scrollByVisibilityOfElement(driver, spacesdropdown);
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-		action.click(driver, spacesdropdown);
-		action.click(driver, spacegroups);
-		return new SpaceGroupsPage(driver);
-			
-	}
-	
-	public BoatGroupsPage spaces_dropdown_BoatGroups() {
+		action.click1(reservation, "ReservationsPage link");
+		return new ReservationsPage(driver);
 
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-		action.click(driver, spacesdropdown);
-		action.click(driver, boatgroups);
-		return new BoatGroupsPage(driver);
-			
 	}
 
 }

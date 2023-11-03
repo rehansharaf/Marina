@@ -52,5 +52,5 @@ public interface ActionInterface {
 	public String getCurrentTime();
 	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat);
 	public String isFileDownloaded(String fileText, String fileExtension, int timeOut);
-
+	public boolean isAttribtuePresent(WebElement element, String attribute);
 }

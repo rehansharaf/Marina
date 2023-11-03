@@ -3,15 +3,18 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.marina.tests.Mod_4_Calendar">
+      <class name="com.marina.tests.Mod_5_SpaceGroup">
         <methods>
+          <include name="addSpaceGroupSingleSpace_TC_803"/>
+          <include name="checkReservSpacesAvail_TC_802"/>
           <include name="loadConfig"/>
-          <include name="beforeTest"/>
-          <include name="verifyDetailsSlipDetailPage_TC_603"/>
-          <include name="afterSuite"/>
           <include name="afterTest"/>
+          <include name="beforeMethod"/>
+          <include name="createGroupSameName_TC_807"/>
+          <include name="verifySpaceGroupPage_TC_801"/>
+          <include name="afterSuite"/>
         </methods>
-      </class> <!-- com.marina.tests.Mod_4_Calendar -->
+      </class> <!-- com.marina.tests.Mod_5_SpaceGroup -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

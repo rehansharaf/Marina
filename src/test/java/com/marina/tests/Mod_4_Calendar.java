@@ -128,12 +128,12 @@ public class Mod_4_Calendar extends TestBase {
 	@Test(groups = {"regression,sanity,smoke"}, priority = 4, dependsOnMethods = "addedSpaceInCalendar_TC_601")
 	public void reservNotUnavailable_TC_604() throws InterruptedException {
 		
-		Log.startTestCase("Verify Reservations Should Not Be Set For Unavailable Dates");
+		Log.startTestCase("Verify ReservationsPage Should Not Be Set For Unavailable Dates");
 	
 		Action action = new Action();
 		String afterDate = action.getCurrentDate(0,1,6,"yyyy-MM-dd");		
 		cp.reservNotSetForUnavailDates("SL-Test2", afterDate);
-		Log.endTestCase("Verify Reservations Should Not Be Set For Unavailable Dates");
+		Log.endTestCase("Verify ReservationsPage Should Not Be Set For Unavailable Dates");
 	
 	}
 
