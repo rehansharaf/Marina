@@ -14,12 +14,13 @@
         <protocol>http</protocol>
         
         <!-- title of the document -->
-        <documentTitle>Project Medflow</documentTitle>
+        <documentTitle>Project Marina</documentTitle>
         
         <!-- report name - displayed at top-nav -->
-        <reportName>Project Medflow Report
+        <reportName>Project Marina Report
          <![CDATA[
-                <img src='http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/Logo/MyStore.png'/>
+                <img src="https://staging.appedology.pk/marina/logo"
+                style="position:absolute;left: -70px;top: 3px;height: 90%;max-width: 20%;"/>
             ]]>
         </reportName>
         

@@ -1,21 +1,32 @@
-2023-11-06 15:53:39 INFO  Log:11 - =====================================Check Boat Group Page Gets Open TEST START=========================================
-2023-11-06 15:53:39 INFO  Log:15 - =====================================Check Boat Group Page Gets Open TEST END=========================================
-2023-11-06 15:54:11 INFO  Log:11 - =====================================Add Boat Group With Mandatory Fields TEST START=========================================
-2023-11-06 15:54:15 INFO  Log:15 - =====================================Add Boat Group With Mandatory Fields TEST END=========================================
-2023-11-06 15:54:41 INFO  Log:11 - =====================================Add Boat Group With All Fields TEST START=========================================
-2023-11-06 15:54:46 INFO  Log:15 - =====================================Add Boat Group With All Fields TEST END=========================================
-2023-11-06 15:55:14 INFO  Log:11 - =====================================Search Specific Boat Group TEST START=========================================
-2023-11-06 15:55:16 INFO  Log:15 - =====================================Search Specific Boat Group TEST END=========================================
-2023-11-06 15:55:41 INFO  Log:11 - =====================================Verify All The Saved Information Of Boat Group On View Page TEST START=========================================
-2023-11-06 15:55:44 INFO  Log:15 - =====================================Verify All The Saved Information Of Boat Group On View Page TEST END=========================================
-2023-11-06 15:56:11 INFO  Log:11 - =====================================Add New Boat From View Page Of Boat Group TEST START=========================================
-2023-11-06 15:56:20 INFO  Log:15 - =====================================Add New Boat From View Page Of Boat Group TEST END=========================================
-2023-11-06 15:56:47 INFO  Log:11 - =====================================Add New Boat From Main Boat Group Page TEST START=========================================
-2023-11-06 15:56:53 INFO  Log:15 - =====================================Add New Boat From Main Boat Group Page TEST END=========================================
-2023-11-06 15:57:23 INFO  Log:11 - =====================================Edit Specific Boat Group & Verify Its Data TEST START=========================================
-2023-11-06 15:57:37 INFO  Log:15 - =====================================Edit Specific Boat Group & Verify Its Data TEST END=========================================
-2023-11-06 15:58:17 INFO  Log:11 - =====================================Check If Multiple Groups Generating While Clicking Add Button Multiple Times TEST START=========================================
-2023-11-06 15:59:09 INFO  Log:11 - =====================================Check & Verify The Copy Functionality Of Boat Group TEST START=========================================
-2023-11-06 15:59:17 INFO  Log:15 - =====================================Check & Verify The Copy Functionality Of Boat Group TEST END=========================================
-2023-11-06 15:59:44 INFO  Log:11 - =====================================Check Delete Boat Group Functionality TEST START=========================================
-2023-11-06 16:00:27 INFO  Log:15 - =====================================Check Delete Boat Group Functionality TEST END=========================================
+2023-11-06 17:00:10 INFO  Log:11 - =====================================Check Boat Group Page Gets Open TEST START=========================================
+2023-11-06 17:00:10 INFO  Log:15 - =====================================Check Boat Group Page Gets Open TEST END=========================================
+2023-11-06 17:00:10 INFO  Log:22 - =====================================verifyBoatGroupPageOpens_TC_1001 TEST PASSED =========================================
+2023-11-06 17:00:40 INFO  Log:11 - =====================================Add Boat Group With Mandatory Fields TEST START=========================================
+2023-11-06 17:00:44 INFO  Log:15 - =====================================Add Boat Group With Mandatory Fields TEST END=========================================
+2023-11-06 17:00:44 INFO  Log:22 - =====================================addBoatGroupMandatoryFields_TC_1002 TEST PASSED =========================================
+2023-11-06 17:01:16 INFO  Log:11 - =====================================Add Boat Group With All Fields TEST START=========================================
+2023-11-06 17:01:21 INFO  Log:15 - =====================================Add Boat Group With All Fields TEST END=========================================
+2023-11-06 17:01:21 INFO  Log:22 - =====================================addBoatGroupAllFields_TC_1003 TEST PASSED =========================================
+2023-11-06 17:01:47 INFO  Log:11 - =====================================Search Specific Boat Group TEST START=========================================
+2023-11-06 17:01:48 INFO  Log:15 - =====================================Search Specific Boat Group TEST END=========================================
+2023-11-06 17:01:48 INFO  Log:22 - =====================================searchBoatGroup_TC_1004 TEST PASSED =========================================
+2023-11-06 17:02:22 INFO  Log:11 - =====================================Verify All The Saved Information Of Boat Group On View Page TEST START=========================================
+2023-11-06 17:02:25 INFO  Log:15 - =====================================Verify All The Saved Information Of Boat Group On View Page TEST END=========================================
+2023-11-06 17:02:25 INFO  Log:22 - =====================================viewSavedDataBoatGroup_TC_1005 TEST PASSED =========================================
+2023-11-06 17:02:54 INFO  Log:11 - =====================================Add New Boat From View Page Of Boat Group TEST START=========================================
+2023-11-06 17:03:02 INFO  Log:15 - =====================================Add New Boat From View Page Of Boat Group TEST END=========================================
+2023-11-06 17:03:02 INFO  Log:22 - =====================================viewPageNewBoatAdd_TC_1006 TEST PASSED =========================================
+2023-11-06 17:03:27 INFO  Log:11 - =====================================Add New Boat From Main Boat Group Page TEST START=========================================
+2023-11-06 17:03:33 INFO  Log:15 - =====================================Add New Boat From Main Boat Group Page TEST END=========================================
+2023-11-06 17:03:33 INFO  Log:22 - =====================================addBoatMainPage_TC_1007 TEST PASSED =========================================
+2023-11-06 17:03:57 INFO  Log:11 - =====================================Edit Specific Boat Group & Verify Its Data TEST START=========================================
+2023-11-06 17:04:15 INFO  Log:15 - =====================================Edit Specific Boat Group & Verify Its Data TEST END=========================================
+2023-11-06 17:04:15 INFO  Log:22 - =====================================editBoatGroupVerifyData_TC_1008 TEST PASSED =========================================
+2023-11-06 17:04:42 INFO  Log:11 - =====================================Check If Multiple Groups Generating While Clicking Add Button Multiple Times TEST START=========================================
+2023-11-06 17:05:07 ERROR Log:34 - =====================================generatingMultipleAddRequest_TC_1009 TEST FAILED =========================================
+2023-11-06 17:05:38 INFO  Log:11 - =====================================Check & Verify The Copy Functionality Of Boat Group TEST START=========================================
+2023-11-06 17:05:45 INFO  Log:15 - =====================================Check & Verify The Copy Functionality Of Boat Group TEST END=========================================
+2023-11-06 17:05:45 INFO  Log:22 - =====================================verifyCopyFunctionBoatGroup_TC_1010 TEST PASSED =========================================
+2023-11-06 17:06:14 INFO  Log:11 - =====================================Check Delete Boat Group Functionality TEST START=========================================
+2023-11-06 17:06:52 INFO  Log:15 - =====================================Check Delete Boat Group Functionality TEST END=========================================
+2023-11-06 17:06:52 INFO  Log:22 - =====================================deleteBoatGroups_TC_1011 TEST PASSED =========================================

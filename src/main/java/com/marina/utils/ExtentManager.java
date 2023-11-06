@@ -31,10 +31,10 @@ public class ExtentManager {
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
 		
-		extent.setSystemInfo("HostName", "MyHost");
-		extent.setSystemInfo("ProjectName", "Medflow");
+		//extent.setSystemInfo("HostName", "Marina");
+		extent.setSystemInfo("ProjectName", "Marina");
 		extent.setSystemInfo("Tester", "Rehan");
-		extent.setSystemInfo("OS", "Win8");
+		extent.setSystemInfo("OS", "Windows Server");
 		extent.setSystemInfo("Browser", "Chrome");
 	}
 	public static void endReport() {

@@ -7,15 +7,18 @@
   <test thread-count="2" name="test(failed)" parallel="classes">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.marina.tests.VerifySuccessfulLogin">
+      <class name="com.marina.tests.Mod_6_BoatGroup">
         <methods>
-          <include name="verifyLogin" invocation-numbers="0 1"/>
-          <include name="afterTest"/>
-          <include name="afterSuite"/>
-          <include name="beforeTest"/>
+          <include name="verifyBoatGroupPageOpens_TC_1001"/>
           <include name="loadConfig"/>
+          <include name="generatingMultipleAddRequest_TC_1009"/>
+          <include name="beforeMethod"/>
+          <include name="addBoatGroupMandatoryFields_TC_1002"/>
+          <include name="addBoatGroupAllFields_TC_1003"/>
+          <include name="afterSuite"/>
+          <include name="afterMethod"/>
         </methods>
-      </class> <!-- com.marina.tests.VerifySuccessfulLogin -->
+      </class> <!-- com.marina.tests.Mod_6_BoatGroup -->
     </classes>
   </test> <!-- test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

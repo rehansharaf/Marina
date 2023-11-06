@@ -176,7 +176,7 @@ public class Mod_6_BoatGroup extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 11)
+	@Test(groups = "regression,sanity,smoke", priority = 11, dependsOnMethods = "verifyCopyFunctionBoatGroup_TC_1010")
 	public void deleteBoatGroups_TC_1011() throws InterruptedException {
 		
 		Log.startTestCase("Check Delete Boat Group Functionality");
