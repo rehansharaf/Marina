@@ -15,4 +15,12 @@ public class BoatGroupsPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

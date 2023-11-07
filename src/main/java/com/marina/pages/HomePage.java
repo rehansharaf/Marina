@@ -16,8 +16,12 @@ public class HomePage {
 	WebDriver driver;
 	Action action = new Action();
 
-	@FindBy(how = How.XPATH, using = "//span[text()='Denham Bay Marina']")
+	
+	
+	@FindBy(how = How.XPATH, using = "//span[text()='DockSpace Test']")
 	WebElement dashboardText;
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[text()='Spaces']")
 	WebElement spacesdropdown;
@@ -104,7 +108,9 @@ public class HomePage {
 		action.click(driver, spacesdropdown);
 		action.click(driver, boatgroups);
 		return new BoatGroupsPage(driver);
-			
+	
+		
+		
 	}
 
 }

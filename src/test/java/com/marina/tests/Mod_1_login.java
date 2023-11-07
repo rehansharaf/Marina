@@ -25,14 +25,14 @@ public class Mod_1_login extends TestBase {
 
 	}
 
-	@Test(groups = "regression,sanity,smoke", priority = 1)
+	@Test(groups = {"regression" , "smoke" ,"sanity"}, priority = 1)
 	public void verifyLogin_Tc_001() {
 
 		Log.startTestCase("Verify Successful Login Only");
 		lp = new LoginPage(driver);
 		hp = lp.login(prop.getProperty("email"), prop.getProperty("password"));
 		hp.verifyHomePageHeading();
-		Assert.assertEquals(hp.verifyHomePageHeading(), "Denham Bay Marina");
+		Assert.assertEquals(hp.verifyHomePageHeading(), "DockSpace Test");
 		Log.endTestCase("Verify Successful Login Only");
 
 	}

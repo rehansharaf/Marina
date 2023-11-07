@@ -10,10 +10,12 @@
       <class name="com.marina.tests.Mod_2_SpaceTypes">
         <methods>
           <include name="loadConfig"/>
-          <include name="multipleUsersWithMutlipleSelections_TC_203"/>
+          <include name="verifySpaceData_fromTableData_TC_205"/>
+          <include name="add_Spaces_Single_And_Carparking_Options_TC_213"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
+          <include name="verify_serachField_withSpaceName_TC_211"/>
         </methods>
       </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
     </classes>

@@ -764,6 +764,14 @@ public class Action extends TestBase implements ActionInterface {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
+	
+	
+	@Override
+	public void explicitWaitElementClickable(WebDriver driver, WebElement element, Duration timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
 	@Override
 	public void pageLoadTimeOut(WebDriver driver, int timeOut) {
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);

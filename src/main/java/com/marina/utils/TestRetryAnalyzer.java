@@ -1,0 +1,31 @@
+package com.marina.utils;
+
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
+
+public class TestRetryAnalyzer implements IRetryAnalyzer {
+
+	int counter = 1;
+	int retryMaxLimit = 2;
+	
+	
+	
+	@Override
+	public boolean retry(ITestResult result) {
+		// TODO Auto-generated method stub
+	
+		if(counter < retryMaxLimit){
+			counter++;
+			return true;
+			
+			
+			
+		}
+		
+		return false;
+	}
+	
+	
+	
+
+}
