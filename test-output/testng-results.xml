@@ -2,7 +2,7 @@
 <testng-results skipped="0" failed="1" ignored="0" total="11" passed="10">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="432305" started-at="2023-11-06T17:56:08 PKT" finished-at="2023-11-06T18:03:21 PKT">
+  <suite name="Suite" duration-ms="418572" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:40:27 PKT">
     <groups>
       <group name="regression,sanity,smoke">
         <method signature="Mod_6_BoatGroup.verifyBoatGroupPageOpens_TC_1001()[pri:1, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyBoatGroupPageOpens_TC_1001" class="com.marina.tests.Mod_6_BoatGroup"/>
@@ -18,113 +18,113 @@
         <method signature="Mod_6_BoatGroup.viewSavedDataBoatGroup_TC_1005()[pri:5, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewSavedDataBoatGroup_TC_1005" class="com.marina.tests.Mod_6_BoatGroup"/>
       </group> <!-- regression,sanity,smoke -->
     </groups>
-    <test name="test" duration-ms="432305" started-at="2023-11-06T17:56:08 PKT" finished-at="2023-11-06T18:03:21 PKT">
+    <test name="test" duration-ms="418572" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:40:27 PKT">
       <class name="com.marina.tests.Mod_6_BoatGroup">
-        <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="loadConfig" is-config="true" duration-ms="221" started-at="2023-11-06T17:56:08 PKT" finished-at="2023-11-06T17:56:08 PKT">
+        <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="loadConfig" is-config="true" duration-ms="245" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:33:28 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="25823" started-at="2023-11-06T17:56:08 PKT" finished-at="2023-11-06T17:56:34 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="30291" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:33:58 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="verifyBoatGroupPageOpens_TC_1001()[pri:1, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyBoatGroupPageOpens_TC_1001" duration-ms="63" started-at="2023-11-06T17:56:34 PKT" description="Check Boat Group Page Gets Open" finished-at="2023-11-06T17:56:34 PKT">
+        <test-method status="PASS" signature="verifyBoatGroupPageOpens_TC_1001()[pri:1, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyBoatGroupPageOpens_TC_1001" duration-ms="80" started-at="2023-11-07T10:33:58 PKT" description="Check Boat Group Page Gets Open" finished-at="2023-11-07T10:33:58 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyBoatGroupPageOpens_TC_1001 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2548" started-at="2023-11-06T17:56:34 PKT" finished-at="2023-11-06T17:56:37 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2353" started-at="2023-11-07T10:33:58 PKT" finished-at="2023-11-07T10:34:01 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="23704" started-at="2023-11-06T17:56:37 PKT" finished-at="2023-11-06T17:57:00 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="29166" started-at="2023-11-07T10:34:01 PKT" finished-at="2023-11-07T10:34:30 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="addBoatGroupMandatoryFields_TC_1002()[pri:2, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatGroupMandatoryFields_TC_1002" duration-ms="4666" started-at="2023-11-06T17:57:00 PKT" description="Add Boat Group With Mandatory Fields" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.verifyBoatGroupPageOpens_TC_1001" finished-at="2023-11-06T17:57:05 PKT">
+        <test-method status="PASS" signature="addBoatGroupMandatoryFields_TC_1002()[pri:2, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatGroupMandatoryFields_TC_1002" duration-ms="4532" started-at="2023-11-07T10:34:30 PKT" description="Add Boat Group With Mandatory Fields" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.verifyBoatGroupPageOpens_TC_1001" finished-at="2023-11-07T10:34:35 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addBoatGroupMandatoryFields_TC_1002 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="4144" started-at="2023-11-06T17:57:05 PKT" finished-at="2023-11-06T17:57:09 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2320" started-at="2023-11-07T10:34:35 PKT" finished-at="2023-11-07T10:34:37 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="26238" started-at="2023-11-06T17:57:09 PKT" finished-at="2023-11-06T17:57:36 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="24629" started-at="2023-11-07T10:34:37 PKT" finished-at="2023-11-07T10:35:01 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="addBoatGroupAllFields_TC_1003()[pri:3, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatGroupAllFields_TC_1003" duration-ms="5065" started-at="2023-11-06T17:57:36 PKT" description="Add Boat Group With All Fields" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupMandatoryFields_TC_1002" finished-at="2023-11-06T17:57:41 PKT">
+        <test-method status="PASS" signature="addBoatGroupAllFields_TC_1003()[pri:3, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatGroupAllFields_TC_1003" duration-ms="5696" started-at="2023-11-07T10:35:01 PKT" description="Add Boat Group With All Fields" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupMandatoryFields_TC_1002" finished-at="2023-11-07T10:35:07 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addBoatGroupAllFields_TC_1003 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2929" started-at="2023-11-06T17:57:41 PKT" finished-at="2023-11-06T17:57:44 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="3830" started-at="2023-11-07T10:35:07 PKT" finished-at="2023-11-07T10:35:11 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="25810" started-at="2023-11-06T17:57:44 PKT" finished-at="2023-11-06T17:58:09 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="23511" started-at="2023-11-07T10:35:11 PKT" finished-at="2023-11-07T10:35:35 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="searchBoatGroup_TC_1004()[pri:4, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="searchBoatGroup_TC_1004" duration-ms="1153" started-at="2023-11-06T17:58:09 PKT" description="Search Specific Boat Group" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-06T17:58:11 PKT">
+        <test-method status="PASS" signature="searchBoatGroup_TC_1004()[pri:4, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="searchBoatGroup_TC_1004" duration-ms="1330" started-at="2023-11-07T10:35:35 PKT" description="Search Specific Boat Group" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-07T10:35:36 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchBoatGroup_TC_1004 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="4170" started-at="2023-11-06T17:58:11 PKT" finished-at="2023-11-06T17:58:15 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2230" started-at="2023-11-07T10:35:36 PKT" finished-at="2023-11-07T10:35:38 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="22985" started-at="2023-11-06T17:58:15 PKT" finished-at="2023-11-06T17:58:38 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="22638" started-at="2023-11-07T10:35:38 PKT" finished-at="2023-11-07T10:36:01 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="viewSavedDataBoatGroup_TC_1005()[pri:5, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewSavedDataBoatGroup_TC_1005" duration-ms="3193" started-at="2023-11-06T17:58:38 PKT" description="Verify All The Saved Information Of Boat Group On View Page" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-06T17:58:41 PKT">
+        <test-method status="PASS" signature="viewSavedDataBoatGroup_TC_1005()[pri:5, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewSavedDataBoatGroup_TC_1005" duration-ms="3120" started-at="2023-11-07T10:36:01 PKT" description="Verify All The Saved Information Of Boat Group On View Page" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-07T10:36:04 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- viewSavedDataBoatGroup_TC_1005 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2736" started-at="2023-11-06T17:58:41 PKT" finished-at="2023-11-06T17:58:44 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2627" started-at="2023-11-07T10:36:04 PKT" finished-at="2023-11-07T10:36:06 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="23797" started-at="2023-11-06T17:58:44 PKT" finished-at="2023-11-06T17:59:07 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="22813" started-at="2023-11-07T10:36:06 PKT" finished-at="2023-11-07T10:36:29 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="viewPageNewBoatAdd_TC_1006()[pri:6, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewPageNewBoatAdd_TC_1006" duration-ms="13700" started-at="2023-11-06T17:59:07 PKT" description="Add New Boat From View Page Of Boat Group" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-06T17:59:21 PKT">
+        <test-method status="PASS" signature="viewPageNewBoatAdd_TC_1006()[pri:6, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewPageNewBoatAdd_TC_1006" duration-ms="8816" started-at="2023-11-07T10:36:29 PKT" description="Add New Boat From View Page Of Boat Group" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-07T10:36:38 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- viewPageNewBoatAdd_TC_1006 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2413" started-at="2023-11-06T17:59:21 PKT" finished-at="2023-11-06T17:59:24 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2260" started-at="2023-11-07T10:36:38 PKT" finished-at="2023-11-07T10:36:40 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="33473" started-at="2023-11-06T17:59:24 PKT" finished-at="2023-11-06T17:59:57 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="22075" started-at="2023-11-07T10:36:40 PKT" finished-at="2023-11-07T10:37:02 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="addBoatMainPage_TC_1007()[pri:7, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatMainPage_TC_1007" duration-ms="6092" started-at="2023-11-06T17:59:57 PKT" description="Add New Boat From Main Boat Group Page" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-06T18:00:03 PKT">
+        <test-method status="PASS" signature="addBoatMainPage_TC_1007()[pri:7, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatMainPage_TC_1007" duration-ms="7308" started-at="2023-11-07T10:37:02 PKT" description="Add New Boat From Main Boat Group Page" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-07T10:37:10 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addBoatMainPage_TC_1007 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2223" started-at="2023-11-06T18:00:03 PKT" finished-at="2023-11-06T18:00:05 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="3368" started-at="2023-11-07T10:37:10 PKT" finished-at="2023-11-07T10:37:13 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="23688" started-at="2023-11-06T18:00:05 PKT" finished-at="2023-11-06T18:00:29 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="22837" started-at="2023-11-07T10:37:13 PKT" finished-at="2023-11-07T10:37:36 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="editBoatGroupVerifyData_TC_1008()[pri:8, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="editBoatGroupVerifyData_TC_1008" duration-ms="13730" started-at="2023-11-06T18:00:29 PKT" description="Edit Specific Boat Group &amp; Verify Its Data" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-06T18:00:43 PKT">
+        <test-method status="PASS" signature="editBoatGroupVerifyData_TC_1008()[pri:8, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="editBoatGroupVerifyData_TC_1008" duration-ms="13950" started-at="2023-11-07T10:37:36 PKT" description="Edit Specific Boat Group &amp; Verify Its Data" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-07T10:37:50 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- editBoatGroupVerifyData_TC_1008 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2858" started-at="2023-11-06T18:00:43 PKT" finished-at="2023-11-06T18:00:46 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2864" started-at="2023-11-07T10:37:50 PKT" finished-at="2023-11-07T10:37:53 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="25742" started-at="2023-11-06T18:00:46 PKT" finished-at="2023-11-06T18:01:11 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="26512" started-at="2023-11-07T10:37:53 PKT" finished-at="2023-11-07T10:38:19 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="generatingMultipleAddRequest_TC_1009()[pri:9, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="generatingMultipleAddRequest_TC_1009" duration-ms="24016" started-at="2023-11-06T18:01:11 PKT" description="Check If Multiple Groups Generating While Clicking Add Button Multiple Times" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-06T18:01:35 PKT">
+        <test-method status="FAIL" signature="generatingMultipleAddRequest_TC_1009()[pri:9, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="generatingMultipleAddRequest_TC_1009" duration-ms="25418" started-at="2023-11-07T10:38:19 PKT" description="Check If Multiple Groups Generating While Clicking Add Button Multiple Times" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.addBoatGroupAllFields_TC_1003" finished-at="2023-11-07T10:38:45 PKT">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [1] but found [3]]]>
@@ -158,35 +158,35 @@ at java.lang.Thread.run(Thread.java:748)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generatingMultipleAddRequest_TC_1009 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2658" started-at="2023-11-06T18:01:35 PKT" finished-at="2023-11-06T18:01:38 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="4156" started-at="2023-11-07T10:38:45 PKT" finished-at="2023-11-07T10:38:49 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="24103" started-at="2023-11-06T18:01:38 PKT" finished-at="2023-11-06T18:02:02 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="24612" started-at="2023-11-07T10:38:49 PKT" finished-at="2023-11-07T10:39:14 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="verifyCopyFunctionBoatGroup_TC_1010()[pri:10, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyCopyFunctionBoatGroup_TC_1010" duration-ms="9476" started-at="2023-11-06T18:02:02 PKT" description="Check &amp; Verify The Copy Functionality Of Boat Group" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.editBoatGroupVerifyData_TC_1008" finished-at="2023-11-06T18:02:12 PKT">
+        <test-method status="PASS" signature="verifyCopyFunctionBoatGroup_TC_1010()[pri:10, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyCopyFunctionBoatGroup_TC_1010" duration-ms="6945" started-at="2023-11-07T10:39:14 PKT" description="Check &amp; Verify The Copy Functionality Of Boat Group" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.editBoatGroupVerifyData_TC_1008" finished-at="2023-11-07T10:39:21 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyCopyFunctionBoatGroup_TC_1010 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="3736" started-at="2023-11-06T18:02:12 PKT" finished-at="2023-11-06T18:02:15 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2877" started-at="2023-11-07T10:39:21 PKT" finished-at="2023-11-07T10:39:23 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="23625" started-at="2023-11-06T18:02:15 PKT" finished-at="2023-11-06T18:02:39 PKT">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="21567" started-at="2023-11-07T10:39:23 PKT" finished-at="2023-11-07T10:39:45 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="deleteBoatGroups_TC_1011()[pri:11, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="deleteBoatGroups_TC_1011" duration-ms="38488" started-at="2023-11-06T18:02:39 PKT" description="Check Delete Boat Group Functionality" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.verifyCopyFunctionBoatGroup_TC_1010" finished-at="2023-11-06T18:03:18 PKT">
+        <test-method status="PASS" signature="deleteBoatGroups_TC_1011()[pri:11, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="deleteBoatGroups_TC_1011" duration-ms="38818" started-at="2023-11-07T10:39:45 PKT" description="Check Delete Boat Group Functionality" depends-on-methods="com.marina.tests.Mod_6_BoatGroup.verifyCopyFunctionBoatGroup_TC_1010" finished-at="2023-11-07T10:40:24 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteBoatGroups_TC_1011 -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="3058" started-at="2023-11-06T18:03:18 PKT" finished-at="2023-11-06T18:03:21 PKT">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2809" started-at="2023-11-07T10:40:24 PKT" finished-at="2023-11-07T10:40:27 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterSuite" is-config="true" duration-ms="309" started-at="2023-11-06T18:03:21 PKT" finished-at="2023-11-06T18:03:21 PKT">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterSuite" is-config="true" duration-ms="465" started-at="2023-11-07T10:40:27 PKT" finished-at="2023-11-07T10:40:27 PKT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

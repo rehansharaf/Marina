@@ -32,7 +32,7 @@ public class TestBase {
 	@BeforeSuite
 	public void loadConfig() throws IOException {
 
-		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"screenshots"));
+		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"\\screenshots"));
 		ExtentManager.setExtent();
 		DOMConfigurator.configure("log4j.xml");
 
