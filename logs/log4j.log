@@ -1,0 +1,32 @@
+2023-11-07 06:31:21 INFO  Log:11 - =====================================Verify Successful Login Only TEST START=========================================
+2023-11-07 06:31:31 INFO  Log:15 - =====================================Verify Successful Login Only TEST END=========================================
+2023-11-07 06:31:31 INFO  Log:22 - =====================================verifyLogin_Tc_001 TEST PASSED =========================================
+2023-11-07 06:31:38 INFO  Log:11 - =====================================Clicking space type link should open space type page TC_201  TEST START=========================================
+2023-11-07 06:31:38 INFO  Log:15 - =====================================Clicking space type link should open space type page TC_201 TEST END=========================================
+2023-11-07 06:31:38 INFO  Log:22 - =====================================verifySpacePage_Tc_201 TEST PASSED =========================================
+2023-11-07 06:32:37 INFO  Log:11 - ===================================== Clicking add space type button, add new space type window should appear TC 202 TEST START=========================================
+2023-11-07 06:32:38 INFO  Log:15 - =====================================Clicking add space type button, add new space type window should appear  TC 202  TEST END=========================================
+2023-11-07 06:32:38 INFO  Log:22 - =====================================verifyPopupAddSpace_TC_202 TEST PASSED =========================================
+2023-11-07 06:33:17 INFO  Log:11 - ===================================== TC_203 mutli spaces added with different options TC_203  TEST START=========================================
+2023-11-07 06:38:38 INFO  Log:15 - =====================================  TC_203  mutli spaces added with different options TC_203 TEST END=========================================
+2023-11-07 06:38:38 INFO  Log:22 - =====================================multipleUsersWithMutlipleSelections_TC_203 TEST PASSED =========================================
+2023-11-07 06:39:31 INFO  Log:11 - =====================================verify skipping fields of add space TC_204 TEST START=========================================
+2023-11-07 06:39:49 INFO  Log:15 - ===================================== verify skipping fields of add space TC_204 TEST END=========================================
+2023-11-07 06:39:49 INFO  Log:22 - =====================================addSpace_skippingFileds_TC_204 TEST PASSED =========================================
+2023-11-07 06:40:32 INFO  Log:11 - =====================================verify after insert data space record match with table record TC_205 TEST START=========================================
+2023-11-07 06:42:10 INFO  Log:15 - =====================================verify after insert data space record match with table record TC_205 TEST END=========================================
+2023-11-07 06:42:10 INFO  Log:22 - =====================================verifySpaceData_fromTableData_TC_205 TEST PASSED =========================================
+2023-11-07 06:42:53 INFO  Log:11 - =====================================verify table data after edit space TC_208 TEST START=========================================
+2023-11-07 06:44:58 INFO  Log:15 - =====================================verify table data after edit space TC_208 TEST END=========================================
+2023-11-07 06:44:58 INFO  Log:22 - =====================================verifySpaceData_afterEdit_TC_208 TEST PASSED =========================================
+2023-11-07 06:45:44 INFO  Log:11 - =====================================verify the new space type to excel sheet and check the complete records export TC_209 TEST START=========================================
+2023-11-07 06:45:48 INFO  Log:15 - =====================================verify the new space type to excel sheet and check the complete records  export TC_209 TEST END=========================================
+2023-11-07 06:45:48 INFO  Log:22 - =====================================exportNewAddSpace_verifyCompleteRecords_TC_209 TEST PASSED =========================================
+2023-11-07 06:46:43 INFO  Log:11 - =====================================Search the added space from search field TC_211 TEST START=========================================
+2023-11-07 06:48:23 INFO  Log:15 - =====================================Search the added space from search field TC_211 TEST END=========================================
+2023-11-07 06:48:23 INFO  Log:22 - =====================================verify_serachField_withSpaceName_TC_211 TEST PASSED =========================================
+2023-11-07 06:49:16 INFO  Log:11 - =====================================verify after delete space from space table TC_212 TEST START=========================================
+2023-11-07 06:50:41 INFO  Log:15 - =====================================verify after delete space from space table TC_212 TEST END=========================================
+2023-11-07 06:50:41 INFO  Log:22 - =====================================verifyDeleteSpace_TC_212 TEST PASSED =========================================
+2023-11-07 06:51:21 INFO  Log:11 - =====================================verify add space form refresh after add single and carparking spaces TEST START=========================================
+2023-11-07 06:52:49 ERROR Log:34 - =====================================add_Spaces_Single_And_Carparking_Options_TC_213 TEST FAILED =========================================

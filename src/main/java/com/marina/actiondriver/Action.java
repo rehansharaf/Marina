@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -815,5 +816,38 @@ public class Action extends TestBase implements ActionInterface {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
+	
+	
+	@Override
+	 public String isFileDownloaded(String fileText, String fileExtension, int timeOut) {
+	        String folderName = System.getProperty("user.dir")+"\\src\\test\\resources\\downloadeddata\\";
+	        File[] listOfFiles;
+	        int waitTillSeconds = timeOut;
+	        boolean fileDownloaded = false;
+	        String filePath = null; 
+
+	        long waitTillTime = Instant.now().getEpochSecond() + waitTillSeconds;
+	        while (Instant.now().getEpochSecond() < waitTillTime) {
+	            listOfFiles = new File(folderName).listFiles();
+	            for (File file : listOfFiles) {
+	                String fileName = file.getName().toLowerCase();
+	                if (!fileName.contains(".tmp")) {
+	                	if(!fileName.contains(".part")) {
+	                		if(!fileName.contains(".crdownload")) {
+	                			fileDownloaded = true;
+	                			filePath = file.getAbsolutePath();
+	                			break;
+	                		}
+	                	}
+	                }
+	            }
+	            if (fileDownloaded) {
+	                break;
+	            }
+	        }
+	        return filePath;
+	}
+	
+	
 
 }

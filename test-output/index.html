@@ -59,7 +59,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="group-Suite" class="navigator-link ">
-                    <span>4 groups</span>
+                    <span>3 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">12 methods, 1 failed,  2 skipped,  9 passed</span>
+                    <span class="method-stats">11 methods, 1 failed,   10 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -108,25 +108,6 @@
                     </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Retried methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods skipped suite-Suite"> (hide)</a> <!-- hide-methods skipped suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods skipped suite-Suite"> (show)</a> <!-- show-methods skipped suite-Suite -->
-                    </span>
-                    <div class="method-list-content skipped suite-Suite">
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.marina.tests.Mod_2_SpaceTypes" class="method navigator-link" hash-for-method="verifySpaceData_fromTableData_TC_205">verifySpaceData_fromTableData_TC_205</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="skipped.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.marina.tests.Mod_2_SpaceTypes" class="method navigator-link" hash-for-method="verify_serachField_withSpaceName_TC_211">verify_serachField_withSpaceName_TC_211</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content skipped suite-Suite -->
-                  </li>
-                  <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
                       <a href="#" panel-name="suite-Suite" class="hide-methods passed suite-Suite"> (hide)</a> <!-- hide-methods passed suite-Suite -->
@@ -136,6 +117,11 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="com.marina.tests.Mod_2_SpaceTypes" class="method navigator-link" hash-for-method="addSpace_skippingFileds_TC_204">addSpace_skippingFileds_TC_204</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.marina.tests.Mod_2_SpaceTypes" class="method navigator-link" hash-for-method="exportNewAddSpace_verifyCompleteRecords_TC_209">exportNewAddSpace_verifyCompleteRecords_TC_209</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -202,7 +188,7 @@
                   </a> <!-- add_Spaces_Single_And_Carparking_Options_TC_213 -->
                   <span class="method-name">add_Spaces_Single_And_Carparking_Options_TC_213</span>
                   <div class="stack-trace">java.lang.AssertionError: expected [Test_tbt_001] but found [null]
-	at com.marina.tests.Mod_2_SpaceTypes.add_Spaces_Single_And_Carparking_Options_TC_213(Mod_2_SpaceTypes.java:190)
+	at com.marina.tests.Mod_2_SpaceTypes.add_Spaces_Single_And_Carparking_Options_TC_213(Mod_2_SpaceTypes.java:204)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
@@ -212,46 +198,6 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Suite-class-failed -->
-          <div class="suite-Suite-class-skipped">
-            <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
-              <span class="class-name">com.marina.tests.Mod_2_SpaceTypes</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifySpaceData_fromTableData_TC_205">
-                  </a> <!-- verifySpaceData_fromTableData_TC_205 -->
-                  <span class="method-name">verifySpaceData_fromTableData_TC_205</span>
-                  <div class="stack-trace">java.lang.AssertionError: Arrays differ at element [4]: $/period != $/ft/period expected [$/period] but found [$/ft/period]
-	at com.marina.tests.Mod_2_SpaceTypes.verifySpaceData_fromTableData_TC_205(Mod_2_SpaceTypes.java:122)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-... Removed 16 stack frames
-</div> <!-- stack-trace -->
-                  <em>
-(verify after insert data space record match with table record TC_205)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verify_serachField_withSpaceName_TC_211">
-                  </a> <!-- verify_serachField_withSpaceName_TC_211 -->
-                  <span class="method-name">verify_serachField_withSpaceName_TC_211</span>
-                  <div class="stack-trace">java.lang.AssertionError: expected [Slip] but found [Test_tbt_001]
-	at com.marina.tests.Mod_2_SpaceTypes.verify_serachField_withSpaceName_TC_211(Mod_2_SpaceTypes.java:161)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-... Removed 17 stack frames
-</div> <!-- stack-trace -->
-                  <em>
-(Search the added space from search field TC_211)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-skipped -->
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -265,6 +211,15 @@
                   <span class="method-name">addSpace_skippingFileds_TC_204</span>
                   <em>
 (verify skipping fields of add space TC_204)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="exportNewAddSpace_verifyCompleteRecords_TC_209">
+                  </a> <!-- exportNewAddSpace_verifyCompleteRecords_TC_209 -->
+                  <span class="method-name">exportNewAddSpace_verifyCompleteRecords_TC_209</span>
+                  <em>
+(verify the new space type to excel sheet and check the complete records export TC_209)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -396,6 +351,14 @@
                 <br/>
               </div> <!-- method-in-group -->
               <div class="method-in-group">
+                <span class="method-in-group-name">add_Spaces_Single_And_Carparking_Options_TC_213</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">exportNewAddSpace_verifyCompleteRecords_TC_209</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
                 <span class="method-in-group-name">multipleUsersWithMutlipleSelections_TC_203</span>
                 <br/>
               </div> <!-- method-in-group -->
@@ -429,18 +392,14 @@
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
             <div class="test-group">
-              <span class="test-group-name">regression,smoke</span>
-              <br/>
-              <div class="method-in-group">
-                <span class="method-in-group-name">add_Spaces_Single_And_Carparking_Options_TC_213</span>
-                <br/>
-              </div> <!-- method-in-group -->
-            </div> <!-- test-group -->
-            <div class="test-group">
               <span class="test-group-name">sanity</span>
               <br/>
               <div class="method-in-group">
                 <span class="method-in-group-name">addSpace_skippingFileds_TC_204</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">exportNewAddSpace_verifyCompleteRecords_TC_209</span>
                 <br/>
               </div> <!-- method-in-group -->
               <div class="method-in-group">
@@ -477,6 +436,14 @@
               <br/>
               <div class="method-in-group">
                 <span class="method-in-group-name">addSpace_skippingFileds_TC_204</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">add_Spaces_Single_And_Carparking_Options_TC_213</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">exportNewAddSpace_verifyCompleteRecords_TC_209</span>
                 <br/>
               </div> <!-- method-in-group -->
               <div class="method-in-group">
@@ -524,60 +491,56 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(12);
+data.addRows(11);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'multipleUsersWithMutlipleSelections_TC_203')
 data.setCell(0, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(0, 3, 467869);
+data.setCell(0, 3, 321330);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'verifySpaceData_afterEdit_TC_208')
 data.setCell(1, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(1, 3, 145384);
+data.setCell(1, 3, 125321);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'verify_serachField_withSpaceName_TC_211')
 data.setCell(2, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(2, 3, 119871);
+data.setCell(2, 3, 100086);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'verifySpaceData_fromTableData_TC_205')
 data.setCell(3, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(3, 3, 119156);
+data.setCell(3, 3, 98329);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'verifySpaceData_fromTableData_TC_205')
+data.setCell(4, 1, 'add_Spaces_Single_And_Carparking_Options_TC_213')
 data.setCell(4, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(4, 3, 99561);
+data.setCell(4, 3, 88472);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'add_Spaces_Single_And_Carparking_Options_TC_213')
+data.setCell(5, 1, 'verifyDeleteSpace_TC_212')
 data.setCell(5, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(5, 3, 90498);
+data.setCell(5, 3, 85017);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'verifyDeleteSpace_TC_212')
+data.setCell(6, 1, 'addSpace_skippingFileds_TC_204')
 data.setCell(6, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(6, 3, 82905);
+data.setCell(6, 3, 17748);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'verify_serachField_withSpaceName_TC_211')
-data.setCell(7, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(7, 3, 45939);
+data.setCell(7, 1, 'verifyLogin_Tc_001')
+data.setCell(7, 2, 'com.marina.tests.Mod_1_login')
+data.setCell(7, 3, 11020);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'addSpace_skippingFileds_TC_204')
+data.setCell(8, 1, 'exportNewAddSpace_verifyCompleteRecords_TC_209')
 data.setCell(8, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(8, 3, 16763);
+data.setCell(8, 3, 4112);
 data.setCell(9, 0, 9)
-data.setCell(9, 1, 'verifyLogin_Tc_001')
-data.setCell(9, 2, 'com.marina.tests.Mod_1_login')
-data.setCell(9, 3, 8586);
+data.setCell(9, 1, 'verifyPopupAddSpace_TC_202')
+data.setCell(9, 2, 'com.marina.tests.Mod_2_SpaceTypes')
+data.setCell(9, 3, 3347);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'verifyPopupAddSpace_TC_202')
+data.setCell(10, 1, 'verifySpacePage_Tc_201')
 data.setCell(10, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(10, 3, 3698);
-data.setCell(11, 0, 11)
-data.setCell(11, 1, 'verifySpacePage_Tc_201')
-data.setCell(11, 2, 'com.marina.tests.Mod_2_SpaceTypes')
-data.setCell(11, 3, 107);
+data.setCell(10, 3, 75);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 20 minutes</span>
+              <span class="suite-total-time">Total running time: 14 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -617,173 +580,155 @@ return data;
                 <span class="method-name">loadConfig</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">663 ms</span>
-              </div> <!-- configuration-method before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.marina.tests.Mod_2_SpaceTypes</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">beforeTest</span>
-                <span class="method-start">666 ms</span>
+                <span class="method-start">538 ms</span>
               </div> <!-- configuration-method before -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.marina.tests.Mod_1_login</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest</span>
+                <span class="method-start">545 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyLogin_Tc_001</span>
-                <span class="method-start">48329 ms</span>
+                <span class="method-start">42319 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">53373 ms</span>
+              </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.marina.tests.Mod_2_SpaceTypes</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">verifySpacePage_Tc_201</span>
-                <span class="method-start">49974 ms</span>
+                <span class="method-start">59695 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">50099 ms</span>
+                <span class="method-start">59772 ms</span>
               </div> <!-- configuration-method after -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.marina.tests.Mod_1_login</div> <!-- chronological-class-name -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">56918 ms</span>
-              </div> <!-- configuration-method after -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">com.marina.tests.Mod_2_SpaceTypes</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">beforeTest</span>
-                <span class="method-start">66639 ms</span>
+                <span class="method-start">70330 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyPopupAddSpace_TC_202</span>
-                <span class="method-start">103564 ms</span>
+                <span class="method-start">116281 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">107266 ms</span>
+                <span class="method-start">119630 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">beforeTest</span>
-                <span class="method-start">123627 ms</span>
+                <span class="method-start">128789 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">multipleUsersWithMutlipleSelections_TC_203</span>
-                <span class="method-start">160220 ms</span>
+                <span class="method-start">158824 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">628095 ms</span>
+                <span class="method-start">480157 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">beforeTest</span>
-                <span class="method-start">640912 ms</span>
+                <span class="method-start">490397 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">addSpace_skippingFileds_TC_204</span>
-                <span class="method-start">688404 ms</span>
+                <span class="method-start">533457 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">705169 ms</span>
+                <span class="method-start">551207 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">beforeTest</span>
-                <span class="method-start">715303 ms</span>
+                <span class="method-start">561833 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifySpaceData_fromTableData_TC_205</span>
+                <span class="method-start">593623 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">691956 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest</span>
+                <span class="method-start">707415 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifySpaceData_afterEdit_TC_208</span>
+                <span class="method-start">735140 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">860465 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest</span>
+                <span class="method-start">874755 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">exportNewAddSpace_verifyCompleteRecords_TC_209</span>
+                <span class="method-start">906048 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">910163 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest</span>
+                <span class="method-start">931066 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verify_serachField_withSpaceName_TC_211</span>
+                <span class="method-start">964949 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">1065040 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest</span>
+                <span class="method-start">1074321 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifyDeleteSpace_TC_212</span>
+                <span class="method-start">1117889 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterTest</span>
+                <span class="method-start">1202909 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeTest</span>
+                <span class="method-start">1211031 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">add_Spaces_Single_And_Carparking_Options_TC_213</span>
-                <span class="method-start">744738 ms</span>
+                <span class="method-start">1242581 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterTest</span>
-                <span class="method-start">835781 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">845662 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifySpaceData_fromTableData_TC_205</span>
-                <span class="method-start">884930 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">1004098 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">1013627 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifySpaceData_fromTableData_TC_205</span>
-                <span class="method-start">1047532 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">1147095 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">1156932 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifySpaceData_afterEdit_TC_208</span>
-                <span class="method-start">1189381 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">1334767 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">1344431 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verify_serachField_withSpaceName_TC_211</span>
-                <span class="method-start">1377282 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">1423228 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">1470576 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verify_serachField_withSpaceName_TC_211</span>
-                <span class="method-start">1540610 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">1660483 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">1670868 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">verifyDeleteSpace_TC_212</span>
-                <span class="method-start">1697815 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">1780722 ms</span>
+                <span class="method-start">1331404 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.marina.tests.Mod_1_login</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">afterSuite</span>
-                <span class="method-start">1791043 ms</span>
+                <span class="method-start">1340275 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -53,5 +53,6 @@ public interface ActionInterface {
 	public void pageLoadTimeOut(WebDriver driver, int timeOut);
 	public String screenShot(WebDriver driver, String filename);
 	public String getCurrentTime();
+	String isFileDownloaded(String fileText, String fileExtension, int timeOut);
 
 }

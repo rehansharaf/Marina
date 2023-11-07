@@ -1,6 +1,7 @@
 package com.marina.pages;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -12,8 +13,14 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import org.openqa.selenium.By;
+
+
 import com.marina.actiondriver.Action;
 import com.marina.base.TestBase;
+import com.marina.utils.ExcelLibrary;
+
 
 public class SpaceTypesPage {
 
@@ -23,6 +30,9 @@ public class SpaceTypesPage {
 	int table_array_column = 7;
 	WebDriverWait wait;
 	String no_entries_found;
+//String totalRecordCount ="//div[@class='dataTables_info']";
+//	String alpha= totalRecordCount;
+	
 	
 	
 
@@ -37,6 +47,15 @@ public class SpaceTypesPage {
 
 	@FindBy(how = How.XPATH, using = "//button[@class='btn btn-success export']")
 	WebElement btn_export;
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='Excel Sheet']")
+	WebElement btn_excel_export;
+	
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='Google Sheet']")
+	WebElement btn_google_sheet_export;
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@class='dataTables_info']")
 	WebElement showing_entries;
@@ -338,6 +357,87 @@ public class SpaceTypesPage {
 		
 		
 	}
+	
+	
+	
+public boolean exportDataToExcel() {
+		
+		action.click1(btn_export, "Export Space Btn");
+		action.explicitWait(driver, btn_excel_export, Duration.ofSeconds(10));
+		action.click1(btn_excel_export, "Excel Sheet Btn");
+		String filepath = action.isFileDownloaded("Spaces Type Report", ".xlsx", 30);
+
+		
+		
+		ExcelLibrary excel = new ExcelLibrary(filepath);
+		int excelRows = excel.getRowCount("Worksheet");
+	    
+		
+		String dataTableRowsS = showing_entries.getText().trim();
+		String[] splitData = dataTableRowsS.split("of");
+		dataTableRowsS = splitData[1];
+		dataTableRowsS = dataTableRowsS.replace("entries", "");
+		dataTableRowsS = dataTableRowsS.trim();
+		int dataTableRows = Integer.parseInt(dataTableRowsS);
+		
+		if(excelRows-1 == dataTableRows) {
+			File spaceExcelFile = new File(filepath);
+			spaceExcelFile.delete();
+			return true;
+		}else 
+			return false;
+	}
+
+
+
+
+
+//
+//public boolean exportDataToGoogleSheet() throws GeneralSecurityException, IOException, InterruptedException {
+//		
+//		action.click1(exportBtn, "Export Space Btn");
+//		action.explicitWait(driver, googleSheetBtn, Duration.ofSeconds(10));
+//		action.click1(googleSheetBtn, "Google Sheet Btn");
+//		action.explicitWait(driver, driver.findElement(openGoogleSheetLink), Duration.ofSeconds(30));
+//		Thread.sleep(1000);
+//	
+//		action.click1(driver.findElement(openGoogleSheetLink), "Open Google Sheet Link");
+//		action.switchToNewWindow(driver);
+//		action.explicitWait(driver, driver.findElement(googleSheetTitle), Duration.ofSeconds(30));
+//		action.click1(driver.findElement(googleSheetFileMenu), "Google Sheet File Menu");
+//		action.click1(driver.findElement(googleDownloadMenuItem), "Google Download Menu Item");
+//		action.click1(driver.findElement(googleDownloadExcelOption), "Google Download Excel Sheet Option");
+//		String currentDate = action.getCurrentDate(1, 0, 0, "dd_MM_yyyy");
+//		String filename = "Spaces"+"_"+currentDate;
+//		String filepath = action.isFileDownloaded(filename, ".xlsx", 30);
+//		
+//		driver.close();
+//		action.switchToOldWindow(driver);
+//		action.click1(successOK, "Success Ok Btn");
+//		
+//		ExcelLibrary excel = new ExcelLibrary(filepath);
+//		int excelRows = excel.getRowCount("Sheet1");
+//		String dataTableRowsS = driver.findElement(totalRecordCount).getText().trim();
+//		String[] splitData = dataTableRowsS.split("of");
+//		dataTableRowsS = splitData[1];
+//		dataTableRowsS = dataTableRowsS.replace("entries", "");
+//		dataTableRowsS = dataTableRowsS.trim();
+//		int dataTableRows = Integer.parseInt(dataTableRowsS);
+//		
+//		if(excelRows-1 == dataTableRows) {
+//			File spaceExcelFile = new File(filepath);
+//			spaceExcelFile.delete();
+//			return true;
+//		}else 
+//			return false;
+//
+//	}
+
+
+
+	
+	
+	
 	
 	
 

@@ -147,39 +147,21 @@ public class Mod_2_SpaceTypes extends TestBase {
 		Log.endTestCase("verify table data after edit space TC_208");
 
 	}
-	
-	
-	
-	
-	
-//	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-//	"sanity" }, priority = 6, description = "verify after insert data space record match with table record TC_205")
-//public void exportNewAddSpace_verifyCompleteRecords_TC_209() throws InterruptedException {
-//
-//Log.startTestCase("Export the new space type to excel sheet and check the complete records TC_209");
-//statp = stp.add_space_type();
-//added_space = statp.addingNewSpace("singleSpace.xlsx");
-//String user = (String) added_space[0][0];
-//tableResult = stp.get_space_data_from_table(user);
-//formData_and_TableData_reset();
-//
-//String entries_remain = stp.delete_space(user);
-//System.out.println("test");
-//Assert.assertEquals(reset_formdata, reset_tableresult);
-//
-//Log.endTestCase("Export the new space type to excel sheet and check the complete records TC_209");
-//
-//}
 
+	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
+			"sanity" }, priority = 10, description = "verify the new space type to excel sheet and check the complete records export TC_209")
+	public void exportNewAddSpace_verifyCompleteRecords_TC_209() throws InterruptedException {
+
+		
+		Log.startTestCase("verify the new space type to excel sheet and check the complete records export TC_209");
+		boolean excel_match = stp.exportDataToExcel();
+		Assert.assertEquals(excel_match, true);
+		Log.endTestCase("verify the new space type to excel sheet and check the complete records  export TC_209");
+
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
 			"sanity" }, priority = 12, description = "Search the added space from search field TC_211")
 	public void verify_serachField_withSpaceName_TC_211() throws InterruptedException {
@@ -211,7 +193,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(groups = {"regression","smoke"}, priority = 14)
+	@Test(groups = { "regression", "smoke" }, priority = 14)
 	public void add_Spaces_Single_And_Carparking_Options_TC_213() throws InterruptedException {
 
 		Log.startTestCase("verify add space form refresh after add single and carparking spaces");
