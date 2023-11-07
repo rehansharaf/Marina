@@ -823,29 +823,6 @@ public class Action extends TestBase implements ActionInterface {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
-
-	@Override
-	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat) {
-	
-	      if(todayDate == 1) {
-	    	
-	    	  LocalDate dateObj = LocalDate.now();
-		  	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
-		  	  return dateObj.format(formatter);
-		  	  
-	      }else {
-	
-	    	  Date dt = new Date();
-			  Calendar c = Calendar.getInstance(); 
-			  c.setTime(dt); 
-			  c.add(Calendar.DATE, daysToSkip);
-			  dt = c.getTime();
-			  return new SimpleDateFormat(dateFormat).format(dt);
-
-	      }
-	  	  
-        	
-	}
 	
 	
 	@Override
@@ -877,6 +854,32 @@ public class Action extends TestBase implements ActionInterface {
 	        }
 	        return filePath;
 	}
+	
+	
+
+	@Override
+	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat) {
+	
+	      if(todayDate == 1) {
+	    	
+	    	  LocalDate dateObj = LocalDate.now();
+		  	  DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
+		  	  return dateObj.format(formatter);
+		  	  
+	      }else {
+	
+	    	  Date dt = new Date();
+			  Calendar c = Calendar.getInstance(); 
+			  c.setTime(dt); 
+			  c.add(Calendar.DATE, daysToSkip);
+			  dt = c.getTime();
+			  return new SimpleDateFormat(dateFormat).format(dt);
+
+	      }
+	  	  
+        	
+	}
+	
 	
 	@Override
 	public boolean isAttribtuePresent(WebElement element, String attribute) {

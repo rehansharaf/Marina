@@ -7,12 +7,21 @@
         <methods>
           <include name="verifyBoatGroupPageOpens_TC_1001"/>
           <include name="loadConfig"/>
+<<<<<<< HEAD
           <include name="generatingMultipleAddRequest_TC_1009"/>
           <include name="beforeMethod"/>
           <include name="addBoatGroupMandatoryFields_TC_1002"/>
           <include name="addBoatGroupAllFields_TC_1003"/>
+=======
+          <include name="add_Spaces_Single_And_Carparking_Options_TC_213"/>
+>>>>>>> refs/heads/Talha
           <include name="afterSuite"/>
+<<<<<<< HEAD
           <include name="afterMethod"/>
+=======
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+>>>>>>> refs/heads/Talha
         </methods>
       </class> <!-- com.marina.tests.Mod_6_BoatGroup -->
     </classes>

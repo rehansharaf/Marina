@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results skipped="0" failed="1" ignored="0" total="11" passed="10">
+=======
+<testng-results ignored="2" total="13" passed="10" failed="1" skipped="0">
+>>>>>>> refs/heads/Talha
   <reporter-output>
   </reporter-output>
+<<<<<<< HEAD
   <suite name="Suite" duration-ms="418572" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:40:27 PKT">
+=======
+  <suite started-at="2023-11-07T06:30:38 PST" name="Suite" finished-at="2023-11-07T06:52:58 PST" duration-ms="1339622">
+>>>>>>> refs/heads/Talha
     <groups>
+<<<<<<< HEAD
       <group name="regression,sanity,smoke">
         <method signature="Mod_6_BoatGroup.verifyBoatGroupPageOpens_TC_1001()[pri:1, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyBoatGroupPageOpens_TC_1001" class="com.marina.tests.Mod_6_BoatGroup"/>
         <method signature="Mod_6_BoatGroup.addBoatGroupMandatoryFields_TC_1002()[pri:2, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="addBoatGroupMandatoryFields_TC_1002" class="com.marina.tests.Mod_6_BoatGroup"/>
@@ -17,24 +26,83 @@
         <method signature="Mod_6_BoatGroup.viewPageNewBoatAdd_TC_1006()[pri:6, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewPageNewBoatAdd_TC_1006" class="com.marina.tests.Mod_6_BoatGroup"/>
         <method signature="Mod_6_BoatGroup.viewSavedDataBoatGroup_TC_1005()[pri:5, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="viewSavedDataBoatGroup_TC_1005" class="com.marina.tests.Mod_6_BoatGroup"/>
       </group> <!-- regression,sanity,smoke -->
+=======
+      <group name="regression">
+        <method signature="Mod_1_login.verifyLogin_Tc_001()[pri:1, instance:com.marina.tests.Mod_1_login@1e04fa0a]" name="verifyLogin_Tc_001" class="com.marina.tests.Mod_1_login"/>
+        <method signature="Mod_2_SpaceTypes.addSpace_skippingFileds_TC_204()[pri:5, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="addSpace_skippingFileds_TC_204" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.add_Spaces_Single_And_Carparking_Options_TC_213()[pri:14, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="add_Spaces_Single_And_Carparking_Options_TC_213" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.exportNewAddSpace_verifyCompleteRecords_TC_209()[pri:10, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="exportNewAddSpace_verifyCompleteRecords_TC_209" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.multipleUsersWithMutlipleSelections_TC_203()[pri:4, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="multipleUsersWithMutlipleSelections_TC_203" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifyDeleteSpace_TC_212()[pri:13, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifyDeleteSpace_TC_212" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifyPopupAddSpace_TC_202()[pri:3, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifyPopupAddSpace_TC_202" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpaceData_afterEdit_TC_208()[pri:9, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpaceData_afterEdit_TC_208" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpaceData_fromTableData_TC_205()[pri:6, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpaceData_fromTableData_TC_205" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpacePage_Tc_201()[pri:2, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpacePage_Tc_201" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verify_serachField_withSpaceName_TC_211()[pri:12, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verify_serachField_withSpaceName_TC_211" class="com.marina.tests.Mod_2_SpaceTypes"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="Mod_1_login.verifyLogin_Tc_001()[pri:1, instance:com.marina.tests.Mod_1_login@1e04fa0a]" name="verifyLogin_Tc_001" class="com.marina.tests.Mod_1_login"/>
+        <method signature="Mod_2_SpaceTypes.addSpace_skippingFileds_TC_204()[pri:5, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="addSpace_skippingFileds_TC_204" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.add_Spaces_Single_And_Carparking_Options_TC_213()[pri:14, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="add_Spaces_Single_And_Carparking_Options_TC_213" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.exportNewAddSpace_verifyCompleteRecords_TC_209()[pri:10, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="exportNewAddSpace_verifyCompleteRecords_TC_209" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifyDeleteSpace_TC_212()[pri:13, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifyDeleteSpace_TC_212" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifyPopupAddSpace_TC_202()[pri:3, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifyPopupAddSpace_TC_202" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpaceData_afterEdit_TC_208()[pri:9, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpaceData_afterEdit_TC_208" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpaceData_fromTableData_TC_205()[pri:6, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpaceData_fromTableData_TC_205" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpacePage_Tc_201()[pri:2, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpacePage_Tc_201" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verify_serachField_withSpaceName_TC_211()[pri:12, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verify_serachField_withSpaceName_TC_211" class="com.marina.tests.Mod_2_SpaceTypes"/>
+      </group> <!-- smoke -->
+      <group name="sanity">
+        <method signature="Mod_1_login.verifyLogin_Tc_001()[pri:1, instance:com.marina.tests.Mod_1_login@1e04fa0a]" name="verifyLogin_Tc_001" class="com.marina.tests.Mod_1_login"/>
+        <method signature="Mod_2_SpaceTypes.addSpace_skippingFileds_TC_204()[pri:5, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="addSpace_skippingFileds_TC_204" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.exportNewAddSpace_verifyCompleteRecords_TC_209()[pri:10, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="exportNewAddSpace_verifyCompleteRecords_TC_209" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifyDeleteSpace_TC_212()[pri:13, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifyDeleteSpace_TC_212" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifyPopupAddSpace_TC_202()[pri:3, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifyPopupAddSpace_TC_202" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpaceData_afterEdit_TC_208()[pri:9, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpaceData_afterEdit_TC_208" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpaceData_fromTableData_TC_205()[pri:6, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpaceData_fromTableData_TC_205" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verifySpacePage_Tc_201()[pri:2, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verifySpacePage_Tc_201" class="com.marina.tests.Mod_2_SpaceTypes"/>
+        <method signature="Mod_2_SpaceTypes.verify_serachField_withSpaceName_TC_211()[pri:12, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" name="verify_serachField_withSpaceName_TC_211" class="com.marina.tests.Mod_2_SpaceTypes"/>
+      </group> <!-- sanity -->
+>>>>>>> refs/heads/Talha
     </groups>
+<<<<<<< HEAD
     <test name="test" duration-ms="418572" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:40:27 PKT">
       <class name="com.marina.tests.Mod_6_BoatGroup">
         <test-method status="PASS" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="loadConfig" is-config="true" duration-ms="245" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:33:28 PKT">
+=======
+    <test started-at="2023-11-07T06:30:38 PST" name="test" finished-at="2023-11-07T06:52:58 PST" duration-ms="1339622">
+      <class name="com.marina.tests.Mod_1_login">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_1_login@1e04fa0a]" started-at="2023-11-07T06:30:38 PST" name="loadConfig" finished-at="2023-11-07T06:30:38 PST" duration-ms="497" status="PASS">
+>>>>>>> refs/heads/Talha
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
+<<<<<<< HEAD
         <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="30291" started-at="2023-11-07T10:33:28 PKT" finished-at="2023-11-07T10:33:58 PKT">
+=======
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_1_login@1e04fa0a]" started-at="2023-11-07T06:30:38 PST" name="beforeTest" finished-at="2023-11-07T06:31:20 PST" duration-ms="41769" status="PASS">
+>>>>>>> refs/heads/Talha
           <reporter-output>
           </reporter-output>
+<<<<<<< HEAD
         </test-method> <!-- beforeMethod -->
         <test-method status="PASS" signature="verifyBoatGroupPageOpens_TC_1001()[pri:1, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="verifyBoatGroupPageOpens_TC_1001" duration-ms="80" started-at="2023-11-07T10:33:58 PKT" description="Check Boat Group Page Gets Open" finished-at="2023-11-07T10:33:58 PKT">
+=======
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verifyLogin_Tc_001()[pri:1, instance:com.marina.tests.Mod_1_login@1e04fa0a]" started-at="2023-11-07T06:31:20 PST" name="verifyLogin_Tc_001" finished-at="2023-11-07T06:31:31 PST" duration-ms="11020" status="PASS">
+>>>>>>> refs/heads/Talha
           <reporter-output>
           </reporter-output>
+<<<<<<< HEAD
         </test-method> <!-- verifyBoatGroupPageOpens_TC_1001 -->
         <test-method status="PASS" signature="afterMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterMethod" is-config="true" duration-ms="2353" started-at="2023-11-07T10:33:58 PKT" finished-at="2023-11-07T10:34:01 PKT">
+=======
+        </test-method> <!-- verifyLogin_Tc_001 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_1_login@1e04fa0a]" started-at="2023-11-07T06:31:31 PST" name="afterTest" finished-at="2023-11-07T06:31:45 PST" duration-ms="13623" status="PASS">
+>>>>>>> refs/heads/Talha
           <reporter-output>
           </reporter-output>
+<<<<<<< HEAD
         </test-method> <!-- afterMethod -->
         <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="beforeMethod" is-config="true" duration-ms="29166" started-at="2023-11-07T10:34:01 PKT" finished-at="2023-11-07T10:34:30 PKT">
           <reporter-output>
@@ -187,10 +255,171 @@ at java.lang.Thread.run(Thread.java:748)
           </reporter-output>
         </test-method> <!-- afterMethod -->
         <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_6_BoatGroup@4a87761d]" name="afterSuite" is-config="true" duration-ms="465" started-at="2023-11-07T10:40:27 PKT" finished-at="2023-11-07T10:40:27 PKT">
+=======
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_1_login@1e04fa0a]" started-at="2023-11-07T06:52:58 PST" name="afterSuite" finished-at="2023-11-07T06:52:59 PST" duration-ms="677" status="PASS">
+>>>>>>> refs/heads/Talha
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
+<<<<<<< HEAD
       </class> <!-- com.marina.tests.Mod_6_BoatGroup -->
+=======
+      </class> <!-- com.marina.tests.Mod_1_login -->
+      <class name="com.marina.tests.Mod_2_SpaceTypes">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:30:38 PST" name="beforeTest" finished-at="2023-11-07T06:31:38 PST" duration-ms="59157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verifySpacePage_Tc_201()[pri:2, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:31:38 PST" name="verifySpacePage_Tc_201" description=" Clicking add space type button, add new space type window should appear TC 201" finished-at="2023-11-07T06:31:38 PST" duration-ms="75" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySpacePage_Tc_201 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:31:38 PST" name="afterTest" finished-at="2023-11-07T06:31:48 PST" duration-ms="10556" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:31:48 PST" name="beforeTest" finished-at="2023-11-07T06:32:34 PST" duration-ms="45951" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verifyPopupAddSpace_TC_202()[pri:3, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:32:34 PST" name="verifyPopupAddSpace_TC_202" description=" Clicking add space type button, add new space type window should appear TC 202" finished-at="2023-11-07T06:32:38 PST" duration-ms="3347" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPopupAddSpace_TC_202 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:32:38 PST" name="afterTest" finished-at="2023-11-07T06:32:47 PST" duration-ms="9159" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:32:47 PST" name="beforeTest" finished-at="2023-11-07T06:33:17 PST" duration-ms="30035" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="multipleUsersWithMutlipleSelections_TC_203()[pri:4, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:33:17 PST" name="multipleUsersWithMutlipleSelections_TC_203" description=" TC_203 mutli spaces added with different options TC_203" finished-at="2023-11-07T06:38:38 PST" duration-ms="321330" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- multipleUsersWithMutlipleSelections_TC_203 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:38:38 PST" name="afterTest" finished-at="2023-11-07T06:38:48 PST" duration-ms="10239" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:38:48 PST" name="beforeTest" finished-at="2023-11-07T06:39:31 PST" duration-ms="43060" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="addSpace_skippingFileds_TC_204()[pri:5, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:39:31 PST" name="addSpace_skippingFileds_TC_204" description="verify skipping fields of add space TC_204" finished-at="2023-11-07T06:39:49 PST" duration-ms="17748" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addSpace_skippingFileds_TC_204 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:39:49 PST" name="afterTest" finished-at="2023-11-07T06:40:00 PST" duration-ms="10626" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:40:00 PST" name="beforeTest" finished-at="2023-11-07T06:40:32 PST" duration-ms="31790" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verifySpaceData_fromTableData_TC_205()[pri:6, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:40:32 PST" name="verifySpaceData_fromTableData_TC_205" description="verify after insert data space record match with table record TC_205" finished-at="2023-11-07T06:42:10 PST" duration-ms="98329" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySpaceData_fromTableData_TC_205 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:42:10 PST" name="afterTest" finished-at="2023-11-07T06:42:25 PST" duration-ms="15458" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:42:25 PST" name="beforeTest" finished-at="2023-11-07T06:42:53 PST" duration-ms="27725" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verifySpaceData_afterEdit_TC_208()[pri:9, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:42:53 PST" name="verifySpaceData_afterEdit_TC_208" description="verify table data after edit space TC_208" finished-at="2023-11-07T06:44:58 PST" duration-ms="125321" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySpaceData_afterEdit_TC_208 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:44:58 PST" name="afterTest" finished-at="2023-11-07T06:45:13 PST" duration-ms="14290" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:45:13 PST" name="beforeTest" finished-at="2023-11-07T06:45:44 PST" duration-ms="31293" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="exportNewAddSpace_verifyCompleteRecords_TC_209()[pri:10, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:45:44 PST" name="exportNewAddSpace_verifyCompleteRecords_TC_209" description="verify the new space type to excel sheet and check the complete records export TC_209" finished-at="2023-11-07T06:45:48 PST" duration-ms="4112" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- exportNewAddSpace_verifyCompleteRecords_TC_209 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:45:48 PST" name="afterTest" finished-at="2023-11-07T06:46:09 PST" duration-ms="20903" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:46:09 PST" name="beforeTest" finished-at="2023-11-07T06:46:43 PST" duration-ms="33883" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verify_serachField_withSpaceName_TC_211()[pri:12, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:46:43 PST" name="verify_serachField_withSpaceName_TC_211" description="Search the added space from search field TC_211" finished-at="2023-11-07T06:48:23 PST" duration-ms="100086" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_serachField_withSpaceName_TC_211 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:48:23 PST" name="afterTest" finished-at="2023-11-07T06:48:32 PST" duration-ms="9281" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:48:32 PST" name="beforeTest" finished-at="2023-11-07T06:49:16 PST" duration-ms="43568" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="verifyDeleteSpace_TC_212()[pri:13, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:49:16 PST" name="verifyDeleteSpace_TC_212" description="verify after delete space from space table TC_212" finished-at="2023-11-07T06:50:41 PST" duration-ms="85017" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteSpace_TC_212 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:50:41 PST" name="afterTest" finished-at="2023-11-07T06:50:49 PST" duration-ms="8122" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:50:49 PST" name="beforeTest" finished-at="2023-11-07T06:51:21 PST" duration-ms="31550" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="add_Spaces_Single_And_Carparking_Options_TC_213()[pri:14, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:51:21 PST" name="add_Spaces_Single_And_Carparking_Options_TC_213" finished-at="2023-11-07T06:52:49 PST" duration-ms="88472" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [Test_tbt_001] but found [null]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [Test_tbt_001] but found [null]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.failNotEquals(Assert.java:969)
+at org.testng.Assert.assertEqualsImpl(Assert.java:131)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:575)
+at org.testng.Assert.assertEquals(Assert.java:585)
+at com.marina.tests.Mod_2_SpaceTypes.add_Spaces_Single_And_Carparking_Options_TC_213(Mod_2_SpaceTypes.java:204)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- add_Spaces_Single_And_Carparking_Options_TC_213 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_2_SpaceTypes@1af2d44a]" started-at="2023-11-07T06:52:49 PST" name="afterTest" finished-at="2023-11-07T06:52:58 PST" duration-ms="8716" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
+>>>>>>> refs/heads/Talha
     </test> <!-- test -->
   </suite> <!-- Suite -->
 </testng-results>

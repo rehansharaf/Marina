@@ -14,9 +14,9 @@ import com.marina.base.TestBase;
 public class HomePage {
 
 	WebDriver driver;
-	Action action = new Action();
-
-	@FindBy(how = How.XPATH, using = "//span[text()='Denham Bay Marina']")
+	Action action = new Action();	
+	
+	@FindBy(how = How.XPATH, using = "//span[text()='DockSpace Test']")
 	WebElement dashboardText;
 
 	@FindBy(how = How.XPATH, using = "//div[text()='Spaces']")
@@ -49,15 +49,26 @@ public class HomePage {
 	public String verifyHomePageHeading() {
 
 		action.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
-		// utils.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
 		return dashboardText.getText();
 	}
 
 	public SpaceTypesPage spaces_dropdown_SpaceTypes() {
 
+		try {
 		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
 		action.click(driver, spacesdropdown);
+		action.explicitWait(driver, Spacetypes, Duration.ofSeconds(10));
+		}
+		catch (Exception e) {
+			
+			action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+			action.click(driver, spacesdropdown);
+			
+		}
+		
+		
 		action.click(driver, Spacetypes);
+	
 		return new SpaceTypesPage(driver);
 
 	}

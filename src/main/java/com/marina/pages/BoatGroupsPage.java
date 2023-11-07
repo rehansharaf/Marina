@@ -680,4 +680,5 @@ public class BoatGroupsPage {
 		return pageHeading.getText().trim();
 		
 	}
+
 }

@@ -32,6 +32,7 @@ public class BrowserFactory {
 		if (browserName.equalsIgnoreCase("Chrome")) {
 			WebDriverManager.chromedriver().clearDriverCache().setup();
 			WebDriverManager.chromedriver().setup();
+		
 			
 			HashMap<String,Object> chromePrefs = new HashMap<String, Object>(); 
 	    	chromePrefs.put("plugins.always_open_pdf_externally", true);
