@@ -1,6 +1,5 @@
 package com.marina.tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -8,7 +7,6 @@ import org.testng.annotations.Test;
 
 import com.marina.base.BrowserFactory;
 import com.marina.base.TestBase;
-import com.marina.dataproviders.DataProviders;
 import com.marina.pages.HomePage;
 import com.marina.pages.LoginPage;
 import com.marina.utils.Log;
