@@ -46,7 +46,7 @@ public class Mod_3_AllSpaces extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 1)
+	@Test(groups = "regression,sanity,smoke", priority = 1, description = "Verify All Space Page")
 	public void verifyAllSpacePage_TC_401() {
 		
 		Log.startTestCase("Verify All Space Page");
@@ -56,7 +56,8 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 2, dependsOnMethods = "verifyAllSpacePage_TC_401")
+	@Test(groups = "regression,sanity,smoke", priority = 2, dependsOnMethods = "verifyAllSpacePage_TC_401",
+			description = "Create New Space With Mandatory Fields")
 	public void createNewSpaceMandatoryFields_TC_402() throws InterruptedException {
 
 		Log.startTestCase("Create New Space With Mandatory Fields");
@@ -72,7 +73,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 3)
+	@Test(groups = "regression,sanity,smoke", priority = 3, description = "Verify Additional Form Fields Appears For Unavailibility Of Space")
 	public void verifyAdditionalFieldsForUnAvailibility_TC_403() {
 		
 		Log.startTestCase("Verify Additional Form Fields Appears For Unavailibility Of Space");
@@ -84,7 +85,7 @@ public class Mod_3_AllSpaces extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 4)
+	@Test(groups = "regression,sanity,smoke", priority = 4, description = "Create New Space With All Fields")
 	public void createNewSpaceAllFields_TC_404() throws InterruptedException {
 
 		Log.startTestCase("Create New Space With All Fields");	
@@ -100,7 +101,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 5, dependsOnMethods = {"createNewSpaceMandatoryFields_TC_402","createNewSpaceAllFields_TC_404"})
+	@Test(groups = "regression,sanity,smoke", priority = 5, dependsOnMethods = {"createNewSpaceMandatoryFields_TC_402","createNewSpaceAllFields_TC_404"},
+			description = "Verify Data Of Created Spaces In Data Table Appeaing Under All Spaces Page")
 	public void verifySearchFeatureInDataTable_TC_405() {
 		
 		Log.startTestCase("Verify Data Of Created Spaces In Data Table Appeaing Under All Spaces Page");
@@ -118,7 +120,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"createNewSpaceMandatoryFields_TC_402","createNewSpaceAllFields_TC_404"})
+	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"createNewSpaceMandatoryFields_TC_402","createNewSpaceAllFields_TC_404"},
+			description = "Verify Data Of Specific Space From View Section")
 	public void verifySpecificSpaceViewSection_TC_406() {
 		
 		Log.startTestCase("Verify Data Of Specific Space From View Section");
@@ -139,7 +142,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = "createNewSpaceAllFields_TC_404")
+	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = "createNewSpaceAllFields_TC_404",
+			description = "Edit The Existing Space Data & Verify Data On DataTable & View Section")
 	public void editRecordVerifyData_TC_407() throws InterruptedException {
 		
 		Log.startTestCase("Edit The Existing Space Data & Verify Data On DataTable & View Section");
@@ -173,7 +177,8 @@ public class Mod_3_AllSpaces extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 8, dependsOnMethods = "createNewSpaceAllFields_TC_404")
+	@Test(groups = "regression,sanity,smoke", priority = 8, dependsOnMethods = "createNewSpaceAllFields_TC_404",
+			description = "Add New Note From View Section Of Space")
 	public void addNoteFromViewSection_TC_408() throws InterruptedException {
 		
 		Log.startTestCase("Add New Note From View Section Of Space");
@@ -187,7 +192,8 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.endTestCase("Add New Note From View Section Of Space");
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 9, dependsOnMethods = "createNewSpaceAllFields_TC_404")
+	@Test(groups = "regression,sanity,smoke", priority = 9, dependsOnMethods = "createNewSpaceAllFields_TC_404",
+			description = "Add Must Read New Note From View Section Of Space")
 	public void addNoteFromViewSectionMustRead_TC_409() throws InterruptedException {
 		
 		Log.startTestCase("Add Must Read New Note From View Section Of Space");
@@ -203,7 +209,8 @@ public class Mod_3_AllSpaces extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 10, dependsOnMethods = "createNewSpaceAllFields_TC_404")
+	@Test(groups = "regression,sanity,smoke", priority = 10, dependsOnMethods = "createNewSpaceAllFields_TC_404",
+			description = "Click Add Note Button Under View Space Page Without Entering Data")
 	public void clickAddNoteBtnWithoutNotes_TC_410() {
 		
 		Log.startTestCase("Click Add Note Button Under View Space Page Without Entering Data");
@@ -213,7 +220,8 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.endTestCase("Click Add Note Button Under View Space Page Without Entering Data");
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 11, dependsOnMethods = {"addNoteFromViewSection_TC_408","addNoteFromViewSectionMustRead_TC_409"})
+	@Test(groups = "regression,sanity,smoke", priority = 11, dependsOnMethods = {"addNoteFromViewSection_TC_408","addNoteFromViewSectionMustRead_TC_409"},
+			description = "Verify Note Is Getting Deleted From View Space Page")
 	public void deleteNoteFromViewSpacePage_TC_411() throws InterruptedException {
 		
 		Log.startTestCase("Verify Note Is Getting Deleted From View Space Page");
@@ -236,7 +244,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 12, dependsOnMethods = "editRecordVerifyData_TC_407")
+	@Test(groups = "regression,sanity,smoke", priority = 12, dependsOnMethods = "editRecordVerifyData_TC_407",
+			description = "Verify Note Is Getting Deleted From Edit Space Page")
 	public void deleteNoteFromEditSpace_TC_412() throws InterruptedException {
 		
 		Log.startTestCase("Verify Note Is Getting Deleted From Edit Space Page");
@@ -253,7 +262,7 @@ public class Mod_3_AllSpaces extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 13)
+	@Test(groups = "regression,sanity,smoke", priority = 13, description = "Import Spaces In Bulk")
 	public void importSpacesBulk_TC_413() {
 
 		//========================== Need to Add the Space Type here =====================================================
@@ -310,7 +319,7 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	} 
 	
-	@Test(groups = "regression,sanity,smoke", priority = 14)
+	@Test(groups = "regression,sanity,smoke", priority = 14, description = "Export Space Data To Excel Sheet")
 	public void exportSpaceExcel_TC_414() {
 		
 		Log.startTestCase("Export Space Data To Excel Sheet");
@@ -319,7 +328,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.endTestCase("Export Space Data To Excel Sheet");
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 15)
+	@Test(groups = "regression,sanity,smoke", priority = 15, description = "Export Space Data To Google Sheet")
 	public void exportSpaceGoogleSheet_TC_415() throws GeneralSecurityException, IOException, InterruptedException {
 		
 		Log.startTestCase("Export Space Data To Google Sheet");
@@ -329,7 +338,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 16, dependsOnMethods = "importSpacesBulk_TC_413")
+	@Test(groups = "regression,sanity,smoke", priority = 16, dependsOnMethods = "importSpacesBulk_TC_413",
+			description = "Deleting Space Type, Related Spaces Should Also Be Deleted")
 	public void deleteSpaceTypeSpacesDeleted_TC_416() {
 		
 		Log.startTestCase("Deleting Space Type, Related Spaces Should Also Be Deleted");

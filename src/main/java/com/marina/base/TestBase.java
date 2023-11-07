@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,6 +32,7 @@ public class TestBase {
 	@BeforeSuite
 	public void loadConfig() throws IOException {
 
+		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"screenshots"));
 		ExtentManager.setExtent();
 		DOMConfigurator.configure("log4j.xml");
 

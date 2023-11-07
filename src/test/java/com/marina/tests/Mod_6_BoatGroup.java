@@ -32,7 +32,7 @@ public class Mod_6_BoatGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 1)
+	@Test(groups = "regression,sanity,smoke", priority = 1, description ="Check Boat Group Page Gets Open")
 	public void verifyBoatGroupPageOpens_TC_1001() {
 		
 		Log.startTestCase("Check Boat Group Page Gets Open");
@@ -41,7 +41,8 @@ public class Mod_6_BoatGroup extends TestBase {
 		Log.endTestCase("Check Boat Group Page Gets Open");
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 2, dependsOnMethods = "verifyBoatGroupPageOpens_TC_1001")
+	@Test(groups = "regression,sanity,smoke", priority = 2, dependsOnMethods = "verifyBoatGroupPageOpens_TC_1001", 
+			description ="Add Boat Group With Mandatory Fields")
 	public void addBoatGroupMandatoryFields_TC_1002() throws InterruptedException {
 		
 		Log.startTestCase("Add Boat Group With Mandatory Fields");
@@ -51,7 +52,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 3, dependsOnMethods = "addBoatGroupMandatoryFields_TC_1002")
+	@Test(groups = "regression,sanity,smoke", priority = 3, dependsOnMethods = "addBoatGroupMandatoryFields_TC_1002",
+			description ="Add Boat Group With All Fields")
 	public void addBoatGroupAllFields_TC_1003() throws InterruptedException {
 		
 		Log.startTestCase("Add Boat Group With All Fields");
@@ -70,7 +72,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 4, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"})
+	@Test(groups = "regression,sanity,smoke", priority = 4, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"} , 
+			description ="Search Specific Boat Group")
 	public void searchBoatGroup_TC_1004() throws InterruptedException {
 		
 		Log.startTestCase("Search Specific Boat Group");
@@ -80,7 +83,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 5, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"})
+	@Test(groups = "regression,sanity,smoke", priority = 5, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"},
+			description ="Verify All The Saved Information Of Boat Group On View Page")
 	public void viewSavedDataBoatGroup_TC_1005() throws InterruptedException {
 
 		
@@ -103,7 +107,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"})
+	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"},
+			description ="Add New Boat From View Page Of Boat Group")
 	public void viewPageNewBoatAdd_TC_1006() throws InterruptedException {
 		
 		Log.startTestCase("Add New Boat From View Page Of Boat Group");
@@ -115,7 +120,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"})
+	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"},
+			description ="Add New Boat From Main Boat Group Page")
 	public void addBoatMainPage_TC_1007() throws InterruptedException {
 		
 		Log.startTestCase("Add New Boat From Main Boat Group Page");
@@ -125,7 +131,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 8, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"})
+	@Test(groups = "regression,sanity,smoke", priority = 8, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"},
+			description ="Edit Specific Boat Group & Verify Its Data")
 	public void editBoatGroupVerifyData_TC_1008() throws InterruptedException {
 		
 		Log.startTestCase("Edit Specific Boat Group & Verify Its Data");
@@ -146,7 +153,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	}
 
 	
-	@Test(groups = "regression,sanity,smoke", priority = 9, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"})
+	@Test(groups = "regression,sanity,smoke", priority = 9, dependsOnMethods = {"addBoatGroupAllFields_TC_1003"},
+			description ="Check If Multiple Groups Generating While Clicking Add Button Multiple Times")
 	public void generatingMultipleAddRequest_TC_1009() throws InterruptedException {
 		
 		Log.startTestCase("Check If Multiple Groups Generating While Clicking Add Button Multiple Times");
@@ -164,7 +172,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 10, dependsOnMethods = {"editBoatGroupVerifyData_TC_1008"})
+	@Test(groups = "regression,sanity,smoke", priority = 10, dependsOnMethods = {"editBoatGroupVerifyData_TC_1008"},
+			description ="Check & Verify The Copy Functionality Of Boat Group")
 	public void verifyCopyFunctionBoatGroup_TC_1010() throws InterruptedException {
 		
 		Log.startTestCase("Check & Verify The Copy Functionality Of Boat Group");
@@ -176,7 +185,8 @@ public class Mod_6_BoatGroup extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 11, dependsOnMethods = "verifyCopyFunctionBoatGroup_TC_1010")
+	@Test(groups = "regression,sanity,smoke", priority = 11, dependsOnMethods = "verifyCopyFunctionBoatGroup_TC_1010",
+			description ="Check Delete Boat Group Functionality")
 	public void deleteBoatGroups_TC_1011() throws InterruptedException {
 		
 		Log.startTestCase("Check Delete Boat Group Functionality");

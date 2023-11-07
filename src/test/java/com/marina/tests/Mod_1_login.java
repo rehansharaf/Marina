@@ -25,7 +25,7 @@ public class Mod_1_login extends TestBase {
 
 	}
 
-	@Test(groups = "regression,sanity,smoke", priority = 1)
+	@Test(groups = "regression,sanity,smoke", priority = 1, description = "Verify Successful Login Only")
 	public void verifyLogin_Tc_001() {
 
 		Log.startTestCase("Verify Successful Login Only");
@@ -45,7 +45,7 @@ public class Mod_1_login extends TestBase {
 	@AfterMethod
 	public void afterTest() {
 
-		driver.get("https://staging.appedology.pk/marina/login");
+		driver.get(prop.getProperty("logout_url"));
 		BrowserFactory.getInstance().removeDriver();
 
 	}

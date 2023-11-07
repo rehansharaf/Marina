@@ -37,7 +37,7 @@ public class Mod_4_Calendar extends TestBase {
 	
 	
 	
-	@Test(groups = {"regression,sanity,smoke"}, priority = 1)
+	@Test(groups = {"regression,sanity,smoke"}, priority = 1, description = "Check Newly Added Space Should Be Available In Calendar")
 	public void addedSpaceInCalendar_TC_601() throws InterruptedException {
 		
 		Log.startTestCase("Check Newly Added Space Should Be Available In Calendar");
@@ -64,7 +64,8 @@ public class Mod_4_Calendar extends TestBase {
 	}
 	
 	
-	@Test(groups = {"regression,sanity,smoke"}, priority = 2, dependsOnMethods = "addedSpaceInCalendar_TC_601")
+	@Test(groups = {"regression,sanity,smoke"}, priority = 2, dependsOnMethods = "addedSpaceInCalendar_TC_601",
+			description = "Verify Space Data When Hovering To Specific Space On Calendar Page")
 	public void verifySpaceDataOnHover_TC_602() throws InterruptedException {
 		
 		Log.startTestCase("Verify Space Data When Hovering To Specific Space On Calendar Page");
@@ -93,7 +94,8 @@ public class Mod_4_Calendar extends TestBase {
 	
 	
 //	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class)
-	@Test(groups = {"regression,sanity,smoke"}, priority = 3, dependsOnMethods = "addedSpaceInCalendar_TC_601")
+	@Test(groups = {"regression,sanity,smoke"}, priority = 3, dependsOnMethods = "addedSpaceInCalendar_TC_601",
+			description = "Verify All the Slip Details On Slip Detail Section")
 	public void verifyDetailsSlipDetailPage_TC_603() throws InterruptedException {
 		
 		Log.startTestCase("Verify All the Slip Details On Slip Detail Section");
@@ -125,7 +127,8 @@ public class Mod_4_Calendar extends TestBase {
 		
 	} 
 	
-	@Test(groups = {"regression,sanity,smoke"}, priority = 4, dependsOnMethods = "addedSpaceInCalendar_TC_601")
+	@Test(groups = {"regression,sanity,smoke"}, priority = 4, dependsOnMethods = "addedSpaceInCalendar_TC_601",
+			description = "Verify ReservationsPage Should Not Be Set For Unavailable Dates")
 	public void reservNotUnavailable_TC_604() throws InterruptedException {
 		
 		Log.startTestCase("Verify ReservationsPage Should Not Be Set For Unavailable Dates");

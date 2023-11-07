@@ -30,7 +30,7 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 1)
+	@Test(groups = "regression,sanity,smoke", priority = 1, description = "Verify Space Group Page Gets Open")
 	public void verifySpaceGroupPage_TC_801() {
 		
 		Log.startTestCase("Verify Space Group Page Gets Open");
@@ -40,7 +40,8 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 
 	
-	@Test(groups = "regression,sanity,smoke", priority = 2, dependsOnMethods = "verifySpaceGroupPage_TC_801")
+	@Test(groups = "regression,sanity,smoke", priority = 2, dependsOnMethods = "verifySpaceGroupPage_TC_801",
+			description = "Check Only Those Spaces Should Be Available In List That Have Reservation Available")
 	public void checkReservSpacesAvail_TC_802() throws InterruptedException {
 		
 		Log.startTestCase("Check Only Those Spaces Should Be Available In List That Have Reservation Available");
@@ -55,7 +56,8 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 3, dependsOnMethods = "verifySpaceGroupPage_TC_801")
+	@Test(groups = "regression,sanity,smoke", priority = 3, dependsOnMethods = "verifySpaceGroupPage_TC_801",
+			description = "Verify Creating Space Group By Adding Single Space")
 	public void addSpaceGroupSingleSpace_TC_803() throws InterruptedException {
 		
 		Log.startTestCase("Verify Creating Space Group By Adding Single Space");
@@ -67,7 +69,8 @@ public class Mod_5_SpaceGroup extends TestBase {
 		
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 4, dependsOnMethods = "addSpaceGroupSingleSpace_TC_803")
+	@Test(groups = "regression,sanity,smoke", priority = 4, dependsOnMethods = "addSpaceGroupSingleSpace_TC_803",
+			description = "Verify Creating Space Group By Adding Multiple Spaces")
 	public void addSpaceGroupMultipleSpace_TC_804() throws InterruptedException {
 		
 		Log.startTestCase("Verify Creating Space Group By Adding Multiple Spaces");
@@ -79,7 +82,7 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 5)
+	@Test(groups = "regression,sanity,smoke", priority = 5, description = "Search Slip By Name Or Type Through Add Space Group Section")
 	public void searchSlipByNameType_TC_805() throws InterruptedException {
 		
 		Log.startTestCase("Search Slip By Name Or Type Through Add Space Group Section");
@@ -91,7 +94,8 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"addSpaceGroupSingleSpace_TC_803","addSpaceGroupMultipleSpace_TC_804"})
+	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"addSpaceGroupSingleSpace_TC_803","addSpaceGroupMultipleSpace_TC_804"},
+			description = "Edit Already Existing Space Group & Verify Data")
 	public void editAlreadyExistingGroup_TC_806() throws InterruptedException {
 		
 		Log.startTestCase("Edit Already Existing Space Group & Verify Data");
@@ -108,7 +112,8 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = {"addSpaceGroupSingleSpace_TC_803"})
+	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = {"addSpaceGroupSingleSpace_TC_803"},
+			description = "Create Space Group With Same Name")
 	public void createGroupSameName_TC_807() throws InterruptedException {
 		
 		Log.startTestCase("Create Space Group With Same Name");		
@@ -118,12 +123,17 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 8, dependsOnMethods = "addSpaceGroupSingleSpace_TC_803")
+	@Test(groups = "regression,sanity,smoke", priority = 8, dependsOnMethods = "addSpaceGroupSingleSpace_TC_803",
+			description = "Deleting Existing Space Groups")
 	public void deleteExistingSpaceGroup_TC_808() throws InterruptedException {
 	
 		Log.startTestCase("Deleting Existing Space Groups");	
 		boolean flag = sg.deletingSpaceGroup("TestGroup1");
-		Assert.assertTrue(flag);
+	    boolean flag2 = sg.deletingSpaceGroup("TestGroup2");
+	    if(flag == true && flag2 == true)
+	    	Assert.assertTrue(true);
+	    else
+	    	Assert.assertTrue(false);
 		Log.endTestCase("Deleting Existing Space Groups");
 		
 	}

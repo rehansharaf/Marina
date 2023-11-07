@@ -33,7 +33,7 @@ public class ExtentManager {
 		
 		//extent.setSystemInfo("HostName", "Marina");
 		extent.setSystemInfo("ProjectName", "Marina");
-		extent.setSystemInfo("Tester", "Rehan");
+		extent.setSystemInfo("Tester", "Automation Team");
 		extent.setSystemInfo("OS", "Windows Server");
 		extent.setSystemInfo("Browser", "Chrome");
 	}

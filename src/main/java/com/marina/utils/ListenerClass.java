@@ -32,6 +32,7 @@ public class ListenerClass extends ExtentManager implements ITestListener {
 			
 			Log.info("====================================="+result.getName()+" TEST PASSED =========================================");
 			//test.log(Status.PASS, "Pass Test case is: " + result.getName());
+			extenttest.get().info(result.getMethod().getDescription());
 			extenttest.get().log(Status.PASS, "Pass Test case is: " + result.getName());
 
 			
@@ -44,6 +45,7 @@ public class ListenerClass extends ExtentManager implements ITestListener {
 			
 			Log.error("====================================="+result.getName()+" TEST FAILED =========================================");
 			
+			extenttest.get().info(result.getMethod().getDescription());
 			//test.log(Status.FAIL,MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
 			extenttest.get().log(Status.FAIL,MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
 
@@ -65,6 +67,7 @@ public class ListenerClass extends ExtentManager implements ITestListener {
 			
 			Log.warn("====================================="+result.getName()+" TEST SKIPPED =========================================");
 			//test.log(Status.SKIP, "Skipped Test case is: " + result.getName());
+			extenttest.get().info(result.getMethod().getDescription());
 			extenttest.get().log(Status.SKIP, "Skipped Test case is: " + result.getName());
 
 		}

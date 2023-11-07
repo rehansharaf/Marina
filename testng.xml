@@ -7,6 +7,7 @@
   <test name="test">
 	  <parameter name="browser" value="chrome" />
     <classes>
+   		<!-- <class name="com.marina.tests.Mod_5_SpaceGroup" /> -->
    		<class name="com.marina.tests.Mod_6_BoatGroup"/>
    	
    
