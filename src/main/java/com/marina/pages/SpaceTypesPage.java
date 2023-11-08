@@ -113,6 +113,7 @@ public class SpaceTypesPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
 
 	public String space_type_page_verify() {
 

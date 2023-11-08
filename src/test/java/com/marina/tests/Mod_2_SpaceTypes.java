@@ -53,10 +53,10 @@ public class Mod_2_SpaceTypes extends TestBase {
 	}
 
 	@Test(groups = { "regression", "smoke",
-			"sanity" }, priority = 2, description = " Clicking add space type button, add new space type window should appear TC 201")
+			"sanity" }, priority = 2, description = "Clicking space type link should open space type page TC_201")
 	public void verifySpacePage_Tc_201() {
 
-		Log.startTestCase("Clicking space type link should open space type page TC_201 ");
+		Log.startTestCase("Clicking space type link should open space type page TC_201");
 		Assert.assertEquals(stp.space_type_page_verify(), "Space Types");
 		Log.endTestCase("Clicking space type link should open space type page TC_201");
 

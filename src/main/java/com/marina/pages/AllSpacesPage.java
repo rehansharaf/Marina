@@ -28,7 +28,7 @@ public class AllSpacesPage {
 	@FindBy(how = How.XPATH, using = "//input[@class='form-control form-control-sm']")
 	WebElement searchField;
 	
-	@FindBy(how = How.XPATH, using = "//a[@href = 'https://staging.appedology.pk/marina/spaces/create']")
+	@FindBy(how = How.XPATH, using = "//a[text()[contains(., 'Add Space')]]")
 	WebElement addSpaceBtn;
 	
 	@FindBy(how = How.XPATH, using = "//a[@class='btn btn-primary btn-key edit-btn']")
@@ -52,7 +52,7 @@ public class AllSpacesPage {
 	@FindBy(how = How.XPATH, using = "//i[@title='Must view note']")
 	WebElement mustViewIndicator;
 	
-	@FindBy(how = How.XPATH, using = "//a[@href='https://staging.appedology.pk/marina/spaces/bulk']")
+	@FindBy(how = How.XPATH, using = "//a[text()[contains(., 'Import Spaces')]]")
 	WebElement import_space;
 	
 	@FindBy(how = How.XPATH, using = "//button[@class='btn btn-success export']")

@@ -15,6 +15,7 @@ import com.marina.pages.AllSpacesPage;
 import com.marina.pages.HomePage;
 import com.marina.pages.ImportSpacesPage;
 import com.marina.pages.LoginPage;
+import com.marina.pages.SpaceTypesAddTypesPage;
 import com.marina.pages.SpaceTypesPage;
 import com.marina.pages.UpdateSpaceItemPage;
 import com.marina.utils.Log;
@@ -25,6 +26,7 @@ public class Mod_3_AllSpaces extends TestBase {
 	LoginPage lp;
 	HomePage hp;
 	SpaceTypesPage spacetype;
+	SpaceTypesAddTypesPage spaceTypeAdd;
 	AllSpacesPage allspace;
 	AddNewSpaceItemPage add_new_space;
 	UpdateSpaceItemPage updateSpaceItem;
@@ -60,11 +62,11 @@ public class Mod_3_AllSpaces extends TestBase {
 
 		Log.startTestCase("Create New Space With Mandatory Fields");
 		add_new_space = allspace.clickAddSpaceBtn();
-		allspace = add_new_space.createNewSpaceMandatoryFields("Automation Type", "SL-Test", "Yes", "10", "20", 
-				"30", "5", "Yes", "Yes", "M-0051", "DS-03","1");
+		allspace = add_new_space.createNewSpaceMandatoryFields("Automation Type", "SL-TestSpace", "Yes", "10", "20", 
+				"30", "5", "Yes", "Yes", "M-100", "DS-03","1");
 		
 		String[] actualData = allspace.readFirstRecordDataTable("");
-		String[] expectedData = {"SL-Test","Automation Type","Yes","M-0051","M-0051: -"};
+		String[] expectedData = {"SL-TestSpace","Automation Type","Yes","M-100","M-100: -"};
 		Assert.assertEquals(actualData, expectedData);
 		Log.endTestCase("Create New Space With Mandatory Fields");
 
@@ -89,11 +91,11 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.startTestCase("Create New Space With All Fields");	
 		String imagepath = System.getProperty("user.dir") + "\\src\\test\\resources\\testimages\\space_image.png";
 		add_new_space = allspace.clickAddSpaceBtn();
-		allspace = add_new_space.createSpaceWithAllFields("Automation Type", "SL-Test2", "No", "10", "20", 
-				"30", "5", "Yes", "Yes", "M-027", "DS-03","1",imagepath,"This is test note");
+		allspace = add_new_space.createSpaceWithAllFields("Automation Type", "SL-Test2Space", "No", "10", "20", 
+				"30", "5", "Yes", "Yes", "M-101", "DS-03","1",imagepath,"This is test note");
 
 		String[] actualData = allspace.readFirstRecordDataTable("");
-		String[] expectedData = {"SL-Test2","Automation Type","No","M-027","M-027: -"};
+		String[] expectedData = {"SL-Test2Space","Automation Type","No","M-101","M-101: -"};
 		Assert.assertEquals(actualData, expectedData);
 		Log.endTestCase("Create New Space With All Fields");
 
@@ -105,8 +107,8 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 		Log.startTestCase("Verify Data Of Created Spaces In Data Table Appeaing Under All Spaces Page");
 		
-		String[] allActualData = allspace.readFirstRecordDataTable("SL-Test2");
-		String[] allExpectedData = {"SL-Test2","Automation Type","No","M-027","M-027: -"};
+		String[] allActualData = allspace.readFirstRecordDataTable("SL-Test2Space");
+		String[] allExpectedData = {"SL-Test2Space","Automation Type","No","M-101","M-101: -"};
 		
 		boolean allFlag = Arrays.equals(allActualData, allExpectedData);
 		
@@ -124,10 +126,10 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 		Log.startTestCase("Verify Data Of Specific Space From View Section");
 		
-		allspace.readFirstRecordDataTable("SL-Test2");
+		allspace.readFirstRecordDataTable("SL-Test2Space");
 		String[] allactualData = allspace.verifySpaceDataViewSection("all");
-		String[] allexpectedData = {"SL-Test2","No","Due to some issue",allactualData[3],"Automation Type","1 ft","10","20","30",
-				"DS-03","Yes","Yes","5 Amps","M-027","This is test note"};
+		String[] allexpectedData = {"SL-Test2Space","No","Due to some issue",allactualData[3],"Automation Type","1 ft","10","20","30",
+				"DS-03","Yes","Yes","5 Amps","M-101","This is test note"};
 		
 		boolean allFlag = Arrays.equals(allactualData, allexpectedData);
 		
@@ -146,7 +148,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 		Log.startTestCase("Edit The Existing Space Data & Verify Data On DataTable & View Section");
 		String imagepath = System.getProperty("user.dir") + "\\src\\test\\resources\\testimages\\updated_space.png";
-		allspace.readFirstRecordDataTable("SL-Test2");
+		allspace.readFirstRecordDataTable("SL-Test2Space");
 		allspace.openSpaceViewPage();
 		updateSpaceItem = allspace.clickEditButtonViewSpace();
 		
@@ -155,12 +157,12 @@ public class Mod_3_AllSpaces extends TestBase {
 				"SL-053",imagepath, "This is second test note");
 		
 		String[] actualData = allspace.readFirstRecordDataTable("SL-Test21");
-		String[] expectedData = {"SL-Test21","Dry Sheltered","No","M-032","M-032: -"};
+		String[] expectedData = {"SL-Test21","Dry Sheltered","No","M-102","M-102: -"};
 		boolean verifyDataTable = Arrays.equals(actualData, expectedData);
 		
 		String[] editedActualData = allspace.verifySpaceDataViewSection("all");
 		String[] editedExpectedData = {"SL-Test21","No","Due to some issue",editedActualData[3],"Dry Sheltered","","20","30","40",
-				"SL-053","No","No","10 Amps","M-032","This is second test note"};
+				"SL-053","No","No","10 Amps","M-102","This is second test note"};
 		
 		
 		boolean verifyViewSection = Arrays.equals(editedActualData, editedExpectedData);
@@ -261,57 +263,71 @@ public class Mod_3_AllSpaces extends TestBase {
 	
 	
 	@Test(groups = "regression,sanity,smoke", priority = 13, description = "Import Spaces In Bulk")
-	public void importSpacesBulk_TC_413() {
+	public void importSpacesBulk_TC_413() throws InterruptedException {
 
 		//========================== Need to Add the Space Type here =====================================================
 		Log.startTestCase("Import Spaces In Bulk");
-		importSpaces = allspace.openImportSpace();
-		allspace = importSpaces.importSpacesData();
 		
+		spacetype = hp.spaces_dropdown_SpaceTypes();
+		spaceTypeAdd = spacetype.add_space_type();
+		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_01", "$/period", "Nightly", "Wet Storage");
+		String[] addedSpaceType = spacetype.get_space_data_from_table("TestSpaceType_01");
 		
-		  //Space Name, Status, Unavailability Reason, Unavailability Date, SpaceType, LinearBuffer, MaxLOA, MaxBeam, MaxDraft, 
-		  //NearestSlip,Water,Rafting, Power,Hydrometer,Note 
-		 
-		
-		boolean firstRecord, secondRecord;
-		String[] actualData1 = allspace.readFirstRecordDataTable("TestSpace3");
-		String[] expectedData1 = {"TestSpace3","TestSpaceType_01","Yes","M-027","M-027: -"};
-		boolean verifyDataTable = Arrays.equals(actualData1, expectedData1);
-		String[] actualDataView1 = allspace.verifySpaceDataViewSection("all");
-		String[] expectedDataView1 = {"TestSpace3","Yes","","","TestSpaceType_01","ft","11","31","21",
-				"","No","Yes","5 Amps","M-027","This is first bulk space"};
-		
-		boolean verifyViewSection = Arrays.equals(actualDataView1, expectedDataView1);
+		if(addedSpaceType[0].equals("TestSpaceType_01")) {
+			
+			
+			allspace = hp.spaces_dropdown_AllSpaces();
+			importSpaces = allspace.openImportSpace();
+			allspace = importSpaces.importSpacesData();
+			
+			
+			  //Space Name, Status, Unavailability Reason, Unavailability Date, SpaceType, LinearBuffer, MaxLOA, MaxBeam, MaxDraft, 
+			  //NearestSlip,Water,Rafting, Power,Hydrometer,Note 
+			 
+			
+			boolean firstRecord, secondRecord;
+			String[] actualData1 = allspace.readFirstRecordDataTable("TestSpace3");
+			String[] expectedData1 = {"TestSpace3","TestSpaceType_01","Yes","M-103","M-103: -"};
+			boolean verifyDataTable = Arrays.equals(actualData1, expectedData1);
+			String[] actualDataView1 = allspace.verifySpaceDataViewSection("all");
+			String[] expectedDataView1 = {"TestSpace3","Yes","","","TestSpaceType_01","ft","11","31","21",
+					"","No","Yes","5 Amps","M-103","This is first bulk space"};
+			
+			boolean verifyViewSection = Arrays.equals(actualDataView1, expectedDataView1);
 
-		if(verifyDataTable == true && verifyViewSection == true)
-			firstRecord = true;
-		else
-			firstRecord = false;
+			if(verifyDataTable == true && verifyViewSection == true)
+				firstRecord = true;
+			else
+				firstRecord = false;
+			
+			
+			driver.navigate().refresh();
+			
+			String[] actualData2 = allspace.readFirstRecordDataTable("TestSpace4");
+			String[] expectedData2 = {"TestSpace4","TestSpaceType_01","Yes","M-104","M-104: -"};
+			verifyDataTable = Arrays.equals(actualData2, expectedData2);
 		
-		
-		driver.navigate().refresh();
-		
-		String[] actualData2 = allspace.readFirstRecordDataTable("TestSpace4");
-		String[] expectedData2 = {"TestSpace4","TestSpaceType_01","Yes","M-049","M-049: -"};
-		verifyDataTable = Arrays.equals(actualData2, expectedData2);
-	
-		String[] actualDataView2 = allspace.verifySpaceDataViewSection("all");
-		String[] expectedDataView2 = {"TestSpace4","Yes","","","TestSpaceType_01","ft","12","32","22",
-				"","Yes","No","10 Amps","M-049","This is second bulk space"};
-		
-		
-		verifyViewSection = Arrays.equals(actualDataView2, expectedDataView2);
+			String[] actualDataView2 = allspace.verifySpaceDataViewSection("all");
+			String[] expectedDataView2 = {"TestSpace4","Yes","","","TestSpaceType_01","ft","12","32","22",
+					"","Yes","No","10 Amps","M-104","This is second bulk space"};
+			
+			
+			verifyViewSection = Arrays.equals(actualDataView2, expectedDataView2);
 
-		if(verifyDataTable == true && verifyViewSection == true)
-			secondRecord = true;
-		else
-			secondRecord = false;
+			if(verifyDataTable == true && verifyViewSection == true)
+				secondRecord = true;
+			else
+				secondRecord = false;
+			
+			
+			if(firstRecord == true && secondRecord == true)
+				Assert.assertTrue(true);
+			else
+				Assert.assertTrue(false);
+		}else 
+			Assert.assertTrue(false, "Space Type Is Not Getting Created");
 		
 		
-		if(firstRecord == true && secondRecord == true)
-			Assert.assertTrue(true);
-		else
-			Assert.assertTrue(false);
 		
 		Log.endTestCase("Import Spaces In Bulk");
 
@@ -338,14 +354,19 @@ public class Mod_3_AllSpaces extends TestBase {
 	
 	@Test(groups = "regression,sanity,smoke", priority = 16, dependsOnMethods = "importSpacesBulk_TC_413",
 			description = "Deleting Space Type, Related Spaces Should Also Be Deleted")
-	public void deleteSpaceTypeSpacesDeleted_TC_416() {
+	public void deleteSpaceTypeSpacesDeleted_TC_416() throws InterruptedException {
 		
 		Log.startTestCase("Deleting Space Type, Related Spaces Should Also Be Deleted");
 		
 		// ================ Delete SpaceType =========================
+		spacetype = hp.spaces_dropdown_SpaceTypes();
+		spacetype.delete_space("TestSpaceType_01");
+		allspace = hp.spaces_dropdown_AllSpaces();
 		
 		boolean flag1 = allspace.searchSpace("TestSpace 3");
 		boolean flag2 = allspace.searchSpace("TestSpace 4");
+		allspace.searchSpace("SL-TestSpace");
+		allspace.searchSpace("SL-Test21");
 		
 		if(flag1 == true && flag2 == true)
 			Assert.assertTrue(true);

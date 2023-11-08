@@ -45,12 +45,12 @@ public class Mod_4_Calendar extends TestBase {
 		allspace = hp.spaces_dropdown_AllSpaces();
 		add_new_space = allspace.clickAddSpaceBtn();
 		allspace = add_new_space.createNewSpaceMandatoryFields("Automation Type", "SL-Test", "Yes", "10", "20", 
-				"30", "5", "Yes", "Yes", "M-0051", "DS-03","1");
+				"30", "5", "Yes", "Yes", "M-105", "DS-03","1");
  
  		String imagepath = System.getProperty("user.dir") + "\\src\\test\\resources\\testimages\\space_image.png";
 		add_new_space = allspace.clickAddSpaceBtn();
 		allspace = add_new_space.createSpaceWithAllFields("Automation Type", "SL-Test2", "No", "10", "20", 
-				"30", "5", "Yes", "Yes", "M-027", "DS-03","1",imagepath,"This is test note");
+				"30", "5", "Yes", "Yes", "M-106", "DS-03","1",imagepath,"This is test note");
 		cp = hp.calendarLink();
 		
 		boolean flag1 = cp.verifySpaceOnCalendar("SL-Test");
@@ -71,7 +71,7 @@ public class Mod_4_Calendar extends TestBase {
 		Log.startTestCase("Verify Space Data When Hovering To Specific Space On Calendar Page");
 		
 		String[] actualData1 = cp.verifyDataHoverSpace("SL-Test");
-		String[] expectedData1 = {"SL-Test (Sheltered)","Automation Type","Available","10","20","30","yes","5","M-0051"};
+		String[] expectedData1 = {"SL-Test (Sheltered)","Automation Type","Available","10","20","30","yes","5","M-105"};
 		boolean flag1 = Arrays.equals(actualData1, expectedData1);
 		
 		Action action = new Action();
@@ -80,7 +80,7 @@ public class Mod_4_Calendar extends TestBase {
 		String unavailableDate = currentDate + " / "+afterDate;
 		
 		String[] actualData2 = cp.verifyDataHoverSpace("SL-Test2"); 
-		String[] expectedData2 = {"SL-Test2 (Sheltered)","Automation Type",unavailableDate,"10","20","30","yes","5","M-027"};
+		String[] expectedData2 = {"SL-Test2 (Sheltered)","Automation Type",unavailableDate,"10","20","30","yes","5","M-106"};
 		boolean flag2 = Arrays.equals(actualData2, expectedData2);
 
 		if(flag1 == true && flag2 == true)
@@ -102,7 +102,7 @@ public class Mod_4_Calendar extends TestBase {
 		
 		String[] actualData = cp.verifyDetailsOnSlipDetail("SL-Test");
 		String[] expectedData = {"SL-Test","Yes","Automation Type","1 ft","10","20","30",
-				"DS-03","Yes","Yes","5 Amps","M-0051","1. M-0051: (Reading: )"};
+				"DS-03","Yes","Yes","5 Amps","M-105","1. M-105: (Reading: )"};
 		
 		boolean flag = Arrays.equals(actualData, expectedData);
 		
@@ -114,7 +114,7 @@ public class Mod_4_Calendar extends TestBase {
 		String[] actualData2 = cp.verifyDetailsOnSlipDetail("SL-Test2");
 		String[] expectedData2 = {"SL-Test2","No","Due to some issue",unavailableDate,
 				"Automation Type","1 ft","10","20","30",
-				"DS-03","Yes","Yes","5 Amps","M-027","This is test note","1. M-027: (Reading: )"};
+				"DS-03","Yes","Yes","5 Amps","M-106","This is test note","1. M-106: (Reading: )"};
 		
 		boolean flag2 = Arrays.equals(actualData2, expectedData2);
 		

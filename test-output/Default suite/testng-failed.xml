@@ -3,27 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.marina.tests.Mod_6_BoatGroup">
+      <class name="com.marina.tests.Mod_3_AllSpaces">
         <methods>
-          <include name="verifyBoatGroupPageOpens_TC_1001"/>
           <include name="loadConfig"/>
-<<<<<<< HEAD
-          <include name="generatingMultipleAddRequest_TC_1009"/>
-          <include name="beforeMethod"/>
-          <include name="addBoatGroupMandatoryFields_TC_1002"/>
-          <include name="addBoatGroupAllFields_TC_1003"/>
-=======
-          <include name="add_Spaces_Single_And_Carparking_Options_TC_213"/>
->>>>>>> refs/heads/Talha
-          <include name="afterSuite"/>
-<<<<<<< HEAD
-          <include name="afterMethod"/>
-=======
           <include name="afterTest"/>
           <include name="beforeTest"/>
->>>>>>> refs/heads/Talha
+          <include name="createNewSpaceMandatoryFields_TC_402"/>
+          <include name="afterSuite"/>
         </methods>
-      </class> <!-- com.marina.tests.Mod_6_BoatGroup -->
+      </class> <!-- com.marina.tests.Mod_3_AllSpaces -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

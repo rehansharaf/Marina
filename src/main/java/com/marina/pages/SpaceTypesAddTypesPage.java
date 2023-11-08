@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.time.Duration;
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v115.domsnapshot.model.ArrayOfStrings;
@@ -118,18 +119,40 @@ public class SpaceTypesAddTypesPage {
 
 	@FindBy(how = How.XPATH, using = "//div[text()=' The Rate Group field is required.']")
 	WebElement popup_missing_pricingType;
-
+	
+	By editSpaceBtn = By.xpath("//a[@title='Edit Space Type']");
+	
 	public SpaceTypesAddTypesPage(WebDriver driver) {
 
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
+	public void addSingleSpaceMandatoryFields(String spaceTypeName, String pricingType, String duration, String rateGroup) {
+		
+		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(10));
+		action.type(nameText, spaceTypeName);
+		action.selectByVisibleText(pricingType, pricing_type_click);
+		if(duration.equalsIgnoreCase("nightly"))
+			action.click1(check_night, "click nightly option");
+		else if(duration.equalsIgnoreCase("check_monthly"))
+			action.click1(check_monthly, "click monthly option");
+		else 
+			action.click1(check_Yearly, "click yearly option");
+		
+		action.selectByVisibleText(rateGroup, add_to_rate_group_selection);
+		action.click1(btn_save, "click save btn");
+		action.explicitWaitElementClickable(driver,btn_ok_group_added , Duration.ofSeconds(10));
+		
+		
+		
+		
+	}
+	
 	public String click_add_space_type() {
 
 		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(10));
 		return verify_popup_text.getText();
-
 	}
 
 	public Object[][] addingNewSpace(String filename) throws InterruptedException {
