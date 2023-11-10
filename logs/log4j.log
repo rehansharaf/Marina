@@ -1,2 +1,6 @@
-2023-11-10 16:05:22 INFO  Log:11 - =====================================verify the new space type to excel sheet and check the complete records export TC_209 TEST START=========================================
-2023-11-10 16:05:24 INFO  Log:15 - =====================================verify the new space type to excel sheet and check the complete records  export TC_209 TEST END=========================================
+[main] 16:46:50,224 INFO  com.marina.utils.Log.startTestCase(Log.java:11) - =====================================Clicking space type link should open space type page TC_201 TEST START=========================================
+[main] 16:46:50,279 INFO  com.marina.utils.Log.endTestCase(Log.java:15) - =====================================Clicking space type link should open space type page TC_201 TEST END=========================================
+[main] 16:46:50,284 INFO  com.marina.utils.Log.info(Log.java:22) - =====================================verifySpacePage_Tc_201 TEST PASSED =========================================
+[main] 16:47:21,416 INFO  com.marina.utils.Log.startTestCase(Log.java:11) - ===================================== Clicking add space type button, add new space type window should appear TC 202 TEST START=========================================
+[main] 16:47:22,007 INFO  com.marina.utils.Log.endTestCase(Log.java:15) - =====================================Clicking add space type button, add new space type window should appear  TC 202  TEST END=========================================
+[main] 16:47:22,010 INFO  com.marina.utils.Log.info(Log.java:22) - =====================================verifyPopupAddSpace_TC_202 TEST PASSED =========================================
