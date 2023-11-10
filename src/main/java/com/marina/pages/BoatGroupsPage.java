@@ -11,6 +11,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class BoatGroupsPage {
 
@@ -86,7 +87,7 @@ public class BoatGroupsPage {
 	
 	public boolean deleteBoatGroups() throws InterruptedException {
 		
-		action.explicitWaitElementClickable(driver, driver.findElement(deleteBtnList), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(deleteBtnList), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		int checkCond = 0, counter = 0;
 		while(checkCond == 0) {
 			
@@ -96,9 +97,9 @@ public class BoatGroupsPage {
 					break; 
 				
 				action.click1(driver.findElement(deleteBtnList), "Click Delete Btn Boat Group Page");
-				action.explicitWaitElementClickable(driver, driver.findElement(deleteBoatGroupConf), Duration.ofSeconds(10));
+				action.explicitWaitElementClickable(driver, driver.findElement(deleteBoatGroupConf), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				action.click1(driver.findElement(deleteBoatGroupConf), "Click Boat Group Delete Conf Btn");
-				action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+				action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				action.click1(driver.findElement(successOk), "Click Success Ok Btn");
 
 				Thread.sleep(1500);
@@ -118,7 +119,7 @@ public class BoatGroupsPage {
 	
 	public boolean createCopyBoatGroup(String groupName) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -140,14 +141,14 @@ public class BoatGroupsPage {
 		}
 		
 		action.click1(driver.findElement(copyBtnMain), "Click Copy Btn Main Page");
-		action.explicitWait(driver, driver.findElement(editPageName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(editPageName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(driver.findElement(editPageName), groupName+"_copy");
 		action.scrollByVisibilityOfElement(driver, driver.findElement(saveBtn));
 		action.click1(driver.findElement(saveBtn), "Clicking Copy Page Save Btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Click Success Ok Btn Copy Page");
 		
-		action.explicitWait(driver, driver.findElement(By.xpath("//h4[text()='"+groupName+"_copy"+"']")), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(By.xpath("//h4[text()='"+groupName+"_copy"+"']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName+"_copy");
 		Thread.sleep(1000);
 		
@@ -170,9 +171,9 @@ public class BoatGroupsPage {
 		}
 		
 		
-		action.explicitWaitElementClickable(driver, driver.findElement(boatGroupViewBtn), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(boatGroupViewBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(boatGroupViewBtn), "Click View Btn Group Page");
-		action.explicitWait(driver, driver.findElement(boatGroupViewPage), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(boatGroupViewPage), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> docList = driver.findElements(updatedDocsList);
 		List<WebElement> pricingList = driver.findElements(updatedPriceTypeList);
@@ -193,7 +194,7 @@ public class BoatGroupsPage {
 	
 	public int checkNoOfGroupsCreated(String groupName) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -221,11 +222,11 @@ public class BoatGroupsPage {
 	
 	public boolean generatingMultipleRequestsAddGroup(String groupName) throws InterruptedException {
 		
-		action.explicitWaitElementClickable(driver, addBoatGroupBtn, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, addBoatGroupBtn, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addBoatGroupBtn, "Clicking Add BoatGroup Btn");
-		action.explicitWait(driver, driver.findElement(addBoatGroupHeading), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(addBoatGroupHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
-		action.explicitWait(driver, driver.findElement(boatGroupName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(boatGroupName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(driver.findElement(boatGroupName), groupName);
 		
 		String todayDate = action.getCurrentDate(1,0,0,"MMMM d, yyyy");
@@ -250,7 +251,7 @@ public class BoatGroupsPage {
 		
 			try {
 				Thread.sleep(2000);
-				action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+				action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				action.click1(driver.findElement(successOk), "Clicking Success Ok Btn");
 			}catch(Exception e) {
 				checkCond = 1;
@@ -259,7 +260,7 @@ public class BoatGroupsPage {
 		
 		
 		try {
-			action.explicitWait(driver, driver.findElement(By.xpath("//h4[@class='card-title ng-binding' and text()='"+groupName+"']")), Duration.ofSeconds(10));
+			action.explicitWait(driver, driver.findElement(By.xpath("//h4[@class='card-title ng-binding' and text()='"+groupName+"']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			return true;
 		}catch(Exception e) {
 			return false;
@@ -268,7 +269,7 @@ public class BoatGroupsPage {
 	
 	public boolean checkBoatGroupExist(String groupName) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -299,7 +300,7 @@ public class BoatGroupsPage {
 	public boolean editBoatGroup(String groupName, String editedGroupName, String docName, String spaceType, String payType,
 			String discount, String note) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -320,7 +321,7 @@ public class BoatGroupsPage {
 		}
 		
 		action.click1(editGroupMain, "Clicking Edit Group Btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(editPageName), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(editPageName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		driver.findElement(editPageName).clear();
 		action.type(driver.findElement(editPageName), editedGroupName);
 		action.selectByVisibleText(docName, driver.findElement(editPageDocuments));
@@ -336,9 +337,9 @@ public class BoatGroupsPage {
 		
 		action.scrollByVisibilityOfElement(driver, driver.findElement(editPageSaveBtn));
 		action.click1(driver.findElement(editPageSaveBtn), "Clicking edit page save btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Click success btn");
-		action.explicitWait(driver, driver.findElement(boatGroupViewPage), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(boatGroupViewPage), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> docList = driver.findElements(updatedDocsList);
 		List<WebElement> pricingList = driver.findElements(updatedPriceTypeList);
@@ -361,7 +362,7 @@ public class BoatGroupsPage {
 	
 	public boolean addBoatMainPage(String groupName, String boatName) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -383,11 +384,11 @@ public class BoatGroupsPage {
 		
 		
 		action.click1(addBoatMain, "Clicking Add Boat Btn Main Page");
-		action.explicitWait(driver, driver.findElement(viewPageAddBoatHeading), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewPageAddBoatHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		action.explicitWaitElementClickable(driver, 
 				driver.findElement(By.xpath("//label[text()='"+boatName+"']/parent::td/preceding-sibling::td/input[@type='checkbox']")),
-				Duration.ofSeconds(10));
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		
 		action.click1(driver.findElement(By.xpath("//label[text()='"+boatName+"']/parent::td/preceding-sibling::td/input[@type='checkbox']")), "Selecting Boat checkboz");
@@ -409,10 +410,10 @@ public class BoatGroupsPage {
 		}
 		
 		action.click1(driver.findElement(viewPageAddBoatBtn), "Click view page add boat btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Click success btn");
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -437,12 +438,12 @@ public class BoatGroupsPage {
 		if(boatCount.equals("1")) {
 			
 			/*action.click1(driver.findElement(boatGroupViewBtn), "Click boat group view btn");
-			action.explicitWaitElementClickable(driver, driver.findElement(viewPageAddBoat), Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(viewPageAddBoat), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.scrollByVisibilityOfElement(driver, driver.findElement(viewPageRemoveSelectedBoat));
 			action.click1(driver.findElement(viewPageRemoveSelectedBoat), "Click View Page Remove Boat Btn");
-			action.explicitWaitElementClickable(driver, driver.findElement(removeBoatConfBtn), Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(removeBoatConfBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(driver.findElement(removeBoatConfBtn), "Click remove boat conf btn");
-			action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(driver.findElement(successOk), "Click success btn");
 			Thread.sleep(1000);*/
 			
@@ -454,7 +455,7 @@ public class BoatGroupsPage {
 	
 	public boolean addBoatViewPage(String groupName, String boatName) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -475,13 +476,13 @@ public class BoatGroupsPage {
 		}
 		
 		action.click1(driver.findElement(boatGroupViewBtn), "Click boat group view btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(viewPageAddBoat), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(viewPageAddBoat), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(viewPageAddBoat), "Click View Page Add Boat Btn");
-		action.explicitWait(driver, driver.findElement(viewPageAddBoatHeading), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewPageAddBoatHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		action.explicitWaitElementClickable(driver, 
 				driver.findElement(By.xpath("//label[text()='"+boatName+"']/parent::td/preceding-sibling::td/input[@type='checkbox']")),
-				Duration.ofSeconds(10));
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		
 		action.click1(driver.findElement(By.xpath("//label[text()='"+boatName+"']/parent::td/preceding-sibling::td/input[@type='checkbox']")), "Selecting Boat checkboz");
@@ -503,9 +504,9 @@ public class BoatGroupsPage {
 		}
 		
 		action.click1(driver.findElement(viewPageAddBoatBtn), "Click view page add boat btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Click success btn");
-		action.explicitWait(driver, driver.findElement(selectedBoatHeading), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(selectedBoatHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		checkCond = 0; counter = 0;
 		while(checkCond == 0) {
@@ -540,9 +541,9 @@ public class BoatGroupsPage {
 			
 			action.scrollByVisibilityOfElement(driver, driver.findElement(viewPageRemoveSelectedBoat));
 			action.click1(driver.findElement(viewPageRemoveSelectedBoat), "Click View Page Remove Boat Btn");
-			action.explicitWaitElementClickable(driver, driver.findElement(removeBoatConfBtn), Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(removeBoatConfBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(driver.findElement(removeBoatConfBtn), "Click remove boat conf btn");
-			action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(driver.findElement(successOk), "Click success btn");
 			Thread.sleep(1000);
 			return true;
@@ -556,7 +557,7 @@ public class BoatGroupsPage {
 	public String[] verifySavedBoatGroupInfo(String groupName) throws InterruptedException {
 		
 		String[] Data = new String[7];
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -577,7 +578,7 @@ public class BoatGroupsPage {
 		}
 		
 		action.click1(driver.findElement(boatGroupViewBtn), "Click boat group view btn");
-		action.explicitWait(driver, driver.findElement(boatGroupViewPage), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(boatGroupViewPage), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		Data[0] = driver.findElement(boatGroupDateRange).getText().trim();
 		Data[1] = driver.findElement(boatGroupPricingType).getText().trim();
 		Data[2] = driver.findElement(boatGroupSpaces).getText().trim();
@@ -592,7 +593,7 @@ public class BoatGroupsPage {
 	
 	public int searchBoatGroup(String groupName) throws InterruptedException {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, groupName);
 		Thread.sleep(1000);
 		
@@ -603,11 +604,11 @@ public class BoatGroupsPage {
 	public boolean addBoatGroupAllFields(String groupName, String contract, String document, String spaceType, String paymentType, String discount,
 			String notes) throws InterruptedException {
 		
-		action.explicitWaitElementClickable(driver, addBoatGroupBtn, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, addBoatGroupBtn, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addBoatGroupBtn, "Clicking Add BoatGroup Btn");
-		action.explicitWait(driver, driver.findElement(addBoatGroupHeading), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(addBoatGroupHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
-		action.explicitWait(driver, driver.findElement(boatGroupName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(boatGroupName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(driver.findElement(boatGroupName), groupName);
 		action.selectByVisibleText(contract, driver.findElement(contractsDropDown));
 		action.selectByVisibleText(document, driver.findElement(documentsDropDown));
@@ -628,11 +629,11 @@ public class BoatGroupsPage {
 		
 		action.scrollByVisibilityOfElement(driver, driver.findElement(saveBtn));
 		action.JSClick(driver, driver.findElement(saveBtn));
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Clicking Success Ok Btn");
 		
 		try {
-			action.explicitWait(driver, driver.findElement(By.xpath("//h4[text()='"+groupName+"']")), Duration.ofSeconds(10));
+			action.explicitWait(driver, driver.findElement(By.xpath("//h4[text()='"+groupName+"']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			return true;
 		}catch(Exception e) {
 			
@@ -644,11 +645,11 @@ public class BoatGroupsPage {
 	
 	public boolean addBoatGroupMandatoryFields(String groupName) throws InterruptedException {
 		
-		action.explicitWaitElementClickable(driver, addBoatGroupBtn, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, addBoatGroupBtn, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addBoatGroupBtn, "Clicking Add BoatGroup Btn");
-		action.explicitWait(driver, driver.findElement(addBoatGroupHeading), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(addBoatGroupHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
-		action.explicitWait(driver, driver.findElement(boatGroupName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(boatGroupName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(driver.findElement(boatGroupName), groupName);
 		
 		String todayDate = action.getCurrentDate(1,0,0,"MMMM d, yyyy");
@@ -663,11 +664,11 @@ public class BoatGroupsPage {
 		action.scrollByVisibilityOfElement(driver, driver.findElement(saveBtn));
 		action.JSClick(driver, driver.findElement(saveBtn));
 		//action.click1(driver.findElement(saveBtn), "Clicking save btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Clicking Success Ok Btn");
 		
 		try {
-			action.explicitWait(driver, driver.findElement(By.xpath("//h4[@class='card-title ng-binding' and text()='"+groupName+"']")), Duration.ofSeconds(10));
+			action.explicitWait(driver, driver.findElement(By.xpath("//h4[@class='card-title ng-binding' and text()='"+groupName+"']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			return true;
 		}catch(Exception e) {
 			return false;
@@ -676,7 +677,7 @@ public class BoatGroupsPage {
 	
 	public String verifyBoatGroupPageHeading() {
 	
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		return pageHeading.getText().trim();
 		
 	}

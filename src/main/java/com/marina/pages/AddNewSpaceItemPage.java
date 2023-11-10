@@ -11,6 +11,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class AddNewSpaceItemPage {
 
@@ -91,7 +92,7 @@ public class AddNewSpaceItemPage {
 			String selectHydroMeter, String nearestSlip, String linearDockerBufferText, String picture, String noteText) throws InterruptedException {
 		
 		
-		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> options = driver.findElements(By.xpath("//select[@id='space_id']/option"));
 
@@ -133,7 +134,7 @@ public class AddNewSpaceItemPage {
 			if(isAvailable)
 				action.selectByVisibleText(selectHydroMeter, hydro_meter);
 			
-			action.explicitWaitElementClickable(driver, btnSave, Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, btnSave, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.JSClick(driver, btnSave);
 			action.explicitWait(driver, btnNoTaskReq, Duration.ofSeconds(40));
 			action.click1(btnNoTaskReq, "btn no task req");
@@ -143,7 +144,7 @@ public class AddNewSpaceItemPage {
 	
 	public boolean checkNotAvailibilityStatusAdditionalFields() {
 		
-		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(status, "status");
 		boolean unavailableTillField = action.isDisplayed(driver, unavailableFormTill);
 		boolean reasonField = action.isDisplayed(driver, reasonOfUnavailablility);
@@ -159,7 +160,7 @@ public class AddNewSpaceItemPage {
 			String maxLOA, String maxBeam, String maxDraft, String selectPower, String selectWater, String raftingCapable,
 			String selectHydroMeter, String nearestSlip, String linearDockerBufferText) throws InterruptedException {
 		
-		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		//action.selectByVisibleText(selectType, type);
 		
 		List<WebElement> options = driver.findElements(By.xpath("//select[@id='space_id']/option"));
@@ -197,7 +198,7 @@ public class AddNewSpaceItemPage {
 			action.type(driver.findElement(linear_buffer), linearDockerBufferText);
 			Thread.sleep(1000);
 			action.JSClick(driver, btnSave);
-			action.explicitWait(driver, successOK, Duration.ofSeconds(10));
+			action.explicitWait(driver, successOK, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(successOK, "Success Button");
 			return new AllSpacesPage(driver);
 

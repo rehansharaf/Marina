@@ -7,16 +7,26 @@ import org.testng.annotations.Test;
 
 import com.marina.base.BrowserFactory;
 import com.marina.base.TestBase;
+import com.marina.pages.AddNewSpaceItemPage;
+import com.marina.pages.AllSpacesPage;
 import com.marina.pages.HomePage;
+import com.marina.pages.ImportSpacesPage;
 import com.marina.pages.LoginPage;
 import com.marina.pages.ReservationsPage;
 import com.marina.pages.SpaceGroupsPage;
+import com.marina.pages.SpaceTypesAddTypesPage;
+import com.marina.pages.SpaceTypesPage;
 import com.marina.utils.Log;
 
 public class Mod_5_SpaceGroup extends TestBase {
 	
 	LoginPage lp;
 	HomePage hp;
+	SpaceTypesPage spacetype;
+	SpaceTypesAddTypesPage spaceTypeAdd;
+	AllSpacesPage allspace;
+	AddNewSpaceItemPage add_new_space;
+	ImportSpacesPage importSpaces;
 	SpaceGroupsPage sg;
 	ReservationsPage res;
 	
@@ -31,11 +41,25 @@ public class Mod_5_SpaceGroup extends TestBase {
 	
 	
 	@Test(groups = "regression,sanity,smoke", priority = 1, description = "Verify Space Group Page Gets Open")
-	public void verifySpaceGroupPage_TC_801() {
+	public void verifySpaceGroupPage_TC_801() throws InterruptedException {
 		
 		Log.startTestCase("Verify Space Group Page Gets Open");
+		
+		spacetype = hp.spaces_dropdown_SpaceTypes();
+		spaceTypeAdd = spacetype.add_space_type();
+		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_02", "$/period", "Nightly", "Wet Storage");
+		spacetype.get_space_data_from_table("TestSpaceType_02");
+			
+		allspace = hp.spaces_dropdown_AllSpaces();
+		importSpaces = allspace.openImportSpace();
+		allspace = importSpaces.importSpacesData("space_bulk_import_spaceData");
+		allspace.getAllSpacePageHeading();
+		
+		sg = hp.spaces_dropdown_SpaceGroups();
 		String pageHeading = sg.verifyPageHeading();
 		Assert.assertEquals(pageHeading, "Space Groups");
+	
+		
 		Log.endTestCase("Verify Space Group Page Gets Open");
 	}
 
@@ -82,7 +106,8 @@ public class Mod_5_SpaceGroup extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 5, description = "Search Slip By Name Or Type Through Add Space Group Section")
+	@Test(groups = "regression,sanity,smoke", priority = 5, dependsOnMethods = "addSpaceGroupMultipleSpace_TC_804", 
+			description = "Search Slip By Name Or Type Through Add Space Group Section")
 	public void searchSlipByNameType_TC_805() throws InterruptedException {
 		
 		Log.startTestCase("Search Slip By Name Or Type Through Add Space Group Section");
@@ -118,7 +143,7 @@ public class Mod_5_SpaceGroup extends TestBase {
 		
 		Log.startTestCase("Create Space Group With Same Name");		
 		boolean flag = sg.addingGroupSameName(0, "TestGroup1");
-		Assert.assertTrue(flag);
+		Assert.assertTrue(flag,"Space Groups Are Getting Created With Same Name");
 		Log.endTestCase("Create Space Group With Same Name");
 	}
 	
@@ -129,8 +154,21 @@ public class Mod_5_SpaceGroup extends TestBase {
 	
 		Log.startTestCase("Deleting Existing Space Groups");	
 		boolean flag = sg.deletingSpaceGroup("TestGroup1");
-	    boolean flag2 = sg.deletingSpaceGroup("TestGroup2");
-	    if(flag == true && flag2 == true)
+		boolean flag2 = sg.deletingSpaceGroup("TestGroup1");
+	    boolean flag3 = sg.deletingSpaceGroup("TestGroup2");
+	    
+	    
+	    // Deleting Space type & Slips
+	    spacetype = hp.spaces_dropdown_SpaceTypes();
+		spacetype.delete_space("TestSpaceType_02");
+		
+		allspace = hp.spaces_dropdown_AllSpaces();
+		allspace.deleteSpace("TestSpace5");
+		allspace.deleteSpace("TestSpace6");
+		allspace.deleteSpace("TestSpace7");
+		allspace.deleteSpace("TestSpace8");
+	    
+	    if(flag == true && flag2 == true && flag3 == true)
 	    	Assert.assertTrue(true);
 	    else
 	    	Assert.assertTrue(false);

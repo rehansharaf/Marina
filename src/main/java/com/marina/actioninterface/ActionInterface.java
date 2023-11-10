@@ -2,6 +2,7 @@ package com.marina.actioninterface;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -53,4 +54,7 @@ public interface ActionInterface {
 	public String getCurrentDate(int todayDate, int nextDate, int daysToSkip, String dateFormat);
 	public String isFileDownloaded(String fileText, String fileExtension, int timeOut);
 	public boolean isAttribtuePresent(WebElement element, String attribute);
+	public void explicitWaitPresenceOfElement(WebDriver driver, By element, Duration timeOut);
+	public String getAlertText(WebDriver driver);
+	public void explicitWaitVisibility(WebDriver driver, WebElement element, By locator, Duration timeOut);
 }

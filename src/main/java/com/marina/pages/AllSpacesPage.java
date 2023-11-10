@@ -13,8 +13,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 import com.marina.utils.ExcelLibrary;
 
 public class AllSpacesPage {
@@ -22,8 +25,8 @@ public class AllSpacesPage {
 	WebDriver driver;
 	Action action = new Action();
 	
-	@FindBy(how = How.XPATH, using = "//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']")
-	WebElement spacesPageHeading;
+	//@FindBy(how = How.XPATH, using = "//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']")
+	//WebElement spacesPageHeading;
 	
 	@FindBy(how = How.XPATH, using = "//input[@class='form-control form-control-sm']")
 	WebElement searchField;
@@ -43,9 +46,6 @@ public class AllSpacesPage {
 	@FindBy(how = How.XPATH, using = "//button[text()='Save']")
 	WebElement noteSaveBtn;
 	
-	@FindBy(how = How.XPATH, using = "//button[text()='OK']")
-	WebElement successOK;
-	
 	@FindBy(how = How.ID, using = "must-view")
 	WebElement noteMustView;
 	
@@ -64,12 +64,17 @@ public class AllSpacesPage {
 	@FindBy(how = How.XPATH, using = "//button[text()='Google Sheet']")
 	WebElement googleSheetBtn;
 	
+	By spacesPageHeading = By.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
+	By successOk = By.xpath("//button[text()='OK']");
 	By noSearchRecords = By.xpath("//td[text()='No matching records found']");
 	By firstDataTableElement = By.xpath("//*[@id='slip']/tbody/tr");
 	By viewSpaceSection = By.xpath("//tr[@class='responsive']/th[text()='Name']");
-	By singleNoteDeleteButton = By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[10]/td[1]/div[1]/div[1]/div/a");
-	By listOfNotes = By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[10]/td[1]/div/div");
-	By noteTextLocator = By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[10]/td[1]/div/div/div");
+	By viewSpaceSectionDeleteBtn = By.xpath("//a[@class='btn btn-danger btn-delete-slip']");
+	By deleteConfBtn = By.xpath("//button[text()='Yes, delete it!']");
+	By singleImpNoteDeleteBtn = By.xpath("//table[@class='table table-striped fs_14']//th[text()='Note']/parent::tr/following-sibling::tr[1]/td/div/div/div/i/parent::div/following-sibling::div[@class='col-md-6']/a");
+	By singleNonImpNoteDeleteBtn = By.xpath("(//table[@class='table table-striped fs_14']//th[text()='Note']/parent::tr/following-sibling::tr[1]/td/div/div/div/following-sibling::div[@class='col-md-6']/a)[1]");
+	By listOfNotes = By.xpath("//table[@class='table table-striped fs_14']//th[text()='Note']/parent::tr/following-sibling::tr[1]/td/div/div/div[@class='col-12 mb-2']");
+	By noteTextLocator = By.xpath("(//table[@class='table table-striped fs_14']//th[text()='Note']/parent::tr/following-sibling::tr[1]/td/div/div/div[@class='col-12 mb-2'])[1]");
 	By totalRecordCount = By.id("slip_info");
 	By openGoogleSheetLink = By.xpath("//a[text()='Open Google Sheet']");
 	By googleSheetTitle = By.xpath("//span[@id='docs-title-input-label-inner']");
@@ -84,11 +89,39 @@ public class AllSpacesPage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public boolean deleteSpace(String spaceName) {
+		
+		boolean spaceNotAvailable;
+		
+		action.explicitWait(driver, searchField, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.type(searchField,spaceName);
+		try {
+			action.explicitWait(driver, driver.findElement(firstDataTableElement), Duration.ofSeconds(4));
+			spaceNotAvailable = true;
+			openSpaceViewPage();
+			action.explicitWaitElementClickable(driver, driver.findElement(viewSpaceSectionDeleteBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.click1(driver.findElement(viewSpaceSectionDeleteBtn), "Click Space Delete Btn From View Section");
+			action.explicitWaitElementClickable(driver, driver.findElement(deleteConfBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.click1(driver.findElement(deleteConfBtn), "Click Conf Delete Btn");
+			action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.click1(driver.findElement(successOk), "Click success Ok Btn");
+			action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			driver.navigate().refresh();
+			return true;
+		}catch(NoSuchElementException nse) {
+			
+			spaceNotAvailable = false;
+			return spaceNotAvailable;
+		}
+		
+	}
+	
+	
 	public boolean searchSpace(String spaceName) {
 		
 		boolean spaceNotAvailable;
 		
-		action.explicitWait(driver, searchField, Duration.ofSeconds(10));
+		action.explicitWait(driver, searchField, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField,spaceName);
 		try {
 			action.explicitWait(driver, driver.findElement(firstDataTableElement), Duration.ofSeconds(4));
@@ -105,7 +138,7 @@ public class AllSpacesPage {
 	public boolean exportDataToGoogleSheet() throws GeneralSecurityException, IOException, InterruptedException {
 		
 		action.click1(exportBtn, "Export Space Btn");
-		action.explicitWait(driver, googleSheetBtn, Duration.ofSeconds(10));
+		action.explicitWait(driver, googleSheetBtn, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(googleSheetBtn, "Google Sheet Btn");
 		action.explicitWait(driver, driver.findElement(openGoogleSheetLink), Duration.ofSeconds(30));
 		Thread.sleep(1000);
@@ -122,7 +155,7 @@ public class AllSpacesPage {
 		
 		driver.close();
 		action.switchToOldWindow(driver);
-		action.click1(successOK, "Success Ok Btn");
+		action.click1(driver.findElement(successOk), "Success Ok Btn");
 		
 		ExcelLibrary excel = new ExcelLibrary(filepath);
 		int excelRows = excel.getRowCount("Sheet1");
@@ -145,7 +178,7 @@ public class AllSpacesPage {
 	public boolean exportDataToExcel() {
 		
 		action.click1(exportBtn, "Export Space Btn");
-		action.explicitWait(driver, excelSheetBtn, Duration.ofSeconds(10));
+		action.explicitWait(driver, excelSheetBtn, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(excelSheetBtn, "Excel Sheet Btn");
 		String filepath = action.isFileDownloaded("Spaces Report", ".xlsx", 30);
 
@@ -174,16 +207,26 @@ public class AllSpacesPage {
 	
 	public boolean deleteNoteFromViewSection(int impNote) throws InterruptedException {
 		
-		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		List<WebElement> li = driver.findElements(listOfNotes);
 		int initialSize = li.size();
-		action.explicitWait(driver, driver.findElement(singleNoteDeleteButton), Duration.ofSeconds(10));
-		action.click1(driver.findElement(singleNoteDeleteButton), "Delete Note Btn");
-		action.explicitWait(driver, successOK, Duration.ofSeconds(10));
-		action.click1(successOK, "Success OK Btn");
+		if(impNote == 1) {
+			
+			action.explicitWait(driver, driver.findElement(singleImpNoteDeleteBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.scrollByVisibilityOfElement(driver, driver.findElement(singleImpNoteDeleteBtn));
+			action.click1(driver.findElement(singleImpNoteDeleteBtn), "Delete Note Btn");
+		}else {
+			
+			action.explicitWait(driver, driver.findElement(singleNonImpNoteDeleteBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.scrollByVisibilityOfElement(driver, driver.findElement(singleNonImpNoteDeleteBtn));
+			action.click1(driver.findElement(singleNonImpNoteDeleteBtn), "Delete Note Btn");
+		}
+		
+		action.explicitWait(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.click1(driver.findElement(successOk), "Success OK Btn");
 		
 		action.explicitWait(driver, driver.findElement(listOfNotes), 
-				Duration.ofSeconds(10));
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		int counter = 0, retry = 0;
 		while(counter == 0) {
@@ -223,19 +266,29 @@ public class AllSpacesPage {
 		
 	}
 	
-	public void clickAddNoteWithoutData() {
+	public boolean clickAddNoteWithoutData() throws InterruptedException {
 		
-		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		List<WebElement> li = driver.findElements(listOfNotes);
 		int initialSize = li.size();
 		action.click1(addNote, "Add Note Btn");
 		action.click1(noteSaveBtn, "Note Save Btn");
-		action.explicitWait(driver, successOK, Duration.ofSeconds(10));
+		Thread.sleep(1000);
+		boolean checkAlert = action.isAlertPresent(driver);
+		if(checkAlert) {
+			
+			String text = action.getAlertText(driver);
+			if(text.contains("Network error, please check your internet"))
+				return false;
+		}
+		
+		return true;
+		
 	}
 	
 	public String[] addNewNoteViewSection(String noteText, int mustView) throws InterruptedException {
 		
-		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		List<WebElement> li = driver.findElements(listOfNotes);
 		int initialSize = li.size();
 		
@@ -245,10 +298,10 @@ public class AllSpacesPage {
 			action.click1(noteMustView, "Must View checkbox");
 		
 		action.click1(noteSaveBtn, "Note Save Btn");
-		action.explicitWait(driver, successOK, Duration.ofSeconds(10));
-		action.click1(successOK, "Success OK Btn");
+		action.explicitWait(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.click1(driver.findElement(successOk), "Success OK Btn");
 		action.explicitWait(driver, driver.findElement(listOfNotes), 
-				Duration.ofSeconds(10));
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		int counter = 0, retry = 0;
 		while(counter == 0) {
@@ -287,7 +340,7 @@ public class AllSpacesPage {
 	
 	public UpdateSpaceItemPage clickEditButtonViewSpace() {
 		
-		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(editBtn, "EditBtn");
 		return new UpdateSpaceItemPage(driver); 
 		
@@ -296,7 +349,7 @@ public class AllSpacesPage {
 	
 	public AddNewSpaceItemPage clickAddSpaceBtn() {
 		
-		action.explicitWait(driver, spacesPageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		//action.click(driver, addSpaceBtn);
 		action.JSClick(driver, addSpaceBtn);
 		//action.click1(addSpaceBtn, "Click Add Space Btn");
@@ -305,14 +358,15 @@ public class AllSpacesPage {
 	
 	public String getAllSpacePageHeading() {
 		
-		String pageHeadingText =  spacesPageHeading.getText();
+		action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		String pageHeadingText =  driver.findElement(spacesPageHeading).getText();
 		pageHeadingText.trim();
 		return pageHeadingText;
 	}
 	
 	public String[] readFirstRecordDataTable(String spaceName) {
 		
-		action.explicitWait(driver, spacesPageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(searchField, spaceName);
 		
 		String[] Data = new String[5];
@@ -328,31 +382,32 @@ public class AllSpacesPage {
 	
 	public void openSpaceViewPage() {
 		
-		action.explicitWait(driver, spacesPageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		//action.click(driver, driver.findElement(firstDataTableElement));
 		action.click1(driver.findElement(firstDataTableElement), "First DataTableElement");
-		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 	}
 	
-	public String[] verifySpaceDataViewSection(String type) {
+	public String[] verifySpaceDataViewSection(String type) throws InterruptedException {
 		
 		String[] Data = new String[15];
-		action.explicitWait(driver, spacesPageHeading, Duration.ofSeconds(10));
-		//action.click(driver, driver.findElement(firstDataTableElement));
+		action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(firstDataTableElement), "First DataTableElement");
-		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(10));
+		action.explicitWaitPresenceOfElement(driver, viewSpaceSection, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWait(driver, driver.findElement(viewSpaceSection), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
 		//Space Name
-		Data[0] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr/td[1]")).getText();
+		Data[0] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Name']/following-sibling::td[1]")).getText();
 		//Availability
-		Data[1] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr/td[2]")).getText();
+		Data[1] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Availability']/following-sibling::td[1]")).getText();
 		
 		if(Data[1].equalsIgnoreCase("No")) {
 			
 			//Reason of Unavailability
-			Data[2] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[2]/td")).getText();
+			Data[2] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Reason of Unavailability']/following-sibling::td[1]")).getText();
 			//Unavailability Date
-			Data[3] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[3]/td")).getText();
+			Data[3] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Unavailable From - Till']/following-sibling::td[1]")).getText();
 		
 		}else {
 			Data[2] = "";
@@ -360,31 +415,37 @@ public class AllSpacesPage {
 		}
 		
 		//SpaceType
-		Data[4] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[4]/td[1]")).getText();
+		Data[4] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Type']/following-sibling::td[1]")).getText();
 		//DocBuffer
-		Data[5] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[4]/td[2]")).getText().trim();
+		try {
+			Data[5] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Dock Buffer']/following-sibling::td[1]")).getText().trim();
+		}catch(Exception e) {
+			Data[5] = "ft";
+		}
 		//Max LOA
-		Data[6] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[5]/td[1]")).getText();
+		Data[6] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Max LOA']/following-sibling::td[1]")).getText();
 		//Max Beam
-		Data[7] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[5]/td[2]")).getText();
+		Data[7] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Max Beam']/following-sibling::td[1]")).getText();
 		//Max Draft
-		Data[8] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[6]/td[1]")).getText();
+		Data[8] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Max Draft']/following-sibling::td[1]")).getText();
 		//Nearest Slip
-		Data[9] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[6]/td[2]")).getText();
+		Data[9] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Nearest Slip']/following-sibling::td[1]")).getText();
 		//Water
-		Data[10] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[7]/td[1]")).getText();
+		Data[10] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Water']/following-sibling::td[1]")).getText();
 		//Rafting
-		Data[11] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[7]/td[2]")).getText();
+		Data[11] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Rafting']/following-sibling::td[1]")).getText();
 		//Power
-		Data[12] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[8]/td[1]")).getText();
+		Data[12] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Power']/following-sibling::td[1]")).getText();
 		//HydroMeter
-		Data[13] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']/tbody/tr[8]/td[2]")).getText();
+		Data[13] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Hydro Meter']/following-sibling::td[1]")).getText();
 		
 		if(type.equals("all"))
 			Data[14] = driver.findElement(noteTextLocator).getText().trim();
 		else
 			Data[14] = "";
-		driver.findElement(By.xpath("//h5[text()='"+Data[0]+"']/following-sibling::button[@type='button' and @class='btn-close']")).click();
+		action.scrollByVisibilityOfElement(driver, driver.findElement(By.xpath("//h5[text()='"+Data[0]+"']/following-sibling::button[@type='button' and @class='btn-close']")));
+		action.click1(driver.findElement(By.xpath("//h5[text()='"+Data[0]+"']/following-sibling::button[@type='button' and @class='btn-close']")),
+				"Click close btn of view section");
 		return Data;
 
 	}

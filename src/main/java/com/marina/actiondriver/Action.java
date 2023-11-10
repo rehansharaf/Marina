@@ -140,6 +140,7 @@ public class Action extends TestBase implements ActionInterface {
 	 */
 	@Override
 	public boolean type(WebElement ele, String text) {
+		
 		String errorMessage = null;
 		boolean flag = false;
 		try {
@@ -709,6 +710,29 @@ public class Action extends TestBase implements ActionInterface {
 	}
 	
 	@Override
+	public String getAlertText(WebDriver driver) 
+	{
+		String presentText = "";
+		Alert alert = null;
+
+		try {
+			// Check the presence of alert
+			alert = driver.switchTo().alert();
+			// if present consume the alert
+			presentText = alert.getText();
+			alert.accept();
+			
+		} catch (NoAlertPresentException ex) {
+			// Alert present; set the flag
+
+			// Alert not present
+			ex.printStackTrace();
+		} 
+
+		return presentText;
+	}
+	
+	@Override
 	public String getTitle(WebDriver driver) {
 		boolean flag = false;
 
@@ -732,6 +756,7 @@ public class Action extends TestBase implements ActionInterface {
 	
 	@Override
 	public boolean click1(WebElement locator, String locatorName) {
+
 		boolean flag = false;
 		String errorMessage = null;
 		try {
@@ -771,13 +796,28 @@ public class Action extends TestBase implements ActionInterface {
 	@Override
 	public void explicitWait(WebDriver driver, WebElement element, Duration timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		//wait.until(ExpectedConditions.visibilityOf(element));
 		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	@Override
+	public void explicitWaitPresenceOfElement(WebDriver driver, By element, Duration timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		//wait.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.presenceOfElementLocated(element));
 	}
 	
 	@Override
 	public void explicitWaitElementClickable(WebDriver driver, WebElement element, Duration timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
+	@Override
+	public void explicitWaitVisibility(WebDriver driver, WebElement element, By locator ,Duration timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver,timeOut);
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 	
 	@Override

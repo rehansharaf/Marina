@@ -35,8 +35,6 @@ public class Mod_4_Calendar extends TestBase {
 
 	}
 	
-	
-	
 	@Test(groups = {"regression,sanity,smoke"}, priority = 1, description = "Check Newly Added Space Should Be Available In Calendar")
 	public void addedSpaceInCalendar_TC_601() throws InterruptedException {
 		
@@ -71,7 +69,7 @@ public class Mod_4_Calendar extends TestBase {
 		Log.startTestCase("Verify Space Data When Hovering To Specific Space On Calendar Page");
 		
 		String[] actualData1 = cp.verifyDataHoverSpace("SL-Test");
-		String[] expectedData1 = {"SL-Test (Sheltered)","Automation Type","Available","10","20","30","yes","5","M-105"};
+		String[] expectedData1 = {"SL-Test","Automation Type","Available","10","20","30","yes","5","M-105"};
 		boolean flag1 = Arrays.equals(actualData1, expectedData1);
 		
 		Action action = new Action();
@@ -80,7 +78,7 @@ public class Mod_4_Calendar extends TestBase {
 		String unavailableDate = currentDate + " / "+afterDate;
 		
 		String[] actualData2 = cp.verifyDataHoverSpace("SL-Test2"); 
-		String[] expectedData2 = {"SL-Test2 (Sheltered)","Automation Type",unavailableDate,"10","20","30","yes","5","M-106"};
+		String[] expectedData2 = {"SL-Test2","Automation Type",unavailableDate,"10","20","30","yes","5","M-106"};
 		boolean flag2 = Arrays.equals(actualData2, expectedData2);
 
 		if(flag1 == true && flag2 == true)
@@ -100,9 +98,10 @@ public class Mod_4_Calendar extends TestBase {
 		
 		Log.startTestCase("Verify All the Slip Details On Slip Detail Section");
 		
-		String[] actualData = cp.verifyDetailsOnSlipDetail("SL-Test");
-		String[] expectedData = {"SL-Test","Yes","Automation Type","1 ft","10","20","30",
-				"DS-03","Yes","Yes","5 Amps","M-105","1. M-105: (Reading: )"};
+		String[] actualData = cp.verifyDetailsOnSlipDetail("SL-Test","Mandatory");
+		String[] expectedData = {"SL-Test","Yes","","",
+				"Automation Type","1 ft","10","20","30",
+				"DS-03","Yes","Yes","5 Amps","M-105","","1. M-105: (Reading: )"};
 		
 		boolean flag = Arrays.equals(actualData, expectedData);
 		
@@ -111,7 +110,7 @@ public class Mod_4_Calendar extends TestBase {
 		String afterDate = action.getCurrentDate(0,1,6,"MM-dd-yyyy");
 		String unavailableDate = currentDate + " to "+afterDate;
 		
-		String[] actualData2 = cp.verifyDetailsOnSlipDetail("SL-Test2");
+		String[] actualData2 = cp.verifyDetailsOnSlipDetail("SL-Test2","All");
 		String[] expectedData2 = {"SL-Test2","No","Due to some issue",unavailableDate,
 				"Automation Type","1 ft","10","20","30",
 				"DS-03","Yes","Yes","5 Amps","M-106","This is test note","1. M-106: (Reading: )"};
@@ -135,11 +134,23 @@ public class Mod_4_Calendar extends TestBase {
 	
 		Action action = new Action();
 		String afterDate = action.getCurrentDate(0,1,6,"yyyy-MM-dd");		
-		cp.reservNotSetForUnavailDates("SL-Test2", afterDate);
+		boolean flag = cp.reservNotSetForUnavailDates("SL-Test2", afterDate);
+		
+		//Deletion of Slips
+		driver.navigate().refresh();
+		allspace = hp.spaces_dropdown_AllSpaces();
+		allspace.deleteSpace("SL-Test2");
+		driver.navigate().refresh();
+		allspace.deleteSpace("SL-Test");
+		
+		Assert.assertTrue(flag, "Unavailable Error Pop Not Appearing");
 		Log.endTestCase("Verify ReservationsPage Should Not Be Set For Unavailable Dates");
 	
+		
 	}
 
+	
+	
 	
 	@AfterMethod
 	public void afterTest() {

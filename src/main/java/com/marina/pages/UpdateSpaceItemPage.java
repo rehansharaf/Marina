@@ -11,6 +11,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class UpdateSpaceItemPage {
 
@@ -79,11 +80,8 @@ public class UpdateSpaceItemPage {
 	
 	@FindBy(how = How.XPATH, using = "//a[@class='btn btn-danger btn-delete text-white']")
 	WebElement removeSelectedPic;
-	
-	@FindBy(how = How.XPATH, using = "//label[text()='Upload pictures']")
-	WebElement pictureText;
-	
-	
+
+	By pictureText = By.xpath("//label[text()='Upload pictures']");
 	By linear_buffer = By.id("linear_buffer");
 	By first_note = By.xpath("(//a[@class='btn btn-danger btn-delete'])[1]");
 	By listOfNotes = By.xpath("//a[@class='btn btn-danger btn-delete']");
@@ -100,13 +98,17 @@ public class UpdateSpaceItemPage {
 	public boolean deleteNote(String note_inputText) throws InterruptedException {
 		
 		//	This is second test note
-		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.scrollByVisibilityOfElement(driver, driver.findElement(first_note));
-		action.explicitWait(driver, driver.findElement(first_note), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(first_note), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		List<WebElement> li = driver.findElements(listOfNotes);
 		int initialSize = li.size();
-		action.click(driver, driver.findElement(first_note));
-		action.explicitWait(driver, successOK, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, 
+				driver.findElement(By.xpath("//td[text()[contains(., '"+note_inputText+"')]]/following-sibling::td")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		action.click1(driver.findElement(By.xpath("//td[text()[contains(., '"+note_inputText+"')]]/following-sibling::td")), "Click note delete btn");
+		
+		action.explicitWait(driver, successOK, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(successOK, "Success Ok button Note Removal");
 		
 		int counter = 0, retry = 0;
@@ -144,12 +146,15 @@ public class UpdateSpaceItemPage {
 			String selectHydroMeter, String nearestSlip, String picture, String noteText) throws InterruptedException {
 		
 		
-		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
-		action.JSClick(driver, removeSelectedPic);
-		action.explicitWait(driver, successOK, Duration.ofSeconds(10));
+		action.scrollByVisibilityOfElement(driver, removeSelectedPic);
+		action.click1(removeSelectedPic, "click delete btn of picture");
+		//action.JSClick(driver, removeSelectedPic);
+		action.explicitWait(driver, successOK, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(successOK, "Success Ok button Image Removal");
-		action.explicitWait(driver, pictureText, Duration.ofSeconds(10));
+		action.explicitWaitPresenceOfElement(driver, first_note, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWaitPresenceOfElement(driver, pictureText, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(upload_pictures, picture);
 		
 		List<WebElement> options = driver.findElements(By.xpath("//select[@id='space_id']/option"));
@@ -168,10 +173,13 @@ public class UpdateSpaceItemPage {
 			String todayDate = action.getCurrentDate(1,0,0,"MMMM d, yyyy");
 			String afterDate = action.getCurrentDate(0,1,2,"MMMM d, yyyy");
 			
+			action.scrollByVisibilityOfElement(driver, unavailableFormTill);
 			action.click1(unavailableFormTill, "unavailableFromTill");
-			driver.findElement(By.xpath("//span[@aria-label='"+todayDate+"']")).click();
+			action.click1(driver.findElement(By.xpath("//span[@aria-label='"+todayDate+"']")), "click todayDate");
+			//driver.findElement(By.xpath("//span[@aria-label='"+todayDate+"']")).click();
 			Thread.sleep(1000);
-			driver.findElement(By.xpath("//span[@aria-label='"+afterDate+"']")).click();
+			action.click1(driver.findElement(By.xpath("//span[@aria-label='"+afterDate+"']")), "click afterDate");
+			//driver.findElement(By.xpath("//span[@aria-label='"+afterDate+"']")).click();
 			Thread.sleep(500);
 			action.type(reasonOfUnavailablility, "Due to some issue");
 			
@@ -187,7 +195,7 @@ public class UpdateSpaceItemPage {
 			action.selectByVisibleText(nearestSlip, nearest_slip);
 			action.type(note, noteText);
 			action.JSClick(driver, btnSave);
-			action.explicitWait(driver, btnNoTaskReq, Duration.ofSeconds(10));
+			action.explicitWait(driver, btnNoTaskReq, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(btnNoTaskReq, "btn no task req");
 			return new AllSpacesPage(driver);
 		

@@ -33,8 +33,6 @@ public class SpaceTypesAddTypesPage {
 	@FindBy(how = How.XPATH, using = "//label[text()='FIXED $ OR $/UNIT/PERIOD']")
 	WebElement verify_popup_text;
 
-	@FindBy(how = How.XPATH, using = "//input[@name='name']")
-	WebElement nameText;
 
 	@FindBy(how = How.XPATH, using = "//label[@for='parkingb']")
 	WebElement fixedCheck;
@@ -99,9 +97,6 @@ public class SpaceTypesAddTypesPage {
 	@FindBy(how = How.XPATH, using = "//*[@id='modalAddSpaceType']/div/form/div/div[1]/button")
 	WebElement btn_cross;
 
-	@FindBy(how = How.XPATH, using = "//div[text()='Space type saved successfully']")
-	WebElement popup_group_successfully_add;
-
 	@FindBy(how = How.XPATH, using = "//button[text()='OK']")
 	WebElement btn_ok_group_added;
 
@@ -120,7 +115,10 @@ public class SpaceTypesAddTypesPage {
 	@FindBy(how = How.XPATH, using = "//div[text()=' The Rate Group field is required.']")
 	WebElement popup_missing_pricingType;
 	
+	By nameText = By.xpath("//input[@name='name']");
 	By editSpaceBtn = By.xpath("//a[@title='Edit Space Type']");
+	By successOk = By.xpath("//button[text()='OK']");
+	By popup_group_successfully_add = By.xpath("//div[text()='Space type saved successfully']");
 	
 	public SpaceTypesAddTypesPage(WebDriver driver) {
 
@@ -128,10 +126,10 @@ public class SpaceTypesAddTypesPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void addSingleSpaceMandatoryFields(String spaceTypeName, String pricingType, String duration, String rateGroup) {
+	public void addSingleSpaceMandatoryFields(String spaceTypeName, String pricingType, String duration, String rateGroup) throws InterruptedException {
 		
-		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(10));
-		action.type(nameText, spaceTypeName);
+		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.type(driver.findElement(nameText), spaceTypeName);
 		action.selectByVisibleText(pricingType, pricing_type_click);
 		if(duration.equalsIgnoreCase("nightly"))
 			action.click1(check_night, "click nightly option");
@@ -141,8 +139,10 @@ public class SpaceTypesAddTypesPage {
 			action.click1(check_Yearly, "click yearly option");
 		
 		action.selectByVisibleText(rateGroup, add_to_rate_group_selection);
+		action.scrollByVisibilityOfElement(driver, btn_save);
 		action.click1(btn_save, "click save btn");
-		action.explicitWaitElementClickable(driver,btn_ok_group_added , Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver,driver.findElement(successOk) , Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.click1(driver.findElement(successOk), "click success ok btn");
 		
 		
 		
@@ -151,7 +151,7 @@ public class SpaceTypesAddTypesPage {
 	
 	public String click_add_space_type() {
 
-		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(10));
+		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		return verify_popup_text.getText();
 	}
 
@@ -162,7 +162,8 @@ public class SpaceTypesAddTypesPage {
 		space_for_add = multi_excel_read(filename);
 
 		System.out.println("testing");
-
+		after_add_space = new String[actRows][8];
+		
 		for (int i = 0; i < actRows; i++) {
 
 			String space_name = (String) space_for_add[i][0];
@@ -173,19 +174,28 @@ public class SpaceTypesAddTypesPage {
 			String add_to_group = (String) space_for_add[i][5];
 			String include_in_occupancy = (String) space_for_add[i][6];
 
-			try {
-				action.explicitWait(driver, nameText, Duration.ofSeconds(10));
-			} catch (Exception e) {
+			//try {
+			if(i > 0) {
+				
+				action.scrollByVisibilityOfElement(driver, btn_reClick_add_space);
+				action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+				action.click1(btn_reClick_add_space, "Clickung add space btn");
+				Thread.sleep(1000);
+			}
+				
+				action.explicitWait(driver, driver.findElement(nameText), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			/*} catch (Exception e) {
 
 				System.out.println("click on add to space button");
-				action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(10));
-				btn_reClick_add_space.click();
+				action.scrollByVisibilityOfElement(driver, btn_reClick_add_space);
+				action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+				action.click1(btn_reClick_add_space, "Clickung add space btn");
 				Thread.sleep(1000);
-				action.explicitWait(driver, nameText, Duration.ofSeconds(10));
+				action.explicitWaitPresenceOfElement(driver, nameText, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
-			}
+			}*/
 			Thread.sleep(1000);
-			nameText.sendKeys(space_name);
+			driver.findElement(nameText).sendKeys(space_name);
 			Thread.sleep(1000);
 
 			if (fixed_unit_period.equals("Boat")) {
@@ -200,7 +210,7 @@ public class SpaceTypesAddTypesPage {
 			if (fixed_unit_period.equals("Boat")) {
 				
 				try {
-				action.explicitWait(driver, capacity_click, Duration.ofSeconds(10));
+				action.explicitWait(driver, capacity_click, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				}
 				catch(Exception e) {
 					System.out.println("capacity drop down not found");
@@ -210,34 +220,34 @@ public class SpaceTypesAddTypesPage {
 				Thread.sleep(1000);
 
 				if (capacity.equals("Single")) {
-					action.explicitWait(driver, single_boat, Duration.ofSeconds(10));
+					action.explicitWait(driver, single_boat, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					single_boat.click();
 				}
 
 				else if (capacity.equals("Multiple")) {
-					action.explicitWait(driver, multipleBoats, Duration.ofSeconds(10));
+					action.explicitWait(driver, multipleBoats, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					multipleBoats.click();
 				}
 
 				Thread.sleep(1000);
-				action.explicitWait(driver, pricing_type_click, Duration.ofSeconds(10));
+				action.explicitWait(driver, pricing_type_click, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				pricing_type_click.click();
 				Thread.sleep(2000);
 
 				if (pricing_type.equals("$/ft/period")) {
 
-					action.explicitWait(driver, pt_ft_period, Duration.ofSeconds(10));
+					action.explicitWait(driver, pt_ft_period, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					pt_ft_period.click();
 				}
 
 				else if (pricing_type.equals("$/sq.ft/period")) {
-					action.explicitWait(driver, pt_sq_ft_period, Duration.ofSeconds(10));
+					action.explicitWait(driver, pt_sq_ft_period, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					pt_sq_ft_period.click();
 
 				}
 
 				else if (pricing_type.equals("$/period")) {
-					action.explicitWait(driver, pt_period, Duration.ofSeconds(10));
+					action.explicitWait(driver, pt_period, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					pt_period.click();
 
 				}
@@ -321,26 +331,29 @@ public class SpaceTypesAddTypesPage {
 			Thread.sleep(1000);
 
 			if (include_in_occupancy.equals("Yes")) {
+				action.scrollByVisibilityOfElement(driver, include_in_OCCUPANCY_yes);
 				include_in_OCCUPANCY_yes.click();
 
 			}
 
 			else if (include_in_occupancy.equals("No")) {
+				action.scrollByVisibilityOfElement(driver, include_in_OCCUPANCY_no);
 				include_in_OCCUPANCY_no.click();
 
 			}
 
 			Thread.sleep(2000);
 
-			action.explicitWait(driver, btn_save, Duration.ofSeconds(10));
+			action.explicitWait(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			Thread.sleep(1000);
+			action.scrollByVisibilityOfElement(driver, btn_save);
 			btn_save.click();
 
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			try {
-				action.explicitWait(driver, popup_group_successfully_add, Duration.ofSeconds(10));
+				action.explicitWaitPresenceOfElement(driver, popup_group_successfully_add, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				Thread.sleep(1000);
-				popup_space_saved = popup_group_successfully_add.getText();
+				popup_space_saved = driver.findElement(popup_group_successfully_add).getText();
 				System.out.println(popup_space_saved);
 			} catch (Exception e) {
 				System.out.println("space not added");
@@ -349,8 +362,8 @@ public class SpaceTypesAddTypesPage {
 			Thread.sleep(2000);
 
 			try {
-//				action.explicitWait(driver, btn_ok_group_added, Duration.ofSeconds(10));
-				action.explicitWaitElementClickable(driver, btn_ok_group_added, Duration.ofSeconds(10));
+//				action.explicitWait(driver, btn_ok_group_added, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+				action.explicitWaitElementClickable(driver, btn_ok_group_added, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 				Thread.sleep(1000);
 				btn_ok_group_added.click();
@@ -362,7 +375,8 @@ public class SpaceTypesAddTypesPage {
 
 			System.out.println(" Space Name Added  = " + space_name);
 
-			after_add_space = new String[actRows][8];
+				
+			//after_add_space = new String[actRows][8];
 			after_add_space[i][0] = space_for_add[i][0];
 			after_add_space[i][1] = space_for_add[i][1];
 			after_add_space[i][2] = space_for_add[i][2];
@@ -390,13 +404,14 @@ public class SpaceTypesAddTypesPage {
 		String record_popup_error_field[] = new String[6];
 
 		System.out.println("click on add to space button");
-		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		btn_reClick_add_space.click();
 		Thread.sleep(1000);
-		action.explicitWait(driver, nameText, Duration.ofSeconds(10));
-
+		action.explicitWaitPresenceOfElement(driver, nameText, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		action.scrollByVisibilityOfElement(driver, btn_save);
 		btn_save.click();
-		action.explicitWaitElementClickable(driver, new_poput, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, new_poput, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		String Charct_popup_all = new_poput.getText();
 		System.out.println("testing");
 
@@ -412,8 +427,9 @@ public class SpaceTypesAddTypesPage {
 
 			if (space_name_filed == true) {
 
-				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
-				nameText.sendKeys("test_tbt");
+				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+				driver.findElement(nameText).sendKeys("test_tbt");
+				action.scrollByVisibilityOfElement(driver, btn_save);
 				btn_save.click();
 				Charct_popup_all = new_poput.getText();
 				space_name_filed = false;
@@ -422,10 +438,11 @@ public class SpaceTypesAddTypesPage {
 
 			else if (rate_group_field == true) {
 
-				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
+				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 				add_to_rate_group_selection.click();
 				wet_Storage_group.click();
+				action.scrollByVisibilityOfElement(driver, btn_save);
 				btn_save.click();
 				Charct_popup_all = new_poput.getText();
 				rate_group_field = false;
@@ -434,10 +451,11 @@ public class SpaceTypesAddTypesPage {
 
 			else if (pricing_type_field == true) {
 
-				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
+				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 				pricing_type_click.click();
 				pt_sq_ft_period.click();
+				action.scrollByVisibilityOfElement(driver, btn_save);
 				btn_save.click();
 				Charct_popup_all = new_poput.getText();
 				space_name_filed = true;
@@ -479,7 +497,7 @@ public class SpaceTypesAddTypesPage {
 			count = 0;
 
 			btn_popup_missing_txt_ok.click();
-			action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		}
 
@@ -487,16 +505,16 @@ public class SpaceTypesAddTypesPage {
 
 		driver.navigate().refresh();
 
-		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		btn_reClick_add_space.click();
 		Thread.sleep(1000);
-		action.explicitWait(driver, nameText, Duration.ofSeconds(10));
+		action.explicitWaitPresenceOfElement(driver, nameText, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		
 		unit_period_check.click();
-
+		action.scrollByVisibilityOfElement(driver, btn_save);
 		btn_save.click();
-		action.explicitWaitElementClickable(driver, new_poput, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, new_poput, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		Charct_popup_all = new_poput.getText();
 		System.out.println("testing");
 
@@ -509,8 +527,9 @@ public class SpaceTypesAddTypesPage {
 
 			if (space_name_filed == true) {
 
-				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
-				nameText.sendKeys("test_tbt");
+				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+				driver.findElement(nameText).sendKeys("test_tbt");
+				action.scrollByVisibilityOfElement(driver, btn_save);
 				btn_save.click();
 				Charct_popup_all = new_poput.getText();
 				space_name_filed = false;
@@ -519,10 +538,11 @@ public class SpaceTypesAddTypesPage {
 
 			else if (rate_group_field == true) {
 
-				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
+				action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 				add_to_rate_group_selection.click();
 				wet_Storage_group.click();
+				action.scrollByVisibilityOfElement(driver, btn_save);
 				btn_save.click();
 				Charct_popup_all = new_poput.getText();
 				rate_group_field = false;
@@ -548,7 +568,7 @@ public class SpaceTypesAddTypesPage {
 			count = 0;
 
 			btn_popup_missing_txt_ok.click();
-			action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		}
 

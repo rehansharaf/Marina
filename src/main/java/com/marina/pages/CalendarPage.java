@@ -11,6 +11,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class CalendarPage {
 	
@@ -20,7 +21,7 @@ public class CalendarPage {
 	@FindBy(how = How.XPATH, using = "//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']")
 	WebElement pageHeading;
 	
-	@FindBy(how = How.XPATH, using = "//div[@class='fc-scroller-canvas fc-gutter-right']/div[@class='fc-content']/table/tbody/tr[3]/th")
+	@FindBy(how = How.XPATH, using = "//td[@class='fc-time-area fc-widget-header']//table/tbody/tr[3]/th")
 	List<WebElement> calendarDates;
 	
 	By hoverSpaceName = By.xpath("//span[@id='tool_space_name']");
@@ -45,10 +46,10 @@ public class CalendarPage {
 	}
 	
 
-	public void reservNotSetForUnavailDates(String slipName, String toDate) throws InterruptedException {
+	public boolean reservNotSetForUnavailDates(String slipName, String toDate) throws InterruptedException {
 		
 		int counter = 1, fromIndex = 1, toIndex = 1;
-		action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		for(WebElement el: calendarDates) {
 			
 			String fromAttribute = el.getAttribute("class");
@@ -67,47 +68,87 @@ public class CalendarPage {
 		
 		action.scrollByVisibilityOfElement(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")));
 		String slip_reference = driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")).getAttribute("data-id");
-			
+		int exception = 0;
+		
 			for(int i = fromIndex; i <= toIndex; i++) {
 			
 				driver.findElement(By.xpath("//div[@class='fc-scroller-canvas']//tr[@data-resource-id='"+slip_reference+"']/td/div/div/span["+i+"]")).click();
-				action.explicitWait(driver, driver.findElement(reservationErrorPopup), Duration.ofSeconds(10));
-				action.click1(driver.findElement(successOk), "Click Success OK");
-
+				try {
+					action.explicitWait(driver, driver.findElement(reservationErrorPopup), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					action.click1(driver.findElement(successOk), "Click Success OK");
+				}catch(Exception e) {
+					exception = 1;
+					break;
+				}
 			}
 		
-	
+			if(exception == 1)
+				return false;
+			else
+				return true;
 		
 	}
 	
-	public String[] verifyDetailsOnSlipDetail(String slipName) throws InterruptedException {
+	public String[] verifyDetailsOnSlipDetail(String slipName, String slipType) throws InterruptedException {
 		
-		int index = 0;
-		String[] Data;
-		action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(10));
+		String[] Data = new String[16];
+		action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.scrollByVisibilityOfElement(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")));
 		Thread.sleep(1000);
 		action.JSClick(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")));
-		action.explicitWait(driver, driver.findElement(slipDetail), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(slipDetail), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
-		List<WebElement> li = driver.findElements(slipDetailData);
+		//List<WebElement> li = driver.findElements(slipDetailData);
 		
-		if(li.size() > 13)
-			Data = new String[16];
-		else
-			Data = new String[li.size()];
+		//name
+		Data[0] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Name']/following-sibling::td[1]")).getText().trim();
+		//availability
+		Data[1] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Availability']/following-sibling::td[1]")).getText().trim();
 		
-		for(WebElement el: li) {
-			if(index == 14)
-				Data[index] = driver.findElement(By.xpath("(//table[@class='table table-striped fs_14']/tbody/tr[not(@style='display:none;')]/td)[15]/div/div/div")).getText().trim();
-			else
-				Data[index] = el.getText().trim();
+		if(slipType.equals("All")) {
+		
+			//Reason of unavailability
+			Data[2] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Reason of Unavailability']/following-sibling::td[1]")).getText().trim();
+			//Unavailable till
+			Data[3] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Unavailable From - Till']/following-sibling::td[1]")).getText().trim();
+
+		}else {
 			
-			index++;
-			if(index == 16)
-				break;
+			Data[2] = "";
+			Data[3] = "";
 		}
+		//type
+		Data[4] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Type']/following-sibling::td[1]")).getText().trim();
+		//dock buffer
+		Data[5] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Dock Buffer']/following-sibling::td[1]")).getText().trim();
+		//max loa
+		Data[6] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Max LOA']/following-sibling::td[1]")).getText().trim();
+		// max beam
+		Data[7] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Max Beam']/following-sibling::td[1]")).getText().trim();
+		//max draft
+		Data[8] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Max Draft']/following-sibling::td[1]")).getText().trim();
+		//nearest slip
+		Data[9] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Nearest Slip']/following-sibling::td[1]")).getText().trim();
+		//water
+		Data[10] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Water']/following-sibling::td[1]")).getText().trim();
+		//rafting
+		Data[11] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Rafting']/following-sibling::td[1]")).getText().trim();
+		//power
+		Data[12] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Power']/following-sibling::td[1]")).getText().trim();
+		//hydro meter
+		Data[13] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Hydro Meter']/following-sibling::td[1]")).getText().trim();
 		
+		if(slipType.equals("All")) {
+		
+			//note
+			Data[14] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Note']/parent::tr/following-sibling::tr[1]/td/div/div/div[@class='col-12 mb-2']")).getText().trim();
+		
+		}else
+			Data[14] = "";
+		
+		//meter reading
+		Data[15] = driver.findElement(By.xpath("//table[@class='table table-striped fs_14']//th[text()='Meters']/following-sibling::td[1]")).getText().trim();
+
 		action.click1(driver.findElement(closeSlipDetailBtn), "Close Slip Btn");
 		return Data;
 
@@ -116,10 +157,10 @@ public class CalendarPage {
 	public String[] verifyDataHoverSpace(String slipName) throws InterruptedException {
 		
 		String[] Data = new String[9];
-		action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.scrollByVisibilityOfElement(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")));
 		action.mouseOverElement(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")));
-		action.explicitWait(driver, driver.findElement(hoverSpaceName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(hoverSpaceName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.isDisplayed(driver, driver.findElement(hoverSpaceName));
 		
 		Data[0] = driver.findElement(hoverSpaceName).getText().trim();
@@ -138,9 +179,9 @@ public class CalendarPage {
 	public boolean verifySpaceOnCalendar(String slipName) {
 		
 		int elementFound = 0;
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		try {
-			action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(10));
+			action.explicitWait(driver, driver.findElement(By.xpath("//a[text()='"+slipName+"' and @class='slip_details_popup']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			elementFound = 1;
 		}catch(Exception e) {
 			elementFound = 0;

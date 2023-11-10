@@ -44,8 +44,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 		
 	}
-	
-	
+
+
 	@Test(groups = "regression,sanity,smoke", priority = 1, description = "Verify All Space Page")
 	public void verifyAllSpacePage_TC_401() {
 		
@@ -73,7 +73,8 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 3, description = "Verify Additional Form Fields Appears For Unavailibility Of Space")
+	@Test(groups = "regression,sanity,smoke", priority = 3,dependsOnMethods = "createNewSpaceMandatoryFields_TC_402",
+			description = "Verify Additional Form Fields Appears For Unavailibility Of Space")
 	public void verifyAdditionalFieldsForUnAvailibility_TC_403() {
 		
 		Log.startTestCase("Verify Additional Form Fields Appears For Unavailibility Of Space");
@@ -85,7 +86,8 @@ public class Mod_3_AllSpaces extends TestBase {
 	}
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 4, description = "Create New Space With All Fields")
+	@Test(groups = "regression,sanity,smoke", priority = 4, dependsOnMethods = "verifyAdditionalFieldsForUnAvailibility_TC_403", 
+			description = "Create New Space With All Fields")
 	public void createNewSpaceAllFields_TC_404() throws InterruptedException {
 
 		Log.startTestCase("Create New Space With All Fields");	
@@ -94,7 +96,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		allspace = add_new_space.createSpaceWithAllFields("Automation Type", "SL-Test2Space", "No", "10", "20", 
 				"30", "5", "Yes", "Yes", "M-101", "DS-03","1",imagepath,"This is test note");
 
-		String[] actualData = allspace.readFirstRecordDataTable("");
+		String[] actualData = allspace.readFirstRecordDataTable("SL-Test2Space");
 		String[] expectedData = {"SL-Test2Space","Automation Type","No","M-101","M-101: -"};
 		Assert.assertEquals(actualData, expectedData);
 		Log.endTestCase("Create New Space With All Fields");
@@ -121,8 +123,9 @@ public class Mod_3_AllSpaces extends TestBase {
 	}
 	
 	@Test(groups = "regression,sanity,smoke", priority = 6, dependsOnMethods = {"createNewSpaceMandatoryFields_TC_402","createNewSpaceAllFields_TC_404"},
-			description = "Verify Data Of Specific Space From View Section")
-	public void verifySpecificSpaceViewSection_TC_406() {
+		description = "Verify Data Of Specific Space From View Section")
+	
+	public void verifySpecificSpaceViewSection_TC_406() throws InterruptedException {
 		
 		Log.startTestCase("Verify Data Of Specific Space From View Section");
 		
@@ -144,6 +147,7 @@ public class Mod_3_AllSpaces extends TestBase {
 	
 	@Test(groups = "regression,sanity,smoke", priority = 7, dependsOnMethods = "createNewSpaceAllFields_TC_404",
 			description = "Edit The Existing Space Data & Verify Data On DataTable & View Section")
+
 	public void editRecordVerifyData_TC_407() throws InterruptedException {
 		
 		Log.startTestCase("Edit The Existing Space Data & Verify Data On DataTable & View Section");
@@ -153,16 +157,16 @@ public class Mod_3_AllSpaces extends TestBase {
 		updateSpaceItem = allspace.clickEditButtonViewSpace();
 		
 
-		allspace = updateSpaceItem.updateSpaceWithAllFields("Dry Sheltered", "SL-Test21", "No", "20", "30", "40", "10", "No", "No", "M-032",
-				"SL-053",imagepath, "This is second test note");
+		allspace = updateSpaceItem.updateSpaceWithAllFields("Linear Dockage", "SL-Test21", "No", "20", "30", "40", "10", "No", "No", "M-102",
+				"SL-TestSpace",imagepath, "This is second test note");
 		
 		String[] actualData = allspace.readFirstRecordDataTable("SL-Test21");
-		String[] expectedData = {"SL-Test21","Dry Sheltered","No","M-102","M-102: -"};
+		String[] expectedData = {"SL-Test21","Linear Dockage","No","M-102","M-102: -"};
 		boolean verifyDataTable = Arrays.equals(actualData, expectedData);
 		
 		String[] editedActualData = allspace.verifySpaceDataViewSection("all");
-		String[] editedExpectedData = {"SL-Test21","No","Due to some issue",editedActualData[3],"Dry Sheltered","","20","30","40",
-				"SL-053","No","No","10 Amps","M-102","This is second test note"};
+		String[] editedExpectedData = {"SL-Test21","No","Due to some issue",editedActualData[3],"Linear Dockage","1 ft","20","30","40",
+				"SL-TestSpace","No","No","10 Amps","M-102","This is second test note"};
 		
 		
 		boolean verifyViewSection = Arrays.equals(editedActualData, editedExpectedData);
@@ -211,12 +215,17 @@ public class Mod_3_AllSpaces extends TestBase {
 	
 	@Test(groups = "regression,sanity,smoke", priority = 10, dependsOnMethods = "createNewSpaceAllFields_TC_404",
 			description = "Click Add Note Button Under View Space Page Without Entering Data")
-	public void clickAddNoteBtnWithoutNotes_TC_410() {
+	public void clickAddNoteBtnWithoutNotes_TC_410() throws InterruptedException {
 		
 		Log.startTestCase("Click Add Note Button Under View Space Page Without Entering Data");
 		allspace.readFirstRecordDataTable("SL-Test21");
 		allspace.openSpaceViewPage();
-		allspace.clickAddNoteWithoutData();
+		boolean flag = allspace.clickAddNoteWithoutData();
+		if(flag)
+			Assert.assertTrue(flag);
+		else
+			Assert.assertTrue(flag,"Javascript network error alert is appearing");
+		
 		Log.endTestCase("Click Add Note Button Under View Space Page Without Entering Data");
 	}
 	
@@ -262,7 +271,8 @@ public class Mod_3_AllSpaces extends TestBase {
 	
 	
 	
-	@Test(groups = "regression,sanity,smoke", priority = 13, description = "Import Spaces In Bulk")
+	@Test(groups = "regression,sanity,smoke", priority = 13,dependsOnMethods = "deleteNoteFromEditSpace_TC_412",
+			description = "Import Spaces In Bulk")
 	public void importSpacesBulk_TC_413() throws InterruptedException {
 
 		//========================== Need to Add the Space Type here =====================================================
@@ -273,13 +283,13 @@ public class Mod_3_AllSpaces extends TestBase {
 		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_01", "$/period", "Nightly", "Wet Storage");
 		String[] addedSpaceType = spacetype.get_space_data_from_table("TestSpaceType_01");
 		
-		if(addedSpaceType[0].equals("TestSpaceType_01")) {
+		if(addedSpaceType[1].equals("TestSpaceType_01")) {
 			
 			
 			allspace = hp.spaces_dropdown_AllSpaces();
 			importSpaces = allspace.openImportSpace();
-			allspace = importSpaces.importSpacesData();
-			
+			allspace = importSpaces.importSpacesData("space_bulk_import");
+			allspace.getAllSpacePageHeading();
 			
 			  //Space Name, Status, Unavailability Reason, Unavailability Date, SpaceType, LinearBuffer, MaxLOA, MaxBeam, MaxDraft, 
 			  //NearestSlip,Water,Rafting, Power,Hydrometer,Note 
@@ -333,7 +343,8 @@ public class Mod_3_AllSpaces extends TestBase {
 
 	} 
 	
-	@Test(groups = "regression,sanity,smoke", priority = 14, description = "Export Space Data To Excel Sheet")
+	@Test(groups = "regression,sanity,smoke", priority = 14, dependsOnMethods = "importSpacesBulk_TC_413", 
+			description = "Export Space Data To Excel Sheet")
 	public void exportSpaceExcel_TC_414() {
 		
 		Log.startTestCase("Export Space Data To Excel Sheet");
@@ -342,7 +353,8 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.endTestCase("Export Space Data To Excel Sheet");
 	}
 	
-	@Test(groups = "regression,sanity,smoke", priority = 15, description = "Export Space Data To Google Sheet")
+	@Test(groups = "regression,sanity,smoke", priority = 15, dependsOnMethods = "exportSpaceExcel_TC_414", 
+			description = "Export Space Data To Google Sheet")
 	public void exportSpaceGoogleSheet_TC_415() throws GeneralSecurityException, IOException, InterruptedException {
 		
 		Log.startTestCase("Export Space Data To Google Sheet");
@@ -363,10 +375,10 @@ public class Mod_3_AllSpaces extends TestBase {
 		spacetype.delete_space("TestSpaceType_01");
 		allspace = hp.spaces_dropdown_AllSpaces();
 		
-		boolean flag1 = allspace.searchSpace("TestSpace 3");
-		boolean flag2 = allspace.searchSpace("TestSpace 4");
-		allspace.searchSpace("SL-TestSpace");
-		allspace.searchSpace("SL-Test21");
+		boolean flag1 = allspace.deleteSpace("TestSpace 3");
+		boolean flag2 = allspace.deleteSpace("TestSpace 4");
+		allspace.deleteSpace("SL-TestSpace");
+		allspace.deleteSpace("SL-Test21");
 		
 		if(flag1 == true && flag2 == true)
 			Assert.assertTrue(true);
@@ -376,6 +388,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.endTestCase("Deleting Space Type, Related Spaces Should Also Be Deleted");
 
 	}
+	
 	
 	@AfterMethod
 	public void afterTest() {

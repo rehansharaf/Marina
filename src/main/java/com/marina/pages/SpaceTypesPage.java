@@ -2,6 +2,8 @@ package com.marina.pages;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -60,8 +62,6 @@ public class SpaceTypesPage {
 	@FindBy(how = How.XPATH, using = "//div[@class='dataTables_info']")
 	WebElement showing_entries;
 
-	@FindBy(how = How.XPATH, using = "//button[text()='Add Space Type']")
-	WebElement btn_addspacetype;
 
 	@FindBy(how = How.XPATH, using = "//*[@id='space_type_table']/tbody/tr[1]/td[1]")
 	WebElement col1_space_name_detail;
@@ -84,8 +84,6 @@ public class SpaceTypesPage {
 	@FindBy(how = How.XPATH, using = "//*[@id='space_type_table']/tbody/tr[1]/td[7]")
 	WebElement col7_space_name_detail;
 
-	@FindBy(how = How.XPATH, using = "//*[@id='space_type_table']/tbody/tr[1]/td[8]/div/a[2]")
-	WebElement delete_option_spaceTable;
 
 	@FindBy(how = How.XPATH, using = "//h2[text()='Are you sure?']")
 	WebElement delte_confirmation_text;
@@ -99,14 +97,26 @@ public class SpaceTypesPage {
 	@FindBy(how = How.XPATH, using = "//button[text()='OK']")
 	WebElement after_delte_success_ok_btn;
 
-	@FindBy(how = How.XPATH, using = "//td[text()='No matching records found']")
-	WebElement no_match_record_found_text;
 
 	@FindBy(how = How.XPATH, using = "//*[@id='space_type_table']/tbody/tr[1]/td[8]/div/a[1]")
 	WebElement edit_option_spaceTable;
 
 	@FindBy(how = How.XPATH, using = "//button[text()='Cancel']")
 	WebElement cancle_delete_btn;
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='Google Sheet']")
+	WebElement googleSheetBtn;
+	
+	By openGoogleSheetLink = By.xpath("//a[text()='Open Google Sheet']");
+	By googleSheetTitle = By.xpath("//span[@id='docs-title-input-label-inner']");
+	By googleSheetFileMenu = By.id("docs-file-menu");
+	By googleDownloadMenuItem = By.xpath("//span[@aria-label='Download d']/parent::div");
+	By googleDownloadExcelOption = By.xpath("//span[@aria-label='Microsoft Excel (.xlsx) x']/parent::div");
+	By btn_addspacetype = By.xpath("//button[text()='Add Space Type']");
+	By delete_option_spaceTable = By.xpath("//*[@id='space_type_table']/tbody/tr[1]/td[8]/div/a[2]");
+	By no_match_record_found_text = By.xpath("//td[text()='No matching records found']");
+
+
 
 	public SpaceTypesPage(WebDriver driver) {
 
@@ -117,27 +127,30 @@ public class SpaceTypesPage {
 
 	public String space_type_page_verify() {
 
-		action.explicitWait(driver, stp_title, Duration.ofSeconds(10));
+		action.explicitWait(driver, stp_title, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		return stp_title.getText();
 
 	}
 
-	public SpaceTypesAddTypesPage add_space_type() {
+	public SpaceTypesAddTypesPage add_space_type() throws InterruptedException {
 
-		action.explicitWait(driver, btn_addspacetype, Duration.ofSeconds(10));
-		action.explicitWait(driver, delete_option_spaceTable, Duration.ofSeconds(10));
-		try {
-			Thread.sleep(2000);
-			btn_addspacetype.click();
-		}
+		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_addspacetype));
+		action.explicitWaitPresenceOfElement(driver, btn_addspacetype, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_addspacetype), Duration.ofSeconds(10));
+		//action.explicitWaitPresenceOfElement(driver, delete_option_spaceTable, Duration.ofSeconds(10));
+		//try {
+			//Thread.sleep(2000);
+			//driver.findElement(btn_addspacetype).click();
+			action.click1(driver.findElement(btn_addspacetype), "Clicking add space btn");
+		//}
 
-		catch (Exception e) {
+		/*catch (Exception e) {
 
 			System.out.println("add space button not clickable");
 			String url = action.getCurrentURL(driver);
 			System.out.println(url);
 
-		}
+		}*/
 
 		return new SpaceTypesAddTypesPage(driver);
 
@@ -149,7 +162,7 @@ public class SpaceTypesPage {
 
 		Thread.sleep(1000);
 		try {
-			action.explicitWaitElementClickable(driver, delete_option_spaceTable, Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(delete_option_spaceTable), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		} catch (Exception e) {
 			System.out.println("no sapce record found in table");
 		}
@@ -157,14 +170,14 @@ public class SpaceTypesPage {
 
 		search_name.click();
 
-		action.explicitWait(driver, search_name, Duration.ofSeconds(10));
+		action.explicitWait(driver, search_name, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		search_name.sendKeys(name);
 
 		get_recrod_from_serach_tab = new String[table_array_column];
 
 		Thread.sleep(6000);
 		try {
-			action.explicitWaitElementClickable(driver, delete_option_spaceTable, Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(delete_option_spaceTable), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		} catch (Exception e) {
 			System.out.println("delete option not found");
@@ -186,7 +199,7 @@ public class SpaceTypesPage {
 		search_name.click();
 		Thread.sleep(2000);
 		try {
-			action.explicitWaitElementClickable(driver, delete_option_spaceTable, Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver, driver.findElement(delete_option_spaceTable), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		} catch (Exception e) {
 			System.out.println("delete option not found ");
@@ -202,8 +215,8 @@ public class SpaceTypesPage {
 
 		Thread.sleep(2000);
 		try {
-			action.explicitWait(driver, btn_addspacetype, Duration.ofSeconds(10));
-			action.explicitWait(driver, search_name, Duration.ofSeconds(10));
+			action.explicitWaitPresenceOfElement(driver, btn_addspacetype, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.explicitWait(driver, search_name, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		} catch (Exception e) {
 
 			System.out.println("delete or add space button not showing -194");
@@ -225,14 +238,14 @@ public class SpaceTypesPage {
 
 			
 			try {
-				Thread.sleep(3000);
-				action.explicitWait(driver, delete_option_spaceTable, Duration.ofSeconds(10));
+				//Thread.sleep(3000);
+				action.explicitWaitPresenceOfElement(driver, delete_option_spaceTable, Duration.ofSeconds(3));
 
 			} catch (Exception e) {
 				System.out.println("No Space found on table");
-				action.explicitWait(driver, no_match_record_found_text, Duration.ofSeconds(10));
+				action.explicitWaitPresenceOfElement(driver, no_match_record_found_text, Duration.ofSeconds(3));
 				Thread.sleep(2000);
-				no_entries_found = no_match_record_found_text.getText();
+				no_entries_found = driver.findElement(no_match_record_found_text).getText();
 
 				break;
 			}
@@ -246,8 +259,8 @@ public class SpaceTypesPage {
 				try {
 
 					Thread.sleep(1000);
-//					action.explicitWait(driver, delete_option_spaceTable, Duration.ofSeconds(10));
-					action.explicitWait(driver, delete_option_spaceTable, Duration.ofSeconds(10));
+//					action.explicitWait(driver, delete_option_spaceTable, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					action.explicitWaitPresenceOfElement(driver, delete_option_spaceTable, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					Thread.sleep(1000);
 					String space_id = col1_space_name_detail.getText();
 					String space_name = col2_space_name_detail.getText();
@@ -257,16 +270,16 @@ public class SpaceTypesPage {
 					Thread.sleep(1000);
 					if (int_space_id > 10) {
 
-						delete_option_spaceTable.click();
+						action.click1(driver.findElement(delete_option_spaceTable), "Click delete option spacetable");
 						Thread.sleep(2000);
-						action.explicitWaitElementClickable(driver, delte_confirmation_text, Duration.ofSeconds(10));
+						action.explicitWaitElementClickable(driver, delte_confirmation_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 						Thread.sleep(1000);
 						confirm_delete_btn.click();
 
 						System.out.println("SPACE ID Deleted = " + int_space_id + " ,  SPACE NAME =  " + space_name);
 
 						Thread.sleep(2000);
-						action.explicitWaitElementClickable(driver, succes_delete_message, Duration.ofSeconds(10));
+						action.explicitWaitElementClickable(driver, succes_delete_message, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 						Thread.sleep(2000);
 						after_delte_success_ok_btn.click();
 						Thread.sleep(3000);
@@ -282,14 +295,14 @@ public class SpaceTypesPage {
 
 				} catch (Exception e) {
 
-					action.explicitWait(driver, no_match_record_found_text, Duration.ofSeconds(10));
+					action.explicitWaitPresenceOfElement(driver, no_match_record_found_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					Thread.sleep(2000);
-					no_entries_found = no_match_record_found_text.getText();
+					no_entries_found = driver.findElement(no_match_record_found_text).getText();
 					entries_remain = showing_entries.getText();
 					System.out.println(entries_remain);
 					System.out.println("Table Empty");
 
-//				action.explicitWait(driver, no_match_record_found_text, Duration.ofSeconds(10));
+//				action.explicitWait(driver, no_match_record_found_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 //				no_entries_found = no_match_record_found_text.getText();
 
 					if (no_entries_found.equals("No matching records found")) {
@@ -305,8 +318,8 @@ public class SpaceTypesPage {
 				entries_remain = showing_entries.getText();
 				try {
 					Thread.sleep(2000);
-					action.explicitWait(driver, no_match_record_found_text, Duration.ofSeconds(10));
-					no_entries_found = no_match_record_found_text.getText();
+					action.explicitWaitPresenceOfElement(driver, no_match_record_found_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					no_entries_found = driver.findElement(no_match_record_found_text).getText();
 					System.out.println(no_entries_found);
 					if (no_entries_found.equals("No matching records found")) {
 						i = 2000;
@@ -331,14 +344,14 @@ public class SpaceTypesPage {
 	public EditSpacePage search_space_click_edit_btn(String space_id) throws InterruptedException {
 		
 		driver.navigate().refresh();
-		action.explicitWaitElementClickable(driver, btn_addspacetype, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_addspacetype), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		String result_count = showing_entries.getText();
 
 		search_name.click();
-		action.explicitWait(driver, search_name, Duration.ofSeconds(10));
+		action.explicitWait(driver, search_name, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		search_name.sendKeys(space_id);
 		Thread.sleep(3000);
-		action.explicitWaitElementClickable(driver, edit_option_spaceTable, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, edit_option_spaceTable, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		String result_count_two = showing_entries.getText();
 		
 		
@@ -360,36 +373,71 @@ public class SpaceTypesPage {
 	}
 	
 	
-public boolean exportDataToExcel() {
-		
+	public boolean exportDataToExcel() {
+
+		action.explicitWait(driver, btn_excel_export, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(btn_export, "Export Space Btn");
-		action.explicitWait(driver, btn_excel_export, Duration.ofSeconds(10));
+		action.explicitWait(driver, btn_excel_export, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(btn_excel_export, "Excel Sheet Btn");
 		String filepath = action.isFileDownloaded("Spaces Type Report", ".xlsx", 30);
 
-		
-		
 		ExcelLibrary excel = new ExcelLibrary(filepath);
 		int excelRows = excel.getRowCount("Worksheet");
-	    
-		
+
 		String dataTableRowsS = showing_entries.getText().trim();
 		String[] splitData = dataTableRowsS.split("of");
 		dataTableRowsS = splitData[1];
 		dataTableRowsS = dataTableRowsS.replace("entries", "");
 		dataTableRowsS = dataTableRowsS.trim();
 		int dataTableRows = Integer.parseInt(dataTableRowsS);
-		
-		if(excelRows-1 == dataTableRows) {
+
+		if (excelRows - 1 == dataTableRows) {
 			File spaceExcelFile = new File(filepath);
 			spaceExcelFile.delete();
 			return true;
-		}else 
+		} else
 			return false;
 	}
 
+	public boolean exportDataToGoogleSheet() throws GeneralSecurityException, IOException, InterruptedException {
 
+		action.click1(btn_export, "Export Space Btn");
+		action.explicitWait(driver, googleSheetBtn, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.click1(googleSheetBtn, "Google Sheet Btn");
+		action.explicitWait(driver, driver.findElement(openGoogleSheetLink), Duration.ofSeconds(30));
+		Thread.sleep(1000);
 
+		action.click1(driver.findElement(openGoogleSheetLink), "Open Google Sheet Link");
+		action.switchToNewWindow(driver);
+		action.explicitWait(driver, driver.findElement(googleSheetTitle), Duration.ofSeconds(30));
+		action.click1(driver.findElement(googleSheetFileMenu), "Google Sheet File Menu");
+		action.click1(driver.findElement(googleDownloadMenuItem), "Google Download Menu Item");
+		action.click1(driver.findElement(googleDownloadExcelOption), "Google Download Excel Sheet Option");
+		String currentDate = action.getCurrentDate(1, 0, 0, "dd_MM_yyyy");
+		String filename = "Spaces" + "_" + currentDate;
+		String filepath = action.isFileDownloaded(filename, ".xlsx", 30);
+
+		driver.close();
+		action.switchToOldWindow(driver);
+		action.click1(after_delte_success_ok_btn, "Success Ok Btn");
+
+		ExcelLibrary excel = new ExcelLibrary(filepath);
+		int excelRows = excel.getRowCount("Sheet1");
+		String dataTableRowsS = showing_entries.getText().trim();
+		String[] splitData = dataTableRowsS.split("of");
+		dataTableRowsS = splitData[1];
+		dataTableRowsS = dataTableRowsS.replace("entries", "");
+		dataTableRowsS = dataTableRowsS.trim();
+		int dataTableRows = Integer.parseInt(dataTableRowsS);
+
+		if (excelRows - 1 == dataTableRows) {
+			File spaceExcelFile = new File(filepath);
+			spaceExcelFile.delete();
+			return true;
+		} else
+			return false;
+
+	}
 
 	
 

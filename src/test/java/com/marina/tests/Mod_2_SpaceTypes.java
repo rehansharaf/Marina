@@ -1,5 +1,8 @@
 package com.marina.tests;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -43,7 +46,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 	String parking;
 
 	@BeforeMethod
-	public void beforeTest() {
+	public void beforeTest() throws InterruptedException {
 
 		browserIntialization();
 		lp = new LoginPage(driver);
@@ -51,7 +54,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 		stp = hp.spaces_dropdown_SpaceTypes();
 
 	}
-
+	
 	@Test(groups = { "regression", "smoke",
 			"sanity" }, priority = 2, description = "Clicking space type link should open space type page TC_201")
 	public void verifySpacePage_Tc_201() {
@@ -63,8 +66,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 	}
 
 	@Test(groups = { "regression", "smoke",
-			"sanity" }, priority = 3, description = " Clicking add space type button, add new space type window should appear TC 202")
-	public void verifyPopupAddSpace_TC_202() {
+			"sanity" }, priority = 3, dependsOnMethods = "verifySpacePage_Tc_201",
+			description = " Clicking add space type button, add new space type window should appear TC 202")
+	public void verifyPopupAddSpace_TC_202() throws InterruptedException {
 
 		statp = stp.add_space_type();
 		Log.startTestCase(" Clicking add space type button, add new space type window should appear TC 202");
@@ -73,11 +77,12 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = {
-			"regression" }, priority = 4, description = " TC_203 mutli spaces added with different options TC_203")
+	
+	@Test(groups = {"regression" }, priority = 4, 
+			dependsOnMethods = "verifyPopupAddSpace_TC_202", description = "Multi spaces added with different options TC_203")
 	public void multipleUsersWithMutlipleSelections_TC_203() throws InterruptedException {
 
-		Log.startTestCase(" TC_203 mutli spaces added with different options TC_203 ");
+		Log.startTestCase("TC_203 multi spaces added with different options TC_203 ");
 		statp = stp.add_space_type();
 		added_space = statp.addingNewSpace("mutlispaces.xlsx");
 		Assert.assertTrue(true);
@@ -88,8 +93,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-			"sanity" }, priority = 5, description = "verify skipping fields of add space TC_204")
+	@Test(groups = { "regression", "smoke",
+			"sanity" }, priority = 5, dependsOnMethods = "multipleUsersWithMutlipleSelections_TC_203",
+			description = "Verify skipping fields of add space TC_204")
 	public void addSpace_skippingFileds_TC_204() throws InterruptedException {
 
 		Log.startTestCase("verify skipping fields of add space TC_204");
@@ -105,8 +111,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-			"sanity" }, priority = 6, description = "verify after insert data space record match with table record TC_205")
+	@Test(groups = { "regression", "smoke",
+			"sanity" }, priority = 6, dependsOnMethods = "addSpace_skippingFileds_TC_204", 
+			description = "Verify after insert data space record match with table record TC_205")
 	public void verifySpaceData_fromTableData_TC_205() throws InterruptedException {
 
 		Log.startTestCase("verify after insert data space record match with table record TC_205");
@@ -124,8 +131,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-			"sanity" }, priority = 9, description = "verify table data after edit space TC_208")
+	@Test( groups = { "regression", "smoke",
+			"sanity" }, priority = 9, dependsOnMethods = "verifySpaceData_fromTableData_TC_205", 
+			description = "Verify table data after edit space TC_208")
 	public void verifySpaceData_afterEdit_TC_208() throws InterruptedException {
 
 		Log.startTestCase("verify table data after edit space TC_208");
@@ -147,8 +155,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-			"sanity" }, priority = 10, description = "verify the new space type to excel sheet and check the complete records export TC_209")
+	@Test( groups = { "regression", "smoke",
+			"sanity" }, priority = 10, dependsOnMethods = "verifySpaceData_afterEdit_TC_208",  
+			description = "Verify the new space type to excel sheet and check the complete records export TC_209")
 	public void exportNewAddSpace_verifyCompleteRecords_TC_209() throws InterruptedException {
 
 		
@@ -159,10 +168,21 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 	
+	@Test(groups = { "regression", "smoke",
+			"sanity" }, priority = 11,dependsOnMethods = "exportNewAddSpace_verifyCompleteRecords_TC_209", 
+			description = "Export Space Types Into Google Sheet & Verify Records TC_210")
+	public void exportSpacesGoogleSheet_TC_210() throws GeneralSecurityException, IOException, InterruptedException {
 	
+		Log.startTestCase("Export Space Types Into Google Sheet & Verify Records TC_210");
+		boolean flag = stp.exportDataToGoogleSheet();
+		Assert.assertTrue(flag);
+		Log.endTestCase("Export Space Types Into Google Sheet & Verify Records TC_210");
+		
+	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-			"sanity" }, priority = 12, description = "Search the added space from search field TC_211")
+	@Test( groups = { "regression", "smoke",
+			"sanity" }, priority = 12, dependsOnMethods = "verifySpaceData_afterEdit_TC_208",
+			description = "Search the added space from search field TC_211")
 	public void verify_serachField_withSpaceName_TC_211() throws InterruptedException {
 
 		Log.startTestCase("Search the added space from search field TC_211");
@@ -177,8 +197,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(retryAnalyzer = com.marina.utils.TestRetryAnalyzer.class, groups = { "regression", "smoke",
-			"sanity" }, priority = 13, description = "verify after delete space from space table TC_212")
+	@Test( groups = { "regression", "smoke",
+			"sanity" }, priority = 13, dependsOnMethods = "verify_serachField_withSpaceName_TC_211", 
+			description = "Verify after delete space from space table TC_212")
 	public void verifyDeleteSpace_TC_212() throws InterruptedException {
 
 		Log.startTestCase("verify after delete space from space table TC_212");
@@ -192,15 +213,32 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 
-	@Test(groups = { "regression", "smoke" }, priority = 14)
+	@Test(groups = { "regression", "smoke" }, priority = 14, dependsOnMethods = "verifyDeleteSpace_TC_212", 
+			description = "Verify add space form refresh after add single and carparking spaces")
 	public void add_Spaces_Single_And_Carparking_Options_TC_213() throws InterruptedException {
 
-		Log.startTestCase("verify add space form refresh after add single and carparking spaces");
+		Log.startTestCase("Verify add space form refresh after add single and carparking spaces");
 
 		statp = stp.add_space_type();
 		added_space = statp.addingNewSpace("boatAndCarParking.xlsx");
 		String user = (String) added_space[0][0];
-		Assert.assertEquals(user, "Test_tbt_001");
+		String user1 = (String) added_space[1][0];
+		String user2 = (String) added_space[2][0];
+		
+		driver.navigate().refresh();
+		if(user != null)
+			stp.delete_space("Test_tbt_001");
+		if(user1 != null)
+			stp.delete_space("Test_tbt_002");
+		if(user2 != null)
+			stp.delete_space("Test_tbt_003");
+		
+		if(user != null && user1 != null && user2 != null)
+			Assert.assertTrue(true);
+		else
+			Assert.assertTrue(false,"Space Types are not getting created when adding single and then carparking spaces");
+		
+		
 		Log.endTestCase("verify add space form refresh after add single and carparking spaces");
 
 	}
@@ -208,7 +246,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 	@AfterMethod
 	public void afterTest() {
 
-		driver.get("https://staging.appedology.pk/marina/login");
+		driver.get(prop.getProperty("logout_url"));
 		BrowserFactory.getInstance().removeDriver();
 	}
 

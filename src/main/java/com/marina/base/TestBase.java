@@ -56,7 +56,7 @@ public class TestBase {
 		BrowserFactory.getInstance().setDriver(browser);
 		driver = BrowserFactory.getInstance().getDriver();
 		// driver = BrowserFactory.instance.getDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.parseInt(prop.getProperty("implicit_wait_timeout"))));
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
 		

@@ -6,10 +6,19 @@
       <class name="com.marina.tests.Mod_3_AllSpaces">
         <methods>
           <include name="loadConfig"/>
-          <include name="afterTest"/>
+          <include name="editRecordVerifyData_TC_407"/>
           <include name="beforeTest"/>
           <include name="createNewSpaceMandatoryFields_TC_402"/>
+          <include name="verifyAdditionalFieldsForUnAvailibility_TC_403"/>
+          <include name="deleteNoteFromEditSpace_TC_412"/>
+          <include name="exportSpaceGoogleSheet_TC_415"/>
+          <include name="afterTest"/>
+          <include name="importSpacesBulk_TC_413"/>
           <include name="afterSuite"/>
+          <include name="verifyAllSpacePage_TC_401"/>
+          <include name="clickAddNoteBtnWithoutNotes_TC_410"/>
+          <include name="createNewSpaceAllFields_TC_404"/>
+          <include name="exportSpaceExcel_TC_414"/>
         </methods>
       </class> <!-- com.marina.tests.Mod_3_AllSpaces -->
     </classes>

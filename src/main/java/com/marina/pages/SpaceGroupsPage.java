@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class SpaceGroupsPage {
 
@@ -47,8 +49,8 @@ public class SpaceGroupsPage {
 	public boolean deletingSpaceGroup(String groupName) throws InterruptedException {
 		
 		int checkCount = 0;
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
-		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(10));		
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));		
 		List<WebElement> deleteGroupBtns = driver.findElements(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[2]/div/button[2]"));
 
 		while(deleteGroupBtns.size() == 0) {
@@ -64,9 +66,9 @@ public class SpaceGroupsPage {
 
 			checkCount = 0;
 			action.click1(driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[2]/div/button[2]")), "Click Group Delete Btn");
-			action.explicitWait(driver, driver.findElement(deleteConfirmBtn), Duration.ofSeconds(10));
+			action.explicitWait(driver, driver.findElement(deleteConfirmBtn), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(driver.findElement(deleteConfirmBtn), "Clicking delete Conf Btn");
-			action.explicitWaitElementClickable(driver,driver.findElement(successOk), Duration.ofSeconds(10));
+			action.explicitWaitElementClickable(driver,driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			action.click1(driver.findElement(successOk), "Clicking success OK btn");
 			Thread.sleep(1000);
 			List<WebElement> deleteGroupBtnsUpdate = driver.findElements(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[2]/div/button[2]"));
@@ -96,10 +98,10 @@ public class SpaceGroupsPage {
 		String[] Data = new String[noOfSlips];
 		int index = 0;
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
-		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addGroup, "Click Add Group Btn");
-		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			
 		for(int counter = 1; counter <=noOfSlips; counter++) {
 				
@@ -112,9 +114,9 @@ public class SpaceGroupsPage {
 		
 		action.type(driver.findElement(nameInputField), groupName);
 		action.click1(driver.findElement(saveBtn), "Clicking Save Btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Clicking Success Ok Btn");
-		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']")), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> noOfGroups = driver.findElements(groupList);
 		List<WebElement> noOfGroupsUpdatedCount = driver.findElements(groupList);
@@ -130,7 +132,7 @@ public class SpaceGroupsPage {
 		}
 		
 		List<WebElement> createdSlip = driver.findElements(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[1]"));
-		if(createdSlip.size() == 2)
+		if(createdSlip.size() > 1)
 			return false;
 		else
 			return true;
@@ -141,14 +143,14 @@ public class SpaceGroupsPage {
 		
 		int index;
 		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[2]/div/button[1]")), 
-				Duration.ofSeconds(10));
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		String noOfSlipsSaved = driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[1]")).getText().trim();
 		
 		action.click1(driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[2]/div/button[1]")),
 				"Clicking Edit Btn Of Specific Space Group");
 
-		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		List<WebElement> listSlips = driver.findElements(listOfSlipsName);
 		for(int i = 0 ; i < listSlips.size(); i++) {
 			
@@ -170,16 +172,22 @@ public class SpaceGroupsPage {
 		}
 		
 		action.click1(driver.findElement(saveBtn), "Clicking Save Btn");
-		action.explicitWait(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Clicking Success Ok");
-		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[1]")), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[1]")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		String noOfSlipsSavedEdited = "";
 		int checkCond = 0;
 		while(checkCond < 10) {
 			
 			Thread.sleep(500);
+			try {
 			noOfSlipsSavedEdited = driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[1]")).getText().trim();
+			}catch(StaleElementReferenceException ste) {
+				Thread.sleep(1000);
+				noOfSlipsSavedEdited = driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[1]")).getText().trim();
+
+			}
 			if(!noOfSlipsSaved.equals(noOfSlipsSavedEdited))
 				break;
 			else
@@ -195,10 +203,10 @@ public class SpaceGroupsPage {
 	public boolean searchSpaceByNameType(int checkNoOfRecords) throws InterruptedException {
 
 		boolean checkSearchBySlipName = true, checkSearchBySpace = true;
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
-		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addGroup, "Click Add Group Btn");
-		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> listOfSlipsExist = driver.findElements(listOfSlipsName);
 		if(checkNoOfRecords > listOfSlipsExist.size()) {
@@ -266,10 +274,10 @@ public class SpaceGroupsPage {
 		boolean groupRecordCreated = true;
 		boolean editPageSlipSelection = true;
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
-		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addGroup, "Click Add Group Btn");
-		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			
 		for(int counter = 1; counter <=noOfSlips; counter++) {
 				
@@ -282,9 +290,9 @@ public class SpaceGroupsPage {
 		
 		action.type(driver.findElement(nameInputField), groupName);
 		action.click1(driver.findElement(saveBtn), "Clicking Save Btn");
-		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "Clicking Success Ok Btn");
-		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']")), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(By.xpath("//table[@class='table']/tbody/tr/td[text()='"+groupName+"']")), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> noOfGroups = driver.findElements(groupList);
 		List<WebElement> noOfGroupsUpdatedCount = driver.findElements(groupList);
@@ -319,7 +327,7 @@ public class SpaceGroupsPage {
 			action.click1(driver.findElement(By.xpath("(//table[@class='table']/tbody/tr/td[text()='"+groupName+"']/following-sibling::td[2]/div/button[1])["+createdSlip.size()+"]")), 
 					"Clicking Space Group Edit Btn");
 		
-		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> listSlips = driver.findElements(listOfSlipsName);
 		for(WebElement el : listSlips) {
@@ -352,16 +360,16 @@ public class SpaceGroupsPage {
 		
 	}
 	
-	public String[] getSpacesList() {
+	public String[] getSpacesList() throws InterruptedException {
 		
 		String[] Data;
 		int index = 0;
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
-		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWaitElementClickable(driver, addGroup, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(addGroup, "Click Add Group Btn");
-		action.explicitWait(driver, driver.findElement(addGroupPageHeading), Duration.ofSeconds(10));
-		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(10));
+		action.explicitWait(driver, driver.findElement(addGroupPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWait(driver, driver.findElement(listOfSlipsName), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		List<WebElement> slips = driver.findElements(listOfSlipsName);
 		Data = new String[slips.size()];
@@ -372,14 +380,21 @@ public class SpaceGroupsPage {
 			index++;
 		}
 	
-		action.click1(driver.findElement(closeAddGroupBtn), "Click close btn Add Group page");
+		try {
+			action.click1(driver.findElement(closeAddGroupBtn), "Click close btn Add Group page");
+		}catch(Exception e) {
+			
+			Thread.sleep(1000);
+			action.click1(driver.findElement(closeAddGroupBtn), "Click close btn Add Group page");
+
+		}
 		return Data;
 		
 	}
 	
 	public String verifyPageHeading() {
 		
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		return pageHeading.getText().trim();
 	}
 }

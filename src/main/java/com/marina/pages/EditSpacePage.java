@@ -149,7 +149,7 @@ public class EditSpacePage {
 		// TODO Auto-generated method stub
 
 		after_edit_space_data = new String[6];
-		action.explicitWaitElementClickable(driver, btn_edit_save, Duration.ofSeconds(10));
+		action.explicitWaitElementClickable(driver, btn_edit_save, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		edit_nameText.clear();
 		edit_nameText.sendKeys(userChange);
 
@@ -160,9 +160,11 @@ public class EditSpacePage {
 		edit_check_monthly.click();
 		edit_add_to_rate_group_selection.click();
 		edit_dry_Storage_group.click();
+		action.scrollByVisibilityOfElement(driver, edit_include_in_OCCUPANCY_yes);
 		edit_include_in_OCCUPANCY_yes.click();
-		action.JSClick(driver, btn_edit_save2);
-		action.explicitWaitElementClickable(driver, btn_ok_group_added, Duration.ofSeconds(10));
+		action.scrollByVisibilityOfElement(driver, btn_edit_save2);
+		action.click1(btn_edit_save2, "clicking save btn");
+		action.explicitWaitElementClickable(driver, btn_ok_group_added, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		btn_ok_group_added.click();
 		driver.navigate().refresh();
 		

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class ImportSpacesPage {
 
@@ -28,7 +29,7 @@ public class ImportSpacesPage {
 	@FindBy(how = How.XPATH, using = "//div[@class='alert alert-success alert-dismissible fade show']")
 	WebElement importSuccessMsg;
 	
-	@FindBy(how = How.XPATH, using = "//a[@href='https://staging.appedology.pk/marina/spaces' and text()='Spaces']")
+	@FindBy(how = How.XPATH, using = "//a[text()='Spaces']")
 	WebElement spaceBreadcrum;
 	
 	
@@ -40,13 +41,13 @@ public class ImportSpacesPage {
 	}
 	
 	
-	public AllSpacesPage importSpacesData() {
+	public AllSpacesPage importSpacesData(String filename) {
 		
-		String filepath = System.getProperty("user.dir")+"/src/test/resources/testdata/space_bulk_import.xlsx";
-		action.explicitWait(driver, pageHeading, Duration.ofSeconds(10));
+		String filepath = System.getProperty("user.dir")+"/src/test/resources/testdata/"+filename+".xlsx";
+		action.explicitWait(driver, pageHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(fileField, filepath);
 		action.click(driver, submitBtn);
-		action.explicitWait(driver, importSuccessMsg, Duration.ofSeconds(10));
+		action.explicitWait(driver, importSuccessMsg, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(spaceBreadcrum, "space breadcrum");
 		return new AllSpacesPage(driver);
 

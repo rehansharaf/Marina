@@ -10,6 +10,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class ReservationsPage {
 	
@@ -33,15 +34,15 @@ public class ReservationsPage {
 	public boolean searchSlipsAvailableReservation(String[] slipList) {
 		
 		boolean allExist = true;
-		action.explicitWait(driver, reservationTab, Duration.ofSeconds(10));
-		action.explicitWait(driver, searchField, Duration.ofSeconds(10));
+		action.explicitWait(driver, reservationTab, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.explicitWait(driver, searchField, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		for(String slip: slipList) {
 		
 			searchField.clear();
 			action.type(searchField, slip);
 			try {
-				action.explicitWait(driver, driver.findElement(dataTableReservationSearchRec), Duration.ofSeconds(10));
+				action.explicitWait(driver, driver.findElement(dataTableReservationSearchRec), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 				if(!driver.findElement(dataTableReservationSearchRec).getText().trim().equals(slip)) {
 					
 					allExist = false;

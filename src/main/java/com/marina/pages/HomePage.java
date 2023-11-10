@@ -22,7 +22,7 @@ public class HomePage {
 	@FindBy(how = How.XPATH, using = "//div[text()='Spaces']")
 	WebElement spacesdropdown;
 
-	@FindBy(how = How.XPATH, using = "//div[text()='Space Types']")
+	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-space-types']/parent::a")
 	WebElement Spacetypes;
 
 	@FindBy(how = How.XPATH, using = "//div[text()='All Spaces']/parent::a")
@@ -48,28 +48,35 @@ public class HomePage {
 
 	public String verifyHomePageHeading() {
 
-		action.explicitWait(driver, dashboardText, Duration.ofSeconds(10));
+		action.explicitWait(driver, dashboardText, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		return dashboardText.getText();
 	}
 
-	public SpaceTypesPage spaces_dropdown_SpaceTypes() {
-
-		try {
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-		action.click(driver, spacesdropdown);
-		action.explicitWait(driver, Spacetypes, Duration.ofSeconds(10));
-		}
-		catch (Exception e) {
-			
-			action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
-			action.click(driver, spacesdropdown);
-			
-		}
+	public SpaceTypesPage spaces_dropdown_SpaceTypes() throws InterruptedException {
 		
-		
-		action.click(driver, Spacetypes);
-	
+		action.scrollByVisibilityOfElement(driver, spacesdropdown);
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.click1(spacesdropdown, "Spaces DropDown");
+		action.click1(Spacetypes, "Click SpaceType Link");
 		return new SpaceTypesPage(driver);
+		
+
+//		try {
+//		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+//		action.click(driver, spacesdropdown);
+//		action.explicitWait(driver, Spacetypes, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+//		}
+//		catch (Exception e) {
+//			
+//			action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+//			action.click(driver, spacesdropdown);
+//			
+//		}
+//		
+//		
+//		action.click(driver, Spacetypes);
+//	
+//		return new SpaceTypesPage(driver);
 
 	}
 	
@@ -77,7 +84,7 @@ public class HomePage {
 	public AllSpacesPage spaces_dropdown_AllSpaces() throws InterruptedException {
 
 		action.scrollByVisibilityOfElement(driver, spacesdropdown);
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(spacesdropdown, "Spaces DropDown");
 		action.click1(allspaces, "All Space Link");
 		return new AllSpacesPage(driver);
@@ -88,7 +95,7 @@ public class HomePage {
 	public SpaceGroupsPage spaces_dropdown_SpaceGroups() throws InterruptedException {
 
 		action.scrollByVisibilityOfElement(driver, spacesdropdown);
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(spacesdropdown, "Spaces DropDown");
 		action.click1(spacegroups, "Space Groups Link");
 		return new SpaceGroupsPage(driver);
@@ -99,7 +106,7 @@ public class HomePage {
 	public BoatGroupsPage spaces_dropdown_BoatGroups() throws InterruptedException {
 
 		action.scrollByVisibilityOfElement(driver, spacesdropdown);
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(spacesdropdown, "Spaces DropDown");
 		action.click1(boatgroups, "Boat Group Link");
 		return new BoatGroupsPage(driver);
@@ -108,7 +115,7 @@ public class HomePage {
 	
 	public CalendarPage calendarLink() {
 
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(calendar, "Calendar link");
 		return new CalendarPage(driver);
 			
@@ -117,7 +124,7 @@ public class HomePage {
 	public ReservationsPage reservationLink() throws InterruptedException {
 		
 		action.scrollByVisibilityOfElement(driver, spacesdropdown);
-		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(10));
+		action.explicitWait(driver, spacesdropdown,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(reservation, "ReservationsPage link");
 		return new ReservationsPage(driver);
 
