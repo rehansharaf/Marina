@@ -16,7 +16,7 @@ import com.marina.actiondriver.Action;
 import com.marina.base.TestBase;
 import com.marina.utils.ExcelLibrary;
 
-public class SpaceTypesAddTypesPage {
+public class SpaceTypesAddTypesPage<price_type_options_count> {
 
 	WebDriver driver;
 	Action action = new Action();
@@ -27,6 +27,9 @@ public class SpaceTypesAddTypesPage {
 	Object[][] space_for_add;
 	Object[][] after_add_space;
 	String filename;
+	
+	String []price_type_options_count;
+	
 
 	ArrayList<ArrayList<String>> data;
 
@@ -246,12 +249,18 @@ public class SpaceTypesAddTypesPage {
 
 				}
 
-				else if (pricing_type.equals("$/period")) {
-					action.explicitWait(driver, pt_period, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-					pt_period.click();
+				
+				
+//				else if (pricing_type.equals("$/period")) {
+//					action.explicitWait(driver, pt_period, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+//					pt_period.click();
+//
+//				}
 
-				}
-
+	
+				
+				
+				
 			}
 
 			Thread.sleep(2000);
@@ -576,6 +585,34 @@ public class SpaceTypesAddTypesPage {
 
 	}
 	
+	
+	public String[] select_unit_period_verify_pricing_type() {
+
+		action.explicitWaitElementClickable(driver, btn_reClick_add_space,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		fixedCheck.click();
+		pricing_type_click.click();
+
+		price_type_options_count = new String[3];
+
+		price_type_options_count[0] = pt_ft_period.getText();
+		price_type_options_count[1] = pt_sq_ft_period.getText();
+
+		try {
+
+			price_type_options_count[2] = pt_period.getText();
+
+		} catch (Exception e) {
+
+			System.out.println("period value not found ");
+			price_type_options_count[2] = "no text";
+
+		}
+
+		return price_type_options_count;
+
+	}
 	
 
 

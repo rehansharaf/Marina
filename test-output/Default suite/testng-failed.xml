@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.marina.tests.Mod_3_AllSpaces">
+      <class name="com.marina.tests.Mod_2_SpaceTypes">
         <methods>
+          <include name="SelectionUnitPeriod_and_verify_two_option_TC_214"/>
           <include name="loadConfig"/>
-          <include name="editRecordVerifyData_TC_407"/>
-          <include name="beforeTest"/>
-          <include name="createNewSpaceMandatoryFields_TC_402"/>
-          <include name="verifyAdditionalFieldsForUnAvailibility_TC_403"/>
-          <include name="deleteNoteFromEditSpace_TC_412"/>
-          <include name="exportSpaceGoogleSheet_TC_415"/>
-          <include name="afterTest"/>
-          <include name="importSpacesBulk_TC_413"/>
           <include name="afterSuite"/>
-          <include name="verifyAllSpacePage_TC_401"/>
-          <include name="clickAddNoteBtnWithoutNotes_TC_410"/>
-          <include name="createNewSpaceAllFields_TC_404"/>
-          <include name="exportSpaceExcel_TC_414"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
         </methods>
-      </class> <!-- com.marina.tests.Mod_3_AllSpaces -->
+      </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

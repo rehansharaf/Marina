@@ -55,6 +55,7 @@ public class Mod_2_SpaceTypes extends TestBase {
 
 	}
 	
+	
 	@Test(groups = { "regression", "smoke",
 			"sanity" }, priority = 2, description = "Clicking space type link should open space type page TC_201")
 	public void verifySpacePage_Tc_201() {
@@ -242,6 +243,31 @@ public class Mod_2_SpaceTypes extends TestBase {
 		Log.endTestCase("verify add space form refresh after add single and carparking spaces");
 
 	}
+	
+	
+	
+	@Test(groups = { "regression",
+			"smoke" }, priority = 15, description = "after selection of unit/period, two values should show, "
+					+ "1. ft/period and 2. sq.ft/period and 3 . value should be hide or disable TC_214 ")
+	public void SelectionUnitPeriod_and_verify_two_option_TC_214() throws InterruptedException {
+
+		Log.startTestCase("after selection of unit/period, two values should show, 1. ft/period and "
+				+ "2. sq.ft/period and 3 . value should be hide or disable TC_214 ");
+
+		statp = stp.add_space_type();
+
+		String[] pricing_type_options = statp.select_unit_period_verify_pricing_type();
+		String[] options_compare = { "$/ft/period", "$/sq.ft/period", "no text" };
+
+		Assert.assertEquals(pricing_type_options, options_compare);
+
+		Log.endTestCase("after selection of unit/period, two values should show, 1. ft/period and 2. sq.ft/period "
+				+ "and 3 . value should be hide or disable TC_214 ");
+
+	}
+	
+	
+
 
 	@AfterMethod
 	public void afterTest() {
