@@ -56,6 +56,8 @@ public class Mod_2_SpaceTypes extends TestBase {
 	}
 	
 	
+	
+	
 	@Test(groups = { "regression", "smoke",
 			"sanity" }, priority = 2, description = "Clicking space type link should open space type page TC_201")
 	public void verifySpacePage_Tc_201() {
@@ -111,6 +113,9 @@ public class Mod_2_SpaceTypes extends TestBase {
 		Log.endTestCase(" verify skipping fields of add space TC_204");
 
 	}
+	
+	
+	
 
 	@Test(groups = { "regression", "smoke",
 			"sanity" }, priority = 6, dependsOnMethods = "addSpace_skippingFileds_TC_204", 
