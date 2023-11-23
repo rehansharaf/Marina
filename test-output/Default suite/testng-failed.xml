@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.marina.tests.Mod_2_SpaceTypes">
+      <class name="com.marina.tests.Mod_7_RatesStorage">
         <methods>
-          <include name="SelectionUnitPeriod_and_verify_two_option_TC_214"/>
           <include name="loadConfig"/>
+          <include name="createGroup_verifyGroup_TC_1101"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
         </methods>
-      </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
+      </class> <!-- com.marina.tests.Mod_7_RatesStorage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

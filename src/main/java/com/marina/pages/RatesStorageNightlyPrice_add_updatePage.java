@@ -139,6 +139,12 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By calender_holidy_month_dec = By.xpath("//html/body/div[14]/div[1]/div/div/select/option[12]");
 
 	By calender_year_title = By.xpath("//html/body/div[14]/div[1]/div/div/div");
+
+	/*
+	 * 
+	 * click on selected date //span[@aria-label='November 4, 2023'] /
+	 */
+
 	By calender_data_select = By.xpath("//html/body/div[14]/div[2]/div/div[2]/div/span[4]");
 
 	By btn_save_nightly_pricing = By.xpath("//button[text()='Save Nightly Pricing']");
@@ -149,7 +155,7 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By popup_nightly_price_succsfully_save_text = By.xpath("//h2[text()='Success!']");
 	By btn_popup_ok_nightly_price_successfully_save = By.xpath("//button[@class='swal2-confirm swal2-styled']");
 	By btn_view_nightly_pricing = By.xpath("//a[@class='btn btn-success btn-md px-4']");
-	
+
 	// *[@id="year-2023"]/div[3]/div/input
 
 }

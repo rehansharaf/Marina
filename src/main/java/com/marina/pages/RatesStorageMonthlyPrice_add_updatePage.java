@@ -52,6 +52,15 @@ public class RatesStorageMonthlyPrice_add_updatePage {
 	By select_from_oct = By.xpath("//*[@id='bucket6_2023']/div/div/div/table/tbody/tr/td[1]/div[1]/select/option[10]");
 	By select_from_nov = By.xpath("//*[@id='bucket6_2023']/div/div/div/table/tbody/tr/td[1]/div[1]/select/option[11]");
 	By select_from_dec = By.xpath("//*[@id='bucket6_2023']/div/div/div/table/tbody/tr/td[1]/div[1]/select/option[12]");
+	
+	
+	/*
+	 * 
+	 * click on selected date
+	 * //span[@aria-label='November 4, 2023']
+	 * /
+	 */
+	
 
 	By dropdown_month_to_selection = By.xpath("//*[@id='bucket6_2023']/div/div/div/table/tbody/tr/td[1]/div[2]/select");
 
@@ -91,17 +100,28 @@ public class RatesStorageMonthlyPrice_add_updatePage {
 	By calender_holidy_month_dec = By.xpath("//html/body/div[13]/div[1]/div/div/select/option[12]");
 
 	By calender_year_title = By.xpath("//html/body/div[13]/div[1]/div/div/div");
+	
+	/*
+	 * 
+	 * click on selected date
+	 * //span[@aria-label='November 4, 2023']
+	 * /
+	 */
+	
 	By calender_data_select = By.xpath("//html/body/div[13]/div[2]/div/div[2]/div/span[4]");
 
 	By select_effective_till_date = By.xpath("//*[@id='year-2023']/div[2]/div[1]/div[2]/input");
 
 	By btn_save_monthly_price = By.xpath("//*[@id='year-2023']/div[2]/div[2]/button");
-	By btn_popup_yes_overwrite_monthly_pricing = By.xpath("//html/body/div[17]/div/div[6]/button[1]");
-	By btn_popup_not_overwrite_monthly_pricing = By.xpath("//html/body/div[17]/div/div[6]/button[3]");
-	By popup_monthly_price_succsfully_save_text = By.xpath("//h2[text()='Success!']");
-	By btn_popup_ok_monthly_price_successfully_save = By.xpath("//button[@class='swal2-confirm swal2-styled']");
 	
-	By btn_view_monthly_pricing = By.xpath("//a[@class='btn btn-success btn-md px-4']");
+	
+	
+	By btn_popup_yes_overwrite = By.xpath("//button[text()='Yes, overwrite']");
+	By btn_popup_cancel = By.xpath("//button[text()='Cancel']");
+	By popup_text_areYouSure = By.xpath("//h2[text()='Are you sure?']");
+	By popup_text_success_saved = By.xpath("//h2[text()='Success!']");
+	By btn_popup_successfully_saved_ok = By.xpath("//button[text()='OK']");
+	
 	
 	
 	
