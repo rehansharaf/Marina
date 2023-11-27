@@ -651,30 +651,35 @@ public class SpaceTypesAddTypesPage<price_type_options_count> {
 	
 	
 	
-	public void  adding_rates_group(String name) throws InterruptedException{
+	public SpaceTypesPage  adding_rates_group(String name) throws InterruptedException{
 
-		
-		
-		
-		action.scrollByVisibilityOfElement(driver, btn_reClick_add_space);
-		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		action.click1(btn_reClick_add_space, "Clickung add space btn");
-		
+
 		System.out.println("click on add to space button");
-//		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		add_to_rate_group_selection.click();
+		Thread.sleep(1000);
+		action.explicitWaitElementClickable(driver, create_new_group,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		create_new_group.click();
-		action.explicitWait(driver, driver.findElement(h_enter_rate_group_name_title), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		Thread.sleep(1000);
+		action.explicitWait(driver, driver.findElement(h_enter_rate_group_name_title),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		driver.findElement(input_field_group_name_enter).sendKeys(name);
 		Thread.sleep(2000);
 		driver.findElement(btn_ok_group_name_save).click();
 		Thread.sleep(2000);
 		btn_close.click();
-		
-		
-		
-		
+		return new SpaceTypesPage(driver);
+
 	}
+	
+	
+	
+
+	
+	
+	
+	
+		
 	
 	
 	

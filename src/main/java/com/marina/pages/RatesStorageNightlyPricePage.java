@@ -1,10 +1,15 @@
 package com.marina.pages;
 
+import java.lang.reflect.Array;
+import java.time.Duration;
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
+import com.marina.base.TestBase;
 
 public class RatesStorageNightlyPricePage {
 
@@ -37,8 +42,9 @@ public class RatesStorageNightlyPricePage {
 	By tab_4_ft_size = By.xpath("//*[@id='buckets_tabs']/li[4]/button/span");
 
 	By revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
-	By dropdown_revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
-
+	By dropdown_revision_history = By.xpath("//select[@ng-change='bucket_change(null, true, effective_date)']");
+	By dropdown_power_pricing_revision_history = By.xpath("//select[@ng-change='date_change()']");
+	
 	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
 	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
@@ -67,5 +73,70 @@ public class RatesStorageNightlyPricePage {
 	By tab_days = By.xpath(
 			"//*[@id='month-" + month_number + "']/div/div/table/tbody/tr[" + date_column + "]/td[" + day_number + "]");
 	// *[@id='month-11']/div/div/table/tbody/tr[1]/td[1]
+
+	ArrayList<String> history_recrod_array;
+
+	public boolean[] newly_group_rivision_history() {
+
+		boolean[] booleans = new boolean[2];
+		booleans[0] = false;
+		booleans[1] = false;
+
+		action.explicitWaitPresenceOfElement(driver, dropdown_revision_history,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		action.click1(driver.findElement(dropdown_revision_history), "testing");
+
+		history_recrod_array = new ArrayList<String>();
+
+		System.out.println();
+
+		int i = 2;
+
+		By revision_history = By
+				.xpath("//select[@ng-change='bucket_change(null, true, effective_date)']/option[" + i + "]");
+
+		String list_revision_record;
+
+		try {
+
+			list_revision_record = driver.findElement(revision_history).getText();
+
+		}
+
+		catch (Exception e) {
+			System.out.println("no text found");
+
+			booleans[0] = true;
+
+		}
+
+		driver.findElement(tab_power_pricing).click();
+		action.explicitWaitPresenceOfElement(driver, dropdown_power_pricing_revision_history,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		
+		
+		action.click1(driver.findElement(dropdown_power_pricing_revision_history), "testing");
+		
+		try {
+
+			list_revision_record = driver.findElement(revision_history).getText();
+
+		}
+
+		catch (Exception e) {
+			System.out.println("no text found");
+			booleans[1] = true;
+
+		}
+		
+		
+		
+		System.out.println("testing");
+
+		return booleans;
+
+	}
 
 }

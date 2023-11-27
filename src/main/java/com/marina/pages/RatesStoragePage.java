@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -32,88 +33,66 @@ public class RatesStoragePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-dry-storage']")
 	WebElement dry_storage;
-	
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-wet-storage']")
 	WebElement wet_storage;
-	
+
 	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-dummy-name-storage']")
 	WebElement dummy_storage;
 
-	
 	By btn_edit_storage_name = By.xpath("//*[@id='layout-menu']/ul/li[4]/ul/li[5]/ul/li[1]/a[2]/i");
-	
-	int i;
-	
-//	By rate_group = By.xpath("//*[@id='layout-menu']/ul/li[4]/ul/li[5]/ul/li["+i+"]");
-	
-	By rate_group = By.xpath("//ul[@class='ulsdbr-rates menu-sub']/li["  +i+  "]/a[1]");
 
-	ArrayList<String> rate_list_record;
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	public void rate_group_list() {
-		
-		
-		//a[@data-defaultvalue='automation test user']
-		
-		System.out.println("testing ");
-		
-		
-		
-		rate_list_record = new ArrayList<String>();
-		
-		for (i=1; i<100; i++) {
-			
-					
+	public boolean rate_group_list(String rateGroupName) {
+
+		boolean name = false;
+		int i;
+		for (i = 1; i < 100; i++) {
+
 			try {
-			rate_list_record.add(driver.findElement(rate_group).getText());
-			
-			}
-			catch(Exception e) {
-				System.out.println("record not found closing loop");
-				i=100;
+
+				Thread.sleep(2000);
+				WebElement group_name_record_search = driver
+						.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li[" + i + "]"));
 				
+				action.scrollByVisibilityOfElement(driver, group_name_record_search);
 				
+				String rate_group_name_selected = group_name_record_search.getText();
+				System.out.println("count  " +i+ "  = " + rate_group_name_selected);
+
+				if (rate_group_name_selected.equals(rateGroupName)) {
+					name = true;
+					System.out.println("result found");
+					break;
+				}
+
+			} catch (Exception e) {
+				System.out.println("no other recrod found ");
+				i = 100;
+
 			}
-			System.out.println(rate_list_record);
-			
-			
-			
-			
-			
+	
 		}
-		
+
+		return name;
+
+	}
+	
+	
+	public RatesStorageNightlyPricePage search_specifig_rates_group(String specific_rates_group_name) {
 	
 		
 		
-		
-		
-		
-		
+	WebElement newly_group_name =	driver.findElement(By.xpath("//div[text()='"+specific_rates_group_name+"']"));
+	action.click1(newly_group_name, specific_rates_group_name);
+	action.explicitWaitElementClickable(driver, driver.findElement(btn_update_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	System.out.println();
+	return new RatesStorageNightlyPricePage(driver);
+	
+
 		
 		
 	}
@@ -121,6 +100,8 @@ public class RatesStoragePage {
 	
 	
 	
+	
+
 	By rates_storage_tittle = By.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
 
 	By nightly_spaces_price = By.xpath("//a[text()='Nightly']");
@@ -128,41 +109,6 @@ public class RatesStoragePage {
 	By annual_spaces_price = By.xpath("//a[text()='Annual']");
 	By flat_spaces_price = By.xpath("//a[text()='Flat']");
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
 	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
 
@@ -179,24 +125,11 @@ public class RatesStoragePage {
 	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
 	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
-	
-	
-	
-	
+
 //	action.click1(spacesdropdown, "Spaces DropDown");
-	
-	
+
 	public void test() {
-		
-		
-	
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
 }

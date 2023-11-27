@@ -148,14 +148,15 @@ public class HomePage {
 	}
 	
 	
-	public SpaceTypesAddTypesPage space_types_click_Mod7_ratesStorage() {
-		
-		action.click1(Spacetypes, "spacetypes");
-		return new SpaceTypesAddTypesPage(driver);
-		
-		
-		
-	}
+//	public SpaceTypesAddTypesPage space_types_click_Mod7_ratesStorage() {
+//		
+//		action.click1(Spacetypes, "spacetypes");
+//		return new SpaceTypesAddTypesPage(driver);
+//		
+//		
+//		
+//	}
+	
 	
 	
 	
@@ -179,6 +180,31 @@ public class HomePage {
 		return new RatesStoragePage(driver);
 
 	}
+	
+	
+	
+	
+
+	public SpaceTypesPage space_types_click_Mod7_ratesStorage() {
+		
+		action.click1(Spacetypes, "spacetypes");
+		return new SpaceTypesPage(driver);
+		
+		
+		
+	}
+	
+	
+	public void dropdown_single_click_rates() {
+		
+	 action.explicitWaitElementClickable(driver, rates, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));;
+     action.click1(rates, "rates dropdown click");
+      
+      
+		
+		
+	}
+	
 	
 	
 	

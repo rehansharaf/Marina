@@ -6,8 +6,8 @@
       <class name="com.marina.tests.Mod_7_RatesStorage">
         <methods>
           <include name="loadConfig"/>
-          <include name="createGroup_verifyGroup_TC_1101"/>
           <include name="afterSuite"/>
+          <include name="newlyGroupCreated_RevisionHisotryEmpty_TC_1102"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
         </methods>

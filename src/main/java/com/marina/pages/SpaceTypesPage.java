@@ -117,6 +117,18 @@ public class SpaceTypesPage {
 	By no_match_record_found_text = By.xpath("//td[text()='No matching records found']");
 
 
+	
+	@FindBy(how = How.XPATH, using = "//button[text()='Add Space Type']")
+	WebElement btn_reClick_add_space;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id='modalAddSpaceType']/div/form/div/div[3]/button[2]")
+	WebElement btn_save_add_space_type_form;
+	
+	
+	
+	By breadcrumbs_home_page = By.xpath("//a[text()='Home']");
+	
+	
 
 	public SpaceTypesPage(WebDriver driver) {
 
@@ -438,6 +450,38 @@ public class SpaceTypesPage {
 			return false;
 
 	}
+	
+	
+	
+	
+	public SpaceTypesAddTypesPage click_btn_add_space_type() throws InterruptedException {
+		
+		action.explicitWaitElementClickable(driver, btn_reClick_add_space, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.scrollByVisibilityOfElement(driver, btn_reClick_add_space);
+		btn_reClick_add_space.click();
+		action.explicitWaitElementClickable(driver, btn_save_add_space_type_form, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		
+		return new SpaceTypesAddTypesPage(driver);
+		
+		
+				
+	}
+	
+	
+	public HomePage breadcrumbs_homePage() {
+		
+		action.explicitWaitElementClickable(driver, driver.findElement(breadcrumbs_home_page), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.click1(driver.findElement(breadcrumbs_home_page), "home page click");
+		return new HomePage(driver);
+		
+		
+		
+	}
+	
+	
+	
+	
 
 	
 
