@@ -1,74 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-11-27T05:35:42 PST" name="Default suite" finished-at="2023-11-27T05:36:13 PST" duration-ms="31063">
+  <suite started-at="2023-11-28T06:13:10 PST" name="Default suite" finished-at="2023-11-28T06:13:59 PST" duration-ms="49049">
     <groups>
       <group name="regression">
-        <method signature="Mod_7_RatesStorage.newlyGroupCreated_RevisionHisotryEmpty_TC_1102()[pri:1, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" name="newlyGroupCreated_RevisionHisotryEmpty_TC_1102" class="com.marina.tests.Mod_7_RatesStorage"/>
+        <method signature="Mod_7_RatesStorage.nightly_delete_newley_bucketAndVerify_TC_1104()[pri:4, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" name="nightly_delete_newley_bucketAndVerify_TC_1104" class="com.marina.tests.Mod_7_RatesStorage"/>
       </group> <!-- regression -->
       <group name="smoke">
-        <method signature="Mod_7_RatesStorage.newlyGroupCreated_RevisionHisotryEmpty_TC_1102()[pri:1, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" name="newlyGroupCreated_RevisionHisotryEmpty_TC_1102" class="com.marina.tests.Mod_7_RatesStorage"/>
+        <method signature="Mod_7_RatesStorage.nightly_delete_newley_bucketAndVerify_TC_1104()[pri:4, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" name="nightly_delete_newley_bucketAndVerify_TC_1104" class="com.marina.tests.Mod_7_RatesStorage"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2023-11-27T05:35:42 PST" name="Default test" finished-at="2023-11-27T05:36:13 PST" duration-ms="31063">
+    <test started-at="2023-11-28T06:13:10 PST" name="Default test" finished-at="2023-11-28T06:13:59 PST" duration-ms="49049">
       <class name="com.marina.tests.Mod_7_RatesStorage">
-        <test-method is-config="true" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-27T05:35:42 PST" name="loadConfig" finished-at="2023-11-27T05:35:42 PST" duration-ms="682" status="PASS">
+        <test-method is-config="true" signature="loadConfig()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-28T06:13:10 PST" name="loadConfig" finished-at="2023-11-28T06:13:10 PST" duration-ms="495" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadConfig -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-27T05:35:42 PST" name="beforeTest" finished-at="2023-11-27T05:36:02 PST" duration-ms="19447" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-28T06:13:10 PST" name="beforeTest" finished-at="2023-11-28T06:13:36 PST" duration-ms="25463" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="newlyGroupCreated_RevisionHisotryEmpty_TC_1102()[pri:1, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-27T05:36:02 PST" name="newlyGroupCreated_RevisionHisotryEmpty_TC_1102" description="No Revision History should be available in newly created rate group" finished-at="2023-11-27T05:36:10 PST" duration-ms="8231" status="FAIL">
-          <exception class="java.lang.NullPointerException">
-            <message>
-              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "this.action.driver" is null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "this.action.driver" is null
-at com.marina.pages.RatesStorageNightlyPricePage.rate_nightly_rivision_history(RatesStorageNightlyPricePage.java:90)
-at com.marina.tests.Mod_7_RatesStorage.newlyGroupCreated_RevisionHisotryEmpty_TC_1102(Mod_7_RatesStorage.java:75)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:766)
-at org.testng.TestRunner.run(TestRunner.java:587)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
-at org.testng.SuiteRunner.run(SuiteRunner.java:286)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
-at org.testng.TestNG.runSuites(TestNG.java:1039)
-at org.testng.TestNG.run(TestNG.java:1007)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+        <test-method signature="nightly_delete_newley_bucketAndVerify_TC_1104()[pri:4, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-28T06:13:36 PST" name="nightly_delete_newley_bucketAndVerify_TC_1104" description="Delete newly added buckets and verify rate group" finished-at="2023-11-28T06:13:55 PST" duration-ms="19758" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- newlyGroupCreated_RevisionHisotryEmpty_TC_1102 -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-27T05:36:10 PST" name="afterTest" finished-at="2023-11-27T05:36:13 PST" duration-ms="3340" status="PASS">
+        </test-method> <!-- nightly_delete_newley_bucketAndVerify_TC_1104 -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-28T06:13:55 PST" name="afterTest" finished-at="2023-11-28T06:13:59 PST" duration-ms="3788" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-27T05:36:13 PST" name="afterSuite" finished-at="2023-11-27T05:36:14 PST" duration-ms="390" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.marina.tests.Mod_7_RatesStorage@4229bb3f]" started-at="2023-11-28T06:13:59 PST" name="afterSuite" finished-at="2023-11-28T06:14:00 PST" duration-ms="415" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

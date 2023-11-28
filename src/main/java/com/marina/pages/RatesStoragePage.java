@@ -33,6 +33,8 @@ public class RatesStoragePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	
 
 	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-dry-storage']")
 	WebElement dry_storage;
@@ -45,6 +47,39 @@ public class RatesStoragePage {
 
 	By btn_edit_storage_name = By.xpath("//*[@id='layout-menu']/ul/li[4]/ul/li[5]/ul/li[1]/a[2]/i");
 
+	By nightly_spaces_price = By.xpath("//a[text()='Nightly']");
+	By monthly_spaces_price = By.xpath("//a[text()='Monthly']");
+	By annual_spaces_price = By.xpath("//a[text()='Annual']");
+	By flat_spaces_price = By.xpath("//a[text()='Flat']");
+	
+	
+	
+	By rates_storage_tittle = By.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
+
+
+
+	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
+	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
+
+	By tab_space_pricing = By.xpath("//button[text()='Space Pricing']");
+	By tab_power_pricing = By.xpath("//button[text()='Power Pricing']");
+
+	By tab_1_ft_size = By.xpath("//*[@id='buckets_tabs']/li[1]/button/span");
+	By tab_2_ft_size = By.xpath("//*[@id='buckets_tabs']/li[2]/button/span");
+	By tab_3_ft_size = By.xpath("//*[@id='buckets_tabs']/li[3]/button/span");
+
+	By revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
+	By dropdown_revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
+
+	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
+	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
+	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
+	
+	
+	
+	
+	
+	
 
 	public boolean rate_group_list(String rateGroupName) {
 
@@ -90,6 +125,7 @@ public class RatesStoragePage {
 	action.click1(newly_group_name, specific_rates_group_name);
 	action.explicitWaitElementClickable(driver, driver.findElement(btn_update_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 	System.out.println();
+	
 	return new RatesStorageNightlyPricePage(driver);
 	
 
@@ -98,38 +134,15 @@ public class RatesStoragePage {
 	}
 	
 	
+
 	
 	
 	
 
-	By rates_storage_tittle = By.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
-
-	By nightly_spaces_price = By.xpath("//a[text()='Nightly']");
-	By monthly_spaces_price = By.xpath("//a[text()='Monthly']");
-	By annual_spaces_price = By.xpath("//a[text()='Annual']");
-	By flat_spaces_price = By.xpath("//a[text()='Flat']");
-
-	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
-	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
-
-	By tab_space_pricing = By.xpath("//button[text()='Space Pricing']");
-	By tab_power_pricing = By.xpath("//button[text()='Power Pricing']");
-
-	By tab_1_ft_size = By.xpath("//*[@id='buckets_tabs']/li[1]/button/span");
-	By tab_2_ft_size = By.xpath("//*[@id='buckets_tabs']/li[2]/button/span");
-	By tab_3_ft_size = By.xpath("//*[@id='buckets_tabs']/li[3]/button/span");
-
-	By revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
-	By dropdown_revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
-
-	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
-	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
-	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
+	
 
 //	action.click1(spacesdropdown, "Spaces DropDown");
 
-	public void test() {
 
-	}
 
 }

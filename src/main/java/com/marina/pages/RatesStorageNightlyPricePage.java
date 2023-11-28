@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
@@ -23,10 +26,36 @@ public class RatesStorageNightlyPricePage {
 
 	}
 
+	By tab_btn_nightly = By.xpath("//a[text()='Nightly']");
+
+	By tab_btn_monthly = By.xpath("//a[text()='Monthly']");
+//	WebElement month_btn = driver.findElement(tab_btn_monthly);
+	
+	@FindBy(how = How.XPATH, using = "//a[text()='Monthly']")
+	WebElement month_btn;
+	
+	
+	
+	
+
+	By tab_btn_annual = By.xpath("//a[text()='Annual']");
+	By tab_btn_fixed = By.xpath("//a[text()='Flat']");
+
 	By rates_nightly_price_tittle = By
 			.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
 
+	
+	
+	
 	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
+//	WebElement btn_update_price_web = driver.findElement(tab_btn_monthly);
+	
+	@FindBy(how = How.XPATH, using = "//a[@class='btn btn-success btn-md px-4']")
+	WebElement btn_update_price_web;
+	
+
+	
+	
 	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
 
 	By tab_space_pricing = By.xpath("//button[text()='Space Pricing']");
@@ -44,7 +73,7 @@ public class RatesStorageNightlyPricePage {
 	By revision_history = By.xpath("//*[@id='bucket']/div/div/div/div[2]/div/div/label");
 	By dropdown_revision_history = By.xpath("//select[@ng-change='bucket_change(null, true, effective_date)']");
 	By dropdown_power_pricing_revision_history = By.xpath("//select[@ng-change='date_change()']");
-	
+
 	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
 	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
@@ -76,7 +105,7 @@ public class RatesStorageNightlyPricePage {
 
 	ArrayList<String> history_recrod_array;
 
-	public boolean[] newly_group_rivision_history() {
+	public boolean[] newly_group_nightly_rivision_history() {
 
 		boolean[] booleans = new boolean[2];
 		booleans[0] = false;
@@ -114,11 +143,9 @@ public class RatesStorageNightlyPricePage {
 		driver.findElement(tab_power_pricing).click();
 		action.explicitWaitPresenceOfElement(driver, dropdown_power_pricing_revision_history,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
-		
-		
+
 		action.click1(driver.findElement(dropdown_power_pricing_revision_history), "testing");
-		
+
 		try {
 
 			list_revision_record = driver.findElement(revision_history).getText();
@@ -130,13 +157,76 @@ public class RatesStorageNightlyPricePage {
 			booleans[1] = true;
 
 		}
-		
-		
-		
+
 		System.out.println("testing");
+
+//		if(booleans)
 
 		return booleans;
 
 	}
+
+	public RatesStorageMonthlyPricePage single_click_monthly_price() {
+
+		action.explicitWaitElementClickable(driver, month_btn,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		month_btn.click();
+
+		return new RatesStorageMonthlyPricePage(driver);
+
+	}
+
+	public RatesStorageNightlyPrice_add_updatePage click_update_btn_return_edit_page() {
+
+		action.explicitWaitElementClickable(driver, btn_update_price_web,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		btn_update_price_web.click();
+
+		return new RatesStorageNightlyPrice_add_updatePage(driver);
+
+	}
+
+	public boolean fouth_buckets_check() {
+
+		boolean fourth_bucket = false;
+
+		action.explicitWaitElementClickable(driver, driver.findElement(tab_4_ft_size),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		String newly_bucket_fts = driver.findElement(tab_4_ft_size).getText();
+
+		if (newly_bucket_fts.equals(newly_bucket_fts)) {
+
+			fourth_bucket = true;
+		}
+
+		return fourth_bucket;
+
+	}
+	
+	public boolean after_delete_fouthBucket_verify_delete() {
+		
+		
+		boolean fourth_bucket = false;
+		String newly_bucket_fts;
+
+		try {
+			action.explicitWaitElementClickable(driver, driver.findElement(tab_4_ft_size),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			newly_bucket_fts = driver.findElement(tab_4_ft_size).getText();
+
+		} catch (Exception e) {
+			System.out.println("4th bucket option not found");
+			fourth_bucket = true;
+
+		}
+
+		return fourth_bucket;
+		
+		
+	}
+	
+	
+	
+	
 
 }

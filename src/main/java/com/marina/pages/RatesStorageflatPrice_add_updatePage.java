@@ -6,14 +6,14 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.marina.actiondriver.Action;
 
-public class RatesStorageFlatePrice_add_updatePage {
+public class RatesStorageflatPrice_add_updatePage {
 
 	
 
 	WebDriver driver;
 	Action action = new Action();
 
-	public RatesStorageFlatePrice_add_updatePage(WebDriver driver) {
+	public RatesStorageflatPrice_add_updatePage(WebDriver driver) {
 
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
