@@ -83,6 +83,8 @@ public class RatesStoragePage {
 
 	public boolean rate_group_list(String rateGroupName) {
 
+		
+		
 		boolean name = false;
 		int i;
 		for (i = 1; i < 100; i++) {
@@ -91,13 +93,13 @@ public class RatesStoragePage {
 
 				Thread.sleep(2000);
 				WebElement group_name_record_search = driver
-						.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li[" + i + "]"));
+						.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li["+i+"]"));
 				
 				action.scrollByVisibilityOfElement(driver, group_name_record_search);
 				
 				String rate_group_name_selected = group_name_record_search.getText();
 				System.out.println("count  " +i+ "  = " + rate_group_name_selected);
-
+				
 				if (rate_group_name_selected.equals(rateGroupName)) {
 					name = true;
 					System.out.println("result found");
@@ -117,13 +119,16 @@ public class RatesStoragePage {
 	}
 	
 	
-	public RatesStorageNightlyPricePage search_specifig_rates_group(String specific_rates_group_name) {
+	public RatesStorageNightlyPricePage search_specifig_rates_group(String specific_rates_group_name) throws InterruptedException {
 	
 		
 		
 	WebElement newly_group_name =	driver.findElement(By.xpath("//div[text()='"+specific_rates_group_name+"']"));
 	action.click1(newly_group_name, specific_rates_group_name);
 	action.explicitWaitElementClickable(driver, driver.findElement(btn_update_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	Thread.sleep(1000);
+	action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	
 	System.out.println();
 	
 	return new RatesStorageNightlyPricePage(driver);

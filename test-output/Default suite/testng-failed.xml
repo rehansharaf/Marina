@@ -7,10 +7,9 @@
         <methods>
           <include name="loadConfig"/>
           <include name="afterSuite"/>
-          <include name="newlyGroupCreated_RevisionHisotryEmpty_TC_1102"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
-          <include name="nighlty_addNew_Bucket_andVerifyBucket_TC_1103"/>
+          <include name="dd_record_without_holiday_TC_1105"/>
         </methods>
       </class> <!-- com.marina.tests.Mod_7_RatesStorage -->
     </classes>

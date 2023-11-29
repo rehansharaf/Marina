@@ -79,8 +79,8 @@ public class RatesStorageNightlyPricePage {
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
 
 	// calendar years tab , month text in camel case
-	String month_text;
-	By tab_calendar_month = By.xpath("//button[text()='" + month_text + "']");
+	
+	By tab_calendar_month_december = By.xpath("//button[text()='December']");
 
 //		By tab_year_February = By.xpath("//button[text()='February']");
 //		By tab_year_March = By.xpath("//button[text()='March']");
@@ -104,6 +104,10 @@ public class RatesStorageNightlyPricePage {
 	// *[@id='month-11']/div/div/table/tbody/tr[1]/td[1]
 
 	ArrayList<String> history_recrod_array;
+	
+	String[] calender_table_record;
+	
+	
 
 	public boolean[] newly_group_nightly_rivision_history() {
 
@@ -175,12 +179,64 @@ public class RatesStorageNightlyPricePage {
 		return new RatesStorageMonthlyPricePage(driver);
 
 	}
+	
+	
+	
+	
+	
+	public void single_click_first_bucket() {
+
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		driver.findElement(tab_1_ft_size).click();
+		
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	
+		}
+	
+	
+	
+	
+	public void single_click_second_bucket() {
+
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		driver.findElement(tab_2_ft_size).click();
+		
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	
+		}
+	
+	
+	
+	
+	public void single_click_third_bucket() {
+
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		driver.findElement(tab_3_ft_size).click();
+		
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	
+		}
+	
+	
+	
+	
+	
 
 	public RatesStorageNightlyPrice_add_updatePage click_update_btn_return_edit_page() {
 
-		action.explicitWaitElementClickable(driver, btn_update_price_web,
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		btn_update_price_web.click();
+		
 
 		return new RatesStorageNightlyPrice_add_updatePage(driver);
 
@@ -228,5 +284,74 @@ public class RatesStorageNightlyPricePage {
 	
 	
 	
+	public String[] nightly_2023_december_calendar_selection() throws InterruptedException {
+
+		action.explicitWaitPresenceOfElement(driver, h_active_year,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		String active_year_calendar = driver.findElement(h_active_year).getText();
+		if (active_year_calendar.equals("2023")) {
+
+			action.click(driver, driver.findElement(tab_calendar_month_december));
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			Thread.sleep(6000);
+			
+
+			 calender_table_record = new String[35];
+			int i;
+			int j;
+			int k = 0;
+			for (i = 2; i < 7; i++) {
+
+				for (j = 1; j < 8; j++) {
+
+					
+
+					if (k > 3) {
+
+							
+						WebElement days_date_price = driver.findElement(By.xpath("//*[@id='month-12']/div/div/table/tbody/tr[" + i + "]/td[" + j + "]/span[2]"));
+					
+						
+					
+						
+						action.explicitWaitVisibility(driver, days_date_price,(By.xpath("//*[@id='month-12']/div/div/table/tbody/tr[" + i + "]/td[" + j+ "]/span[2]")),Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					
+						
+						
+						calender_table_record[k] = days_date_price.getText();
+
+						System.out.println(k + " -  "  +   calender_table_record[k]);
+
+					}
+
+					k++;
+
+				}
+
+			}
+
+		}
+		
+		System.out.println("testing");
+		
+		System.out.println("testing");
+		
+		return calender_table_record;
+		
+
+	}
+
+	
+	
+	
+	
+	
+	
 
 }
+
+
+					
+
+	
+
+

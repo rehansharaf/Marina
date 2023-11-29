@@ -469,10 +469,12 @@ public class SpaceTypesPage {
 	}
 	
 	
-	public HomePage breadcrumbs_homePage() {
+	public HomePage breadcrumbs_homePage() throws InterruptedException {
 		
 		action.explicitWaitElementClickable(driver, driver.findElement(breadcrumbs_home_page), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(breadcrumbs_home_page), "home page click");
+		driver.navigate().refresh();
+		Thread.sleep(1000);
 		return new HomePage(driver);
 		
 		
