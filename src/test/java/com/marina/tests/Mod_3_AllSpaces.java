@@ -63,7 +63,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		Log.startTestCase("Create New Space With Mandatory Fields");
 		add_new_space = allspace.clickAddSpaceBtn();
 		allspace = add_new_space.createNewSpaceMandatoryFields("Automation Type", "SL-TestSpace", "Yes", "10", "20", 
-				"30", "5", "Yes", "Yes", "M-100", "DS-03","1");
+				"30", "5", "Yes", "Yes", "M-100", "DS-03","1","10");
 		
 		String[] actualData = allspace.readFirstRecordDataTable("");
 		String[] expectedData = {"SL-TestSpace","Automation Type","Yes","M-100","M-100: -"};

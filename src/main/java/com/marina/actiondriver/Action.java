@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
@@ -16,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -328,6 +330,29 @@ public class Action extends TestBase implements ActionInterface {
 			}
 		}
 		return flag;
+	}
+	
+	@Override
+	public boolean switchToFrameByLocator(WebDriver driver, By locator) {
+		
+
+		boolean flag = false;
+		try {
+			new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+			driver.switchTo().frame(driver.findElement(locator));
+			flag = true;
+			return true;
+		} catch (Exception e) {
+
+			return false;
+		} finally {
+			if (flag) {
+				System.out.println("Frame with locator \"" + locator + "\" is selected");
+			} else {
+				System.out.println("Frame with locator \"" + locator + "\" is not selected");
+			}
+		}
+	
 	}
 
 	@Override
@@ -932,6 +957,18 @@ public class Action extends TestBase implements ActionInterface {
 	    } catch (Exception e) {}
 
 	    return result;
+	}
+	
+	@Override
+	public long calculateDaysDiff(String startDate, String endDate, String dateFormat) throws ParseException {
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.ENGLISH);
+	    Date firstDate = sdf.parse(startDate);
+	    Date secondDate = sdf.parse(endDate);
+
+	    long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
+	    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+	    return diff;
 	}
 
 }

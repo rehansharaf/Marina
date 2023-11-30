@@ -16,7 +16,7 @@ import com.marina.actiondriver.Action;
 import com.marina.base.TestBase;
 import com.marina.utils.ExcelLibrary;
 
-public class SpaceTypesAddTypesPage<price_type_options_count> {
+public class SpaceTypesAddTypesPage {
 
 	WebDriver driver;
 	Action action = new Action();
@@ -138,8 +138,23 @@ public class SpaceTypesAddTypesPage<price_type_options_count> {
 			action.click1(check_night, "click nightly option");
 		else if(duration.equalsIgnoreCase("check_monthly"))
 			action.click1(check_monthly, "click monthly option");
-		else 
+		else if(duration.equalsIgnoreCase("check_yearly"))
 			action.click1(check_Yearly, "click yearly option");
+		else if(duration.equalsIgnoreCase("check_all")) {
+			action.click1(check_night, "click all options");
+			action.click1(check_monthly, "click all options");
+			action.click1(check_Yearly, "click all options");
+		}else if(duration.contains("nightly") && duration.contains("monthly")) {
+			action.click1(check_night, "click all options");
+			action.click1(check_monthly, "click all options");
+		}else if(duration.contains("nightly") && duration.contains("yearly")) {
+			action.click1(check_night, "click all options");
+			action.click1(check_Yearly, "click all options");
+		}else {
+			action.click1(check_monthly, "click all options");
+			action.click1(check_Yearly, "click all options");
+		}
+			
 		
 		action.selectByVisibleText(rateGroup, add_to_rate_group_selection);
 		action.scrollByVisibilityOfElement(driver, btn_save);

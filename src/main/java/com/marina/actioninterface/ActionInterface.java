@@ -1,5 +1,6 @@
 package com.marina.actioninterface;
 
+import java.text.ParseException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -22,6 +23,7 @@ public interface ActionInterface {
 	public boolean selectByVisibleText(String visibletext, WebElement ele);
 	public boolean mouseHoverByJavaScript(WebElement locator);
 	public boolean JSClick(WebDriver driver, WebElement ele);
+	public boolean switchToFrameByLocator(WebDriver driver, By locator);
 	public boolean switchToFrameByIndex(WebDriver driver,int index);
 	public boolean switchToFrameById(WebDriver driver,String idValue);
 	public boolean switchToFrameByName(WebDriver driver,String nameValue);
@@ -57,4 +59,5 @@ public interface ActionInterface {
 	public void explicitWaitPresenceOfElement(WebDriver driver, By element, Duration timeOut);
 	public String getAlertText(WebDriver driver);
 	public void explicitWaitVisibility(WebDriver driver, WebElement element, By locator, Duration timeOut);
+	public long calculateDaysDiff(String startDate, String endDate, String dateFormat) throws ParseException;
 }

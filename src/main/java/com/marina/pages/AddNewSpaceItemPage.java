@@ -78,6 +78,9 @@ public class AddNewSpaceItemPage {
 	@FindBy(how = How.XPATH, using = "//button[text()='No Task is Required']")
 	WebElement btnNoTaskReq;
 	
+	@FindBy(how = How.ID, using = "max_height")
+	WebElement slipHeight;
+	
 	By linear_buffer = By.id("linear_buffer");
 
 	public AddNewSpaceItemPage(WebDriver driver) {
@@ -158,7 +161,7 @@ public class AddNewSpaceItemPage {
 	
 	public AllSpacesPage createNewSpaceMandatoryFields(String selectType, String nameText, String availability,
 			String maxLOA, String maxBeam, String maxDraft, String selectPower, String selectWater, String raftingCapable,
-			String selectHydroMeter, String nearestSlip, String linearDockerBufferText) throws InterruptedException {
+			String selectHydroMeter, String nearestSlip, String linearDockerBufferText, String height) throws InterruptedException {
 		
 		action.explicitWait(driver, addNewSpaceItemHeading, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		//action.selectByVisibleText(selectType, type);
@@ -196,6 +199,8 @@ public class AddNewSpaceItemPage {
 			action.selectByVisibleText(selectHydroMeter, hydro_meter);
 			action.selectByVisibleText(nearestSlip, nearest_slip);
 			action.type(driver.findElement(linear_buffer), linearDockerBufferText);
+			Thread.sleep(1000);
+			action.type(slipHeight, height);
 			Thread.sleep(1000);
 			action.JSClick(driver, btnSave);
 			action.explicitWait(driver, successOK, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));

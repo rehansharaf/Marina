@@ -43,7 +43,7 @@ public class Mod_4_Calendar extends TestBase {
 		allspace = hp.spaces_dropdown_AllSpaces();
 		add_new_space = allspace.clickAddSpaceBtn();
 		allspace = add_new_space.createNewSpaceMandatoryFields("Automation Type", "SL-Test", "Yes", "10", "20", 
-				"30", "5", "Yes", "Yes", "M-105", "DS-03","1");
+				"30", "5", "Yes", "Yes", "M-105", "DS-03","1","10");
  
  		String imagepath = System.getProperty("user.dir") + "\\src\\test\\resources\\testimages\\space_image.png";
 		add_new_space = allspace.clickAddSpaceBtn();
