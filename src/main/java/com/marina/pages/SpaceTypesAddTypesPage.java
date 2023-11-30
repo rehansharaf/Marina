@@ -78,7 +78,17 @@ public class SpaceTypesAddTypesPage {
 
 	@FindBy(how = How.XPATH, using = "//option[@value='new']")
 	WebElement create_new_group;
-
+	
+	By h_enter_rate_group_name_title = By.xpath("//h2[text()='Enter Rate Group Name']");
+	
+	By input_field_group_name_enter = By.xpath("//input[@id='swal2-input']");
+	
+	By btn_ok_group_name_save = By.xpath("//button[text()='OK']");
+	
+	By btn_cancel_group_name_save = By.xpath("//button[text()='Cancel']");
+	
+	
+	
 	@FindBy(how = How.XPATH, using = "//option[@value='1']")
 	WebElement wet_Storage_group;
 
@@ -652,5 +662,44 @@ public class SpaceTypesAddTypesPage {
 		}
 		return data2;
 	}
+	
+	
+	
+	
+	public SpaceTypesPage  adding_rates_group(String name) throws InterruptedException{
+
+
+		System.out.println("click on add to space button");
+		add_to_rate_group_selection.click();
+		Thread.sleep(1000);
+		action.explicitWaitElementClickable(driver, create_new_group,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		create_new_group.click();
+		Thread.sleep(1000);
+		action.explicitWait(driver, driver.findElement(h_enter_rate_group_name_title),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		driver.findElement(input_field_group_name_enter).sendKeys(name);
+		Thread.sleep(2000);
+		driver.findElement(btn_ok_group_name_save).click();
+		Thread.sleep(2000);
+		btn_close.click();
+		return new SpaceTypesPage(driver);
+
+	}
+	
+	
+	
+
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
 
 }
