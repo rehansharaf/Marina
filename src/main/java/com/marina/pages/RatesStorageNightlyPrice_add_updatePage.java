@@ -42,9 +42,8 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	@FindBy(how = How.XPATH, using = "//button[@class='swal2-confirm swal2-styled' and @type='button' and text()='OK']")
 	WebElement popup_btn_ok_successfully_add_bucket;
 
-	
 	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
-	
+
 	By h_nightly_price_tittle = By
 			.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
 
@@ -72,11 +71,12 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
 	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
-	
-	
-	
-	
-	
+
+	By dropdown_month_from_selection_second_bucket = By
+			.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
+	By dropdown_month_from_selection_third_bucket = By
+			.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
+
 	/*
 	 * 
 	 * ok check upside
@@ -87,7 +87,7 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	 */
 
 	By dropdown_month_from_selection = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[1]");
+			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
 	By select_from_jan = By
 			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[1]");
 	By select_from_feb = By
@@ -113,42 +113,32 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By select_from_dec = By
 			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[12]");
 
-	
-	//*[@id="bucket-2023-82"]/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
-	//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
-	
-	
-	
+	// *[@id="bucket-2023-82"]/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
+	// *[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
+
 //// ok check apply 
 	By dropdown_month_to_selection = By
 			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
 
-	
 	By dropdown_month_to_selection_second_bucket = By
 			.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
-	
+
 	By select_to_dec_second_bucket = By.xpath(
 			"//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
-	
-	
-	
-	
+
 	By dropdown_month_to_selection_third_bucket = By
 			.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
-	
+
 	By select_to_dec_third_bucket = By.xpath(
 			"//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
-	
-	
+
 	/*
 	 * 
 	 * 
 	 * 
 	 * 
 	 */
-	
-	
-	
+
 	By select_to_jan = By.xpath(
 			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:1']");
 	By select_to_feb = By.xpath(
@@ -183,7 +173,6 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By input_saturday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[7]/input");
 	By input_sunday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[8]/input");
 
-	
 	By input_monday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[2]/input");
 	By input_tuesday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[3]/input");
 	By input_wednesday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[4]/input");
@@ -191,8 +180,7 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By input_friday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[6]/input");
 	By input_saturday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[7]/input");
 	By input_sunday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[8]/input");
-	
-	
+
 	By input_monday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[2]/input");
 	By input_tuesday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[3]/input");
 	By input_wednesday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[4]/input");
@@ -200,31 +188,19 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By input_friday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[6]/input");
 	By input_saturday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[7]/input");
 	By input_sunday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[8]/input");
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// 2023
 	By btn_delete_nighlty_month = By
 			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
 
-	
 	By btn_delete_nighlty_month_second_bucket = By
 			.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
-	
-	
-	
+
 	By btn_delete_nighlty_month_third_bucket = By
 			.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
-	
-	
-	
-	
-	//	By btn_add_nightly_month_when_row_enable = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[2]");
+
+	// By btn_add_nightly_month_when_row_enable =
+	// By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[2]");
 
 	@FindBy(how = How.XPATH, using = "//*[@id='bucket-2023-81']/div/div[1]/div/table/thead/tr/th[9]/button")
 	WebElement btn_add_nightly_month_when_row_enable;
@@ -233,6 +209,7 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 	// 2023
 	By h2_yearly_holiday_tittle = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/h2");
+	
 
 	// 2023
 	By input_holiday_name = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[1]/input");
@@ -272,15 +249,22 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 	By btn_save_nightly_pricing = By.xpath("//button[text()='Save Nightly Pricing']");
 
-	By btn_popup_yes_overwrite_nightly_pricing = By.xpath("//button[text()='Save Nightly Pricing']");
-	By btn_popup_not_overwrite_nightly_pricing = By.xpath("//button[text()='Cancel']");
+	@FindBy(how = How.XPATH, using = "//button[@class='swal2-confirm swal2-styled swal2-default-outline' and text()='Yes, overwrite']")
+	WebElement btn_popup_yes_overwrite_nightly_pricing;
+//	By btn_popup_yes_overwrite_nightly_pricing = By.xpath("//button[text()='Save Nightly Pricing']");
+
+	@FindBy(how = How.XPATH, using = "//button[text()='Cancel']")
+	WebElement btn_popup_not_overwrite_nightly_pricing;
+//	By btn_popup_not_overwrite_nightly_pricing = By.xpath("//button[text()='Cancel']");
+
+	@FindBy(how = How.XPATH, using = "//h2[text()='Are you sure?']")
+	WebElement h2_popup_overwrite_nightly_pricing;
 
 	By popup_nightly_price_succsfully_save_text = By.xpath("//h2[text()='Success!']");
 	By btn_popup_ok_nightly_price_successfully_save = By.xpath("//button[@class='swal2-confirm swal2-styled']");
 
 //	By btn_view_nightly_pricing = By.xpath("//a[@class='btn btn-success btn-md px-4']");
-
-	// *[@id="year-2023"]/div[3]/div/input
+// *[@id="year-2023"]/div[3]/div/input
 
 	public void click_bucket_btn() {
 
@@ -342,24 +326,31 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		driver.findElement(select_to_dec).click();
 
 		Thread.sleep(1000);
+		driver.findElement(input_monday).clear();
 		driver.findElement(input_monday).sendKeys("1");
 
 		Thread.sleep(1000);
+		driver.findElement(input_tuesday).clear();
 		driver.findElement(input_tuesday).sendKeys("2");
 
 		Thread.sleep(1000);
+		driver.findElement(input_wednesday).clear();
 		driver.findElement(input_wednesday).sendKeys("3");
 
 		Thread.sleep(1000);
+		driver.findElement(input_thursday).clear();
 		driver.findElement(input_thursday).sendKeys("4");
 
 		Thread.sleep(1000);
+		driver.findElement(input_friday).clear();
 		driver.findElement(input_friday).sendKeys("5");
 
 		Thread.sleep(1000);
+		driver.findElement(input_saturday).clear();
 		driver.findElement(input_saturday).sendKeys("6");
 
 		Thread.sleep(1000);
+		driver.findElement(input_sunday).clear();
 		driver.findElement(input_sunday).sendKeys("7");
 
 		Thread.sleep(1000);
@@ -391,15 +382,15 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		return nightly_price_add;
 
 	}
-	
-	
-	
-	
-	
+
 	public boolean add_12_month_price_in_one_week_row_second_bucket() throws InterruptedException {
 
 		boolean nightly_price_add_second_bucket = false;
 
+		
+		
+	
+		
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_delete_nighlty_month_second_bucket),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 //		action.click1(btn_add_nightly_month_when_row_enable, "add month price when row is empty");
@@ -409,24 +400,31 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		driver.findElement(select_to_dec_second_bucket).click();
 
 		Thread.sleep(1000);
+		driver.findElement(input_monday_second_bucket).clear();
 		driver.findElement(input_monday_second_bucket).sendKeys("8");
 
 		Thread.sleep(1000);
+		driver.findElement(input_tuesday_second_bucket).clear();
 		driver.findElement(input_tuesday_second_bucket).sendKeys("9");
 
 		Thread.sleep(1000);
+		driver.findElement(input_wednesday_second_bucket).clear();
 		driver.findElement(input_wednesday_second_bucket).sendKeys("10");
 
 		Thread.sleep(1000);
+		driver.findElement(input_thursday_second_bucket).clear();
 		driver.findElement(input_thursday_second_bucket).sendKeys("11");
 
 		Thread.sleep(1000);
+		driver.findElement(input_friday_second_bucket).clear();
 		driver.findElement(input_friday_second_bucket).sendKeys("12");
 
 		Thread.sleep(1000);
+		driver.findElement(input_saturday_second_bucket).clear();
 		driver.findElement(input_saturday_second_bucket).sendKeys("13");
 
 		Thread.sleep(1000);
+		driver.findElement(input_sunday_second_bucket).clear();
 		driver.findElement(input_sunday_second_bucket).sendKeys("14");
 
 		Thread.sleep(1000);
@@ -435,9 +433,14 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		driver.findElement(btn_save_nightly_pricing).click();
 
 		/// get text of popup if update the record..
+
 		Thread.sleep(1000);
-		action.explicitWaitElementClickable(driver, popup_btn_ok_successfully_add_bucket,
+
+		action.explicitWaitElementClickable(driver, btn_popup_yes_overwrite_nightly_pricing,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		btn_popup_yes_overwrite_nightly_pricing.click();
+
 		String group_adding_message = popup_bucket_add_succssfully_text.getText();
 		Thread.sleep(1000);
 		popup_btn_ok_successfully_add_bucket.click();
@@ -447,10 +450,8 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		Thread.sleep(1000);
 		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_view_nightly_price));
 		Thread.sleep(1000);
-		
+
 		driver.findElement(btn_view_nightly_price).click();
-		
-		
 
 		if (group_adding_message.equals("Success!")) {
 
@@ -461,16 +462,12 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		return nightly_price_add_second_bucket;
 
 	}
-	
-	
-	
-	
-	
+
 	public boolean add_12_month_price_in_one_week_row_third_bucket() throws InterruptedException {
 
 		boolean nightly_price_add_third_bucket = false;
 
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_delete_nighlty_month_second_bucket),
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_delete_nighlty_month_third_bucket),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 //		action.click1(btn_add_nightly_month_when_row_enable, "add month price when row is empty");
 //		driver.findElement(dropdown_month_to_selection_third_bucket).click();
@@ -479,24 +476,31 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		driver.findElement(select_to_dec_third_bucket).click();
 
 		Thread.sleep(1000);
+		driver.findElement(input_monday_third_bucket).clear();
 		driver.findElement(input_monday_third_bucket).sendKeys("15");
 
 		Thread.sleep(1000);
+		driver.findElement(input_tuesday_third_bucket).clear();
 		driver.findElement(input_tuesday_third_bucket).sendKeys("16");
 
 		Thread.sleep(1000);
+		driver.findElement(input_wednesday_third_bucket).clear();
 		driver.findElement(input_wednesday_third_bucket).sendKeys("17");
 
 		Thread.sleep(1000);
+		driver.findElement(input_thursday_third_bucket).clear();
 		driver.findElement(input_thursday_third_bucket).sendKeys("18");
 
 		Thread.sleep(1000);
+		driver.findElement(input_friday_third_bucket).clear();
 		driver.findElement(input_friday_third_bucket).sendKeys("19");
 
 		Thread.sleep(1000);
+		driver.findElement(input_saturday_third_bucket).clear();
 		driver.findElement(input_saturday_third_bucket).sendKeys("20");
 
 		Thread.sleep(1000);
+		driver.findElement(input_sunday_third_bucket).clear();
 		driver.findElement(input_sunday_third_bucket).sendKeys("21");
 
 		Thread.sleep(1000);
@@ -505,9 +509,14 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		driver.findElement(btn_save_nightly_pricing).click();
 
 		/// get text of popup if update the record..
+
 		Thread.sleep(1000);
-		action.explicitWaitElementClickable(driver, popup_btn_ok_successfully_add_bucket,
+
+		action.explicitWaitElementClickable(driver, btn_popup_yes_overwrite_nightly_pricing,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		btn_popup_yes_overwrite_nightly_pricing.click();
+
 		String group_adding_message = popup_bucket_add_succssfully_text.getText();
 		Thread.sleep(1000);
 		popup_btn_ok_successfully_add_bucket.click();
@@ -517,10 +526,8 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		Thread.sleep(1000);
 		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_view_nightly_price));
 		Thread.sleep(1000);
-		
+
 		driver.findElement(btn_view_nightly_price).click();
-		
-		
 
 		if (group_adding_message.equals("Success!")) {
 
@@ -531,60 +538,41 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		return nightly_price_add_third_bucket;
 
 	}
-	
-	
-	
-	
-	
-	
+
 	public void single_click_first_bucket() {
 
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
+
 		driver.findElement(tab_1_ft_size).click();
-		
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+
+		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		}
-	
-	
-	
+
+	}
+
 	public void single_click_second_bucket() {
 
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
+
 		driver.findElement(tab_2_ft_size).click();
-		
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+
+		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection_second_bucket),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		}
-	
-	
-	
-	
+
+	}
+
 	public void single_click_third_bucket() {
 
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
+
 		driver.findElement(tab_3_ft_size).click();
-		
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+
+		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection_third_bucket),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		}
-	
-	
-	
-	
-		
-	
-	
-	
-	
+
+	}
 
 }

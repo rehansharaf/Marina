@@ -186,12 +186,12 @@ public class RatesStorageNightlyPricePage {
 	
 	public void single_click_first_bucket() {
 
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		
 		driver.findElement(tab_1_ft_size).click();
 		
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 	
 		}
@@ -284,12 +284,56 @@ public class RatesStorageNightlyPricePage {
 	
 	
 	
-	public String[] nightly_2023_december_calendar_selection() throws InterruptedException {
+	
+	
+	public String[] nightly_2024_december_calendar_selection() throws InterruptedException {
 
 		action.explicitWaitPresenceOfElement(driver, h_active_year,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		String active_year_calendar = driver.findElement(h_active_year).getText();
-		if (active_year_calendar.equals("2023")) {
+	
+		
 
+//		String data_time =action.getCurrentTime();
+//		System.out.println(data_time);
+		
+//		String active_year_calendar =null;
+	String	active_year_calendar= driver.findElement(h_active_year).getText();
+	
+	boolean compete_recod_confirm= false;
+	
+		
+//	String year_active= "2023";
+		
+		if(active_year_calendar.contentEquals("2023")) {
+			
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			driver.findElement(btn_next_year).click();
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			active_year_calendar= driver.findElement(h_active_year).getText();
+			
+			
+			
+		}
+		System.out.println("test");
+		
+		
+if(active_year_calendar.contentEquals("2025")) {
+			
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			String [] error = {"need to update scipt"};
+			return error;
+								
+			
+		}
+
+		
+		
+		
+		else if (active_year_calendar.equals("2024")) {
+
+		
+		
+			
+			
 			action.click(driver, driver.findElement(tab_calendar_month_december));
 			action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			Thread.sleep(6000);
@@ -324,16 +368,22 @@ public class RatesStorageNightlyPricePage {
 					}
 
 					k++;
+					if(k==34) {
+						compete_recod_confirm =true;
+						
+					}
 
 				}
 
 			}
+			
 
 		}
 		
-		System.out.println("testing");
-		
-		System.out.println("testing");
+		if(compete_recod_confirm==false) {
+			System.out.println("check calendar record,");
+			
+		}
 		
 		return calender_table_record;
 		

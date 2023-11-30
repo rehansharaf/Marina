@@ -34,7 +34,7 @@ public class Mod_7_RatesStorage extends TestBase {
 	RatesStorageflatPricePage rsfpp;
 	RatesStorageNightlyPrice_add_updatePage rsnpaup;
 
-	String rate_new_group_name = "automation test28nov3";
+	String rate_new_group_name = "testing manual";
 
 	@BeforeMethod
 	public void beforeTest() throws InterruptedException {
@@ -142,90 +142,94 @@ public class Mod_7_RatesStorage extends TestBase {
 //		Log.endTestCase("Delete newly added buckets and verify rate group TC_1104");
 //
 //	}
+	
+	
 
 //	dependsOnMethods = "newlyGroupCreated_RevisionHisotryEmpty_TC_1101"
 
+	
 //	@Test(groups = { "regression",
 //			"smoke" }, priority = 5, description = "Create Nightly rate group with single row and without holiday")
 //	public void nightly_add_record_without_holiday_TC_1105() throws InterruptedException {
 //
 //		Log.startTestCase("Create Nightly rate group with single row and without holiday TC_1105");
+//
 //		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+//
 //		rsnpaup = rsnpp.click_update_btn_return_edit_page();
 //		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row();
+//
+//		Thread.sleep(1000);
+//
+//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+//		rsnpaup.single_click_second_bucket();
+//		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket();
+//
+//		Thread.sleep(1000);
+//
+//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+//		rsnpaup.single_click_third_bucket();
+//		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket();
+//
 //		Assert.assertEquals(succesfuuly_add_nightly_price, true);
+//		Assert.assertEquals(second_bucket_priced_updated, true);
+//		Assert.assertEquals(third_bucket_priced_updated, true);
+//
 //		Log.endTestCase("Create Nightly rate group with single row and without holiday TC_1105");
 //
-//		
 //	}
 
+	
+	
 //	dependsOnMethods = "nightly_add_record_without_holiday_TC_1105"
 
 	@Test(groups = { "regression",
-			"smoke" }, priority = 5, description = "Create Nightly rate group with single row and without holiday")
-	public void dd_record_without_holiday_TC_1105() throws InterruptedException {
+			"smoke" }, priority = 5, description = "Verify all the added rates for all the different sizes")
+	public void TC_1106() throws InterruptedException {
 
-		Log.startTestCase("Create Nightly rate group with single row and without holiday TC_1105");
+		Log.startTestCase("Verify all the added rates for all the different sizes TC_1106");
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-		
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		rsnpaup.single_click_second_bucket();
-		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row();
-		
-		Thread.sleep(1000);
-		
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		rsnpaup.single_click_third_bucket();
-		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row();
-		
-		
+
 		Thread.sleep(1000);
 	
-		String[] zero_to_50_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2023_december_calendar_selection();
+		String[] zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
 		Thread.sleep(1000);
-		String[] expected_result_0to50ft = { null, null, null, null, "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00",
-				"$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00",
-				"$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00",
-				"$5.00", "$6.00", "$7.00" };
+		String[] expected_result_0to50ft = { null, null, null, null, "$5.00", "$6.00", "$7.00", "$1.00", "$2.00",
+				"$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00",
+				"$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00",
+				"$4.00", "$5.00", "$6.00", "$7.00" };
 
-		//click on bucket
-		
-		
-		String[] fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2023_december_calendar_selection();
-		Thread.sleep(1000);
-		String[] expected_result_50to100ft = { null, null, null, null, "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00",
-				"$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00",
-				"$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00",
-				"$5.00", "$6.00", "$7.00" };
-		
-		
-		
-//		click on bucket
-		
-		String[] hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2023_december_calendar_selection();
-		Thread.sleep(1000);
-		String[] expected_result_hundreadft = { null, null, null, null, "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00",
-				"$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00",
-				"$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00",
-				"$5.00", "$6.00", "$7.00" };
-		
-		
-		
-		
-		
+		Thread.sleep(0);
 		rsnpp.single_click_second_bucket();
-		rsnpp.single_click_third_bucket();
-		
-		
-		
-		
-		
-		
-		Assert.assertEquals(zero_to_50_ft_calendar_table_record_dec_2023, expected_result_0to50ft);
 
-		Log.endTestCase("Create Nightly rate group with single row and without holiday TC_1105");
+		String[] fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+		Thread.sleep(1000);
+		String[] expected_result_50to100ft = { null, null, null, null, "$12.00", "$13.00", "$14.00", "$8.00", "$9.00",
+				"$10.00", "$11.00", "$12.00", "$13.00", "$14.00", "$8.00", "$9.00", "$10.00", "$11.00", "$12.00",
+				"$13.00", "$14.00", "$8.00", "$9.00", "$10.00", "$11.00", "$12.00", "$13.00", "$14.00", "$8.00",
+				"$9.00", "$10.00", "$11.00", "$12.00", "$13.00", "$14.00" };
+
+		rsnpp.single_click_third_bucket();
+
+		String[] hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+		Thread.sleep(1000);
+		String[] expected_result_hundreadft = { null, null, null, null, "$19.00", "$20.00", "$21.00", "$15.00",
+				"$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00", "$15.00", "$16.00", "$17.00", "$18.00",
+				"$19.00", "$20.00", "$21.00", "$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00",
+				"$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00" };
+
+		
+		
+		
+		Assert.assertEquals(zero_to_50_ft_calendar_table_record_dec_2024, expected_result_0to50ft);
+		Assert.assertEquals(fifty_to_100_ft_calendar_table_record_dec_2023, expected_result_50to100ft);
+		Assert.assertEquals(hundread_100_ft_calendar_table_record_dec_2023, expected_result_hundreadft);
+
+		Log.endTestCase("Verify all the added rates for all the different sizes TC_1106");
+		
 
 	}
+	
 
 	@AfterMethod
 	public void afterTest() {
