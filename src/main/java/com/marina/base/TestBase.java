@@ -33,8 +33,11 @@ public class TestBase {
 	public void loadConfig() throws IOException {
 
 		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"\\screenshots"));
-		File sampleFile = new File(System.getProperty("user.dir")+"\\screenshots\\.gitkeep");
-		sampleFile.createNewFile();
+		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"\\test-output"));
+		File screeshot_file = new File(System.getProperty("user.dir")+"\\screenshots\\.gitkeep");
+		File testout_file = new File(System.getProperty("user.dir")+"\\test-output\\.gitkeep");
+		screeshot_file.createNewFile();
+		testout_file.createNewFile();
 		
 		ExtentManager.setExtent();
 		DOMConfigurator.configure("log4j.xml");
