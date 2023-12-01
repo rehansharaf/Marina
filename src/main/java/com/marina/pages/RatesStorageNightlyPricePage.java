@@ -2,6 +2,7 @@ package com.marina.pages;
 
 import java.lang.reflect.Array;
 import java.time.Duration;
+import java.time.Year;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
@@ -29,14 +30,9 @@ public class RatesStorageNightlyPricePage {
 	By tab_btn_nightly = By.xpath("//a[text()='Nightly']");
 
 	By tab_btn_monthly = By.xpath("//a[text()='Monthly']");
-//	WebElement month_btn = driver.findElement(tab_btn_monthly);
-	
+
 	@FindBy(how = How.XPATH, using = "//a[text()='Monthly']")
 	WebElement month_btn;
-	
-	
-	
-	
 
 	By tab_btn_annual = By.xpath("//a[text()='Annual']");
 	By tab_btn_fixed = By.xpath("//a[text()='Flat']");
@@ -44,18 +40,12 @@ public class RatesStorageNightlyPricePage {
 	By rates_nightly_price_tittle = By
 			.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
 
-	
-	
-	
 	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
-//	WebElement btn_update_price_web = driver.findElement(tab_btn_monthly);
-	
+
+
 	@FindBy(how = How.XPATH, using = "//a[@class='btn btn-success btn-md px-4']")
 	WebElement btn_update_price_web;
-	
 
-	
-	
 	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
 
 	By tab_space_pricing = By.xpath("//button[text()='Space Pricing']");
@@ -79,35 +69,21 @@ public class RatesStorageNightlyPricePage {
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
 
 	// calendar years tab , month text in camel case
-	
+
 	By tab_calendar_month_december = By.xpath("//button[text()='December']");
 
-//		By tab_year_February = By.xpath("//button[text()='February']");
-//		By tab_year_March = By.xpath("//button[text()='March']");
-//		By tab_year_April = By.xpath("//button[text()='April']");
-//		By tab_year_May = By.xpath("//button[text()='May']");
-//		By tab_year_June = By.xpath("//button[text()='June']");
-//		By tab_year_July = By.xpath("//button[text()='July']");
-//		By tab_year_August = By.xpath("//button[text()='August']");
-//		By tab_year_September = By.xpath("//button[text()='September']");
-//		By tab_year_October = By.xpath("//button[text()='October']");
-//		By tab_year_November = By.xpath("//button[text()='November']");
-//		By tab_year_December = By.xpath("//button[text()='December']");
 
-	// day and days
 
 	int month_number;
 	int day_number;
 	int date_column;
 	By tab_days = By.xpath(
 			"//*[@id='month-" + month_number + "']/div/div/table/tbody/tr[" + date_column + "]/td[" + day_number + "]");
-	// *[@id='month-11']/div/div/table/tbody/tr[1]/td[1]
+
 
 	ArrayList<String> history_recrod_array;
-	
+
 	String[] calender_table_record;
-	
-	
 
 	public boolean[] newly_group_nightly_rivision_history() {
 
@@ -164,8 +140,6 @@ public class RatesStorageNightlyPricePage {
 
 		System.out.println("testing");
 
-//		if(booleans)
-
 		return booleans;
 
 	}
@@ -179,64 +153,51 @@ public class RatesStorageNightlyPricePage {
 		return new RatesStorageMonthlyPricePage(driver);
 
 	}
-	
-	
-	
-	
-	
+
 	public void single_click_first_bucket() {
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
+
 		driver.findElement(tab_1_ft_size).click();
-		
+
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		}
-	
-	
-	
-	
+
+	}
+
 	public void single_click_second_bucket() {
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
+
+		String testing_locatotrs = driver.findElement(tab_2_ft_size).getAccessibleName();
+
 		driver.findElement(tab_2_ft_size).click();
-		
+
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		}
-	
-	
-	
-	
+
+	}
+
 	public void single_click_third_bucket() {
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		
+
 		driver.findElement(tab_3_ft_size).click();
-		
+
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		}
-	
-	
-	
-	
-	
+
+	}
 
 	public RatesStorageNightlyPrice_add_updatePage click_update_btn_return_edit_page() {
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
 		btn_update_price_web.click();
-		
 
 		return new RatesStorageNightlyPrice_add_updatePage(driver);
 
@@ -258,10 +219,9 @@ public class RatesStorageNightlyPricePage {
 		return fourth_bucket;
 
 	}
-	
+
 	public boolean after_delete_fouthBucket_verify_delete() {
-		
-		
+
 		boolean fourth_bucket = false;
 		String newly_bucket_fts;
 
@@ -277,69 +237,61 @@ public class RatesStorageNightlyPricePage {
 		}
 
 		return fourth_bucket;
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
+
+	public String[] active_year() {
+
+		action.explicitWaitPresenceOfElement(driver, h_active_year,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		String active_year_calendar = driver.findElement(h_active_year).getText();
+		String currentTime = action.getCurrentTime();
+
+		String[] activeYear_currentTime = { active_year_calendar, currentTime };
+		return activeYear_currentTime;
+
+	}
+
 	public String[] nightly_2024_december_calendar_selection() throws InterruptedException {
 
-		action.explicitWaitPresenceOfElement(driver, h_active_year,Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-		
+		action.explicitWaitPresenceOfElement(driver, h_active_year,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
-//		String data_time =action.getCurrentTime();
-//		System.out.println(data_time);
-		
-//		String active_year_calendar =null;
-	String	active_year_calendar= driver.findElement(h_active_year).getText();
-	
-	boolean compete_recod_confirm= false;
-	
-		
-//	String year_active= "2023";
-		
-		if(active_year_calendar.contentEquals("2023")) {
-			
-			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		String active_year_calendar = driver.findElement(h_active_year).getText();
+
+		boolean compete_recod_confirm = false;
+
+
+		if (active_year_calendar.contentEquals("2023")) {
+
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			driver.findElement(btn_next_year).click();
-			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-			active_year_calendar= driver.findElement(h_active_year).getText();
-			
-			
-			
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			active_year_calendar = driver.findElement(h_active_year).getText();
+
 		}
 		System.out.println("test");
-		
-		
-if(active_year_calendar.contentEquals("2025")) {
-			
-			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-			String [] error = {"need to update scipt"};
+
+		if (active_year_calendar.contentEquals("2025")) {
+
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			String[] error = { "need to update scipt" };
 			return error;
-								
-			
+
 		}
 
-		
-		
-		
 		else if (active_year_calendar.equals("2024")) {
 
-		
-		
-			
-			
 			action.click(driver, driver.findElement(tab_calendar_month_december));
-			action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 			Thread.sleep(6000);
-			
 
-			 calender_table_record = new String[35];
+			calender_table_record = new String[35];
 			int i;
 			int j;
 			int k = 0;
@@ -347,61 +299,41 @@ if(active_year_calendar.contentEquals("2025")) {
 
 				for (j = 1; j < 8; j++) {
 
-					
-
 					if (k > 3) {
 
-							
-						WebElement days_date_price = driver.findElement(By.xpath("//*[@id='month-12']/div/div/table/tbody/tr[" + i + "]/td[" + j + "]/span[2]"));
-					
-						
-					
-						
-						action.explicitWaitVisibility(driver, days_date_price,(By.xpath("//*[@id='month-12']/div/div/table/tbody/tr[" + i + "]/td[" + j+ "]/span[2]")),Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-					
-						
-						
+						WebElement days_date_price = driver.findElement(By
+								.xpath("//*[@id='month-12']/div/div/table/tbody/tr[" + i + "]/td[" + j + "]/span[2]"));
+
+						action.explicitWaitVisibility(driver, days_date_price,
+								(By.xpath(
+										"//*[@id='month-12']/div/div/table/tbody/tr[" + i + "]/td[" + j + "]/span[2]")),
+								Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
 						calender_table_record[k] = days_date_price.getText();
 
-						System.out.println(k + " -  "  +   calender_table_record[k]);
+						System.out.println(k + " -  " + calender_table_record[k]);
 
 					}
 
 					k++;
-					if(k==34) {
-						compete_recod_confirm =true;
-						
+					if (k == 34) {
+						compete_recod_confirm = true;
+
 					}
 
 				}
 
 			}
-			
 
 		}
-		
-		if(compete_recod_confirm==false) {
+
+		if (compete_recod_confirm == false) {
 			System.out.println("check calendar record,");
-			
+
 		}
-		
+
 		return calender_table_record;
-		
 
 	}
 
-	
-	
-	
-	
-	
-	
-
 }
-
-
-					
-
-	
-
-

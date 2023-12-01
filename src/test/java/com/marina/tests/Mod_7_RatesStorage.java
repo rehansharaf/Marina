@@ -34,7 +34,7 @@ public class Mod_7_RatesStorage extends TestBase {
 	RatesStorageflatPricePage rsfpp;
 	RatesStorageNightlyPrice_add_updatePage rsnpaup;
 
-	String rate_new_group_name = "testing manual";
+	String rate_new_group_name = "automation 4 12dec2023";
 
 	@BeforeMethod
 	public void beforeTest() throws InterruptedException {
@@ -57,8 +57,11 @@ public class Mod_7_RatesStorage extends TestBase {
 		stp = hp.space_types_click_Mod7_ratesStorage();
 		statp = stp.click_btn_add_space_type();
 		stp = statp.adding_rates_group(rate_new_group_name);
+		Thread.sleep(1000);
 		hp = stp.breadcrumbs_homePage();
+		Thread.sleep(1000);
 		rsp = hp.spaces_dropdown_rates();
+		Thread.sleep(1000);
 		boolean name =  rsp.rate_group_list(rate_new_group_name);
 		Assert.assertTrue(name);
 		Log.endTestCase("Creating Rate Group from Space Type, check rate group should be available Tc_1101");
@@ -154,23 +157,33 @@ public class Mod_7_RatesStorage extends TestBase {
 
 		Log.startTestCase("Create Nightly rate group with single row and without holiday TC_1105");
 
+		
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-
+		Thread.sleep(1000);
+		String activeYear_currentTime [] = rsnpp.active_year();
+		Thread.sleep(1000);
+		String active_year = activeYear_currentTime[0];
+		Thread.sleep(1000);
+		
+				
 		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row();
+		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row_first_bucket(active_year);
+
+		Thread.sleep(1000);
+
+		
+		
+		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+		rsnpaup.single_click_second_bucket_update(active_year);
+		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket(active_year);
 
 		Thread.sleep(1000);
 
 		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		rsnpaup.single_click_second_bucket();
-		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket();
+		rsnpaup.single_click_third_bucket_update(active_year);
+		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket(active_year);
 
-		Thread.sleep(1000);
-
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		rsnpaup.single_click_third_bucket();
-		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket();
-
+		
 		Assert.assertEquals(succesfuuly_add_nightly_price, true);
 		Assert.assertEquals(second_bucket_priced_updated, true);
 		Assert.assertEquals(third_bucket_priced_updated, true);
@@ -184,11 +197,14 @@ public class Mod_7_RatesStorage extends TestBase {
 //	dependsOnMethods = "nightly_add_record_without_holiday_TC_1105"
 
 	@Test(groups = { "regression",
-			"smoke" }, priority = 5, description = "Verify all the added rates for all the different sizes")
+			"smoke" }, priority = 6, description = "Verify all the added rates for all the different sizes")
 	public void TC_1106() throws InterruptedException {
 
 		Log.startTestCase("Verify all the added rates for all the different sizes TC_1106");
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+		String activeYear_currentTime [] = rsnpp.active_year();
+		Thread.sleep(1000);
+		String active_year = activeYear_currentTime[0];
 
 		Thread.sleep(1000);
 	

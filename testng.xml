@@ -13,7 +13,7 @@
 			<class name="com.marina.tests.Mod_4_Calendar" />
 			<class name="com.marina.tests.Mod_5_SpaceGroup" />
 			<class name="com.marina.tests.Mod_6_BoatGroup" />
-		
+			<class name="com.marina.tests.Mod_7_RatesStorage" />
 		 
 
 		

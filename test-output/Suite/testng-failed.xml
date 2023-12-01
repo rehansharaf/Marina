@@ -7,26 +7,17 @@
   <test thread-count="1" name="test(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.marina.tests.Mod_2_SpaceTypes">
+      <class name="com.marina.tests.Mod_7_RatesStorage">
         <methods>
-          <include name="SelectionUnitPeriod_and_verify_two_option_TC_214"/>
-          <include name="verifyDeleteSpace_TC_212"/>
-          <include name="exportSpacesGoogleSheet_TC_210"/>
+          <include name="nightly_add_record_without_holiday_TC_1105"/>
+          <include name="TC_1106"/>
           <include name="loadConfig"/>
-          <include name="verifySpaceData_fromTableData_TC_205"/>
-          <include name="multipleUsersWithMutlipleSelections_TC_203"/>
-          <include name="verifySpaceData_afterEdit_TC_208"/>
-          <include name="add_Spaces_Single_And_Carparking_Options_TC_213"/>
-          <include name="beforeTest"/>
-          <include name="exportNewAddSpace_verifyCompleteRecords_TC_209"/>
-          <include name="verifySpacePage_Tc_201"/>
+          <include name="createGroup_verifyGroup_TC_1101"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
-          <include name="verifyPopupAddSpace_TC_202"/>
-          <include name="verify_serachField_withSpaceName_TC_211"/>
-          <include name="addSpace_skippingFileds_TC_204"/>
+          <include name="beforeTest"/>
         </methods>
-      </class> <!-- com.marina.tests.Mod_2_SpaceTypes -->
+      </class> <!-- com.marina.tests.Mod_7_RatesStorage -->
     </classes>
   </test> <!-- test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

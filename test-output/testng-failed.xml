@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite thread-count="1" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.marina.utils.ListenerClass"/>
+  </listeners>
+  <test thread-count="1" name="test(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="com.marina.tests.Mod_7_RatesStorage">
         <methods>
           <include name="nightly_add_record_without_holiday_TC_1105"/>
+          <include name="TC_1106"/>
           <include name="loadConfig"/>
+          <include name="createGroup_verifyGroup_TC_1101"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
           <include name="beforeTest"/>
         </methods>
       </class> <!-- com.marina.tests.Mod_7_RatesStorage -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -665,8 +665,10 @@ public class SpaceTypesAddTypesPage<price_type_options_count> {
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		driver.findElement(input_field_group_name_enter).sendKeys(name);
 		Thread.sleep(2000);
+		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_ok_group_name_save));
 		driver.findElement(btn_ok_group_name_save).click();
 		Thread.sleep(2000);
+		action.scrollByVisibilityOfElement(driver, btn_close);
 		btn_close.click();
 		return new SpaceTypesPage(driver);
 

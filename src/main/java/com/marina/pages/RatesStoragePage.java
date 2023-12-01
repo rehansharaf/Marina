@@ -33,8 +33,6 @@ public class RatesStoragePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
 
 	@FindBy(how = How.XPATH, using = "//div[@class='sdbr-dry-storage']")
 	WebElement dry_storage;
@@ -51,12 +49,8 @@ public class RatesStoragePage {
 	By monthly_spaces_price = By.xpath("//a[text()='Monthly']");
 	By annual_spaces_price = By.xpath("//a[text()='Annual']");
 	By flat_spaces_price = By.xpath("//a[text()='Flat']");
-	
-	
-	
+
 	By rates_storage_tittle = By.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
-
-
 
 	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
 	By btn_add_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
@@ -74,17 +68,9 @@ public class RatesStoragePage {
 	By btn_previous_year = By.xpath("//button[@ng-click='prev_year()']");
 	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
-	
-	
-	
-	
-	
-	
 
 	public boolean rate_group_list(String rateGroupName) {
 
-		
-		
 		boolean name = false;
 		int i;
 		for (i = 1; i < 100; i++) {
@@ -93,13 +79,13 @@ public class RatesStoragePage {
 
 				Thread.sleep(2000);
 				WebElement group_name_record_search = driver
-						.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li["+i+"]"));
-				
+						.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li[" + i + "]"));
+
 				action.scrollByVisibilityOfElement(driver, group_name_record_search);
-				
+				Thread.sleep(2000);
 				String rate_group_name_selected = group_name_record_search.getText();
-				System.out.println("count  " +i+ "  = " + rate_group_name_selected);
-				
+				System.out.println("count  " + i + "  = " + rate_group_name_selected);
+
 				if (rate_group_name_selected.equals(rateGroupName)) {
 					name = true;
 					System.out.println("result found");
@@ -111,45 +97,34 @@ public class RatesStoragePage {
 				i = 100;
 
 			}
-	
+
 		}
 
 		return name;
 
 	}
-	
-	
-	public RatesStorageNightlyPricePage search_specifig_rates_group(String specific_rates_group_name) throws InterruptedException {
-	
-		
-		
-	WebElement newly_group_name =	driver.findElement(By.xpath("//div[text()='"+specific_rates_group_name+"']"));
-	action.scrollByVisibilityOfElement(driver, newly_group_name);
-	action.click1(newly_group_name, specific_rates_group_name);
-	
-	action.explicitWaitElementClickable(driver, driver.findElement(btn_update_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	Thread.sleep(1000);
-	action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	
-	System.out.println();
-	
-	return new RatesStorageNightlyPricePage(driver);
-	
 
-		
-		
+	public RatesStorageNightlyPricePage search_specifig_rates_group(String specific_rates_group_name)
+			throws InterruptedException {
+
+		Thread.sleep(1000);
+		WebElement newly_group_name = driver.findElement(By.xpath("//div[text()='" + specific_rates_group_name + "']"));
+		Thread.sleep(1000);
+		action.scrollByVisibilityOfElement(driver, newly_group_name);
+		Thread.sleep(1000);
+		action.click1(newly_group_name, specific_rates_group_name);
+
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_update_price),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		Thread.sleep(1000);
+		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		System.out.println();
+
+		return new RatesStorageNightlyPricePage(driver);
+
 	}
-	
-	
-
-	
-	
-	
-
-	
-
-//	action.click1(spacesdropdown, "Spaces DropDown");
-
 
 
 }

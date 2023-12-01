@@ -1,23 +1,17 @@
 package com.marina.pages;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v115.network.model.LoadingFinished;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-
-import org.openqa.selenium.By;
-
 
 import com.marina.actiondriver.Action;
 import com.marina.base.TestBase;
@@ -37,6 +31,8 @@ public class SpaceTypesPage {
 	
 	
 	
+@FindBy(how= How.XPATH, using = "//div[text()='Dashboard']")
+	WebElement dashboard;
 
 	@FindBy(how = How.XPATH, using = "//div[text()='Space Types']")
 	WebElement stp_title;
@@ -170,7 +166,6 @@ public class SpaceTypesPage {
 
 	public String[] get_space_data_from_table(String name) throws InterruptedException {
 
-//	String total_entries =showing_entries.getText();
 
 		Thread.sleep(1000);
 		try {
@@ -250,7 +245,7 @@ public class SpaceTypesPage {
 
 			
 			try {
-				//Thread.sleep(3000);
+				
 				action.explicitWaitPresenceOfElement(driver, delete_option_spaceTable, Duration.ofSeconds(3));
 
 			} catch (Exception e) {
@@ -271,7 +266,6 @@ public class SpaceTypesPage {
 				try {
 
 					Thread.sleep(1000);
-//					action.explicitWait(driver, delete_option_spaceTable, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					action.explicitWaitPresenceOfElement(driver, delete_option_spaceTable, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 					Thread.sleep(1000);
 					String space_id = col1_space_name_detail.getText();
@@ -313,9 +307,6 @@ public class SpaceTypesPage {
 					entries_remain = showing_entries.getText();
 					System.out.println(entries_remain);
 					System.out.println("Table Empty");
-
-//				action.explicitWait(driver, no_match_record_found_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-//				no_entries_found = no_match_record_found_text.getText();
 
 					if (no_entries_found.equals("No matching records found")) {
 						i = 2000;
@@ -473,8 +464,11 @@ public class SpaceTypesPage {
 		
 		action.explicitWaitElementClickable(driver, driver.findElement(breadcrumbs_home_page), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(breadcrumbs_home_page), "home page click");
+		action.scrollByVisibilityOfElement(driver, dashboard);
 		driver.navigate().refresh();
 		Thread.sleep(1000);
+		action.scrollByVisibilityOfElement(driver, dashboard);
+		
 		return new HomePage(driver);
 		
 		

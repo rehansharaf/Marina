@@ -56,9 +56,7 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 	By btn_add_new_year = By.xpath("//button[@ng-click='addYear()']");
 
-	By tab_year_2023 = By.xpath("//button[@id='year-2023-tab']");
-	By tab_year_2024 = By.xpath("//button[@id='year-2024-tab']");
-	By tab_year_2025 = By.xpath("//button[@id='year-2025-tab']");
+	
 
 	By tab_1_ft_size = By.xpath("//*[@id='buckets_tabs']/li[1]/button/span");
 	@FindBy(how = How.XPATH, using = "//*[@id='buckets_tabs']/li[1]/button/span")
@@ -72,11 +70,62 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	By h_active_year = By.xpath("//h4[@ng-bind='active_year']");
 	By btn_next_year = By.xpath("//button[@ng-click='next_year()']");
 
-	By dropdown_month_from_selection_second_bucket = By
-			.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
-	By dropdown_month_from_selection_third_bucket = By
-			.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
+	
+	String active_year ="";
+	
+	By tab_year_2023 = By.xpath("//button[@id='year-2023-tab']");
+	By tab_year_2024 = By.xpath("//button[@id='year-2024-tab']");
+	By tab_year_2025 = By.xpath("//button[@id='year-2025-tab']");
+	By tab_year_2026 = By.xpath("//button[@id='year-2026-tab']");
+	
+	
+	
+	
+	
+//	By dropdown_month_to_selection = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
 
+//	By dropdown_month_from_selection_second_bucket = By
+//			.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
+//	By dropdown_month_from_selection_third_bucket = By
+//			.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
+
+	
+	
+	// 1st bucket = 81 , 2nd bucket = 82, 3rd bucket = 99
+	
+	
+	
+	
+	
+	
+
+//	By select_to_dec_second_bucket = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
+
+
+	
+	
+	
+//	By select_to_dec_third_bucket = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
+
+	
+	
+
+//	By dropdown_month_to_selection_second_bucket = By
+//	.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
+
+	
+//	By dropdown_month_to_selection_third_bucket = By
+//	.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
+
+	
+	
+	
+	
+	
+	
 	/*
 	 * 
 	 * ok check upside
@@ -86,52 +135,40 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	 * /
 	 */
 
-	By dropdown_month_from_selection = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
-	By select_from_jan = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[1]");
-	By select_from_feb = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[2]");
-	By select_from_mar = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[3]");
-	By select_from_apr = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[4]");
-	By select_from_may = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[5]");
-	By select_from_jun = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[6]");
-	By select_from_jul = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[7]");
-	By select_from_aug = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[8]");
-	By select_from_sep = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[9]");
-	By select_from_oct = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[10]");
-	By select_from_nov = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[11]");
-	By select_from_dec = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[12]");
+//	By dropdown_month_from_selection = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select");
+//	By select_from_jan = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[1]");
+//	By select_from_feb = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[2]");
+//	By select_from_mar = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[3]");
+//	By select_from_apr = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[4]");
+//	By select_from_may = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[5]");
+//	By select_from_jun = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[6]");
+//	By select_from_jul = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[7]");
+//	By select_from_aug = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[8]");
+//	By select_from_sep = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[9]");
+//	By select_from_oct = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[10]");
+//	By select_from_nov = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[11]");
+//	By select_from_dec = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select/option[12]");
 
+	
+	
 	// *[@id="bucket-2023-82"]/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
-	// *[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
+	// *[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select
 
 //// ok check apply 
-	By dropdown_month_to_selection = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
-
-	By dropdown_month_to_selection_second_bucket = By
-			.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
-
-	By select_to_dec_second_bucket = By.xpath(
-			"//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
-
-	By dropdown_month_to_selection_third_bucket = By
-			.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select");
-
-	By select_to_dec_third_bucket = By.xpath(
-			"//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
-
+	
 	/*
 	 * 
 	 * 
@@ -139,90 +176,103 @@ public class RatesStorageNightlyPrice_add_updatePage {
 	 * 
 	 */
 
-	By select_to_jan = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:1']");
-	By select_to_feb = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:2']");
-	By select_to_mar = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:3']");
-	By select_to_apr = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:4']");
-	By select_to_may = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:5']");
-	By select_to_jun = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:6']");
-	By select_to_jul = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:7']");
-	By select_to_aug = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:8']");
-	By select_to_sep = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:9']");
-	By select_to_oct = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:10']");
-	By select_to_nov = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:11']");
-	By select_to_dec = By.xpath(
-			"//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
+//	By select_to_jan = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:1']");
+//	By select_to_feb = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:2']");
+//	By select_to_mar = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:3']");
+//	By select_to_apr = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:4']");
+//	By select_to_may = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:5']");
+//	By select_to_jun = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:6']");
+//	By select_to_jul = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:7']");
+//	By select_to_aug = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:8']");
+//	By select_to_sep = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:9']");
+//	By select_to_oct = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:10']");
+//	By select_to_nov = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:11']");
+//	By select_to_dec = By.xpath(
+//			"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']");
 
+	
+	
+	
 	// 2023 ok and check
-	By input_monday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[2]/input");
-	By input_tuesday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[3]/input");
-	By input_wednesday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[4]/input");
-	By input_thursday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[5]/input");
-	By input_friday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[6]/input");
-	By input_saturday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[7]/input");
-	By input_sunday = By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[8]/input");
+//	By input_monday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[2]/input");
+//	By input_tuesday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[3]/input");
+//	By input_wednesday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[4]/input");
+//	By input_thursday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[5]/input");
+//	By input_friday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[6]/input");
+//	By input_saturday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[7]/input");
+//	By input_sunday = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[8]/input");
 
-	By input_monday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[2]/input");
-	By input_tuesday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[3]/input");
-	By input_wednesday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[4]/input");
-	By input_thursday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[5]/input");
-	By input_friday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[6]/input");
-	By input_saturday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[7]/input");
-	By input_sunday_second_bucket = By.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[8]/input");
+//	By input_monday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[2]/input");
+//	By input_tuesday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[3]/input");
+//	By input_wednesday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[4]/input");
+//	By input_thursday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[5]/input");
+//	By input_friday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[6]/input");
+//	By input_saturday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[7]/input");
+//	By input_sunday_second_bucket = By.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[8]/input");
 
-	By input_monday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[2]/input");
-	By input_tuesday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[3]/input");
-	By input_wednesday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[4]/input");
-	By input_thursday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[5]/input");
-	By input_friday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[6]/input");
-	By input_saturday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[7]/input");
-	By input_sunday_third_bucket = By.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[8]/input");
+//	By input_monday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[2]/input");
+//	By input_tuesday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[3]/input");
+//	By input_wednesday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[4]/input");
+//	By input_thursday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[5]/input");
+//	By input_friday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[6]/input");
+//	By input_saturday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[7]/input");
+//	By input_sunday_third_bucket = By.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[8]/input");
 
 	// 2023
-	By btn_delete_nighlty_month = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
+//	By btn_delete_nighlty_month = By
+//			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
 
-	By btn_delete_nighlty_month_second_bucket = By
-			.xpath("//*[@id='bucket-2023-82']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
+//	By btn_delete_nighlty_month_second_bucket = By
+//			.xpath("//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
 
-	By btn_delete_nighlty_month_third_bucket = By
-			.xpath("//*[@id='bucket-2023-99']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
+//	By btn_delete_nighlty_month_third_bucket = By
+//			.xpath("//*[@id='bucket-"+active_year+"-99']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]");
 
 	// By btn_add_nightly_month_when_row_enable =
-	// By.xpath("//*[@id='bucket-2023-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[2]");
+	// By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[9]/div/button[2]");
 
-	@FindBy(how = How.XPATH, using = "//*[@id='bucket-2023-81']/div/div[1]/div/table/thead/tr/th[9]/button")
-	WebElement btn_add_nightly_month_when_row_enable;
+//	@FindBy(how = How.XPATH, using = "//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/thead/tr/th[9]/button")
+//	WebElement btn_add_nightly_month_when_row_enable;
 
-	By btn_add_nightly_month_when_row_disable = By.xpath("");
+	
+//	By by_btn_add_nightly_month_when_row_enable = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/thead/tr/th[9]/button");
+	
+	
+	
+//	By btn_add_nightly_month_when_row_disable = By.xpath("");
 
 	// 2023
-	By h2_yearly_holiday_tittle = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/h2");
+	By h2_yearly_holiday_tittle = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/h2");
 	
 
-	// 2023
-	By input_holiday_name = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[1]/input");
-	By input_holiday_date = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[2]/input");
-	By input_holiday_price = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[3]/input");
+	// use for holidays
+	By input_holiday_name = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/table/tbody/tr/td[1]/input");
+	By input_holiday_date = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/table/tbody/tr/td[2]/input");
+	By input_holiday_price = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/table/tbody/tr/td[3]/input");
 	By input_holiday_minimum_reservation = By
-			.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[4]/div/input");
+			.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/table/tbody/tr/td[4]/div/input");
 
-	By btn_delete_Holidays = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[5]/div/button[1]");
-	By btn_holiday_month_add = By.xpath("//*[@id='bucket-2023-81']/div/div[2]/table/tbody/tr/td[5]/div/button[2]");
-
+	By btn_delete_Holidays = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/table/tbody/tr/td[5]/div/button[1]");
+	By btn_holiday_month_add = By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[2]/table/tbody/tr/td[5]/div/button[2]");
 	By select_effective_holiday_date = By.xpath("//*[@id='year-2023']/div[3]/div/input");
 
+	
+	
+	
+	
+	
+	
 	// 14 = 2023
 	By dropdown_calendar_month = By.xpath("//html/body/div[14]/div[1]/div/div/select");
 	By calender_holidy_month_jan = By.xpath("//html/body/div[14]/div[1]/div/div/select/option[1]");
@@ -313,45 +363,67 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 	}
 
-	public boolean add_12_month_price_in_one_week_row() throws InterruptedException {
+	public boolean add_12_month_price_in_one_week_row_first_bucket(String active_year2) throws InterruptedException {
 
 		boolean nightly_price_add = false;
+		active_year=active_year2;
+		String bucket_1 ="81";
 
-		action.explicitWaitElementClickable(driver, btn_add_nightly_month_when_row_enable,
+		try {
+		action.explicitWaitElementClickable(driver, driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/thead/tr/th[9]/button")),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		action.click1(btn_add_nightly_month_when_row_enable, "add month price when row is empty");
-		driver.findElement(dropdown_month_to_selection).click();
+	
+		action.click1(driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/thead/tr/th[9]/button")), "add month price when row is empty");
+		
+		
+		}
+		
+		catch(Exception e) {
+			System.out.println("in bucket already price define");
+		}
+		System.out.println("tes");
 
+		WebElement select_month_to_scroll_down = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select"));
+		select_month_to_scroll_down.click();
+		
+		WebElement select_dec_month = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']"));
+		select_dec_month.click();
+		
+	
+		
 		Thread.sleep(1000);
-		driver.findElement(select_to_dec).click();
+		WebElement input_monday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[2]/input"));
+		input_monday.clear();
+		input_monday.sendKeys("1");
 
-		Thread.sleep(1000);
-		driver.findElement(input_monday).clear();
-		driver.findElement(input_monday).sendKeys("1");
+		WebElement input_tuesday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[3]/input"));
+		input_tuesday.clear();
+		input_tuesday.sendKeys("2");
+		
+		WebElement input_wednesday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[4]/input"));
+		input_wednesday.clear();
+		input_wednesday.sendKeys("3");
+		
+		WebElement input_thursday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[5]/input"));
+		input_thursday.clear();
+		input_thursday.sendKeys("4");
+		
+		
+		WebElement input_friday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[6]/input"));
+		input_friday.clear();
+		input_friday.sendKeys("5");
 
-		Thread.sleep(1000);
-		driver.findElement(input_tuesday).clear();
-		driver.findElement(input_tuesday).sendKeys("2");
+		
+		WebElement input_saturday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[7]/input"));
+		input_saturday.clear();
+		input_saturday.sendKeys("6");
 
-		Thread.sleep(1000);
-		driver.findElement(input_wednesday).clear();
-		driver.findElement(input_wednesday).sendKeys("3");
 
-		Thread.sleep(1000);
-		driver.findElement(input_thursday).clear();
-		driver.findElement(input_thursday).sendKeys("4");
+		
+		WebElement input_sunday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_1+"']/div/div[1]/div/table/tbody/tr/td[8]/input"));
+		input_sunday.clear();
+		input_sunday.sendKeys("7");
 
-		Thread.sleep(1000);
-		driver.findElement(input_friday).clear();
-		driver.findElement(input_friday).sendKeys("5");
-
-		Thread.sleep(1000);
-		driver.findElement(input_saturday).clear();
-		driver.findElement(input_saturday).sendKeys("6");
-
-		Thread.sleep(1000);
-		driver.findElement(input_sunday).clear();
-		driver.findElement(input_sunday).sendKeys("7");
 
 		Thread.sleep(1000);
 		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_save_nightly_pricing));
@@ -360,8 +432,20 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 		/// get text of popup if update the record..
 		Thread.sleep(1000);
+		
+		
+		
+		
 		action.explicitWaitElementClickable(driver, popup_btn_ok_successfully_add_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		
+		
+		
+		
+		
+		
+		
+		
 		String group_adding_message = popup_bucket_add_succssfully_text.getText();
 		Thread.sleep(1000);
 		popup_btn_ok_successfully_add_bucket.click();
@@ -382,50 +466,69 @@ public class RatesStorageNightlyPrice_add_updatePage {
 		return nightly_price_add;
 
 	}
+	
+	
 
-	public boolean add_12_month_price_in_one_week_row_second_bucket() throws InterruptedException {
+	public boolean add_12_month_price_in_one_week_row_second_bucket(String active_year2) throws InterruptedException {
 
 		boolean nightly_price_add_second_bucket = false;
-
+		active_year=active_year2;
+		String bucket_2 ="82";
 		
 		
-	
+		WebElement btn_delete_nighlty_month_second_bucket = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]"));
 		
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_delete_nighlty_month_second_bucket),
+		action.explicitWaitElementClickable(driver, btn_delete_nighlty_month_second_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 //		action.click1(btn_add_nightly_month_when_row_enable, "add month price when row is empty");
 //		driver.findElement(dropdown_month_to_selection_second_bucket).click();
 
+		
+		WebElement select_month_to_scroll_down = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select"));
+		select_month_to_scroll_down.click();
+		
+		WebElement select_to_dec_second_bucket = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']"));
 		Thread.sleep(1000);
-		driver.findElement(select_to_dec_second_bucket).click();
+		select_to_dec_second_bucket.click();
+		
+		
+		
+		
 
 		Thread.sleep(1000);
-		driver.findElement(input_monday_second_bucket).clear();
-		driver.findElement(input_monday_second_bucket).sendKeys("8");
+		WebElement input_monday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[2]/input"));
+		input_monday.clear();
+		input_monday.sendKeys("8");
 
-		Thread.sleep(1000);
-		driver.findElement(input_tuesday_second_bucket).clear();
-		driver.findElement(input_tuesday_second_bucket).sendKeys("9");
+		WebElement input_tuesday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[3]/input"));
+		input_tuesday.clear();
+		input_tuesday.sendKeys("9");
+		
+		WebElement input_wednesday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[4]/input"));
+		input_wednesday.clear();
+		input_wednesday.sendKeys("10");
+		
+		WebElement input_thursday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[5]/input"));
+		input_thursday.clear();
+		input_thursday.sendKeys("11");
+		
+		
+		WebElement input_friday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[6]/input"));
+		input_friday.clear();
+		input_friday.sendKeys("12");
 
-		Thread.sleep(1000);
-		driver.findElement(input_wednesday_second_bucket).clear();
-		driver.findElement(input_wednesday_second_bucket).sendKeys("10");
+		
+		WebElement input_saturday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[7]/input"));
+		input_saturday.clear();
+		input_saturday.sendKeys("13");
 
-		Thread.sleep(1000);
-		driver.findElement(input_thursday_second_bucket).clear();
-		driver.findElement(input_thursday_second_bucket).sendKeys("11");
 
-		Thread.sleep(1000);
-		driver.findElement(input_friday_second_bucket).clear();
-		driver.findElement(input_friday_second_bucket).sendKeys("12");
-
-		Thread.sleep(1000);
-		driver.findElement(input_saturday_second_bucket).clear();
-		driver.findElement(input_saturday_second_bucket).sendKeys("13");
-
-		Thread.sleep(1000);
-		driver.findElement(input_sunday_second_bucket).clear();
-		driver.findElement(input_sunday_second_bucket).sendKeys("14");
+		
+		WebElement input_sunday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_2+"']/div/div[1]/div/table/tbody/tr/td[8]/input"));
+		input_sunday.clear();
+		input_sunday.sendKeys("14");
+		
+		
 
 		Thread.sleep(1000);
 		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_save_nightly_pricing));
@@ -463,45 +566,70 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 	}
 
-	public boolean add_12_month_price_in_one_week_row_third_bucket() throws InterruptedException {
+	public boolean add_12_month_price_in_one_week_row_third_bucket(String active_year2) throws InterruptedException {
 
 		boolean nightly_price_add_third_bucket = false;
+		active_year=active_year2;
+		String bucket_3 ="99";
 
-		action.explicitWaitElementClickable(driver, driver.findElement(btn_delete_nighlty_month_third_bucket),
+		
+		WebElement btn_delete_nighlty_month_third_bucket = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[9]/div/button[1]"));
+		
+		
+		
+		action.explicitWaitElementClickable(driver, btn_delete_nighlty_month_third_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 //		action.click1(btn_add_nightly_month_when_row_enable, "add month price when row is empty");
 //		driver.findElement(dropdown_month_to_selection_third_bucket).click();
 
-		Thread.sleep(1000);
-		driver.findElement(select_to_dec_third_bucket).click();
+		
 
+		WebElement select_month_to_scroll_down = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select"));
+		select_month_to_scroll_down.click();
+		
+		WebElement select_to_dec_third_bucket = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[1]/div/div[2]/select/option[@value='number:12']"));
 		Thread.sleep(1000);
-		driver.findElement(input_monday_third_bucket).clear();
-		driver.findElement(input_monday_third_bucket).sendKeys("15");
+		select_to_dec_third_bucket.click();
+		
+		
+		
+		
+		
+		Thread.sleep(1000);
+		WebElement input_monday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[2]/input"));
+		input_monday.clear();
+		input_monday.sendKeys("15");
 
-		Thread.sleep(1000);
-		driver.findElement(input_tuesday_third_bucket).clear();
-		driver.findElement(input_tuesday_third_bucket).sendKeys("16");
+		WebElement input_tuesday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[3]/input"));
+		input_tuesday.clear();
+		input_tuesday.sendKeys("16");
+		
+		WebElement input_wednesday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[4]/input"));
+		input_wednesday.clear();
+		input_wednesday.sendKeys("17");
+		
+		WebElement input_thursday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[5]/input"));
+		input_thursday.clear();
+		input_thursday.sendKeys("18");
+		
+		
+		WebElement input_friday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[6]/input"));
+		input_friday.clear();
+		input_friday.sendKeys("19");
 
-		Thread.sleep(1000);
-		driver.findElement(input_wednesday_third_bucket).clear();
-		driver.findElement(input_wednesday_third_bucket).sendKeys("17");
+		
+		WebElement input_saturday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[7]/input"));
+		input_saturday.clear();
+		input_saturday.sendKeys("20");
 
-		Thread.sleep(1000);
-		driver.findElement(input_thursday_third_bucket).clear();
-		driver.findElement(input_thursday_third_bucket).sendKeys("18");
 
-		Thread.sleep(1000);
-		driver.findElement(input_friday_third_bucket).clear();
-		driver.findElement(input_friday_third_bucket).sendKeys("19");
-
-		Thread.sleep(1000);
-		driver.findElement(input_saturday_third_bucket).clear();
-		driver.findElement(input_saturday_third_bucket).sendKeys("20");
-
-		Thread.sleep(1000);
-		driver.findElement(input_sunday_third_bucket).clear();
-		driver.findElement(input_sunday_third_bucket).sendKeys("21");
+		
+		WebElement input_sunday = driver.findElement(By.xpath("//*[@id='bucket-"+active_year+"-"+bucket_3+"']/div/div[1]/div/table/tbody/tr/td[8]/input"));
+		input_sunday.clear();
+		input_sunday.sendKeys("21");
+		
+		
+		
 
 		Thread.sleep(1000);
 		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_save_nightly_pricing));
@@ -539,38 +667,58 @@ public class RatesStorageNightlyPrice_add_updatePage {
 
 	}
 
-	public void single_click_first_bucket() {
+	public void single_click_first_bucket(String active_year) {
 
+		
+		
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		driver.findElement(tab_1_ft_size).click();
 
-		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection),
+		WebElement dropdown_month_selection_first_bucket = driver.findElement(By.xpath(
+				"//*[@id='bucket-" + active_year + "-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select"));
+
+		action.explicitWaitElementClickable(driver, dropdown_month_selection_first_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 	}
 
-	public void single_click_second_bucket() {
+	public void single_click_second_bucket_update(String active_year) {
+		
+		
+		WebElement dropdown_month_selection_first_bucket = driver.findElement(By.xpath(
+				"//*[@id='bucket-"+active_year+"-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select"));
 
-		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection),
+		action.explicitWaitElementClickable(driver, dropdown_month_selection_first_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		driver.findElement(tab_2_ft_size).click();
 
-		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection_second_bucket),
+		WebElement dropdown_from_month_selection_second_bucket = driver.findElement(By.xpath(
+				"//*[@id='bucket-"+active_year+"-82']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select"));
+
+		action.explicitWaitElementClickable(driver, dropdown_from_month_selection_second_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 	}
 
-	public void single_click_third_bucket() {
+	public void single_click_third_bucket_update (String active_year) {
 
-		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection),
+		WebElement dropdown_month_selection_first_bucket = driver.findElement(By.xpath(
+				"//*[@id='bucket-" + active_year + "-81']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select"));
+
+		action.explicitWaitElementClickable(driver, dropdown_month_selection_first_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		driver.findElement(tab_3_ft_size).click();
 
-		action.explicitWaitElementClickable(driver, driver.findElement(dropdown_month_from_selection_third_bucket),
+		WebElement dropdown_month_selection_third_bucket = driver.findElement(By.xpath(
+				"//*[@id='bucket-" + active_year + "-99']/div/div[1]/div/table/tbody/tr/td[1]/div/div[1]/select"));
+		action.explicitWaitElementClickable(driver, dropdown_month_selection_third_bucket,
+				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+
+		action.explicitWaitElementClickable(driver, dropdown_month_selection_third_bucket,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 	}
