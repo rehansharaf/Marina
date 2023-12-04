@@ -34,8 +34,14 @@ public class Mod_7_RatesStorage extends TestBase {
 	RatesStorageflatPricePage rsfpp;
 	RatesStorageNightlyPrice_add_updatePage rsnpaup;
 
-	String rate_new_group_name = "automation 4 12dec2023";
-
+	String rate_new_group_name = "Mod 7 All test";
+	String[] zero_to_50_ft_calendar_table_record_dec_2024;
+	String[] fifty_to_100_ft_calendar_table_record_dec_2023;
+	String[] hundread_100_ft_calendar_table_record_dec_2023;
+	
+	
+	
+	
 	@BeforeMethod
 	public void beforeTest() throws InterruptedException {
 
@@ -46,7 +52,7 @@ public class Mod_7_RatesStorage extends TestBase {
 
 	}
 
-	@Test(groups = { "regression", "smoke" }, priority = 1, description = "Creating Rate Group from Space Type,"
+	@Test(groups = { "regression", "smoke", "sanity" }, priority = 1, description = "Creating Rate Group from Space Type,"
 			+ " check rate group should be available")
 
 
@@ -194,11 +200,14 @@ public class Mod_7_RatesStorage extends TestBase {
 
 	
 	
+	
+	
+	
 //	dependsOnMethods = "nightly_add_record_without_holiday_TC_1105"
 
 	@Test(groups = { "regression",
 			"smoke" }, priority = 6, description = "Verify all the added rates for all the different sizes")
-	public void TC_1106() throws InterruptedException {
+	public void verify_allBucketsMonths_prices_TC_1106() throws InterruptedException {
 
 		Log.startTestCase("Verify all the added rates for all the different sizes TC_1106");
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
@@ -208,7 +217,7 @@ public class Mod_7_RatesStorage extends TestBase {
 
 		Thread.sleep(1000);
 	
-		String[] zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
+		zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
 		Thread.sleep(1000);
 		String[] expected_result_0to50ft = { null, null, null, null, "$5.00", "$6.00", "$7.00", "$1.00", "$2.00",
 				"$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00",
@@ -218,7 +227,7 @@ public class Mod_7_RatesStorage extends TestBase {
 		Thread.sleep(0);
 		rsnpp.single_click_second_bucket();
 
-		String[] fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+		fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
 		Thread.sleep(1000);
 		String[] expected_result_50to100ft = { null, null, null, null, "$12.00", "$13.00", "$14.00", "$8.00", "$9.00",
 				"$10.00", "$11.00", "$12.00", "$13.00", "$14.00", "$8.00", "$9.00", "$10.00", "$11.00", "$12.00",
@@ -227,16 +236,14 @@ public class Mod_7_RatesStorage extends TestBase {
 
 		rsnpp.single_click_third_bucket();
 
-		String[] hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+		hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
 		Thread.sleep(1000);
 		String[] expected_result_hundreadft = { null, null, null, null, "$19.00", "$20.00", "$21.00", "$15.00",
 				"$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00", "$15.00", "$16.00", "$17.00", "$18.00",
 				"$19.00", "$20.00", "$21.00", "$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00",
 				"$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00" };
 
-		
-		
-		
+	
 		Assert.assertEquals(zero_to_50_ft_calendar_table_record_dec_2024, expected_result_0to50ft);
 		Assert.assertEquals(fifty_to_100_ft_calendar_table_record_dec_2023, expected_result_50to100ft);
 		Assert.assertEquals(hundread_100_ft_calendar_table_record_dec_2023, expected_result_hundreadft);
@@ -244,7 +251,83 @@ public class Mod_7_RatesStorage extends TestBase {
 		Log.endTestCase("Verify all the added rates for all the different sizes TC_1106");
 		
 
+		
+		
 	}
+	
+	
+	
+	
+	
+//	
+//	@Test(groups = { "regression",
+//	"smoke" }, priority = 7, description = "Verify all the added rates for all the different sizes TC_1107")
+public void Update_Nightly_Record_TC_1107() throws InterruptedException {
+		
+		
+		Log.startTestCase("Update nightly rate group with multiple row and with holiday");
+		
+		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+		String activeYear_currentTime[] = rsnpp.active_year();
+		Thread.sleep(1000);
+		String active_year = activeYear_currentTime[0];
+
+		Thread.sleep(1000);
+		zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
+		Thread.sleep(1000);
+		rsnpp.single_click_second_bucket();
+		fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+		Thread.sleep(1000);
+		rsnpp.single_click_third_bucket();
+		hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+		Thread.sleep(1000);
+		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+		Thread.sleep(1000);
+	
+	// bucket 1 =  81 , bucket = 82, bucket 3= 99
+
+		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+		String [] price_list_first_row_month= {"0","4","5","6","7","8","9","10"};
+		String [] price_list_2nd_row_month= {"0","104","105","106","107","108","109","110"};
+		String holiday_price_set ="2";
+		String holiday_minimum_reservation ="5";
+		rsnpaup.add_mutli_months_price_1st_bucket(active_year, "81",price_list_first_row_month, price_list_2nd_row_month, holiday_price_set, holiday_minimum_reservation);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				
+		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row_first_bucket(active_year);
+
+		Thread.sleep(1000);
+	
+		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+		rsnpaup.single_click_second_bucket_update(active_year);
+		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket(active_year);
+
+		Thread.sleep(1000);
+
+		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+		rsnpaup.single_click_third_bucket_update(active_year);
+		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket(active_year);
+		
+		
+		
+		
+		Log.endTestCase("Update nightly rate group with multiple row and with holiday");
+		
+	
+	}
+	
+		
+	
 	
 
 	@AfterMethod
