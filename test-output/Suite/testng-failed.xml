@@ -9,8 +9,6 @@
     <classes>
       <class name="com.marina.tests.Mod_7_RatesStorage">
         <methods>
-          <include name="nightly_add_record_without_holiday_TC_1105"/>
-          <include name="TC_1106"/>
           <include name="loadConfig"/>
           <include name="createGroup_verifyGroup_TC_1101"/>
           <include name="afterSuite"/>

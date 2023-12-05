@@ -668,7 +668,16 @@ public class SpaceTypesAddTypesPage<price_type_options_count> {
 		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_ok_group_name_save));
 		driver.findElement(btn_ok_group_name_save).click();
 		Thread.sleep(2000);
+		try {
 		action.scrollByVisibilityOfElement(driver, btn_close);
+		}
+		catch(Exception e) {
+			System.out.println("after save group button close not found");
+			
+			action.scrollByVisibilityOfElement(driver, btn_cross);
+			btn_cross.click();
+			
+		}
 		btn_close.click();
 		return new SpaceTypesPage(driver);
 

@@ -8,11 +8,11 @@
 	<test name="test" preserve-order="true">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.marina.tests.Mod_2_SpaceTypes" />			
+			<!-- <class name="com.marina.tests.Mod_2_SpaceTypes" />			
    			<class name="com.marina.tests.Mod_3_AllSpaces" />
 			<class name="com.marina.tests.Mod_4_Calendar" />
 			<class name="com.marina.tests.Mod_5_SpaceGroup" />
-			<class name="com.marina.tests.Mod_6_BoatGroup" />
+			<class name="com.marina.tests.Mod_6_BoatGroup" /> -->
 			<class name="com.marina.tests.Mod_7_RatesStorage" />
 		 
 

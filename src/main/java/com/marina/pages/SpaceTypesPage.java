@@ -475,6 +475,15 @@ public class SpaceTypesPage {
 		
 	}
 	
+	public  String get_current_time() {
+		
+	String time =	action.getCurrentTime();
+	
+	return time;
+	
+		
+		
+	}
 	
 	
 	

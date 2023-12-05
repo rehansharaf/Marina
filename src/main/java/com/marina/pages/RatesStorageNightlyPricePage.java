@@ -323,6 +323,7 @@ public class RatesStorageNightlyPricePage {
 
 				}
 
+				
 			}
 
 		}
@@ -335,5 +336,189 @@ public class RatesStorageNightlyPricePage {
 		return calender_table_record;
 
 	}
+	
+	
+	
+	public void calendar_create(int request_year_user, String request_month_user, String request_1_for_date_or_2_for_price ) throws InterruptedException {
+		
+		// ( 2023, "December" "1 or 2" )
+		String[][] calendar_month_dates = new String[6][7];
+
+		int request_year = request_year_user;
+		String request_month = request_month_user;
+		String date_or_price = request_1_for_date_or_2_for_price;
+
+		String current_year_active = driver.findElement(h_active_year).getText();
+		current_year_active = current_year_active.trim();
+		int int_current_year_active = 0;
+
+		try {
+			int_current_year_active = Integer.parseInt(current_year_active);
+
+		} catch (NumberFormatException n) {
+
+			System.out.println("calendar active year not found");
+		}
+
+		if (request_year != int_current_year_active) {
+
+			if (request_year < int_current_year_active) {
+
+				for (int i = 1; i < 100; i++) {
+
+					Thread.sleep(1000);
+					action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
+							Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					Thread.sleep(1000);
+					driver.findElement(btn_previous_year).click();
+					Thread.sleep(1000);
+
+					action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
+							Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					Thread.sleep(1000);
+
+					current_year_active = driver.findElement(h_active_year).getText();
+					current_year_active = current_year_active.trim();
+					int_current_year_active = Integer.parseInt(current_year_active);
+
+					if (request_year == int_current_year_active) {
+						break;
+					}
+
+				}
+
+			}
+
+			if (request_year > int_current_year_active) {
+
+				for (int i = 1; i < 100; i++) {
+
+					Thread.sleep(1000);
+					action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+							Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					Thread.sleep(1000);
+					driver.findElement(btn_next_year).click();
+					Thread.sleep(1000);
+
+					action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
+							Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+					Thread.sleep(1000);
+
+					current_year_active = driver.findElement(h_active_year).getText();
+					current_year_active = current_year_active.trim();
+					int_current_year_active = Integer.parseInt(current_year_active);
+
+					if (request_year == int_current_year_active) {
+						break;
+					}
+
+				}
+
+			}
+
+		}
+
+		//*[@id="month-"+request_month+"-tab"]
+		
+		
+		
+	WebElement required_month_click = 	driver.findElement(By.xpath("//*[@id='month-"+request_month+"-tab']"));	
+	
+	action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+	action.scrollByVisibilityOfElement(driver, required_month_click);
+	required_month_click.click();
+	
+		
+	
+	
+//	WebElement required_months_calendar_dates =	driver.findElement(By.xpath("//*[@id='month-"+request_month+"']"));
+	
+	
+	 //*[@id="month-12"]/div/div/table/tbody/tr[6]/td[7]
+	
+	
+	
+	for(int i=2; i<8; i++) {
+		
+		for(int j=1; j<8; j++) {
+		
+			System.out.println("test");
+			System.out.println("test");
+	
+			if(j==5) {
+				System.out.println();
+			}
+			
+			
+		WebElement record_dates =	driver.findElement(By.xpath("//*[@id='month-"+request_month+"']/div/div/table/tbody/tr["+i+"]/td["+j+"]"));
+		
+		
+		
+		String text_record_dates =	record_dates.getText();
+		String [] text_array = text_record_dates.split("\\n");
+		
+		
+	int k=i-2;
+	int l=j-1;
+	
+		if(text_array[0].equals("")) {
+			
+			calendar_month_dates[k][l] ="null";
+			
+			
+		}
+		
+		else if(!text_array[0].equals("")) {
+		
+		calendar_month_dates[k][l] =text_array[0];
+		}
+		
+		System.out.println(calendar_month_dates[k][l]);
+		
+		text_array=null;
+		
+		/*
+		 * 
+		 * 
+		 * is in process
+		 * 
+		 * 
+		 * 
+		 * 
+		 * /
+		 */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+//	date = 	//*[@id='month-12']/div/div/table/tbody/tr[2]/td[5]/span[1]    
+//	price 	//*[@id='month-12']/div/div/table/tbody/tr[2]/td[5]/span[2]
+//					calendar_month_dates[i][j] =text_record_dates ;
+			
+			
+
+		
+			
+		}
+		
+		
+	}
+	
+	
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 
 }

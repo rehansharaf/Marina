@@ -34,7 +34,7 @@ public class Mod_7_RatesStorage extends TestBase {
 	RatesStorageflatPricePage rsfpp;
 	RatesStorageNightlyPrice_add_updatePage rsnpaup;
 
-	String rate_new_group_name = "Mod 7 All test";
+	String rate_new_group_name = "Automation test 5DEC2023";
 	String[] zero_to_50_ft_calendar_table_record_dec_2024;
 	String[] fifty_to_100_ft_calendar_table_record_dec_2023;
 	String[] hundread_100_ft_calendar_table_record_dec_2023;
@@ -52,7 +52,7 @@ public class Mod_7_RatesStorage extends TestBase {
 
 	}
 
-	@Test(groups = { "regression", "smoke", "sanity" }, priority = 1, description = "Creating Rate Group from Space Type,"
+	@Test( groups = { "regression", "smoke", "sanity" },  priority = 1, description = "Creating Rate Group from Space Type,"
 			+ " check rate group should be available")
 
 
@@ -60,6 +60,7 @@ public class Mod_7_RatesStorage extends TestBase {
 
 		Log.startTestCase("Creating Rate Group from Space Type, check rate group should be available Tc_1101");
 		
+
 		stp = hp.space_types_click_Mod7_ratesStorage();
 		statp = stp.click_btn_add_space_type();
 		stp = statp.adding_rates_group(rate_new_group_name);
@@ -67,11 +68,11 @@ public class Mod_7_RatesStorage extends TestBase {
 		hp = stp.breadcrumbs_homePage();
 		Thread.sleep(1000);
 		rsp = hp.spaces_dropdown_rates();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		boolean name =  rsp.rate_group_list(rate_new_group_name);
 		Assert.assertTrue(name);
 		Log.endTestCase("Creating Rate Group from Space Type, check rate group should be available Tc_1101");
-
+		
 		
 	}
 
@@ -165,6 +166,13 @@ public class Mod_7_RatesStorage extends TestBase {
 
 		
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+		
+/*
+ * new scrip dynamic calendar is in progress rsnpp.calendar.create
+ * with out this script code is also working
+ * /
+ */
+		
 		Thread.sleep(1000);
 		String activeYear_currentTime [] = rsnpp.active_year();
 		Thread.sleep(1000);

@@ -75,15 +75,22 @@ public class RatesStoragePage {
 		int i;
 		for (i = 1; i < 100; i++) {
 
+		
+			WebElement group_name_record_search = driver
+					.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li[" + i + "]"));
+			
+			
 			try {
 
 				Thread.sleep(2000);
-				WebElement group_name_record_search = driver
-						.findElement(By.xpath("//ul[@class='ulsdbr-rates menu-sub ']/li[" + i + "]"));
+				
 
 				action.scrollByVisibilityOfElement(driver, group_name_record_search);
+				
+				
 				Thread.sleep(2000);
 				String rate_group_name_selected = group_name_record_search.getText();
+				Thread.sleep(2000);
 				System.out.println("count  " + i + "  = " + rate_group_name_selected);
 
 				if (rate_group_name_selected.equals(rateGroupName)) {
