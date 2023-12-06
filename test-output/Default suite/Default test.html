@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Dec 05 04:56:38 PST 2023</td>
+<td>Started on:</td><td>Wed Dec 06 07:09:53 PST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>214 seconds (214476 ms)</td>
+<tr><td>Total time:</td><td>161 seconds (161166 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,10 +75,13 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.marina.tests.Mod_7_RatesStorage.nightly_add_record_without_holiday_TC_1105()'><b>nightly_add_record_without_holiday_TC_1105</b><br>Test class: com.marina.tests.Mod_7_RatesStorage<br>Test method: Create Nightly rate group with single row and without holiday</td>
-<td><div><pre>java.lang.ArrayIndexOutOfBoundsException: Index 7 out of bounds for length 7
-	at com.marina.pages.RatesStorageNightlyPricePage.calendar_create(RatesStorageNightlyPricePage.java:456)
-	at com.marina.tests.Mod_7_RatesStorage.nightly_add_record_without_holiday_TC_1105(Mod_7_RatesStorage.java:176)
+<td title='com.marina.tests.Mod_7_RatesStorage.verify_allBucketsMonths_prices_TC_1106()'><b>verify_allBucketsMonths_prices_TC_1106</b><br>Test class: com.marina.tests.Mod_7_RatesStorage<br>Test method: Verify all the added rates for all the different sizes</td>
+<td><div><pre>java.lang.AssertionError: expected [$1.00] but found [null]
+	at org.testng.Assert.fail(Assert.java:97)
+	at org.testng.Assert.failNotEquals(Assert.java:969)
+	at org.testng.Assert.assertEquals(Assert.java:1166)
+	at org.testng.Assert.assertEquals(Assert.java:1230)
+	at com.marina.tests.Mod_7_RatesStorage.verify_allBucketsMonths_prices_TC_1106(Mod_7_RatesStorage.java:266)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -107,10 +110,13 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1122863578", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1122863578'><pre>java.lang.ArrayIndexOutOfBoundsException: Index 7 out of bounds for length 7
-	at com.marina.pages.RatesStorageNightlyPricePage.calendar_create(RatesStorageNightlyPricePage.java:456)
-	at com.marina.tests.Mod_7_RatesStorage.nightly_add_record_without_holiday_TC_1105(Mod_7_RatesStorage.java:176)
+</pre></div><a href='#' onClick='toggleBox("stack-trace115869666", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace115869666'><pre>java.lang.AssertionError: expected [$1.00] but found [null]
+	at org.testng.Assert.fail(Assert.java:97)
+	at org.testng.Assert.failNotEquals(Assert.java:969)
+	at org.testng.Assert.assertEquals(Assert.java:1166)
+	at org.testng.Assert.assertEquals(Assert.java:1230)
+	at com.marina.tests.Mod_7_RatesStorage.verify_allBucketsMonths_prices_TC_1106(Mod_7_RatesStorage.java:266)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -140,8 +146,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>183</td>
-<td>com.marina.tests.Mod_7_RatesStorage@56cdfb3b</td></tr>
+<td>134</td>
+<td>com.marina.tests.Mod_7_RatesStorage@4229bb3f</td></tr>
 </table><p>
 </body>
 </html>

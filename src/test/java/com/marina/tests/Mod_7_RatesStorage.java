@@ -38,10 +38,7 @@ public class Mod_7_RatesStorage extends TestBase {
 	String[] zero_to_50_ft_calendar_table_record_dec_2024;
 	String[] fifty_to_100_ft_calendar_table_record_dec_2023;
 	String[] hundread_100_ft_calendar_table_record_dec_2023;
-	
-	
-	
-	
+
 	@BeforeMethod
 	public void beforeTest() throws InterruptedException {
 
@@ -52,14 +49,13 @@ public class Mod_7_RatesStorage extends TestBase {
 
 	}
 
-	@Test( groups = { "regression", "smoke", "sanity" },  priority = 1, description = "Creating Rate Group from Space Type,"
-			+ " check rate group should be available")
-
+	@Test(groups = { "regression", "smoke",
+			"sanity" }, priority = 1, description = "Creating Rate Group from Space Type,"
+					+ " check rate group should be available")
 
 	public void createGroup_verifyGroup_TC_1101() throws InterruptedException {
 
 		Log.startTestCase("Creating Rate Group from Space Type, check rate group should be available Tc_1101");
-		
 
 		stp = hp.space_types_click_Mod7_ratesStorage();
 		statp = stp.click_btn_add_space_type();
@@ -69,11 +65,10 @@ public class Mod_7_RatesStorage extends TestBase {
 		Thread.sleep(1000);
 		rsp = hp.spaces_dropdown_rates();
 		Thread.sleep(2000);
-		boolean name =  rsp.rate_group_list(rate_new_group_name);
+		boolean name = rsp.rate_group_list(rate_new_group_name);
 		Assert.assertTrue(name);
 		Log.endTestCase("Creating Rate Group from Space Type, check rate group should be available Tc_1101");
-		
-		
+
 	}
 
 //	dependsOnMethods = "newlyGroupCreated_RevisionHisotryEmpty_TC_1101"
@@ -84,11 +79,11 @@ public class Mod_7_RatesStorage extends TestBase {
 	public void newlyGroupCreated_RevisionHisotryEmpty_TC_1102() throws InterruptedException {
 
 		Log.startTestCase("No Revision History should be available in newly created rate group Tc_1102");
-	
+
 		rsp.search_specifig_rates_group(rate_new_group_name);
 		boolean[] expected_nightly_data = new boolean[2];
 		expected_nightly_data[0] = true;
-		
+
 		expected_nightly_data[1] = true;
 
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
@@ -138,7 +133,6 @@ public class Mod_7_RatesStorage extends TestBase {
 			"smoke" }, priority = 4, description = "Delete newly added buckets and verify rate group")
 	public void nightly_delete_newley_bucketAndVerify_TC_1104() throws InterruptedException {
 
-		
 		Log.startTestCase("Delete newly added buckets and verify rate group TC_1104");
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
 
@@ -152,41 +146,28 @@ public class Mod_7_RatesStorage extends TestBase {
 		Log.endTestCase("Delete newly added buckets and verify rate group TC_1104");
 
 	}
-	
-	
 
 //	dependsOnMethods = "newlyGroupCreated_RevisionHisotryEmpty_TC_1101"
 
-	
 	@Test(groups = { "regression",
 			"smoke" }, priority = 5, description = "Create Nightly rate group with single row and without holiday")
 	public void nightly_add_record_without_holiday_TC_1105() throws InterruptedException {
 
 		Log.startTestCase("Create Nightly rate group with single row and without holiday TC_1105");
 
-		
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-		
-/*
- * new scrip dynamic calendar is in progress rsnpp.calendar.create
- * with out this script code is also working
- * /
- */
-		
+
 		Thread.sleep(1000);
-		String activeYear_currentTime [] = rsnpp.active_year();
+		String activeYear_currentTime[] = rsnpp.active_year();
 		Thread.sleep(1000);
 		String active_year = activeYear_currentTime[0];
 		Thread.sleep(1000);
-		
-				
+
 		rsnpaup = rsnpp.click_update_btn_return_edit_page();
 		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row_first_bucket(active_year);
 
 		Thread.sleep(1000);
 
-		
-		
 		rsnpaup = rsnpp.click_update_btn_return_edit_page();
 		rsnpaup.single_click_second_bucket_update(active_year);
 		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket(active_year);
@@ -197,7 +178,6 @@ public class Mod_7_RatesStorage extends TestBase {
 		rsnpaup.single_click_third_bucket_update(active_year);
 		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket(active_year);
 
-		
 		Assert.assertEquals(succesfuuly_add_nightly_price, true);
 		Assert.assertEquals(second_bucket_priced_updated, true);
 		Assert.assertEquals(third_bucket_priced_updated, true);
@@ -205,13 +185,11 @@ public class Mod_7_RatesStorage extends TestBase {
 		Log.endTestCase("Create Nightly rate group with single row and without holiday TC_1105");
 
 	}
+	
+	
 
-	
-	
-	
-	
-	
-//	dependsOnMethods = "nightly_add_record_without_holiday_TC_1105"
+
+////	dependsOnMethods = "nightly_add_record_without_holiday_TC_1105"
 
 	@Test(groups = { "regression",
 			"smoke" }, priority = 6, description = "Verify all the added rates for all the different sizes")
@@ -219,124 +197,126 @@ public class Mod_7_RatesStorage extends TestBase {
 
 		Log.startTestCase("Verify all the added rates for all the different sizes TC_1106");
 		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-		String activeYear_currentTime [] = rsnpp.active_year();
-		Thread.sleep(1000);
-		String active_year = activeYear_currentTime[0];
+		Thread.sleep(2000);
 
-		Thread.sleep(1000);
-	
-		zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
-		Thread.sleep(1000);
-		String[] expected_result_0to50ft = { null, null, null, null, "$5.00", "$6.00", "$7.00", "$1.00", "$2.00",
-				"$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00",
-				"$7.00", "$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00", "$1.00", "$2.00", "$3.00",
-				"$4.00", "$5.00", "$6.00", "$7.00" };
+		String[][][] calendar_recrod_saved_first_bucket = rsnpp.calendar_create(2024, "12");
+		Thread.sleep(2000);
+		String[] result_calendar_price_first_bucket = rsnpp
+				.complete_calendar_repalce(calendar_recrod_saved_first_bucket);
+		String[] expected_result_0to50ft = {
+				
+				"$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00",
+				
+				"$1.00", "$2.00","$3.00", "$4.00", "$5.00", "$6.00", "$7.00",
+				
+				"$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00","$7.00", 
+				
+				"$1.00", "$2.00", "$3.00", "$4.00", "$5.00", "$6.00", "$7.00",
+				
+				"$1.00", "$2.00", "$3.00", null, null, null, null };
 
-		Thread.sleep(0);
+		System.out.println("1 bucket result fetch completed");
+
 		rsnpp.single_click_second_bucket();
+		String[][][] calendar_recrod_saved_second_bucket = rsnpp.calendar_create(2024, "12");
+		Thread.sleep(2000);
+		String[] result_calendar_price_second_bucket = rsnpp
+				.complete_calendar_repalce(calendar_recrod_saved_second_bucket);
+		String[] expected_result_50to100ft = {
 
-		fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
-		Thread.sleep(1000);
-		String[] expected_result_50to100ft = { null, null, null, null, "$12.00", "$13.00", "$14.00", "$8.00", "$9.00",
-				"$10.00", "$11.00", "$12.00", "$13.00", "$14.00", "$8.00", "$9.00", "$10.00", "$11.00", "$12.00",
-				"$13.00", "$14.00", "$8.00", "$9.00", "$10.00", "$11.00", "$12.00", "$13.00", "$14.00", "$8.00",
-				"$9.00", "$10.00", "$11.00", "$12.00", "$13.00", "$14.00" };
+				"$8.00", "$9.00", "$10.00", "$11.00", "$12.00", "$13.00", "$14.00",
+				
+				"$8.00", "$9.00","$10.00", "$11.00", "$12.00", "$13.00", "$14.00",
+				
+				"$8.00", "$9.00", "$10.00", "$11.00", "$12.00", "$13.00","$14.00", 
+				
+				"$8.00", "$9.00", "$10.00", "$11.00", "$12.00", "$13.00", "$14.00",
+				
+				"$8.00", "$9.00", "$10.00", null, null, null, null };
+
+		System.out.println("2 bucket result fetch completed");
 
 		rsnpp.single_click_third_bucket();
+		String[][][] calendar_recrod_saved_third_bucket = rsnpp.calendar_create(2024, "12");
+		Thread.sleep(2000);
+		String[] result_calendar_price_third_bucket = rsnpp
+				.complete_calendar_repalce(calendar_recrod_saved_third_bucket);
+		String[] expected_result_hundreadft = {
 
-		hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
-		Thread.sleep(1000);
-		String[] expected_result_hundreadft = { null, null, null, null, "$19.00", "$20.00", "$21.00", "$15.00",
-				"$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00", "$15.00", "$16.00", "$17.00", "$18.00",
-				"$19.00", "$20.00", "$21.00", "$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00",
-				"$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00" };
+		"$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00",
+		
+		"$15.00", "$16.00","$17.00", "$18.00", "$19.00", "$20.00", "$21.00",
+		
+		"$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00","$21.00", 
+		
+		"$15.00", "$16.00", "$17.00", "$18.00", "$19.00", "$20.00", "$21.00",
+		
+		"$15.00", "$16.00", "$17.00", null, null, null, null };
+		
 
-	
-		Assert.assertEquals(zero_to_50_ft_calendar_table_record_dec_2024, expected_result_0to50ft);
-		Assert.assertEquals(fifty_to_100_ft_calendar_table_record_dec_2023, expected_result_50to100ft);
-		Assert.assertEquals(hundread_100_ft_calendar_table_record_dec_2023, expected_result_hundreadft);
+
+		System.out.println("3 bucket result fetch completed");
+
+		Assert.assertEquals(result_calendar_price_first_bucket, expected_result_0to50ft);
+		Assert.assertEquals(result_calendar_price_second_bucket, expected_result_50to100ft);
+		Assert.assertEquals(result_calendar_price_third_bucket, expected_result_hundreadft);
 
 		Log.endTestCase("Verify all the added rates for all the different sizes TC_1106");
-		
 
-		
-		
 	}
-	
-	
-	
-	
-	
-//	
-//	@Test(groups = { "regression",
-//	"smoke" }, priority = 7, description = "Verify all the added rates for all the different sizes TC_1107")
-public void Update_Nightly_Record_TC_1107() throws InterruptedException {
-		
-		
-		Log.startTestCase("Update nightly rate group with multiple row and with holiday");
-		
-		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-		String activeYear_currentTime[] = rsnpp.active_year();
-		Thread.sleep(1000);
-		String active_year = activeYear_currentTime[0];
 
-		Thread.sleep(1000);
-		zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
-		Thread.sleep(1000);
-		rsnpp.single_click_second_bucket();
-		fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
-		Thread.sleep(1000);
-		rsnpp.single_click_third_bucket();
-		hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
-		Thread.sleep(1000);
-		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-		Thread.sleep(1000);
-	
-	// bucket 1 =  81 , bucket = 82, bucket 3= 99
 
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		String [] price_list_first_row_month= {"0","4","5","6","7","8","9","10"};
-		String [] price_list_2nd_row_month= {"0","104","105","106","107","108","109","110"};
-		String holiday_price_set ="2";
-		String holiday_minimum_reservation ="5";
-		rsnpaup.add_mutli_months_price_1st_bucket(active_year, "81",price_list_first_row_month, price_list_2nd_row_month, holiday_price_set, holiday_minimum_reservation);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-				
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row_first_bucket(active_year);
-
-		Thread.sleep(1000);
-	
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		rsnpaup.single_click_second_bucket_update(active_year);
-		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket(active_year);
-
-		Thread.sleep(1000);
-
-		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		rsnpaup.single_click_third_bucket_update(active_year);
-		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket(active_year);
-		
-		
-		
-		
-		Log.endTestCase("Update nightly rate group with multiple row and with holiday");
-		
-	
-	}
-	
-		
-	
-	
+////	@Test(groups = { "regression",
+////	"smoke" }, priority = 7, description = "Verify all the added rates for all the different sizes TC_1107")
+//	public void Update_Nightly_Record_TC_1107() throws InterruptedException {
+//
+//		Log.startTestCase("Update nightly rate group with multiple row and with holiday");
+//
+//		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+//		String activeYear_currentTime[] = rsnpp.active_year();
+//		Thread.sleep(1000);
+//		String active_year = activeYear_currentTime[0];
+//
+//		Thread.sleep(1000);
+//		zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
+//		Thread.sleep(1000);
+//		rsnpp.single_click_second_bucket();
+//		fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+//		Thread.sleep(1000);
+//		rsnpp.single_click_third_bucket();
+//		hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
+//		Thread.sleep(1000);
+//		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+//		Thread.sleep(1000);
+//
+//		// bucket 1 = 81 , bucket = 82, bucket 3= 99
+//
+//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+//		String[] price_list_first_row_month = { "0", "4", "5", "6", "7", "8", "9", "10" };
+//		String[] price_list_2nd_row_month = { "0", "104", "105", "106", "107", "108", "109", "110" };
+//		String holiday_price_set = "2";
+//		String holiday_minimum_reservation = "5";
+//		rsnpaup.add_mutli_months_price_1st_bucket(active_year, "81", price_list_first_row_month,
+//				price_list_2nd_row_month, holiday_price_set, holiday_minimum_reservation);
+//
+//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+//		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row_first_bucket(active_year);
+//
+//		Thread.sleep(1000);
+//
+//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+//		rsnpaup.single_click_second_bucket_update(active_year);
+//		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket(active_year);
+//
+//		Thread.sleep(1000);
+//
+//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
+//		rsnpaup.single_click_third_bucket_update(active_year);
+//		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket(active_year);
+//
+//		Log.endTestCase("Update nightly rate group with multiple row and with holiday");
+//
+//	}
 
 	@AfterMethod
 	public void afterTest() {

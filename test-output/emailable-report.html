@@ -9,13 +9,16 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">214,476</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">161,166</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.marina.tests.Mod_7_RatesStorage</td><td><a href="#m0">nightly_add_record_without_holiday_TC_1105</a></td><td rowspan="1">1701781025173</td><td rowspan="1">183995</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.marina.tests.Mod_7_RatesStorage</td><td><a href="#m0">verify_allBucketsMonths_prices_TC_1106</a></td><td rowspan="1">1701875417220</td><td rowspan="1">134276</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">com.marina.tests.Mod_7_RatesStorage#nightly_add_record_without_holiday_TC_1105</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.ArrayIndexOutOfBoundsException: Index 7 out of bounds for length 7
-	at com.marina.pages.RatesStorageNightlyPricePage.calendar_create(RatesStorageNightlyPricePage.java:456)
-	at com.marina.tests.Mod_7_RatesStorage.nightly_add_record_without_holiday_TC_1105(Mod_7_RatesStorage.java:176)
+<h2>Default test</h2><h3 id="m0">com.marina.tests.Mod_7_RatesStorage#verify_allBucketsMonths_prices_TC_1106</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [$1.00] but found [null]
+	at org.testng.Assert.fail(Assert.java:97)
+	at org.testng.Assert.failNotEquals(Assert.java:969)
+	at org.testng.Assert.assertEquals(Assert.java:1166)
+	at org.testng.Assert.assertEquals(Assert.java:1230)
+	at com.marina.tests.Mod_7_RatesStorage.verify_allBucketsMonths_prices_TC_1106(Mod_7_RatesStorage.java:266)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

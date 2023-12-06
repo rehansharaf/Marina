@@ -42,7 +42,6 @@ public class RatesStorageNightlyPricePage {
 
 	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
 
-
 	@FindBy(how = How.XPATH, using = "//a[@class='btn btn-success btn-md px-4']")
 	WebElement btn_update_price_web;
 
@@ -72,14 +71,11 @@ public class RatesStorageNightlyPricePage {
 
 	By tab_calendar_month_december = By.xpath("//button[text()='December']");
 
-
-
 	int month_number;
 	int day_number;
 	int date_column;
 	By tab_days = By.xpath(
 			"//*[@id='month-" + month_number + "']/div/div/table/tbody/tr[" + date_column + "]/td[" + day_number + "]");
-
 
 	ArrayList<String> history_recrod_array;
 
@@ -166,13 +162,16 @@ public class RatesStorageNightlyPricePage {
 
 	}
 
-	public void single_click_second_bucket() {
+	public void single_click_second_bucket() throws InterruptedException {
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
 		String testing_locatotrs = driver.findElement(tab_2_ft_size).getAccessibleName();
-
+		
+		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_add_price));
+		action.scrollByVisibilityOfElement(driver, driver.findElement(tab_2_ft_size));
+		
 		driver.findElement(tab_2_ft_size).click();
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
@@ -180,11 +179,14 @@ public class RatesStorageNightlyPricePage {
 
 	}
 
-	public void single_click_third_bucket() {
+	public void single_click_third_bucket() throws InterruptedException {
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
+	
+		action.scrollByVisibilityOfElement(driver, driver.findElement(tab_3_ft_size));
+		
 		driver.findElement(tab_3_ft_size).click();
 
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
@@ -257,11 +259,9 @@ public class RatesStorageNightlyPricePage {
 		action.explicitWaitPresenceOfElement(driver, h_active_year,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 
-
 		String active_year_calendar = driver.findElement(h_active_year).getText();
 
 		boolean compete_recod_confirm = false;
-
 
 		if (active_year_calendar.contentEquals("2023")) {
 
@@ -323,7 +323,6 @@ public class RatesStorageNightlyPricePage {
 
 				}
 
-				
 			}
 
 		}
@@ -336,17 +335,24 @@ public class RatesStorageNightlyPricePage {
 		return calender_table_record;
 
 	}
-	
-	
-	
-	public void calendar_create(int request_year_user, String request_month_user, String request_1_for_date_or_2_for_price ) throws InterruptedException {
+
+	public String[][][] calendar_create(int request_year_user, String request_month_user) throws InterruptedException {
+
+		/*
+		 * 
+		 * request month user formate month number "10" /request year formate 2023
+		 */
+
 		
-		// ( 2023, "December" "1 or 2" )
+		
+		
 		String[][] calendar_month_dates = new String[6][7];
 
 		int request_year = request_year_user;
 		String request_month = request_month_user;
-		String date_or_price = request_1_for_date_or_2_for_price;
+		String calendar_array[][][] = null;
+
+		String days_text = "empty";
 
 		String current_year_active = driver.findElement(h_active_year).getText();
 		current_year_active = current_year_active.trim();
@@ -382,14 +388,14 @@ public class RatesStorageNightlyPricePage {
 					int_current_year_active = Integer.parseInt(current_year_active);
 
 					if (request_year == int_current_year_active) {
-						break;
+						i=100;
 					}
 
 				}
 
 			}
 
-			if (request_year > int_current_year_active) {
+			else if (request_year > int_current_year_active) {
 
 				for (int i = 1; i < 100; i++) {
 
@@ -409,7 +415,7 @@ public class RatesStorageNightlyPricePage {
 					int_current_year_active = Integer.parseInt(current_year_active);
 
 					if (request_year == int_current_year_active) {
-						break;
+						i=100;
 					}
 
 				}
@@ -418,103 +424,193 @@ public class RatesStorageNightlyPricePage {
 
 		}
 
-		//*[@id="month-"+request_month+"-tab"]
 		
-		
-		
-	WebElement required_month_click = 	driver.findElement(By.xpath("//*[@id='month-"+request_month+"-tab']"));	
-	
-	action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-	action.scrollByVisibilityOfElement(driver, required_month_click);
-	required_month_click.click();
-	
-		
-	
-	
-//	WebElement required_months_calendar_dates =	driver.findElement(By.xpath("//*[@id='month-"+request_month+"']"));
-	
-	
-	 //*[@id="month-12"]/div/div/table/tbody/tr[6]/td[7]
-	
-	
-	
-	for(int i=2; i<8; i++) {
-		
-		for(int j=1; j<8; j++) {
-		
-			System.out.println("test");
-			System.out.println("test");
-	
-			if(j==5) {
-				System.out.println();
+		 System.out.println("calendar result fetching");
+
+			WebElement required_month_click = driver
+					.findElement(By.xpath("//*[@id='month-" + request_month + "-tab']"));
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			action.scrollByVisibilityOfElement(driver, required_month_click);
+			required_month_click.click();
+
+			int z = 0;
+
+			for (int i = 2; i < 8; i++) {
+
+				String text_record_dates;
+
+				try {
+
+					WebElement record_dates = driver.findElement(
+							By.xpath("//*[@id='month-" + request_month + "']/div/div/table/tbody/tr[" + i + "]/td[1]"));
+					text_record_dates = record_dates.getText();
+					z++;
+
+				} catch (Exception e) {
+					System.out.println("6 row of calendar not found");
+					break;
+
+				}
+
 			}
-			
-			
-		WebElement record_dates =	driver.findElement(By.xpath("//*[@id='month-"+request_month+"']/div/div/table/tbody/tr["+i+"]/td["+j+"]"));
-		
-		
-		
-		String text_record_dates =	record_dates.getText();
-		String [] text_array = text_record_dates.split("\\n");
-		
-		
-	int k=i-2;
-	int l=j-1;
-	
-		if(text_array[0].equals("")) {
-			
-			calendar_month_dates[k][l] ="null";
-			
-			
-		}
-		
-		else if(!text_array[0].equals("")) {
-		
-		calendar_month_dates[k][l] =text_array[0];
-		}
-		
-		System.out.println(calendar_month_dates[k][l]);
-		
-		text_array=null;
-		
-		/*
-		 * 
-		 * 
-		 * is in process
-		 * 
-		 * 
-		 * 
-		 * 
-		 * /
-		 */
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-//	date = 	//*[@id='month-12']/div/div/table/tbody/tr[2]/td[5]/span[1]    
-//	price 	//*[@id='month-12']/div/div/table/tbody/tr[2]/td[5]/span[2]
-//					calendar_month_dates[i][j] =text_record_dates ;
-			
+
 			
 
+			calendar_array = new String[z][7][3];
+
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
+					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+			Thread.sleep(2000);
+
+			for (int i = 2; i < z + 2; i++) {
+
+				for (int j = 1; j < 8; j++) {
+
+					String text_record_dates = null;
+
+					try {
+						WebElement record_dates = driver.findElement(By.xpath("//*[@id='month-" + request_month
+								+ "']/div/div/table/tbody/tr[" + i + "]/td[" + j + "]"));
+
+						text_record_dates = record_dates.getText();
+					} catch (Exception e) {
+						System.out.println("calendar record not found");
+						break;
+					}
+
+					String[] text_array = text_record_dates.split("\\n");
+
+					int k = i - 2;
+					int l = j - 1;
+
+					if (text_array[0].equals("")) {
+
+						calendar_month_dates[k][l] = "No_date";
+
+						if (j == 1) {
+
+							days_text = "Monday";
+						}
+
+						else if (j == 2) {
+
+							days_text = "Tuesday";
+						} else if (j == 3) {
+
+							days_text = "Wednesday";
+						} else if (j == 4) {
+
+							days_text = "Thursday";
+						} else if (j == 5) {
+
+							days_text = "Friday";
+						} else if (j == 6) {
+
+							days_text = "Saturday";
+						} else if (j == 7) {
+
+							days_text = "Sunday";
+						}
+
+						try {
+							calendar_array[k][l][0] = days_text;
+						} catch (Exception e) {
+
+							System.out.println("Month Days text error!!");
+
+						}
+
+					}
+
+					else if (!text_array[0].equals("")) {
+
+						calendar_month_dates[k][l] = text_array[0];
+
+						if (j == 1) {
+
+							days_text = "Monday";
+						}
+
+						else if (j == 2) {
+
+							days_text = "Tuesday";
+						} else if (j == 3) {
+
+							days_text = "Wednesday";
+						} else if (j == 4) {
+
+							days_text = "Thursday";
+						} else if (j == 5) {
+
+							days_text = "Friday";
+						} else if (j == 6) {
+
+							days_text = "Saturday";
+						} else if (j == 7) {
+
+							days_text = "Sunday";
+						}
+
+						try {
+							calendar_array[k][l][0] = days_text;
+						} catch (Exception e) {
+
+							System.out.println("Month Days text error!!");
+
+						}
+
+						calendar_array[k][l][1] = text_array[0];
+						calendar_array[k][l][2] = text_array[1];
+
+						days_text = "empty";
+
+					}
+
+					text_array = null;
+
+				}
+
+
+			}
+
+ System.out.println("result collect successfully");
+
+		return calendar_array;
+
+	}
+
+	
+	public String[] complete_calendar_repalce(String[][][] calendar_recrod_saved) {
 		
-			
+		String[][][] convert_calendar = calendar_recrod_saved;
+		int row_count_of_array = convert_calendar.length;
+
+		int array_row_create = row_count_of_array * 7;
+
+		String[] recrod_converted_successfully = new String[array_row_create];
+
+		int i = 0;
+
+		for (int k = 0; k < row_count_of_array; k++) {
+
+			for (int j = 0; j < 7; j++) {
+
+				recrod_converted_successfully[i] = convert_calendar[k][j][2];
+				i++;
+
+			}
+
 		}
-		
-		
+
+		return recrod_converted_successfully;
+
 	}
 	
 	
-		
-		
-		
-	}
+	
+	
+	
 	
 	
 	
