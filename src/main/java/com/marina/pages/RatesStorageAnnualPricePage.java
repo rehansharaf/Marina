@@ -21,17 +21,11 @@ public class RatesStorageAnnualPricePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	
-	
-	
-	
 	By tab_btn_nightly = By.xpath("//a[text()='Nightly']");
 	By tab_btn_monthly = By.xpath("//a[text()='Monthly']");
 	By tab_btn_annual = By.xpath("//a[text()='Annual']");
 	By tab_btn_fixed = By.xpath("//a[text()='Flat']");
-	
-	
-	
+
 	By rates_annual_price_tittle = By
 			.xpath("//h1[@class='mb-0 text-white page-nav fs_22 fw_6 d-flex align-items-center']");
 	By btn_update_price = By.xpath("//a[@class='btn btn-success btn-md px-4']");
@@ -46,77 +40,45 @@ public class RatesStorageAnnualPricePage {
 	By premium_detail = By.xpath("//*[@id='year-2023']/div[2]/div/table/tbody/tr[1]/td[3]");
 	By oneTimePrice_detail = By.xpath("//*[@id='year-2023']/div[2]/div/table/tbody/tr[1]/td[4]");
 
-	
-	
-	
-	
 	public boolean newly_group_annual_rivision_history() {
-		
-		
+
 		boolean revision_history_empty = false;
-		
-		
-		
+
 		action.click1(driver.findElement(dropdown_revision_history), "dropdown revision history");
-				
-		
-		By revision_history = By
-				.xpath("//select[@ng-change='loadYear(year, 1)']/option[1]");
-		
-				
+
+		By revision_history = By.xpath("//select[@ng-change='loadYear(year, 1)']/option[1]");
+
 		String list_revision_record;
-		
-		
+
 		try {
-		
-		list_revision_record = driver.findElement(revision_history).getText();
-		
-		}
-		catch (Exception e) {
+
+			list_revision_record = driver.findElement(revision_history).getText();
+
+		} catch (Exception e) {
 			System.out.println("some error monthly revision price issued.");
 			return revision_history_empty;
-			
-			
-			
+
 		}
-		
-		if(list_revision_record==null || list_revision_record.isEmpty()) {
-			
-			revision_history_empty= true;
-			
-			
+
+		if (list_revision_record == null || list_revision_record.isEmpty()) {
+
+			revision_history_empty = true;
+
 		}
-		
-		
+
 		return revision_history_empty;
-		
-		
-			
-					
-		}
-	
-	
-	
+
+	}
+
 	public RatesStorageflatPricePage single_click_flat_price() {
-		
+
 		WebElement flat_price_btn = driver.findElement(tab_btn_fixed);
 		action.explicitWaitElementClickable(driver, flat_price_btn,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		flat_price_btn.click();
 
-		
 		return new RatesStorageflatPricePage(driver);
 
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-
-
 
 }
