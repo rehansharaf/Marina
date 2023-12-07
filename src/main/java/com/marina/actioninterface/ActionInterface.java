@@ -60,4 +60,5 @@ public interface ActionInterface {
 	public String getAlertText(WebDriver driver);
 	public void explicitWaitVisibility(WebDriver driver, WebElement element, By locator, Duration timeOut);
 	public long calculateDaysDiff(String startDate, String endDate, String dateFormat) throws ParseException;
+	public void waitForElement(String elementText, WebElement element) throws InterruptedException;
 }

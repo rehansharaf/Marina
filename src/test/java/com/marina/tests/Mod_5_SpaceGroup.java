@@ -47,7 +47,7 @@ public class Mod_5_SpaceGroup extends TestBase {
 		
 		spacetype = hp.spaces_dropdown_SpaceTypes();
 		spaceTypeAdd = spacetype.add_space_type();
-		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_02", "$/period", "Nightly", "Wet Storage");
+		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_02", "Multiple Boats", "$/period", "Nightly", "Wet Storage", "No");
 		spacetype.get_space_data_from_table("TestSpaceType_02");
 			
 		allspace = hp.spaces_dropdown_AllSpaces();

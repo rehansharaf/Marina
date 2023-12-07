@@ -124,6 +124,7 @@ public class RatesStoragePage {
 		
 		
 	WebElement newly_group_name =	driver.findElement(By.xpath("//div[text()='"+specific_rates_group_name+"']"));
+	action.scrollByVisibilityOfElement(driver, newly_group_name);
 	action.click1(newly_group_name, specific_rates_group_name);
 	action.explicitWaitElementClickable(driver, driver.findElement(btn_update_price), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 	Thread.sleep(1000);

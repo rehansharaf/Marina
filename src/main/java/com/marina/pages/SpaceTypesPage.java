@@ -115,7 +115,8 @@ public class SpaceTypesPage {
 	By btn_addspacetype = By.xpath("//button[text()='Add Space Type']");
 	By delete_option_spaceTable = By.xpath("//*[@id='space_type_table']/tbody/tr[1]/td[8]/div/a[2]");
 	By no_match_record_found_text = By.xpath("//td[text()='No matching records found']");
-
+	By dataTable = By.xpath("//table[@id='space_type_table']/tbody/tr");
+	By dataTableFirstRowFirstCol = By.xpath("//table[@id='space_type_table']/tbody/tr/td");
 
 	
 	@FindBy(how = How.XPATH, using = "//button[text()='Add Space Type']")
@@ -468,6 +469,47 @@ public class SpaceTypesPage {
 				
 	}
 	
+	public boolean searchAndDeleteSpaceType(String spaceName) throws InterruptedException {
+		
+		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_addspacetype));
+		action.explicitWaitPresenceOfElement(driver, btn_addspacetype, Duration.ofSeconds(10));
+		action.explicitWait(driver, search_name, Duration.ofSeconds(10));
+		action.type(search_name, spaceName);
+		int checkCond = 0;
+		while(checkCond == 0) {
+			
+			int rowCount = driver.findElements(dataTable).size();
+			if(rowCount == 1) {
+				
+				String rowText = driver.findElement(dataTableFirstRowFirstCol).getText();
+				if(rowText.equals("No matching records found")) {
+				
+					checkCond = 0;
+					break;
+					
+				}else {
+					
+					Thread.sleep(1000);
+					driver.findElement(By.xpath("//a[@data-name='"+spaceName+"']")).click();
+					action.explicitWaitElementClickable(driver, confirm_delete_btn, Duration.ofSeconds(10));
+					action.click1(confirm_delete_btn, "click delete btn");
+					action.explicitWaitElementClickable(driver, after_delte_success_ok_btn, Duration.ofSeconds(10));
+					action.click1(after_delte_success_ok_btn, "click ok btn");
+					action.explicitWaitElementClickable(driver, search_name, Duration.ofSeconds(10));
+					checkCond = 1;
+					break;
+				}
+					
+			}else 
+				Thread.sleep(1000);
+		}
+		if(checkCond == 0)
+			return false;
+		else 
+			return true;
+		
+		
+	}
 	
 	public HomePage breadcrumbs_homePage() throws InterruptedException {
 		

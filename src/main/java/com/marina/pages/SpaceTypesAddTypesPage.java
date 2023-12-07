@@ -132,6 +132,9 @@ public class SpaceTypesAddTypesPage {
 	By editSpaceBtn = By.xpath("//a[@title='Edit Space Type']");
 	By successOk = By.xpath("//button[text()='OK']");
 	By popup_group_successfully_add = By.xpath("//div[text()='Space type saved successfully']");
+	By rateGroupSelectField = By.xpath("//select[@name='price_group']");
+	By btn_saveAddingRate = By.xpath("//div[@id='modalAddSpaceType']//button[@type='submit' and @class='btn btn-primary' and text()='Save']");
+	By capacitySelect = By.xpath("//label[text()='Capacity']/following-sibling::select");
 	
 	public SpaceTypesAddTypesPage(WebDriver driver) {
 
@@ -139,11 +142,12 @@ public class SpaceTypesAddTypesPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void addSingleSpaceMandatoryFields(String spaceTypeName, String pricingType, String duration, String rateGroup) throws InterruptedException {
+	public void addSingleSpaceMandatoryFields(String spaceTypeName, String capacity, String pricingType, String duration, String rateGroup, String newRateGroup) throws InterruptedException {
 		
 		action.explicitWait(driver, verify_popup_text, Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.type(driver.findElement(nameText), spaceTypeName);
-		action.selectByVisibleText(pricingType, pricing_type_click);
+		action.selectByVisibleText(capacity, driver.findElement(capacitySelect));
+		action.selectByVisibleText(pricingType, pricing_type_click); /* $/ft/period , $/sq.ft/period, $/period  */
 		if(duration.equalsIgnoreCase("nightly"))
 			action.click1(check_night, "click nightly option");
 		else if(duration.equalsIgnoreCase("check_monthly"))
@@ -155,19 +159,37 @@ public class SpaceTypesAddTypesPage {
 			action.click1(check_monthly, "click all options");
 			action.click1(check_Yearly, "click all options");
 		}else if(duration.contains("nightly") && duration.contains("monthly")) {
-			action.click1(check_night, "click all options");
-			action.click1(check_monthly, "click all options");
+			action.click1(check_night, "check nightly and monthly");
+			action.click1(check_monthly, "check nightly and monthly");
 		}else if(duration.contains("nightly") && duration.contains("yearly")) {
-			action.click1(check_night, "click all options");
-			action.click1(check_Yearly, "click all options");
+			action.click1(check_night, "click nightly and yearly");
+			action.click1(check_Yearly, "click nightly and yearly");
 		}else {
-			action.click1(check_monthly, "click all options");
-			action.click1(check_Yearly, "click all options");
+			action.click1(check_monthly, "click monthly and yearly");
+			action.click1(check_Yearly, "click monthly and yearly");
 		}
 			
+		if(newRateGroup.equalsIgnoreCase("no")) {
 		
-		action.selectByVisibleText(rateGroup, add_to_rate_group_selection);
+			action.selectByVisibleText(rateGroup, add_to_rate_group_selection);
+			
+		}else {
+			
+			action.selectByVisibleText("Create New Rate Group", driver.findElement(rateGroupSelectField));
+			action.explicitWaitVisibility(driver, driver.findElement(input_field_group_name_enter), input_field_group_name_enter, 
+											Duration.ofSeconds(10));
+			
+			action.type(driver.findElement(input_field_group_name_enter), rateGroup);
+			action.click1(btn_popup_missing_txt_ok, "click ok btn rategroup");
+			action.explicitWaitVisibility(driver, driver.findElement(btn_saveAddingRate), btn_saveAddingRate, Duration.ofSeconds(20));
+			action.explicitWaitElementClickable(driver, driver.findElement(btn_saveAddingRate), Duration.ofSeconds(20));
+			
+			
+		}
+		
 		action.scrollByVisibilityOfElement(driver, btn_save);
+		action.explicitWaitElementClickable(driver, btn_save, Duration.ofSeconds(20));
+		Thread.sleep(2000);
 		action.click1(btn_save, "click save btn");
 		action.explicitWaitElementClickable(driver,driver.findElement(successOk) , Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
 		action.click1(driver.findElement(successOk), "click success ok btn");

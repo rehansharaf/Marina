@@ -81,6 +81,10 @@ public class AllSpacesPage {
 	By googleSheetFileMenu = By.id("docs-file-menu");
 	By googleDownloadMenuItem = By.xpath("//span[@aria-label='Download d']/parent::div");
 	By googleDownloadExcelOption = By.xpath("//span[@aria-label='Microsoft Excel (.xlsx) x']/parent::div");
+	By dataTable = By.xpath("//table[@id='slip']/tbody/tr");
+	By dataTableFirstRow = By.xpath("//table[@id='slip']/tbody/tr");
+	By dataTableFirstRowFirstCol = By.xpath("//table[@id='slip']/tbody/tr/td");
+
 	
 	
 	public AllSpacesPage(WebDriver driver) {
@@ -450,6 +454,49 @@ public class AllSpacesPage {
 
 	}
 	
+	
+	public boolean verifySlipAndDelete(String slipName) throws InterruptedException {
+		
+		action.explicitWait(driver, driver.findElement(spacesPageHeading), Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.type(searchField, slipName);
+		
+		int checkCond = 0;
+		while(checkCond == 0) {
+			
+			int rowCount = driver.findElements(dataTable).size();
+			if(rowCount == 1) {
+				
+				String rowText = driver.findElement(dataTableFirstRowFirstCol).getText();
+				if(rowText.equals("No matching records found")) {
+				
+					checkCond = 0;
+					break;
+					
+				}else {
+					
+					Thread.sleep(1000);
+					driver.findElement(dataTableFirstRow).click();
+					action.explicitWaitVisibility(driver, driver.findElement(viewSpaceSectionDeleteBtn), viewSpaceSectionDeleteBtn, Duration.ofSeconds(10));
+					action.explicitWaitElementClickable(driver, driver.findElement(viewSpaceSectionDeleteBtn), Duration.ofSeconds(10));
+					action.click1(driver.findElement(viewSpaceSectionDeleteBtn), "click delete btn");
+					action.explicitWaitElementClickable(driver, driver.findElement(deleteConfBtn), Duration.ofSeconds(20));
+					action.click1(driver.findElement(deleteConfBtn), "click ok btn");
+					action.explicitWaitVisibility(driver, driver.findElement(successOk), successOk, Duration.ofSeconds(20));
+					action.explicitWaitElementClickable(driver, driver.findElement(successOk), Duration.ofSeconds(20));
+					action.click1(driver.findElement(successOk), "click success btn");
+					checkCond = 1;
+					break;
+				}
+					
+			}else 
+				Thread.sleep(1000);
+		}
+		if(checkCond == 0)
+			return false;
+		else 
+			return true;
+		
+	}
 	
 
 }

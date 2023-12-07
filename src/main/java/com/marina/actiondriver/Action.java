@@ -3,6 +3,8 @@
  */
 package com.marina.actiondriver;
 
+import static org.testng.Assert.fail;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -843,6 +845,8 @@ public class Action extends TestBase implements ActionInterface {
 		WebDriverWait wait = new WebDriverWait(driver,timeOut);
 		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 		wait.until(ExpectedConditions.visibilityOf(element));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		
 	}
 	
 	@Override
@@ -970,5 +974,38 @@ public class Action extends TestBase implements ActionInterface {
 	    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	    return diff;
 	}
+	
+	@Override
+	public void waitForElement(String elementText ,WebElement element) throws InterruptedException {
+	   	  
+	   	  //System.out.println("item is "+item);
+	   	  //System.out.println("v1 is "+v1);
+	   	  
+	   	  
+	   	  for (int second = 0;; second++) {
+	   		     if (second >= 40) fail("timeout");
+	   		     try { 
+	   		    	//String g1 = driver.findElement(By.xpath("//html/body/div/div/div/div[3]/div[2]/label")).getText();
+
+	   		    	 Thread.sleep(1000);
+	   		    	 String g1 = element.getText();
+	   		    	 elementText = elementText.trim();
+	   		    	 g1 = g1.trim();
+	   		    	 //System.out.println("Expected Text "+v1);
+	   		    	 //System.out.println("Actual Text "+g1);
+	   		    	 if (elementText.equals(g1))
+	   		    	 
+	   				    //System.out.println("g1 is "+g1);
+	   		    		 break;		    	 
+	   		    	 
+	   		     } 
+	   		     catch (Exception e){
+	   		    	 System.out.println(e.getMessage());
+	   		     }
+	   		     Thread.sleep(1000);
+	   	  	
+	   	  }
+	   	  
+	     }	
 
 }

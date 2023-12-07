@@ -30,6 +30,8 @@ public class ReservationsPage {
 	By reservReceiptOpt = By.xpath("//a[@class='dropdown-item btn-print-receipt']");
 	By iframeReceipt = By.xpath("//iframe[contains(@src,'https://sandbox.dev.clover.com/r/')]");
 	By receiptTotalAmt = By.xpath("//span[@class='dollar-amount']");
+	By receiptTotalAmtCent = By.xpath("//span[@class='cents']");
+
 	
 	public ReservationsPage(WebDriver driver) {
 		
@@ -73,6 +75,9 @@ public class ReservationsPage {
 		action.explicitWaitVisibility(driver, driver.findElement(receiptTotalAmt), receiptTotalAmt, Duration.ofSeconds(10));
 		action.scrollByVisibilityOfElement(driver, driver.findElement(receiptTotalAmt));
 		String receiptAmt = driver.findElement(receiptTotalAmt).getText();
+		receiptAmt = receiptAmt.replaceAll(",", "");
+		String receiptAmt_cent = driver.findElement(receiptTotalAmtCent).getText();
+		receiptAmt = receiptAmt + "." + receiptAmt_cent;
 		return receiptAmt;
 		
 		

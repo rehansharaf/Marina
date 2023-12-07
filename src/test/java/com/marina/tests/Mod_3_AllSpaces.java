@@ -280,7 +280,7 @@ public class Mod_3_AllSpaces extends TestBase {
 		
 		spacetype = hp.spaces_dropdown_SpaceTypes();
 		spaceTypeAdd = spacetype.add_space_type();
-		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_01", "$/period", "Nightly", "Wet Storage");
+		spaceTypeAdd.addSingleSpaceMandatoryFields("TestSpaceType_01", "Multiple Boats", "$/period", "Nightly", "Wet Storage", "No");
 		String[] addedSpaceType = spacetype.get_space_data_from_table("TestSpaceType_01");
 		
 		if(addedSpaceType[1].equals("TestSpaceType_01")) {

@@ -141,7 +141,12 @@ public class HomePage {
 		action.scrollByVisibilityOfElement(driver, spacesdropdown);
 		action.explicitWait(driver, spacesdropdown,
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
-		action.click1(spacesdropdown, "Spaces DropDown");
+		
+		boolean isDisplayed = action.isDisplayed(driver, allspaces);
+		if(isDisplayed == false) {
+		
+			action.click1(spacesdropdown, "Spaces DropDown");
+		}
 		action.click1(rates, "Rates page link");
 		return new RatesStoragePage(driver);
 
