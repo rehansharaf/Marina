@@ -30,9 +30,11 @@ public class BrowserFactory {
 	public void setDriver(String browserName) {
 		
 		if (browserName.equalsIgnoreCase("Chrome")) {
-			WebDriverManager.chromedriver().clearDriverCache().setup();
-			WebDriverManager.chromedriver().setup();
-		
+//			WebDriverManager.chromedriver().clearResolutionCache();
+//			WebDriverManager.chromedriver().clearDriverCache();
+//			WebDriverManager.chromedriver().setup();
+			
+			System.setProperty("webdriver.chrome.driver", "C:/chromedriver-win64/chromedriver.exe");
 			
 			HashMap<String,Object> chromePrefs = new HashMap<String, Object>(); 
 	    	chromePrefs.put("plugins.always_open_pdf_externally", true);

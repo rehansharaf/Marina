@@ -194,10 +194,12 @@ public class RatesStorageNightlyPricePage {
 
 	}
 
-	public RatesStorageNightlyPrice_add_updatePage click_update_btn_return_edit_page() {
-
+	public RatesStorageNightlyPrice_add_updatePage click_update_btn_return_edit_page() throws InterruptedException {
+		
+		action.scrollByVisibilityOfElement(driver, driver.findElement(btn_next_year));
 		action.explicitWaitElementClickable(driver, driver.findElement(btn_next_year),
 				Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
+		action.scrollByVisibilityOfElement(driver, btn_update_price_web);
 
 		btn_update_price_web.click();
 
@@ -273,9 +275,8 @@ public class RatesStorageNightlyPricePage {
 			active_year_calendar = driver.findElement(h_active_year).getText();
 
 		}
-		System.out.println("test");
-
-		if (active_year_calendar.contentEquals("2025")) {
+	
+		else if (active_year_calendar.contentEquals("2025")) {
 
 			action.explicitWaitElementClickable(driver, driver.findElement(btn_previous_year),
 					Duration.ofSeconds(Integer.parseInt(TestBase.prop.getProperty("timeout"))));
@@ -283,8 +284,10 @@ public class RatesStorageNightlyPricePage {
 			return error;
 
 		}
+		
+		System.out.println("data");
 
-		else if (active_year_calendar.equals("2024")) {
+		if (active_year_calendar.equals("2024")) {
 
 			action.click(driver, driver.findElement(tab_calendar_month_december));
 			action.explicitWaitElementClickable(driver, driver.findElement(btn_add_price),
