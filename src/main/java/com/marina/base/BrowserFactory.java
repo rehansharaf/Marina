@@ -34,6 +34,9 @@ public class BrowserFactory {
 //			WebDriverManager.chromedriver().clearDriverCache();
 //			WebDriverManager.chromedriver().setup();
 			
+		/* 
+		 *  Local Chrome Driver Setup	
+		 */
 			System.setProperty("webdriver.chrome.driver", "C:/chromedriver-win64/chromedriver.exe");
 			
 			HashMap<String,Object> chromePrefs = new HashMap<String, Object>(); 
