@@ -48,6 +48,8 @@ public class Mod_7_RatesStorage extends TestBase {
 		rsp = hp.spaces_dropdown_rates();
 		
 System.out.println("test");
+System.out.println("test");
+
 	}
 
 	@Test(groups = { "regression", "smoke",
