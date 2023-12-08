@@ -963,17 +963,6 @@ public class Action extends TestBase implements ActionInterface {
 	    return result;
 	}
 	
-	@Override
-	public long calculateDaysDiff(String startDate, String endDate, String dateFormat) throws ParseException {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.ENGLISH);
-	    Date firstDate = sdf.parse(startDate);
-	    Date secondDate = sdf.parse(endDate);
-
-	    long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
-	    long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-	    return diff;
-	}
 	
 	@Override
 	public void waitForElement(String elementText ,WebElement element) throws InterruptedException {

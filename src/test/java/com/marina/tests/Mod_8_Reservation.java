@@ -327,7 +327,7 @@ public class Mod_8_Reservation extends TestBase {
 		
 	}*/
 	
-	@Test(groups = "regression,sanity,smoke", priority = 7,
+	@Test(groups = "regression,sanity,smoke", priority = 8,
 			description = "Add Reservation For An Year & Verify The Charges")
 	public void addReservationAnnual_TC_1208() throws Exception {
 		
@@ -338,7 +338,7 @@ public class Mod_8_Reservation extends TestBase {
 		driver.navigate().refresh();
 		cAddRev = cp.selectDates("SL-Resv", 1, 1, 0);
 		
-		String output = cAddRev.addReservationAnnual("SpaceReservation","testresv_group", "Test User", "SL-Resv", "Boat2", 60, "monthly", 0);
+		String output = cAddRev.addReservationAnnual("SpaceReservation","testresv_group", "Test User", "SL-Resv", "Boat2", 370, "annual", 0);
 		String[] parts = output.split(";");
 		boolean flag = Boolean.parseBoolean(parts[0]);
 		String totalAmt = parts[1];

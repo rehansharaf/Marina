@@ -66,14 +66,13 @@ public class Calendar_AddReservation {
 	public String addReservationAnnual(String spaceType, String rateGroup, String customerName, String slipName, String boatName, int noOfDays, 
 			String pricing, int newBucket) throws Exception {
 		
-		
-		
+	
 		boolean defaultPricingSelect, daysDiffCheck;
 		action.explicitWaitVisibility(driver, driver.findElement(nightlyPricingLabel), nightlyPricingLabel, Duration.ofSeconds(10));
 		action.explicitWaitElementClickable(driver, driver.findElement(nightlyCheckbox), Duration.ofSeconds(10));
 		Thread.sleep(1000);
 		String bgColor = "";
-		if(pricing.equals("annually")) {
+		if(pricing.equals("annual")) {
 			
 			verifyChangePricingNightlyToAnnual(noOfDays);
 			bgColor = driver.findElement(annualPricingLabel).getCssValue("background-color");
@@ -90,7 +89,7 @@ public class Calendar_AddReservation {
 		
 		String startDate = driver.findElement(reservArrivalDate).getAttribute("value");
 		String endDate = driver.findElement(reservEndDate).getAttribute("value");
-		long daysDiff = action.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
+		long daysDiff = Utilities.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
 		if(noOfDays == 1) {
 		
 			if(daysDiff == 1)
@@ -211,73 +210,51 @@ public class Calendar_AddReservation {
 		//System.out.println("\nDifference between "+ userday +" and "+ today +": " 
 		//+ diff.getYears() +" Years and "+ diff.getMonths() +" Months" + " and days "+diff.getDays());
 		
-		int noOfMonths = diff.getMonths();
-		int noOfDaysCalc = diff.getDays();
-		double  dayRate1 = 0, dayRate2 = 0, rate_ind1 = 0, rate_ind2 = 0;
+		double yearRate;
 		
 		Database db = new Database();
 		
-		if(noOfDaysCalc == 0) {
-			
-			if(noOfMonths == 0) {
-			
-				//Yearly Price Only
-				
-			}else if(noOfMonths != 0) {
-				dayRate1 = db.getPricingMonthly(rateGroup, slipLength, year, month, day, endYear, endMonth, endDay, "yes");
-				rate_ind1 = dayRate1 * Float.valueOf(slipLength);
-				rate_ind1 = Utilities.roundValue(rate_ind1, 2);
-
-
-			}
-		}else {
+		yearRate = db.getPricingYearly(rateGroup, slipLength, startDate, endDate, "yes");
 		
-			if(noOfMonths != 0) {
-			
-				LocalDate date = LocalDate.of(endYear,endMonth,endDay).minusDays(noOfDaysCalc);
-				System.out.println(date);
-				String[] parts1 = date.toString().split("-");
-				
-				dayRate1 = db.getPricingMonthly(rateGroup, slipLength, year, month, day, Integer.parseInt(parts1[0]), Integer.parseInt(parts1[1]),
-						Integer.parseInt(parts1[2]),"yes");
-				
-				rate_ind1 = dayRate1 * Double.valueOf(slipLength);
-
-				//date = LocalDate.of(Integer.parseInt(parts1[0]),Integer.parseInt(parts1[1]),Integer.parseInt(parts1[2])).plusDays(1);
-				date = LocalDate.of(Integer.parseInt(parts1[0]),Integer.parseInt(parts1[1]),Integer.parseInt(parts1[2]));
-				parts1 = date.toString().split("-");
-				year = Integer.parseInt(parts1[0]);
-				month = Integer.parseInt(parts1[1]);
-				day = Integer.parseInt(parts1[2]);
-				dayRate2 = db.getPricingMonthly_Day(rateGroup, slipLength, year, month, day, endYear, endMonth, endDay, "yes", "yes");
-				
-				rate_ind2 = dayRate2 * Double.valueOf(slipLength);
-				rate_ind2 = Utilities.roundValue(rate_ind2, 2);
-
-				
-				
-			}else if(noOfMonths == 0) {
-				
-				
-				
-			}
-			
-
-		}
-		
-		double sum_ind = rate_ind1 + rate_ind2;
-		
-		//float actualRate_ind = Float.valueOf(dayRate / 100f);
-		//float sum_ind = actualRate_ind * Float.valueOf(slipLength);
 		DecimalFormat df = new DecimalFormat("#.00");
-	    actualRateFormated = df.format(sum_ind);
+	    actualRateFormated = df.format(yearRate);
     
 		totalAmt = driver.findElement(By.xpath("//th[contains(text(),'"+spaceType+" Total')]/following-sibling::td")).getText();
 		totalAmt = totalAmt.replace("$", "");
 		totalAmt = totalAmt.trim();
 		totalAmt = totalAmt.replaceAll(",", "");
 		
-	    return pricing;
+		
+		action.scrollByVisibilityOfElement(driver, driver.findElement(reservationCashBtn));
+	    action.click1(driver.findElement(reservationCashBtn), "Click Cash btn");
+	    action.explicitWaitVisibility(driver, driver.findElement(cashInput), cashInput, Duration.ofSeconds(10));
+	    String totalAmountPay = driver.findElement(cashTotal).getText();
+	    totalAmountPay = totalAmountPay.replace("Order Total: $", "");
+	    totalAmountPay = totalAmountPay.replace("Enter Received Amount", "");
+	    totalAmountPay = totalAmountPay.trim();
+	    action.type(driver.findElement(cashInput), totalAmountPay);
+	    action.click1(driver.findElement(okBtn), "click ok btn");
+	    	
+		action.explicitWaitVisibility(driver, driver.findElement(totalAmtSuccessReceipt), totalAmtSuccessReceipt, Duration.ofSeconds(20));
+		
+		String totalAmount = driver.findElement(totalAmtSuccessReceipt).getText();
+		String totalOrder = driver.findElement(totalOrderSuccessReceipt).getText();
+		String totalReturn = driver.findElement(totalReturnAmtSuccessReceipt).getText();
+		action.click1(driver.findElement(okBtn), "click ok btn");
+		
+		totalAmount = totalAmount.replace("$", "");
+	    totalOrder = totalOrder.replace("$", "");
+	    totalReturn = totalReturn.replace("$", "");
+	    totalReturn = totalReturn.replace(".00", "");
+	    
+	    
+	    if(actualRateFormated.equals(totalAmt) && 
+				defaultPricingSelect == true && daysDiffCheck == true && totalAmountPay.equals(totalAmount) && totalOrder.equals(totalAmountPay) &&
+				totalReturn.equals("0"))
+			return "true;"+totalAmount;
+		else 
+			return "false;"+totalAmount;
+	    	
 	
 	}
 	
@@ -297,7 +274,7 @@ public class Calendar_AddReservation {
 			verifyChangePricingNightlyToMonthly(noOfDays);
 			bgColor = driver.findElement(monthlyPricingLabel).getCssValue("background-color");
 			
-		}else if(pricing.equals("annually"))
+		}else if(pricing.equals("annual"))
 			bgColor = driver.findElement(annualPricingLabel).getCssValue("background-color");
 		
 		
@@ -310,7 +287,7 @@ public class Calendar_AddReservation {
 		
 		String startDate = driver.findElement(reservArrivalDate).getAttribute("value");
 		String endDate = driver.findElement(reservEndDate).getAttribute("value");
-		long daysDiff = action.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
+		long daysDiff = Utilities.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
 		if(noOfDays == 1) {
 		
 			if(daysDiff == 1)
@@ -616,7 +593,7 @@ public class Calendar_AddReservation {
 			verifyChangePricingNightlyToMonthly(noOfDays);
 			bgColor = driver.findElement(monthlyPricingLabel).getCssValue("background-color");
 			
-		}else if(pricing.equals("annually"))
+		}else if(pricing.equals("annual"))
 			bgColor = driver.findElement(annualPricingLabel).getCssValue("background-color");
 		
 		
@@ -629,7 +606,7 @@ public class Calendar_AddReservation {
 		
 		String startDate = driver.findElement(reservArrivalDate).getAttribute("value");
 		String endDate = driver.findElement(reservEndDate).getAttribute("value");
-		long daysDiff = action.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
+		long daysDiff = Utilities.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
 		if(noOfDays == 1) {
 		
 			if(daysDiff == 1)
@@ -851,7 +828,7 @@ public class Calendar_AddReservation {
 			verifyChangePricingNightlyToMonthly(daysToSkip);
 			bgColor = driver.findElement(monthlyPricingLabel).getCssValue("background-color");
 			
-		}else if(pricing.equals("annually"))
+		}else if(pricing.equals("annual"))
 			bgColor = driver.findElement(annualPricingLabel).getCssValue("background-color");
 
 		String hex = Color.fromString(bgColor).asHex();
@@ -863,7 +840,7 @@ public class Calendar_AddReservation {
 		
 		String startDate = driver.findElement(reservArrivalDate).getAttribute("value");
 		String endDate = driver.findElement(reservEndDate).getAttribute("value");
-		long daysDiff = action.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
+		long daysDiff = Utilities.calculateDaysDiff(startDate, endDate, "MM-dd-yyyy");
 		if(noOfDays == 1) {
 		
 			if(daysDiff == 1)

@@ -30,7 +30,9 @@ public class BrowserFactory {
 	public void setDriver(String browserName) {
 		
 		if (browserName.equalsIgnoreCase("Chrome")) {
-			WebDriverManager.chromedriver().clearDriverCache().setup();
+			WebDriverManager.chromedriver().clearResolutionCache();
+			//WebDriverManager.chromedriver().clearDriverCache().setup();
+			WebDriverManager.chromedriver().clearDriverCache();
 			WebDriverManager.chromedriver().setup();
 		
 			
