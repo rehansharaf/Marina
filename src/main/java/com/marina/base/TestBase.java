@@ -33,7 +33,7 @@ public class TestBase {
 	public void loadConfig() throws IOException {
 
 		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"\\screenshots"));
-		FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"\\test-output"));
+		//FileUtils.cleanDirectory(new File(System.getProperty("user.dir")+"\\test-output"));
 		File screeshot_file = new File(System.getProperty("user.dir")+"\\screenshots\\.gitkeep");
 		screeshot_file.createNewFile();
 		
