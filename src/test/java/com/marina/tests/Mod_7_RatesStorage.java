@@ -46,7 +46,8 @@ public class Mod_7_RatesStorage extends TestBase {
 		lp = new LoginPage(driver);
 		hp = lp.login(prop.getProperty("email"), prop.getProperty("password"));
 		rsp = hp.spaces_dropdown_rates();
-
+		
+System.out.println("test");
 	}
 
 	@Test(groups = { "regression", "smoke",
