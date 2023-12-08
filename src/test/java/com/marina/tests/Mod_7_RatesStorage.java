@@ -34,7 +34,7 @@ public class Mod_7_RatesStorage extends TestBase {
 	RatesStorageflatPricePage rsfpp;
 	RatesStorageNightlyPrice_add_updatePage rsnpaup;
 
-	String rate_new_group_name = "Automation test 5DEC2023";
+	String rate_new_group_name = "Automation 08Dec2023";
 	String[] zero_to_50_ft_calendar_table_record_dec_2024;
 	String[] fifty_to_100_ft_calendar_table_record_dec_2023;
 	String[] hundread_100_ft_calendar_table_record_dec_2023;
@@ -47,8 +47,6 @@ public class Mod_7_RatesStorage extends TestBase {
 		hp = lp.login(prop.getProperty("email"), prop.getProperty("password"));
 		rsp = hp.spaces_dropdown_rates();
 		
-System.out.println("test");
-System.out.println("test");
 
 	}
 
@@ -158,7 +156,7 @@ System.out.println("test");
 
 		Log.startTestCase("Create Nightly rate group with single row and without holiday TC_1105");
 
-		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
+		rsnpp = rsp.search_specifig_rates_group("Testing automation manual");
 
 		Thread.sleep(1000);
 		String activeYear_currentTime[] = rsnpp.active_year();
@@ -268,9 +266,11 @@ System.out.println("test");
 
 	}
 
+	
+//	dependsOnMethods = "verify_allBucketsMonths_prices_TC_1106;
 
-//	@Test(groups = { "regression",
-//	"smoke" }, priority = 7, description = "Verify all the added rates for all the different sizes TC_1107")
+	@Test(groups = { "regression",
+			"smoke" }, priority = 7, description = "Verify all the added rates for all the different sizes TC_1107")
 	public void Update_Nightly_Record_TC_1107() throws InterruptedException {
 
 		Log.startTestCase("Update nightly rate group with multiple row and with holiday");
@@ -285,77 +285,80 @@ System.out.println("test");
 		String[] result_calendar_price_first_bucket = rsnpp
 				.complete_calendar_repalce(calendar_recrod_saved_first_bucket);
 
-		// bucket 1 = 81 , bucket = 82, bucket 3= 99
-
 		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-		
-		
-		String[] price_list_first_row_month = { "no_price", "4", "5", "6", "7", "8", "9", "10" };
-		String[] price_list_2nd_row_month = { "no_price", "104", "105", "106", "107", "108", "109", "110" };
-		
-		
-		
-		
-		String holiday_price_set = "2";
-		String holiday_minimum_reservation = "5";
-		rsnpaup.add_mutli_months_price_1st_bucket(active_year, "81", price_list_first_row_month,
-				price_list_2nd_row_month, holiday_price_set, holiday_minimum_reservation);
 
+		String[] first_bucket_1_row = new String[] { "no_price", "4", "5", "6", "7", "8", "9", "10" };
+		String[] first_bucket_2_row = new String[] { "no_price", "104", "105", "106", "107", "108", "109", "110" };
+
+		String[] second_bucket_1_row = new String[] { "no_price", "114", "116", "117", "118", "119", "120", "121" };
+		String[] second_bucket_2_row = new String[] { "no_price", "188", "196", "188", "200", "201", "209", "222" };
+
+		String[] third_bucket_1_row = new String[] { "no_price", "841", "845", "846", "847", "898", "900", "910" };
+		String[] third_bucket_2_row = new String[] { "no_price", "133", "144", "155", "166", "177", "188", "77" };
+		String [] holiday_details_request = {"99","101","201","5","christmas",};
 		
 		
-		
-		
-		/*
-		 * in progress
-		 * 
-		 * /
-		 */
-		
-		
-		
-		
-//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-//		
-//		boolean succesfuuly_add_nightly_price = rsnpaup.add_12_month_price_in_one_week_row_first_bucket(active_year);
-//		
-//		
-//		
-//		
-//
-//		Thread.sleep(1000);
-//		zero_to_50_ft_calendar_table_record_dec_2024 = rsnpp.nightly_2024_december_calendar_selection();
-//		Thread.sleep(1000);
-//		rsnpp.single_click_second_bucket();
-//		fifty_to_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
-//		Thread.sleep(1000);
-//		rsnpp.single_click_third_bucket();
-//		hundread_100_ft_calendar_table_record_dec_2023 = rsnpp.nightly_2024_december_calendar_selection();
-//		Thread.sleep(1000);
-//		rsnpp = rsp.search_specifig_rates_group(rate_new_group_name);
-//		Thread.sleep(1000);
-//
-//		
-//
-//	
-//
-//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-//		
-//
-//		Thread.sleep(1000);
-//
-//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-//		rsnpaup.single_click_second_bucket_update(active_year);
-//		boolean second_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_second_bucket(active_year);
-//
-//		Thread.sleep(1000);
-//
-//		rsnpaup = rsnpp.click_update_btn_return_edit_page();
-//		rsnpaup.single_click_third_bucket_update(active_year);
-//		boolean third_bucket_priced_updated = rsnpaup.add_12_month_price_in_one_week_row_third_bucket(active_year);
+		boolean all_buckets_holiday_price_updated = rsnpaup.add_mutli_months_price_all_buckets(
+				active_year,
+				first_bucket_1_row,
+				first_bucket_2_row,
+				second_bucket_1_row, 
+				second_bucket_2_row,
+				third_bucket_1_row,
+				third_bucket_2_row,
+				holiday_details_request
+							);
+
+		Assert.assertEquals(all_buckets_holiday_price_updated, true);
 
 		Log.endTestCase("Update nightly rate group with multiple row and with holiday");
 
 	}
+	
+	
+	
+	
+	
+	
+
+//	@Test(groups = { "regression",
+//			"smoke" }, priority = 7, description = "Verify all the updated rates for all the different sizes TC_1108")
+//	public void verify_nightly_mutli_rows_and_holiday_price_TC_1108() throws InterruptedException {
+//		
+//		
+//		Log.startTestCase("Verify all the updated rates for all the different sizes TC_1108");
+//		String[] first_bucket_1_row = new String[] { "no_price", "4", "5", "6", "7", "8", "9", "10" };
+//		String[] first_bucket_2_row = new String[] { "no_price", "104", "105", "106", "107", "108", "109", "110" };
+//
+//		String[] second_bucket_1_row = new String[] { "no_price", "114", "116", "117", "118", "119", "120", "121" };
+//		String[] second_bucket_2_row = new String[] { "no_price", "188", "196", "188", "200", "201", "209", "222" };
+//
+//		String[] third_bucket_1_row = new String[] { "no_price", "841", "845", "846", "847", "898", "900", "910" };
+//		String[] third_bucket_2_row = new String[] { "no_price", "133", "144", "155", "166", "177", "188", "77" };
+//		String holiday_price_set = "4";
+//		String holiday_minimum_reservation = "5";
+//		
+//		
+//		
+//		
+//		
+//		Log.endTestCase("Verify all the updated rates for all the different sizes TC_1108");
+//		
+//		
+//	
+//	}
+	
+	
+
+		
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@AfterMethod
 	public void afterTest() {
