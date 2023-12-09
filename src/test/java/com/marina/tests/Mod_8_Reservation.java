@@ -102,7 +102,7 @@ public class Mod_8_Reservation extends TestBase {
 		
 	}
 	
-	/*
+	
 	
 	@Test(groups = "regression,sanity,smoke", priority = 1,
 			description = "Add Reservation For Single Day, Verify Reservation Created With Verification Of Data")
@@ -325,7 +325,7 @@ public class Mod_8_Reservation extends TestBase {
 		
 		Log.endTestCase("Update Pricing From Monthly To Nightly");
 		
-	}*/
+	}
 	
 	@Test(groups = "regression,sanity,smoke", priority = 8,
 			description = "Add Reservation For An Year & Verify The Charges")
